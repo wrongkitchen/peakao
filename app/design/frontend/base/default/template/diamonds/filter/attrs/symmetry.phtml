@@ -1,0 +1,109 @@
+<?php
+$config = $this->helper('diamonds/config');
+$widthSlider = $config->getWidthSlider();
+?>
+<?php $attributeSymmetryOptions = $this->getAttributeOptions("symmetry"); ?>
+<h2><?php echo $this->__('Symmetry'); ?></h2>
+<?php if (!$config->getSymmetrySliderType()): ?>
+    <div class="price-ranger" style="width: <?php echo $widthSlider ?>px">
+        <div id="symmetry_slider"></div>
+        <input type="hidden" id="minSymmetry" name="attributes[symmetry][min]" class="sliderSymmetryValue svlft" data-index="0" value="1"/>
+        <input type="hidden" id="maxSymmetry" name="attributes[symmetry][max]" class="sliderSymmetryValue slidRight" data-index="1" value="<?php echo $attributeSymmetryOptions->getSize(); ?>" />
+    </div>
+    <div class="divisions">
+        <ul>
+			<?php
+            $i = 0;
+            $symmetries = array();
+            $len = count($attributeSymmetryOptions);
+            $width =  $widthSlider / ($len-1);
+            foreach ($attributeSymmetryOptions as $option):
+                $widthEl = $width; 
+                $textalign= 'center'; 
+                if ($i == 0){ $widthEl = $width / 2; $textalign='left'; }
+                elseif ($i == $len-1){ $widthEl = $width / 2-1; $textalign= 'right'; }
+                ?>
+                
+                <li style=" width: <?php echo $widthEl ?>px; float:left;  text-align: <?php echo $textalign; ?>; "> <?php echo $option->getValue(); ?> </li>
+                
+                <?php $symmetries[] = $option->getId(); ?>
+                
+            <?php $i++; endforeach; ?>
+        </ul>
+    </div>
+<?php else: ?>
+    <div id="symmetry">
+        <?php foreach ($attributeSymmetryOptions as $option): ?>
+            <input type="checkbox" value="<?php echo $option->getId(); ?>" id="symmetry<?php echo $option->getId() ?>">
+            <label for="symmetry<?php echo $option->getId(); ?>"><?php echo $option->getValue(); ?></label>       
+        <?php endforeach; ?>
+        <script type="text/javascript" >
+            jQuery("#symmetry").buttonset();
+        </script>
+    </div> 
+<?php endif; ?>
+<script type="text/javascript">
+
+    jQuery(function(jQuery){  
+<?php if (!$config->getColorSliderType()): ?>
+            jQuery("#symmetry_slider").slider({
+                range: true,
+                min: 1,
+                max: <?php echo $attributeSymmetryOptions->getSize(); ?>,
+                step: 1,
+                values: [1, <?php echo $attributeSymmetryOptions->getSize(); ?>],
+                slide: function(event, ui) {
+                    for(var i = 0; i < ui.values.length; ++i) {
+                        jQuery("input.sliderSymmetryValue[data-index=" + i + "]").val(ui.values[i]);
+                    }
+                }
+            });
+
+            jQuery("input.sliderSymmetryValue").change(function() {
+                var $this = $(this);
+                jQuery("#symmetry_slider").slider("values", $this.data("index"), $this.val());
+            });
+                
+                
+            var getDataSymmetry = function(){
+                    
+                var minSymmetry = jQuery( "#minSymmetry" ).val();
+                var maxSymmetry = jQuery( "#maxSymmetry" ).val();
+                            
+                var clarities = <?php echo json_encode($symmetries); ?>;
+                         
+                var mass = new Array();
+                for (var i = minSymmetry-1; i < maxSymmetry; i++){
+                    mass.push(clarities[i]);
+                }
+                        
+                if (minSymmetry != 1 || maxSymmetry != <?php echo $attributeSymmetryOptions->getSize(); ?>){
+                    return { mass : mass };
+                }
+            };
+<?php else: ?>
+            jQuery("#symmetry input").click(function(){
+                var selected = jQuery(this).attr("data-selected");
+                		
+                if(selected == "true"){
+                    jQuery(this).attr("data-selected","false");
+                } else {
+                    jQuery(this).attr("data-selected", "true");
+                }
+            });
+                		
+            var getDataSymmetry = function(){
+                var symmetries = jQuery("#symmetry input");
+                var mass = new Array();
+                for(var i=0;i<symmetries.length;i++){
+                    var symmetry = jQuery(symmetries[i]);
+                    if(symmetry.attr("data-selected") == "true" ){
+                        mass.push(symmetry.attr("value"));
+                    }		
+                }
+                return { mass : mass };
+            };
+<?php endif; ?>
+        diamondsFilter.registerFilter("symmetry", getDataSymmetry);
+    });
+</script>

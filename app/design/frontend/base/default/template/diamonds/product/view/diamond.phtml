@@ -1,0 +1,564 @@
+<?php /* @var $this Ikantam_Diamonds_Block_Product_View_Diamond */ ?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+<?php
+$shape = $_product->getResource()->getAttribute('diamond_shape')->getFrontend()->getValue($_product);
+$dimension = explode('X', $_product->getDimension());
+$diamond['lenght'] = 'lenght: ' . $dimension[0] . ' mm';
+$diamond['width'] = 'width: ' . $dimension[1] . ' mm';
+$diamond['depth'] = 'depth: ' . $dimension[2] . ' mm';
+$diamond['depth_percent'] = 'depth: ' . number_format($_product->getDepth1(), 1) . '%';
+$diamond['table_percent'] = 'table: ' . number_format($_product->getTable(), 1) . '%';
+?>
+
+<script>jQuery(function($){
+    var $sidevi = $('.sideView i'),    
+    $roundT = $('.icon-small-round-top'),    
+    $roundS = $('.icon-small-round-side'),   
+    $roundE = $('.icon-small-round-ex'),   
+    $princT = $('.icon-small-princess-top'),   
+    $princS = $('.icon-small-princess-side'), 
+    $princE = $('.icon-small-princess-ex'),  
+    $emberT = $('.icon-small-emerald-top'),  
+    $emberS = $('.icon-small-emerald-side'),  
+    $emberE = $('.icon-small-emerald-ex'),  
+    $radiaT = $('.icon-small-radiant-top'),  
+    $radiaS = $('.icon-small-radiant-side'), 
+    $radiaE = $('.icon-small-radiant-ex'),  
+    $asschT = $('.icon-small-asscher-top'),  
+    $asschS = $('.icon-small-asscher-side'),   
+    $asschE = $('.icon-small-asscher-ex'), 
+    $ovalT = $('.icon-small-oval-top'), 
+    $ovalS = $('.icon-small-oval-side'),  
+    $ovalE = $('.icon-small-oval-ex'),   
+    $marqT = $('.icon-small-marquise-top'), 
+    $marqS = $('.icon-small-marquise-side'),   
+    $marqE = $('.icon-small-marquise-ex'),  
+    $heartT = $('.icon-small-heart-top'),   
+    $heartS = $('.icon-small-heart-side'), 
+    $heartE = $('.icon-small-heart-ex'),   
+    $pearT = $('.icon-small-pear-top'),
+    $pearS = $('.icon-small-pear-side'),  
+    $pearE = $('.icon-small-pear-ex'),  
+    $cushT = $('.icon-small-cushion-top'),  
+    $cushS = $('.icon-small-cushion-side'),  
+    $cushE = $('.icon-small-cushion-ex'),    
+    $topDem = $('.top-dem'),   
+    $sideDem = $('.side-dem');  
+    /*$topDem.show();*/
+    /* round */
+    $roundT.on('click', function () {
+        $sidevi.removeClass('icon-large-round-side icon-large-round-ex').addClass('icon-large-round-top'); 
+        $topDem.show();   
+        $sideDem.hide(); 
+        return false;
+    });
+    $roundS.on('click', function () {
+        $sidevi.removeClass('icon-large-round-top icon-large-round-ex').addClass('icon-large-round-side'); 
+        $topDem.hide();    
+        $sideDem.show(); 
+        return false;
+    });
+    $roundE.on('click', function () { 
+        $sidevi.removeClass('icon-large-round-side icon-large-round-top').addClass('icon-large-round-ex');  
+        $topDem.hide();  
+        $sideDem.hide();  
+        return false;
+    });
+    /* princess */
+    $princT.on('click', function () {
+        $sidevi.removeClass('icon-large-princess-side icon-large-princess-ex').addClass('icon-large-princess-top'); 
+        $topDem.show(); 
+        $sideDem.hide();  
+        return false;
+    });
+    $princS.on('click', function () { 
+        $sidevi.removeClass('icon-large-princess-top icon-large-princess-ex').addClass('icon-large-princess-side'); 
+        $topDem.hide();   
+        $sideDem.show();   
+        return false;
+    });
+    $princE.on('click', function () {  
+        $sidevi.removeClass('icon-large-princess-side icon-large-princess-top').addClass('icon-large-princess-ex');
+        $topDem.hide();  
+        $sideDem.hide();  
+        return false;
+    });
+    /* emerald */
+    $emberT.on('click', function () {  
+        $sidevi.removeClass('icon-large-emerald-side icon-large-emerald-ex').addClass('icon-large-emerald-top'); 
+        $topDem.show();  
+        $sideDem.hide();  
+        return false;
+    });
+    $emberS.on('click', function () { 
+        $sidevi.removeClass('icon-large-emerald-top icon-large-emerald-ex').addClass('icon-large-emerald-side'); 
+        $topDem.hide();  
+        $sideDem.show();   
+        return false;
+    });
+    $emberE.on('click', function () {  
+        $sidevi.removeClass('icon-large-emerald-side icon-large-emerald-top').addClass('icon-large-emerald-ex');   
+        $topDem.hide();  
+        $sideDem.hide(); 
+        return false;
+    });
+    /* radiant */
+    $radiaT.on('click', function () {  
+        $sidevi.removeClass('icon-large-radiant-side icon-large-radiant-ex').addClass('icon-large-radiant-top');  
+        $topDem.show(); 
+        $sideDem.hide();   
+        return false;
+    });
+    $radiaS.on('click', function () { 
+        $sidevi.removeClass('icon-large-radiant-top icon-large-radiant-ex').addClass('icon-large-radiant-side');  
+        $topDem.hide();  
+        $sideDem.show(); 
+        return false;
+    });
+    $radiaE.on('click', function () {   
+        $sidevi.removeClass('icon-large-radiant-side icon-large-radiant-top').addClass('icon-large-radiant-ex'); 
+        $topDem.hide();  
+        $sideDem.hide();  
+        return false;
+    });
+    /* asscher */
+    $asschT.on('click', function () { 
+        $sidevi.removeClass('icon-large-asscher-side icon-large-asscher-ex').addClass('icon-large-asscher-top'); 
+        $topDem.show();   
+        $sideDem.hide(); 
+        return false;
+    });
+    $asschS.on('click', function () {   
+        $sidevi.removeClass('icon-large-asscher-top icon-large-asscher-ex').addClass('icon-large-asscher-side'); 
+        $topDem.hide();  
+        $sideDem.show();  
+        return false;
+    });
+    $asschE.on('click', function () {   
+        $sidevi.removeClass('icon-large-asscher-side icon-large-asscher-top').addClass('icon-large-asscher-ex');   
+        $topDem.hide(); 
+        $sideDem.hide();  
+        return false;
+    });
+    /* oval */
+    $ovalT.on('click', function () { 
+        $sidevi.removeClass('icon-large-oval-side icon-large-oval-ex').addClass('icon-large-oval-top');  
+        $topDem.show(); 
+        $sideDem.hide();   
+        return false;
+    });
+    $ovalS.on('click', function () { 
+        $sidevi.removeClass('icon-large-oval-top icon-large-oval-ex').addClass('icon-large-oval-side'); 
+        $topDem.hide();   
+        $sideDem.show(); 
+        return false;
+    });
+    $ovalE.on('click', function () { 
+        $sidevi.removeClass('icon-large-oval-side icon-large-oval-top').addClass('icon-large-oval-ex'); 
+        $topDem.hide();  
+        $sideDem.hide(); 
+        return false;
+    });
+    /* marquise */
+    $marqT.on('click', function () {  
+        $sidevi.removeClass('icon-large-marquise-side icon-large-marquise-ex').addClass('icon-large-marquise-top'); 
+        $topDem.show();  
+        $sideDem.hide();  
+        return false;
+    });
+    $marqS.on('click', function () {  
+        $sidevi.removeClass('icon-large-marquise-top icon-large-marquise-ex').addClass('icon-large-marquise-side');  
+        $topDem.hide();  
+        $sideDem.show();   
+        return false;
+    });
+    $marqE.on('click', function () {  
+        $sidevi.removeClass('icon-large-marquise-side icon-large-marquise-top').addClass('icon-large-marquise-ex');
+        $topDem.hide();  
+        $sideDem.hide();   
+        return false;});
+    /* heart */
+    $heartT.on('click', function () { 
+        $sidevi.removeClass('icon-large-heart-side icon-large-heart-ex').addClass('icon-large-heart-top');   
+        $topDem.show(); 
+        $sideDem.hide(); 
+        return false;
+    });
+    $heartS.on('click', function () { 
+        $sidevi.removeClass('icon-large-heart-top icon-large-heart-ex').addClass('icon-large-heart-side');   
+        $topDem.hide();  
+        $sideDem.show();  
+        return false;
+    });
+    $heartE.on('click', function () {   
+        $sidevi.removeClass('icon-large-heart-side icon-large-heart-top').addClass('icon-large-heart-ex');  
+        $topDem.hide(); 
+        $sideDem.hide(); 
+        return false;
+    });
+    /* pear */
+    $pearT.on('click', function () { 
+        $sidevi.removeClass('icon-large-pear-side icon-large-pear-ex').addClass('icon-large-pear-top');   
+        $topDem.show(); 
+        $sideDem.hide(); 
+        return false;
+    });
+    $pearS.on('click', function () {  
+        $sidevi.removeClass('icon-large-pear-top icon-large-pear-ex').addClass('icon-large-pear-side'); 
+        $topDem.hide();   
+        $sideDem.show();   
+        return false;
+    });
+    $pearE.on('click', function () { 
+        $sidevi.removeClass('icon-large-pear-side icon-large-pear-top').addClass('icon-large-pear-ex');   
+        $topDem.hide(); 
+        $sideDem.hide(); 
+        return false;
+    });
+    /* cushion */
+    $cushT.on('click', function () {
+        $sidevi.removeClass('icon-large-cushion-side icon-large-cushion-ex').addClass('icon-large-cushion-top');  
+        $topDem.show();   
+        $sideDem.hide();  
+        return false;
+    });
+    $cushS.on('click', function () { 
+        $sidevi.removeClass('icon-large-cushion-top icon-large-cushion-ex').addClass('icon-large-cushion-side'); 
+        $topDem.hide(); 
+        $sideDem.show(); 
+        return false;
+    });
+    $cushE.on('click', function () { 
+        $sidevi.removeClass('icon-large-cushion-side icon-large-cushion-top').addClass('icon-large-cushion-ex'); 
+        $topDem.hide();  
+        $sideDem.hide();  
+        return false;});
+});
+</script>
+
+<div id="ikantam-mage-filter" class="diamondSearch">
+<!-- class="diamondSearch" -->
+    <div class="headerBlock">
+        <ul class="additional-menu">
+            <li>
+                <a href="<?php echo $this->helper("diamonds")->getChooseDiamondsUrl();?>"
+                class="active"><?php echo $this->__("Choose a diamonds") ?></a>
+            </li>
+            <li>
+                <a href="<?php echo $this->helper("diamonds")->getChooseSettingsUrl();?>">
+                <?php echo $this->__("Choose a settings") ?></a>
+            </li>
+        </ul>
+        <div class="btn-group drop-list span2">
+            <?php echo $this->getChildHtml("diamonds_filter_design");?>
+        </div>
+
+    </div>
+    <div class="product-view">
+        <div class="product-essential">					
+            <div class="product-img-box span4">			
+                <?php switch ($shape): case 'Round': ?>                
+                        <!-- round -->
+                        <div class="diamondMeasures">    
+                            <ul>        
+                                <li><a href="#" class="icon-small-round-top"></a></li>        
+                                <li><a href="#" class="icon-small-round-side"></a></li>        
+                                <li><a href="#" class="icon-small-round-ex"></a></li>    
+                            </ul>		
+                            <div class="sideView">         
+                                <i class="icon-large-round-ex"></i>    
+                                <p class="top-dem">  
+                                    <span class="diamondWidth"><?php echo $diamond['width']; ?></span>	
+                                    <span class="diamondLength"><?php echo $diamond['lenght']; ?></span>  
+                                </p>           
+                                <p class="side-dem">   
+                                    <span class="diamondTable"><?php echo $diamond['table_percent']; ?></span>		
+                                    <span class="diamondDepth"><?php echo $diamond['depth_percent']; ?></span>	
+                                    <span class="diamondParamDepth"><?php echo $diamond['depth']; ?></span> 
+                                </p>         
+                            </div>
+                        </div>
+                        <!--/ round -->
+                        <?php
+                        break;
+                    case 'Princess':
+                        ?>
+                                                                                                                                                                                                                <!-- princess --><div class="diamondMeasures">    <ul>        <li><a href="#" class="icon-small-princess-top"></a></li>       <li><a href="#" class="icon-small-princess-side"></a></li>       <li><a href="#" class="icon-small-princess-ex"></a></li>   </ul>    <!--<div class="sideView"> <i class="icon-large-princess-side"></i>           <span class="diamondTable">table: 58%</span>		    <span class="diamondDepth">depth: 68.4%</span>		    <span class="diamondParamDepth">depth: 4.34 mm</span>    </div>-->		<div class="sideView">         <i class="icon-large-round-top"></i>            <p class="top-dem">        <span class="diamondWidth"><?php echo $diamond['width']; ?></span>		<span class="diamondLength"><?php echo $diamond['lenght']; ?></span>        </p>                <p class="side-dem">           <span class="diamondTable"><?php echo $diamond['table_percent']; ?></span>		    <span class="diamondDepth"><?php echo $diamond['depth_percent']; ?></span>		    <span class="diamondParamDepth"><?php echo $diamond['depth']; ?></span>        </p>            </div>	</div><!--/ princess --><?php
+                break;
+            case 'Emerald':
+                        ?><!-- emerald -->
+                        <div class="diamondMeasures">  
+                            <ul>    
+                                <li><a href="#" class="icon-small-emerald-top"></a></li>  
+                                <li><a href="#" class="icon-small-emerald-side"></a></li>  
+                                <li><a href="#" class="icon-small-emerald-ex"></a></li> 
+                            </ul>    <div class="sideView"> 	
+                                <i class="icon-large-emerald-ex"></i>  
+                                <p class="top-dem">     
+                                    <span class="diamondWidth"><?php echo $diamond['width']; ?></span>	
+                                    <span class="diamondLength"><?php echo $diamond['lenght']; ?></span>    
+                                </p>         
+                                <p class="side-dem">       
+                                    <span class="diamondTable"><?php echo $diamond['table_percent']; ?></span>	
+                                    <span class="diamondDepth"><?php echo $diamond['depth_percent']; ?></span>	
+                                    <span class="diamondParamDepth"><?php echo $diamond['depth']; ?></span>   
+                                </p>   
+                            </div>
+                        </div>
+                        <!--/ emerald --><?php
+                break;
+            case 'Radiant':
+                        ?><!-- radiant -->
+                        <div class="diamondMeasures">  
+                            <ul>       
+                                <li><a href="#" class="icon-small-radiant-top"></a></li> 
+                                <li><a href="#" class="icon-small-radiant-side"></a></li>   
+                                <li><a href="#" class="icon-small-radiant-ex"></a></li> 
+                            </ul>   
+                            <div class="sideView"> 
+                                <i class="icon-large-radiant-ex"></i>
+                                <p class="top-dem">    
+                                    <span class="diamondWidth"><?php echo $diamond['width']; ?></span>	
+                                    <span class="diamondLength"><?php echo $diamond['lenght']; ?></span>   
+                                </p>       
+                                <p class="side-dem">    
+                                    <span class="diamondTable"><?php echo $diamond['table_percent']; ?></span>	
+                                    <span class="diamondDepth"><?php echo $diamond['depth_percent']; ?></span>	
+                                    <span class="diamondParamDepth"><?php echo $diamond['depth']; ?></span>  
+                                </p>   
+                            </div>
+                        </div>
+                        <!--/ radiant -->
+                        <?php
+                        break;
+                    case 'Asscher':
+                        ?>
+                        <!-- asscher -->
+                        <div class="diamondMeasures">  
+                            <ul>   
+                                <li><a href="#" class="icon-small-asscher-top"></a></li>   
+                                <li><a href="#" class="icon-small-asscher-side"></a></li> 
+                                <li><a href="#" class="icon-small-asscher-ex"></a></li> 
+                            </ul>  
+                            <div class="sideView"> 
+                                <i class="icon-large-asscher-ex"></i>
+                                <p class="top-dem">
+                                    <span class="diamondWidth"><?php echo $diamond['width']; ?></span>	
+                                    <span class="diamondLength"><?php echo $diamond['lenght']; ?></span>   
+                                </p>      
+                                <p class="side-dem">      
+                                    <span class="diamondTable"><?php echo $diamond['table_percent']; ?></span>
+                                    <span class="diamondDepth"><?php echo $diamond['depth_percent']; ?></span>
+                                    <span class="diamondParamDepth"><?php echo $diamond['depth']; ?></span>   
+                                </p>   
+                            </div>
+                        </div>
+                        <!--/ asscher --><?php
+                break;
+
+            case 'Oval':
+                        ?>
+                        <!-- oval -->
+                        <div class="diamondMeasures">
+                            <ul>    
+                                <li><a href="#" class="icon-small-oval-top"></a></li>   
+                                <li><a href="#" class="icon-small-oval-side"></a></li>   
+                                <li><a href="#" class="icon-small-oval-ex"></a></li>  
+                            </ul>   
+                            <div class="sideView">
+                                <i class="icon-large-oval-ex"></i>
+                                <p class="top-dem">  
+                                    <span class="diamondWidth"><?php echo $diamond['width']; ?></span>	
+                                    <span class="diamondLength"><?php echo $diamond['lenght']; ?></span>  
+                                </p>              
+                                <p class="side-dem">   
+                                    <span class="diamondTable"><?php echo $diamond['table_percent']; ?></span>	
+                                    <span class="diamondDepth"><?php echo $diamond['depth_percent']; ?></span>	
+                                    <span class="diamondParamDepth"><?php echo $diamond['depth']; ?></span>     
+                                </p> 
+                            </div>
+                        </div>
+                        <!--/ oval -->
+                        <?php
+                        break;
+                    case 'Marquise':
+                        ?>
+                        <!-- marquise -->
+                        <div class="diamondMeasures"> 
+                            <ul>     
+                                <li><a href="#" class="icon-small-marquise-top"></a></li>  
+                                <li><a href="#" class="icon-small-marquise-side"></a></li>    
+                                <li><a href="#" class="icon-small-marquise-ex"></a></li>  
+                            </ul> 
+                            <div class="sideView">
+                                <i class="icon-large-marquise-ex"></i>
+                                <p class="top-dem">    
+                                    <span class="diamondWidth"><?php echo $diamond['width']; ?></span>	
+                                    <span class="diamondLength"><?php echo $diamond['lenght']; ?></span>  
+                                </p>       
+                                <p class="side-dem">       
+                                    <span class="diamondTable"><?php echo $diamond['table_percent']; ?></span>	
+                                    <span class="diamondDepth"><?php echo $diamond['depth_percent']; ?></span>	
+                                    <span class="diamondParamDepth"><?php echo $diamond['depth']; ?></span>    
+                                </p>  
+                            </div>
+                        </div>
+                        <!--/ marquise -->
+                        <?php
+                        break;
+                    case 'Heart':
+                        ?>
+                        <!-- heart -->
+                        <div class="diamondMeasures">  
+                            <ul>       
+                                <li><a href="#" class="icon-small-heart-top"></a></li>
+                                <li><a href="#" class="icon-small-heart-side"></a></li>  
+                                <li><a href="#" class="icon-small-heart-ex"></a></li>  
+                            </ul> 
+                            <div class="sideView">
+                                <i class="icon-large-heart-ex"></i>
+                                <p class="top-dem">   
+                                    <span class="diamondWidth"><?php echo $diamond['width']; ?></span>	
+                                    <span class="diamondLength"><?php echo $diamond['lenght']; ?></span>     
+                                </p>              
+                                <p class="side-dem">    
+                                    <span class="diamondTable"><?php echo $diamond['table_percent']; ?></span>	
+                                    <span class="diamondDepth"><?php echo $diamond['depth_percent']; ?></span>	
+                                    <span class="diamondParamDepth"><?php echo $diamond['depth']; ?></span>  
+                                </p>    
+                            </div>
+                        </div>
+                        <!--/ heart -->
+                        <?php
+                        break;
+                    case 'Pear':
+                        ?>
+                        <!-- pear -->
+                        <div class="diamondMeasures">  
+                            <ul>      
+                                <li><a href="#" class="icon-small-pear-top"></a></li>   
+                                <li><a href="#" class="icon-small-pear-side"></a></li>   
+                                <li><a href="#" class="icon-small-pear-ex"></a></li>   
+                            </ul>  
+                            <div class="sideView">
+                                <i class="icon-large-pear-ex"></i>
+                                <p class="top-dem">   
+                                    <span class="diamondWidth"><?php echo $diamond['width']; ?></span>	
+                                    <span class="diamondLength"><?php echo $diamond['lenght']; ?></span>
+                                </p>             
+                                <p class="side-dem">  
+                                    <span class="diamondTable"><?php echo $diamond['table_percent']; ?></span>	
+                                    <span class="diamondDepth"><?php echo $diamond['depth_percent']; ?></span>
+                                    <span class="diamondParamDepth"><?php echo $diamond['depth']; ?></span>
+                                </p> 
+                            </div>
+                        </div>
+                        <!--/ pear -->
+                        <?php
+                        break;
+                    case 'Cushion':
+                        ?>
+                        <!-- cushion -->
+                        <div class="diamondMeasures">  
+                            <ul>    
+                                <li><a href="#" class="icon-small-cushion-top"></a></li>    
+                                <li><a href="#" class="icon-small-cushion-side"></a></li>  
+                                <li><a href="#" class="icon-small-cushion-ex"></a></li>  
+                            </ul>  
+                            <div class="sideView"> 
+                                <i class="icon-large-cushion-ex"></i>
+                                <p class="top-dem">   
+                                    <span class="diamondWidth"><?php echo $diamond['width']; ?></span>	
+                                    <span class="diamondLength"><?php echo $diamond['lenght']; ?></span>  
+                                </p>          
+                                <p class="side-dem"> 
+                                    <span class="diamondTable"><?php echo $diamond['table_percent']; ?></span>	
+                                    <span class="diamondDepth"><?php echo $diamond['depth_percent']; ?></span>	
+                                    <span class="diamondParamDepth"><?php echo $diamond['depth']; ?></span>  
+                                </p>   
+                            </div>
+                        </div>
+                        <!--/ cushion -->
+                        <?php
+                        break;
+                endswitch;
+                ?>            
+				
+				<?php 
+					$certImage = $_product->getResource()->getAttribute('certificate_image')->getFrontend()->getValue($_product);
+				?>
+				<div class="cert-image-block">
+					<h2><?php echo $this->__('Diamond Certificate'); ?></h2>
+					<?php if($certImage): ?>
+						<img class="thumb" src="<?php echo $certImage; ?>">
+						<div id="cert-image-popup" style="display: none;">
+							<button class="mfp-close clearfix" type="button" title="Close">X</button>
+							<img class="cert-image" src="<?php echo $certImage; ?>" />
+						</div>
+						<script type="text/javascript">
+							$$('button.mfp-close').first().observe('click', function(event) {
+								$('cert-image-popup').hide();
+							});
+							$$('.cert-image-block img.thumb').first().observe('click', function(event) {
+								$('cert-image-popup').show();
+							});
+							
+							
+						</script>
+					<?php else:
+						$certImage = $this->getSkinUrl('diamonds/images/cert_no_image.gif'); ?>
+						<img class="thumb" src="<?php echo $certImage; ?>" />
+					<?php endif; ?>
+				</div>
+			</div>
+            <div style="margin-left: 500px;">
+                <div class="product-name">
+                    <h1>
+                        <?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+                    </h1>
+                </div>
+                <p>
+                    <?php echo $_helper->productAttribute($_product, $_product->getDescription(), 'description') ?>
+                </p>
+
+                <?php echo $this->getPriceHtml($_product); ?>
+                <br>
+                <div class="actions">
+                    <button type="button"
+                            title="Add to Ring"
+                            class="button"
+                            style="width: 90px;"
+                            onclick="location.href='<?php echo $this->helper('diamonds')->getAddToRingUrl($_product); ?>'">
+                        <span>Add to Ring</span>
+                    </button><!--btn-Ring-->
+                    <br>
+                    <button type="button"
+                            title="Add to Cart"
+                            class="button btn-cart"
+                            onclick="setLocation('<?php echo (string)Mage::helper('checkout/cart')->getAddUrl($_product);?>')">
+                        <!--location.href='<?php //echo Mage::getUrl('checkout/cart/add', array('product'=>$_product->getId(),'qty'=>1));?>'-->
+                        <span>Add to Cart</span>
+                    </button>
+
+                    <div class="chekBox">
+                        <label>Compare:</label>
+                        <?php echo $this->getChildHtml("addtocompare"); ?>
+                        <label>Wishlist:</label>
+                        <?php echo $this->getChildHtml("addtowishlist"); ?>
+                    </div>
+
+                </div>
+            <!-- /product-shop-->
+
+        </div>
+        <!-- /product-essential-->
+    </div>
+</div>
+<!-- /diamondSearch-->
+
+<div class="clearAll"></div>
+<?php //echo $this->getChildHtml('diamond_additional_info') ?>
+<?php if (Mage::getStoreConfig('ikantam_diamonds/diamond_view/display_info')): echo $this->getChildHtml('diamond_display_info'); endif; ?>
+<?php if (Mage::getStoreConfig('ikantam_diamonds/diamond_view/display_tutorial')): echo $this->getChildHtml('diamond_display_tutorial'); endif; ?>
+<?php //echo $this->getChildHtml('diamond_display_tutorial') ?>

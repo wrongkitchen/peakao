@@ -1,0 +1,481 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Ikantam_Diamonds>
+            <version>0.2.0</version>
+        </Ikantam_Diamonds>
+    </modules>
+    <frontend>
+        <routers>
+            <diamonds>
+                <use>standard</use>
+                <args>
+                    <module>Ikantam_Diamonds</module>
+                    <frontName>design</frontName>
+                </args>
+            </diamonds>
+
+        </routers>
+        <layout>
+            <updates>
+                <diamonds>
+                    <file>ikantam/diamonds.xml</file>	
+                </diamonds>
+				    <rings>
+                    <file>ikantam/engagementrings.xml</file>	
+                </rings>
+				    <earrings>
+                    <file>ikantam/earrings.xml</file>	
+                </earrings>
+				   <bracelets>
+                    <file>ikantam/bracelets.xml</file>	
+                </bracelets>
+			
+            </updates>
+        </layout>
+
+        <events>
+            <checkout_cart_product_add_after>
+                <observers>
+                    <ikantam_diamonds_observer>
+                        <type>singleton</type>
+                        <class>Ikantam_Diamonds_Model_Observer</class>
+                        <method>checkoutCartProductAddAfter</method>
+                    </ikantam_diamonds_observer>
+                </observers>
+            </checkout_cart_product_add_after>
+            <!--<sales_convert_quote_item_to_order_item>-->
+            <!--<checkout_onepage_controller_success_action>
+                <observers>
+                    <ikantam_diamonds_observer>
+                        <type>singleton</type>
+                        <class>Ikantam_Diamonds_Model_Observer</class>
+                        <method>salesConvertQuoteItemToOrderItem</method>
+                    </ikantam_diamonds_observer>
+                </observers>
+            </checkout_onepage_controller_success_action>-->
+            <!--</sales_convert_quote_item_to_order_item>-->
+
+            
+            
+            
+            
+            
+            <checkout_onepage_controller_success_action>    
+                <observers>                
+                    <ikantam_diamonds_observer>                    
+                        <type>singleton</type>                        
+                        <class>Ikantam_Diamonds_Model_Observer</class>                        
+                        <method>updateRingSize</method>                  
+                    </ikantam_diamonds_observer>                
+                </observers>            
+            </checkout_onepage_controller_success_action>  			
+            <diamonds_diamond_view>
+                <observers>
+                    <ikantam_diamonds_observer>
+                        <class>diamonds/observer</class>
+                        <method>productView</method>
+                    </ikantam_diamonds_observer>
+                </observers>
+            </diamonds_diamond_view>
+	        
+            <!--<checkout_cart_product_add_after>
+                <observers>
+                    <ikantam_diamonds_observer>
+                        <class>diamonds/observer</class>
+                        <method>productAddToCartAfter</method>
+                    </ikantam_diamonds_observer>
+                </observers>
+            </checkout_cart_product_add_after>-->
+	        
+	        
+	        
+        </events>
+
+    </frontend>
+   
+    <global>
+        <models>
+            <diamonds>
+                <class>Ikantam_Diamonds_Model</class>
+            </diamonds>
+        </models>
+        <resources>
+            <diamonds_setup>
+                <setup>
+                    <module>Ikantam_Diamonds</module>
+                    <class>Ikantam_Diamonds_Model_Entity_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </diamonds_setup>
+            <diamonds_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </diamonds_write>
+            <diamonds_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </diamonds_read>
+        </resources>
+        
+        <blocks>
+            <diamonds>
+                <class>Ikantam_Diamonds_Block</class>
+            </diamonds>
+        </blocks>
+        <helpers>
+            <diamonds>
+                <class>Ikantam_Diamonds_Helper</class>
+            </diamonds>
+        </helpers>
+        
+        <models>
+            <catalog>
+                <rewrite>
+                    <product_url>Ikantam_Diamonds_Model_Product_Url</product_url>
+                </rewrite>
+            </catalog>
+        </models>
+		
+		
+        <events>
+            <!--<catalog_product_save_before>
+                <observers>
+                    <ikantam_diamonds_custom_options>
+                        <class>diamonds/observer</class>
+                        <method>addCustomOptions</method>
+                    </ikantam_diamonds_custom_options>
+                </observers>
+            </catalog_product_save_before>-->    
+            	
+            
+            <catalog_product_save_after>
+                <observers>
+                    <!--<ikantam_diamonds_bundle_add>
+                        <class>diamonds/observer</class>	                    
+                        <method>addToBundle</method>	                
+                    </ikantam_diamonds_bundle_add>-->
+                    <ikantam_diamonds_seo_link>
+                        <class>diamonds/observer</class>
+                        <method>updateUrl</method>
+                    </ikantam_diamonds_seo_link>
+                </observers>
+            </catalog_product_save_after>  
+        </events>
+        
+        
+        
+    </global>
+    
+    <default>
+        <ikantam_diamonds>
+            <attribute_sets>
+                <diamond>
+                    <name>Diamond</name>
+                    <attributes>
+                        <diamond_shape>
+                            <label>Diamond shape</label>
+                            <type>int</type>
+                            <input>select</input>
+                            <required>1</required>
+                            <apply_to>simple</apply_to>
+                            <used_in_product_listing>1</used_in_product_listing>
+                            <option>Heart, Triangle, Asscher, Radiant, Emerald, Marquise, Pear, Oval, Cushion, Princess, Round</option>
+                        </diamond_shape>
+                        <clarity>
+                            <label>Clarity</label>
+                            <type>int</type>
+                            <input>select</input>
+                            <required>1</required>
+                            <apply_to>simple</apply_to>
+                            <used_in_product_listing>1</used_in_product_listing>
+                            <option>IF, VVS1, VVS2, VS1, VS2, SI1, SI2, SI3, I1, I2</option>
+                        </clarity>
+                        <carat>
+                            <label>Carat</label>
+                            <type>decimal</type>
+                            <input>text</input>
+                            <required>1</required>
+                            <used_in_product_listing>1</used_in_product_listing>
+                            <apply_to>simple</apply_to>
+                        </carat>
+                        <cut>
+                            <label>Cut</label>
+                            <type>int</type>
+                            <input>select</input>
+                            <required>1</required>
+                            <apply_to>simple</apply_to>
+                            <used_in_product_listing>1</used_in_product_listing>
+                            <option>Ideal,Excellent,Very Good,Good,Fair,Poor</option>
+                        </cut>
+                        <depth1>
+                            <label>Depth1</label>
+                            <type>decimal</type>
+                            <input>text</input>
+                            <required>1</required>
+                            <apply_to>simple</apply_to>
+                        </depth1>
+                        <depth2>
+                            <label>Depth2</label>
+                            <type>decimal</type>
+                            <input>text</input>
+                            <required>1</required>
+                            <apply_to>simple</apply_to>
+                        </depth2>
+                        <table>
+                            <label>Table</label>
+                            <type>decimal</type>
+                            <input>text</input>
+                            <required>1</required>
+                            <apply_to>simple</apply_to>
+                        </table>
+                        <table2>
+                            <label>Table 2</label>
+                            <type>decimal</type>
+                            <input>text</input>
+                            <required>1</required>
+                            <apply_to>simple</apply_to>
+                        </table2>
+                        <polish>
+                            <label>Polish</label>
+                            <type>int</type>
+                            <input>select</input>
+                            <required>1</required>
+                            <apply_to>simple</apply_to>
+                            <option>Excellent,Very Good,Good,Fair,Poor</option>
+                        </polish>
+                        <symmetry>
+                            <label>Symmetry</label>
+                            <type>int</type>
+                            <input>select</input>
+                            <required>1</required>
+                            <apply_to>simple</apply_to>
+                            <option>Excellent,Very Good,Good,Fair,Poor</option>
+                        </symmetry>
+                        <girdle>
+                            <label>Girdle</label>
+                            <type>int</type>
+                            <input>select</input>
+                            <required>1</required>
+                            <apply_to>simple</apply_to>
+                            <option>Extremely Thin,Very Thin,Thin,Medium,Slightly Thick,Thick,Very Thick,Extremely Thick,Faceted,Smooth,Polished</option>
+                        </girdle>
+                        <culet>
+                            <label>Culet</label>
+                            <type>int</type>
+                            <input>select</input>
+                            <required>1</required>
+                            <apply_to>simple</apply_to>
+                            <option>No Culet,Pointed,Very Small,Small,Medium,Large,Very Large,Extremely Large</option>
+                        </culet>
+                        <fluorescence>
+                            <label>Fluorescence</label>
+                            <type>int</type>
+                            <input>select</input>
+                            <required>1</required>
+                            <apply_to>simple</apply_to>
+                            <option>No_Fluorescence,Faint,Slight, Medium,Strong,Extreme</option>
+                        </fluorescence>
+                        <laboratory>
+                            <label>Laboratory</label>
+                            <type>int</type>
+                            <input>select</input>
+                            <required>1</required>
+                            <apply_to>simple</apply_to>
+                            <option>IGL,GIA,EGL,HRD,EGL USA</option>
+                        </laboratory>
+                        <treatment>
+                            <label>Treatment</label>
+                            <type>int</type>
+                            <input>select</input>
+                            <required>1</required>
+                            <apply_to>simple</apply_to>
+                            <option>Color Enhanced,Clarity Enhnaced,both,Non_Enhanced,HPHT</option>
+                        </treatment>
+                        <estimated_retail_value>
+                            <label>Estimated Retail Value</label>
+                            <type>decimal</type>
+                            <input>price</input>
+                            <required>1</required>
+                            <apply_to>simple</apply_to>
+                        </estimated_retail_value>
+                        <width>
+                            <label>Width</label>
+                            <type>decimal</type>
+                            <input>text</input>
+                            <required>1</required>
+                            <apply_to>simple</apply_to>
+                        </width>
+                        <length>
+                            <label>Length</label>
+                            <type>decimal</type>
+                            <input>text</input>
+                            <required>1</required>
+                            <apply_to>simple</apply_to>
+                        </length>
+                        <price_per_carat>
+                            <label>Price per Carat</label>
+                            <type>decimal</type>
+                            <input>price</input>
+                            <required>1</required>
+                            <apply_to>simple</apply_to>
+                        </price_per_carat>
+
+                        <color_loose>
+                            <label>Color</label>
+                            <type>int</type>
+                            <input>select</input>
+                            <required>1</required>
+                            <apply_to>simple</apply_to>
+                            <used_in_product_listing>1</used_in_product_listing>
+                            <option>D, E, F, G, H, I, J, K, L</option>
+                        </color_loose>
+
+
+                        <dimension>
+                            <label>Dimension</label>
+                            <type>text</type>
+                            <input>text</input>
+                            <required>1</required>
+                            <apply_to>simple</apply_to>
+                            <used_in_product_listing>1</used_in_product_listing>
+                        </dimension>
+                        <certificate_image>
+                            <label>Certificate Image</label>
+                            <type>text</type>
+                            <input>text</input>
+                            <required>1</required>
+                            <apply_to>simple</apply_to>
+                        </certificate_image>
+                    </attributes>
+                </diamond>
+                <ring>
+                    <name>Ring</name>
+                    <attributes>
+                        <ring_metal>
+                            <label>Metal</label>
+                            <type>int</type>
+                            <input>select</input>
+                            <required>1</required>
+                            <apply_to>simple,configurable</apply_to>
+                            <used_in_product_listing>1</used_in_product_listing>
+                            <option>14K Yellow gold,18K Yellow gold,14K White gold,18K White gold,14K Rose gold,18K Rose gold,Platinum</option>
+                        </ring_metal>
+                        <ring_model>
+                            <label>Model</label>
+                            <type>varchar</type>
+                            <input>text</input>
+                            <required>1</required>
+                            <used_in_product_listing>1</used_in_product_listing>
+                            <apply_to>simple,configurable</apply_to>
+                        </ring_model>     
+         			
+                        <ring_size>
+                            <label>Size</label>
+                            <type>varchar</type>
+                            <input>text</input>
+                            <required>1</required>
+                            <apply_to>simple,configurable</apply_to>
+                        </ring_size>     
+                        <ring_comments>
+                            <label>Comments</label>
+                            <type>text</type>
+                            <input>text</input>
+                            <required>1</required>
+                            <apply_to>simple,configurable</apply_to>
+                        </ring_comments>     
+                        <ring_sidestone_total_weight>
+                            <label>Total Carat Weight</label>
+                            <type>decimal</type>
+                            <input>text</input>
+                            <required>1</required>
+                            <apply_to>simple,configurable</apply_to>
+                        </ring_sidestone_total_weight>   
+                        <ring_sidestone_quantity>
+                            <label>Side stone quantity</label>
+                            <type>decimal</type>
+                            <input>text</input>
+                            <required>1</required>
+                            <apply_to>simple,configurable</apply_to>
+                        </ring_sidestone_quantity>       
+                        <ring_sidestone_shape>
+                            <label>Side stone shape</label>
+                            <type>int</type>
+                            <input>select</input>
+                            <required>1</required>
+                            <apply_to>simple,configurable</apply_to>
+                            <option>Heart, Triangle, Asscher, Radiant, Emerald, Marquise, Pear, Oval, Cushion, Princess, Round</option>
+                        </ring_sidestone_shape>     
+                        <ring_sidestone_cut>
+                            <label>Side stone cut</label>
+                            <type>int</type>
+                            <input>select</input>
+                            <required>1</required>
+                            <apply_to>simple,configurable</apply_to>
+                            <option>Ideal,Excellent,Very Good,Good,Fair,Poor</option>
+                        </ring_sidestone_cut> 
+                        <ring_sidestone_color>
+                            <label>Side stone color</label>
+                            <type>int</type>
+                            <input>select</input>
+                            <required>1</required>
+                            <apply_to>simple,configurable</apply_to>
+                            <option>D, E, F, G, H, I, J, K, L</option>
+                        </ring_sidestone_color>  
+                        <ring_sidestone_clarity>
+                            <label>Side stone clarity</label>
+                            <type>int</type>
+                            <input>select</input>
+                            <required>1</required>
+                            <apply_to>simple,configurable</apply_to>
+                            <option>IF, VVS1, VVS2, VS1, VS2, SI1, SI2, SI3, I1, I2</option>
+                        </ring_sidestone_clarity>
+                        <ring_mainstone_shape>
+                            <label>Main stone shape</label>
+                            <type>int</type>
+                            <input>select</input>
+                            <required>1</required>
+                            <apply_to>simple,configurable</apply_to>
+                            <used_in_product_listing>1</used_in_product_listing>
+                            <option>Heart, Triangle, Asscher, Radiant, Emerald, Marquise, Pear, Oval, Cushion, Princess, Round</option>
+                        </ring_mainstone_shape> 
+                    </attributes>
+                </ring>
+            </attribute_sets>
+        </ikantam_diamonds>
+
+        <ikantam_diamonds> 
+            <sliders> 
+                <width_slider>400</width_slider>
+                <min_carat_slider>1</min_carat_slider>
+                <max_carat_slider>20</max_carat_slider>
+                <step_carat_slider>1</step_carat_slider>
+                <min_price_slider>1</min_price_slider>
+                <max_price_slider>1000000</max_price_slider>
+                <step_price_slider>1000</step_price_slider>
+
+                <width_slider_with_fields>400</width_slider_with_fields>
+
+                <min_table_slider>1</min_table_slider>
+                <max_table_slider>100</max_table_slider>
+                <step_table_slider>1</step_table_slider>
+                <min_depth_slider>1</min_depth_slider>
+                <max_depth_slider>100</max_depth_slider>
+                <step_depth_slider>1</step_depth_slider>
+                
+            </sliders>
+            <diamond_list>
+                <compare_attributes>diamond_shape,clarity</compare_attributes>
+                <mode_compare_limit>10,20,30,40,50</mode_compare_limit>
+                <mode_list_limit>8,16,24,32,40,48</mode_list_limit>
+                <mode_grid_limit>8,16,24,32,40,48</mode_grid_limit>
+            </diamond_list>
+        </ikantam_diamonds> 
+
+    </default>
+    
+</config>

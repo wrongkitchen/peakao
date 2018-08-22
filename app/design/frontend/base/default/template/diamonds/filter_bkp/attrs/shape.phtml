@@ -1,0 +1,68 @@
+<?php
+/* @var $config Ikantam_Diamonds_Helper_Config */
+$config = $this->helper('diamonds/config');
+?>
+
+<?php $attributeShapeOptions = $this->getAttributeOptions('diamond_shape'); ?>
+
+<!--SHAPE-->
+<div class="filters-shape">
+    <h2>Shape</h2>
+    <ul>
+        <?php foreach ($attributeShapeOptions as $option):
+            ?>
+            <li>
+                <div class="shape " id="shape<?php echo $option->getValue(); ?>" title="<?php echo $option->getValue(); ?>" >
+                    <input class="shape-input" style="display: none;" type="checkbox"  data-selected="false" value="<?php echo $option->getId(); ?>" />
+
+                    <i class="icons-<?php echo strtolower($option->getValue()); ?>"></i> 
+
+                </div>
+
+                <?php if ($config->isShowShapeName()): ?>
+                    <span><?php echo $option->getValue(); ?></span>
+                <?php endif; ?>
+            </li>
+
+        <?php endforeach; ?>
+    </ul>
+
+</div>
+<script type="text/javascript" >  
+    jQuery(function(jQuery){
+
+        /*Shape -----*/
+
+        jQuery.fn.toggleCheckbox = function () {
+
+            if (this.attr('data-selected') == 'false'){
+                this.attr('data-selected',"true");
+
+            } else {
+                this.attr('data-selected',"false");
+            }
+            //this.attr('checked', !this.attr('checked'));
+
+        };
+
+        jQuery('.shape').click( function () {
+            jQuery(this).find(':checkbox').toggleCheckbox();
+            jQuery(this).toggleClass('active');
+        });
+
+        var getDataShape = function(){
+            var shapes = jQuery(".shape-input");
+            var mass = new Array();
+            for(var i=0;i<shapes.length;i++){
+                var shape = jQuery(shapes[i]);
+                if(shape.attr("data-selected") == "true" ){
+                    mass.push(shape.attr("value"));
+                }		
+            }
+            return { mass : mass };
+        };
+
+        diamondsFilter.registerFilter("diamond_shape", getDataShape);
+
+    });
+</script>

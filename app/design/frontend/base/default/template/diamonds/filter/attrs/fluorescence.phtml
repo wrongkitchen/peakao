@@ -1,0 +1,109 @@
+<?php
+$config = $this->helper('diamonds/config');
+$widthSlider = $config->getWidthSlider();
+?>
+<?php $attributeFluorescenceOptions = $this->getAttributeOptions("fluorescence"); ?>
+<h2><?php echo $this->__('Fluorescence') ?></h2>
+<?php if (!$config->getFluorescenceSliderType()): ?>
+    <div class="price-ranger" style="width: <?php echo $widthSlider ?>px">
+        <div id="fluorescence_slider"></div>
+        <input type="hidden" id="minFluorescence" name="attributes[fluorescence][min]" class="sliderFluorescenceValue svlft" data-index="0" value="1"/>
+        <input type="hidden" id="maxFluorescence" name="attributes[fluorescence][max]" class="sliderFluorescenceValue slidRight" data-index="1" value="<?php echo $attributeFluorescenceOptions->getSize(); ?>" />
+    </div>
+    <div class="divisions">
+        <ul>
+			<?php
+            $i = 0;
+            $fluorescencies = array();
+            $len = count($attributeFluorescenceOptions);
+            $width =  $widthSlider / ($len-1);
+            foreach ($attributeFluorescenceOptions as $option):
+                $widthEl = $width; 
+                $textalign= 'center'; 
+                if ($i == 0){ $widthEl = $width / 2; $textalign='left'; }
+                elseif ($i == $len-1){ $widthEl = $width / 2-1; $textalign= 'right'; }
+                ?>
+                
+                <li style=" width: <?php echo $widthEl ?>px; float:left;  text-align: <?php echo $textalign; ?>; "> <?php echo $option->getValue(); ?> </li>
+                
+                <?php $fluorescencies[] = $option->getId(); ?>
+                
+            <?php $i++; endforeach; ?>
+        </ul>
+    </div>
+<?php else: ?>
+    <div id="fluorescence">
+        <?php foreach ($attributeFluorescenceOptions as $option): ?>
+            <input type="checkbox" value="<?php echo $option->getId(); ?>" id="fluorescence<?php echo $option->getId() ?>">
+            <label for="fluorescence<?php echo $option->getId(); ?>"><?php echo $option->getValue(); ?></label>       
+        <?php endforeach; ?>
+        <script type="text/javascript" >
+            jQuery("#fluorescence").buttonset();
+        </script>
+    </div> 
+<?php endif; ?>
+<script type="text/javascript">
+
+    jQuery(function(jQuery){  
+<?php if (!$config->getFluorescenceSliderType()): ?>
+            jQuery("#fluorescence_slider").slider({
+                range: true,
+                min: 1,
+                max: <?php echo $attributeFluorescenceOptions->getSize(); ?>,
+                step: 1,
+                values: [1, <?php echo $attributeFluorescenceOptions->getSize(); ?>],
+                slide: function(event, ui) {
+                    for(var i = 0; i < ui.values.length; ++i) {
+                        jQuery("input.sliderFluorescenceValue[data-index=" + i + "]").val(ui.values[i]);
+                    }
+                }
+            });
+
+            jQuery("input.sliderFluorescenceValue").change(function() {
+                var $this = $(this);
+                jQuery("#fluorescence_slider").slider("values", $this.data("index"), $this.val());
+            });
+                
+                
+            var getDataFluorescence = function(){
+                    
+                var minFluorescence = jQuery( "#minFluorescence" ).val();
+                var maxFluorescence = jQuery( "#maxFluorescence" ).val();
+                            
+                var fluorescencies = <?php echo json_encode($fluorescencies); ?>;
+                         
+                var mass = new Array();
+                for (var i = minFluorescence-1; i < maxFluorescence; i++){
+                    mass.push(fluorescencies[i]);
+                }
+                        
+                if (minFluorescence != 1 || maxFluorescence != <?php echo $attributeFluorescenceOptions->getSize(); ?>){
+                    return { mass : mass };
+                }
+            };
+<?php else: ?>
+            jQuery("#fluorescence input").click(function(){
+                var selected = jQuery(this).attr("data-selected");
+                		
+                if(selected == "true"){
+                    jQuery(this).attr("data-selected","false");
+                } else {
+                    jQuery(this).attr("data-selected", "true");
+                }
+            });
+                		
+            var getDataFluorescence = function(){
+                var fluorescencies = jQuery("#fluorescence input");
+                var mass = new Array();
+                for(var i=0;i<fluorescencies.length;i++){
+                    var fluorescence = jQuery(fluorescencies[i]);
+                    if(fluorescence.attr("data-selected") == "true" ){
+                        mass.push(fluorescence.attr("value"));
+                    }		
+                }
+                return { mass : mass };
+            };
+<?php endif; ?>
+        diamondsFilter.registerFilter("fluorescence", getDataFluorescence);
+    });
+</script>

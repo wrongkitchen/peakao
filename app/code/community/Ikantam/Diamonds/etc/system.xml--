@@ -1,0 +1,286 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <ikantam translate="label" module="diamonds">
+            <label>Ikantam</label>
+            <sort_order>9999999</sort_order>
+        </ikantam>
+    </tabs>
+	
+    <sections>
+        <ikantam_diamonds translate="label" module="diamonds">
+            <label>Diamonds</label>
+            <tab>ikantam</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <options translate="label" module="diamonds">
+                    <label>Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <bundle_name>
+                            <label>Name Bundle Product</label>
+                            <comment>Leave empty, if bundle product in catalog only one</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                    
+                        </bundle_name>
+                        <show_shape_name>
+                            <label>Show Shape Name</label>
+                            <!--<comment></comment>-->
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                    
+                        </show_shape_name>
+                        <allow_add_ring_to_cart>
+                            <label>Allow add ring to cart without diamond</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                    
+                        </allow_add_ring_to_cart>
+                          
+                        <enable_seo_link>
+                            <label>Allow use seo link for diamonds and ring</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <!--<frontend_model>diamonds/adminhtml_system_config_form_select</frontend_model>-->
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                    
+                        </enable_seo_link>
+                        
+                        <refresh_seo_link>
+                            <label>Refresh URL rewrites</label>
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>diamonds/adminhtml_system_config_form_button</frontend_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <!--<show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>-->
+                            <!--<tooltip>123</tooltip>-->
+                            <depends>
+                                <enable_seo_link>1</enable_seo_link>
+                            </depends>                    
+                        </refresh_seo_link>
+                        <show_size_ring_page>
+                            <label>Show size option on rings list page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                   
+                        </show_size_ring_page>
+                        
+                        
+                        
+                        
+                    </fields>
+                    
+                    
+                    <!--<fields>
+                        <enabled>
+                            <label>Name ring attribute</label>
+                            <comment></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                    
+                        </enabled>
+                    </fields>-->
+                </options>
+               
+               
+                <sliders translate="label" module="diamonds">
+                    <label>Sliders</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <width_slider>
+                            <label>Width Sliders</label>
+                            <comment>px</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                    
+                        </width_slider>
+                        <min_carat_slider>
+                            <label>Minimal Value For Carat Slider</label>
+                            <!--<comment></comment>-->
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                    
+                        </min_carat_slider>
+                        <max_carat_slider>
+                            <label>Maximal Value For Carat Slider</label>
+                            <!--<comment></comment>-->
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                    
+                        </max_carat_slider>
+                        <step_carat_slider>
+                            <label>Step For Carat Slider</label>
+                            <!--<comment></comment>-->
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                    
+                        </step_carat_slider>
+                        <min_price_slider>
+                            <label>Minimal Value For Price Slider</label>
+                            <!--<comment></comment>-->
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                    
+                        </min_price_slider>
+                        <max_price_slider>
+                            <label>Maximal Value For Price Slider</label>
+                            <!--<comment></comment>-->
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                    
+                        </max_price_slider>
+                        <step_price_slider>
+                            <label>Step For Price Slider</label>
+                            <!--<comment></comment>-->
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                    
+                        </step_price_slider>
+                        
+                        
+                        
+                        <color_slider_type>
+                            <label>Color slider type</label>
+                            <!--<comment></comment>-->
+                            <frontend_type>select</frontend_type>
+                            <source_model>diamonds/adminhtml_system_config_source_type</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                    
+                        </color_slider_type>
+                        <clarity_slider_type>
+                            <label>Clarity slider type</label>
+                            <!--<comment></comment>-->
+                            <frontend_type>select</frontend_type>
+                            <source_model>diamonds/adminhtml_system_config_source_type</source_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                    
+                        </clarity_slider_type>
+                        <cut_slider_type>
+                            <label>Cut slider type</label>
+                            <!--<comment></comment>-->
+                            <frontend_type>select</frontend_type>
+                            <source_model>diamonds/adminhtml_system_config_source_type</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                    
+                        </cut_slider_type>
+                    </fields>
+                    
+                    <!--<fields>
+                        <enabled>
+                            <label>Name ring attribute</label>
+                            <comment></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                    
+                        </enabled>
+                    </fields>-->
+                </sliders> 
+                
+                <diamond_list translate="label" module="diamonds">
+                    <label>Diamond list area</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <compare_attributes translate="label">
+                            <label>Attributes for compare</label>
+                            <comment>Comma separated</comment>
+                            <!--<frontend_type>multiselect</frontend_type>-->
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <!--<source_model>diamonds/adminhtml_system_config_source_attribute</source_model>-->
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </compare_attributes>
+                        <mode_compare_limit translate="label">
+                            <label>Limits for comparison mode</label>
+                            <comment>Comma separated</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </mode_compare_limit>
+                        <mode_list_limit translate="label">
+                            <label>Limits for list mode</label>
+                            <comment>Comma separated</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </mode_list_limit>
+                        <mode_grid_limit translate="label">
+                            <label>Limits for grid mode</label>
+                            <comment>Comma separated</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </mode_grid_limit>
+                    </fields>
+                </diamond_list>
+            </groups>
+        </ikantam_diamonds>
+    </sections>
+</config>
+

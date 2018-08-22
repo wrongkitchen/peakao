@@ -1,0 +1,460 @@
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+<?php /* @var $this Ikantam_Diamonds_Block_Product_View_Diamond */ ?>
+
+<?php
+$certificate = $_product->getResource()->getAttribute('laboratory')
+->getFrontend()->getValue($_product) ;
+$fluorescence = $_product->getResource()->getAttribute('fluorescence')
+->getFrontend()->getValue($_product) ;
+$symmetry= $_product->getResource()->getAttribute('symmetry')
+->getFrontend()->getValue($_product) ;
+$polish = $_product->getResource()->getAttribute('polish')
+->getFrontend()->getValue($_product) ;
+$carat = sprintf("%.2f",$_product->getResource()->getAttribute('carat')->getFrontend()->getValue($_product));
+$cut = $_product->getResource()->getAttribute('cut')->getFrontend()->getValue($_product) ;
+$color = $_product->getResource()->getAttribute('color_loose')->getFrontend()->getValue($_product);
+$clarity = $_product->getResource()->getAttribute('clarity')->getFrontend()->getValue($_product);
+$price= $_product->getprice();
+$price = Mage::helper('core')->currency($price,true,false) ;
+preg_match("/[^0-9]+(.+)[\.](.+)/i",$price, $matches);
+$price  = Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol();
+$price .= "<strong>".$matches[1]."<small>.".$matches[2]."</small></strong>";
+$_diamondsHelper = $this->helper('diamonds');
+$shape = $_product->getResource()->getAttribute('diamond_shape')
+->getFrontend()->getValue($_product);
+$dimension = explode('x', $_product->getDimension());
+$diamond['lenght'] = $dimension[0] . ' mm';
+$diamond['width'] = $dimension[1] . ' mm';
+$diamond['depth'] =  $dimension[2] . ' mm';
+$diamond['depth_percent'] =  number_format($_product->getDepth1(), 1) . '%';
+$diamond['table_percent'] =  number_format($_product->getTable(), 1) . '%';
+?>
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('home_slider')->toHtml(); ?>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
+	
+				<section class="diamond-details-block page-content container">
+					<section class="tab-content diamond-details">
+						<div class="left-block">
+					  <?php echo Mage::helper("diamonds/media")->getmedia(null,$_product)->tohtml()?>
+					  <div class="right-block mob-right-block"></div>
+							<div class="product-description">
+								<span class="diamond-icon">
+									<img alt="" 
+									src="<?php echo $this->getskinurl("images/account-4.png")?>" />
+								</span>
+								<section class="description-block">
+									<h2>詳細規格</h2>
+									<p>範文：這個微妙而象徵性的設計包含了一個獨特的戒指托和千挑萬選的鑽石，所有的配搭都是專屬於你喜好的設計，獨一無二的瑰麗見證了您對一段關係的承諾。</p>
+									<ul class="desc-list">
+										<li>
+											<span class="label">產品名稱：</span>
+											<span class="label-val"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></span>
+										</li>
+										<?php if ($_product->getShortDescription()):?> 
+										<li>
+										
+											<span class="label">產品描述：</span>
+											<span class="label-val"><?php echo $_product->getshortdescription()?></span>
+										</li>
+										<?php endif ?>
+										<li>
+											<span class="label">價錢：</span>
+											<span class="label-val"> 
+											<?php
+			                     echo Mage::helper('core')->currency($_product->getprice(),true,false);											
+											?>
+											</span>
+										</li>
+										<li>
+											<span class="label">形狀：</span>
+											<span class="label-val"><?php echo $shape ?></span>
+										</li>
+										<li>
+											<span class="label">克拉重量：</span>
+											<span class="label-val"><?php echo $carat?>克拉</span>
+										</li>
+										<li>
+											<span class="label">切割：</span>
+											<span class="label-val"><?php echo $cut?></span>
+										</li>
+										<li>
+											<span class="label">成色：</span>
+											<span class="label-val"><?php echo $color?></span>
+										</li>
+										<li>
+											<span class="label">淨度：</span>
+											<span class="label-val"><?php echo $clarity?></span>
+										</li>
+										<li>
+											<span class="label">拋光：</span>
+											<span class="label-val"><?php echo $polish?></span>
+										</li>
+								<li>
+									<span class="label">對稱性：</span>
+									<span class="label-val"><?php echo $symmetry?></span>
+								</li>
+								<li>
+									<span class="label">螢光反應：</span>
+									<span class="label-val"><?php echo $fluorescence?></span>
+								</li>
+								<li>
+									<span class="label">桌面大小：</span>
+									<span class="label-val"><?php echo $diamond['table_percent']?></span>
+								</li>
+								<li>
+									<span class="label">深度：</span>
+									<span class="label-val"><?php echo $diamond['depth_percent']?></span>
+								</li>
+								<li>
+									<span class="label">底鑽：</span>
+									<span class="label-val">		
+									<?php echo $_product->getResource()->getAttribute('culet')->getFrontend()->getValue($_product);?></span>
+								</li>
+								<li>
+									<span class="label">規格大小：</span>
+									<span class="label-val"><?php echo $_product->getDimension()?></span>
+								</li>
+								<li>
+									<span class="label">證書：</span>
+									<span class="label-val"><?php echo $certificate?></span>
+								</li>
+										
+									</ul>
+								</section>
+								<div class="two-block-content">
+							<?php 
+							 $info["cut"]["Excellent"]="這種近乎完美的車工極之罕有，幾乎可以反射出所有進入鑽石的光線，亮光、閃光及火光俱佳。";
+							 $info["cut"]["Good"]="優車工信息";
+							$info["cut"]["Ideal"]="良好車工信息";
+							$info["cut"]["Fiar"]="尚可車工信息";
+							$info["cut"]["Poor"]="一般車工信息";
+						$info["clarity"]=array(
+						"I1"=>"I1信息",
+						"I2"=>"I2信息",
+						"IF"=>"IF信息",
+						"SI1"=>"SI1信息",
+						"SI2"=>"SI2信息",
+						"SI3"=>"SI3信息",
+						"VS1"=>"VS1信息",
+						"VS2"=>"VS2信息",
+						"VVS1"=>"VVS1信息",
+						"VVS2"=>"VVS2信息"
+						);
+								$info["Color"]=array(
+						"D"=>"D信息",
+						"E"=>"E信息",
+						"F"=>"F信息",
+						"G"=>"G信息",
+						"H"=>"H信息",
+						"I"=>"I信息",
+						"J"=>"J信息",
+						"K"=>"K信息",
+						"L"=>"L信息"
+						
+						);	
+			  
+					
+							?>
+							
+							
+									<div class="half-block">
+									<?php if($certificate) :?>
+										<article class="bg1">
+											<h2>證書：<span class="eng-f">GIA</span></h2>
+											<p>這種鬆散的鑽石擁有從美國寶石學院（GIA ）分級報告。該GIA被設立於1930年，並為等級鑽石的代碼。 鑽石固定部分最高可達檔次的淨度，切和顏色。</p>
+											<figure>
+												<img src="<?php echo $this->getskinurl("images/doc1.png")?>" alt="" />
+											</figure>
+											<a href="#" class="btn">了解更多gia證書</a>
+										</article>
+										<?php endif ?>
+										<article class="bg2">
+											<h2>鑽石車工</h2>
+											<p>鑽石的「亮光」視乎切割方式可被大幅提升或降低。比例、對稱性及拋光，對鑽石折射光線亦即閃爍光芒的程度有重大影響。</p>
+											<h3><?php echo $cut?></h3>
+											<p><?php echo $info["cut"][$_product->getResource()->getAttribute('cut')->setStoreId(0)->getFrontend()->getValue( $_product)]?></p>
+											<a href="#" class="btn">了解更多切割等級</a>
+										</article>
+										<article class="bg3">
+											<h2>鑽石克拉</h2>
+											<p>"人們普遍認為「卡」反映鑽石的大小，而事實上，「卡」反映的是鑽石的重量。一般而言，鑽石卡重愈高，體積愈大，然而，鑽石增重的幅度較直徑增幅為大。對小顆鑽石而言，這個差異並不明顯，大小與重量一般符合比例，但較重的鑽石則體積迥異。</p>
+											<h3><?php echo $carat?> 克拉</h3>
+											<span class="btn-block">調節膚色：<a href="#">深色</a> ｜<a href="#" class="active"> 淺色</a></span>
+											<a href="#" class="btn">了解更多切割等級</a>
+										</article>
+									</div>
+									<div class="half-block">
+										<article class="bg4">
+											<h2>鑽石淨度</h2>
+											<p>地表下的高溫高壓造就出美鑽，但同時亦可帶來鑽石中的內含物及外部瑕疵。寶石鑑定師和寶石專家為鑽石進行專業評級時，會尋找降底整體淨度或通透度的各種天然印記、擦痕或裂紋。一般而言，這些瑕疵並非肉眼可見，需要使用放大儀器檢測。</p>
+											<h3><?php echo $clarity ?></h3>
+											<p>	<p><?php echo $info["clarity"][$_product->getResource()->getAttribute('clarity')->setStoreId(0)->getFrontend()->getValue( $_product)]?></p></p>
+											<a href="#" class="btn">了解更多gia證書</a>
+										</article>
+										<article class="bg5">
+											<h2>鑽石成色</h2>
+											<p>鑽石專家和鑑定師在評定鑽石成色時，實際上是鑑定鑽石的顏色及透明度。白鑽最為珍貴，完全不含任何顏色，具有純淨的碳結構，但是極為罕有。大部分鑽石含有微量氮，呈淡黃色或棕色，亦可能含有其他元素，影響鑽石的透明度。</p>
+											<h3><?php echo $color?>: 無色</h3>
+											<p>	<p><?php echo $info["Color"][$_product->getResource()->getAttribute('color_loose')->setStoreId(0)->getFrontend()->getValue( $_product)]?></p></p>
+											<a href="#" class="btn">了解更多顏色分級</a>
+										</article>
+									</div>
+								</div>
+								<div class="crousel">
+									<h3>最近購買產品</h3>
+									<ul class="slides">
+										<li>
+											<div class="item">
+												<figure><img src="<?php echo $this->getskinurl("images/ring1.jpg")?>" alt="" /></figure>
+												<h4>鑽石環結婚戒指</h4>
+												<span>18kt 白金 (0.75 CTW) 圓形鑽石</span>
+												<h4 class="eng-f">HKD$ 34,407.85</h4>
+												<span>+ 鑽石</span>
+											</div>
+										</li>
+										<li>
+											<div class="item">
+												<figure><img src="<?php echo $this->getskinurl("images/ring1.jpg")?>" alt="" /></figure>
+												<h4>鑽石環結婚戒指</h4>
+												<span>18kt 白金 (0.75 CTW) 圓形鑽石</span>
+												<h4 class="eng-f">HKD$ 34,407.85</h4>
+												<span>+ 鑽石</span>
+											</div>
+										</li>
+										<li>
+											<div class="item">
+												<figure><img src="<?php echo $this->getskinurl("images/ring1.jpg")?>" alt="" /></figure>
+												<h4>鑽石環結婚戒指</h4>
+												<span>18kt 白金 (0.75 CTW) 圓形鑽石</span>
+												<h4 class="eng-f">HKD$ 34,407.85</h4>
+												<span>+ 鑽石</span>
+											</div>
+										</li>
+									</ul>
+									<ul class="nav-dir">
+										<li><a href="javascript:void(0);" class="prev-icon"><img src="<?php echo $this->getskinurl("images/prev-icon.png")?>" alt="" /></a></li>
+										<li><a href="javascript:void(0);" class="next-icon"><img src="<?php echo $this->getskinurl("images/next-icon.png")?>" alt="" /></a></li>
+									</ul>
+								</div>
+								<div class="banner-2">
+									<img src="<?php echo $this->getskinurl("images/banner2.jpg")?>" alt="" />
+								</div>
+							</div>
+						</div>
+						
+						<div id="ad_sidebar" class="right-block ad_sidebar floating-sidebar">
+							<form action="<?php echo $this->getSubmitUrl($_product, array('_secure' => $this->_isSecure())) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+								<?php echo $this->getBlockHtml('formkey') ?>
+								<div class="no-display">
+									<input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+									<input type="hidden" name="related_product" id="related-products-field" value="" />
+								</div>
+							<h3><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+								<small>18kt 白金 (0.75 克拉) ，圓形鑽石</small>
+								</h3>
+							<div class="product-info">
+		                            
+							   <?php echo $this->getChildHtml('extrahint') ?>
+							   
+							   <?php 
+							       $auction = Mage::getModel('auction/productauction')->loadAuctionByProductId($_product->getId());
+									if ($auction) {
+										$auction->setStoreId(Mage::app()->getStore()->getId())
+												->loadByStore();
+										if ($auction->getData('is_applied') == '2')
+											$auction = null;
+									}
+									if (!$auction): ?>
+								
+								
+										<div class="product-info">
+					               <?php 
+								    $price= $_product->getprice();
+									$price = Mage::helper('core')->currency($price,true,false) ;
+									preg_match("/[^0-9]+(.+)[\.](.+)/i",$price, $matches);
+									$price  = Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol();
+									$price .= "<strong>".$matches[1]."<small>.".$matches[2]."</small></strong>";
+								   ?>
+											<h2><?php echo $price?></h2>
+											<ul class="product-info-d">
+												<li><span class="card">
+													<span class="desc-label">形狀</span>
+													<span class="desc-val">圓形</span>
+												</span></li>
+												<li><span class="card">
+													<span class="desc-label">克拉重量</span>
+													<span class="desc-val">圓形</span>
+												</span></li>
+												<li><span class="card">
+													<span class="desc-label">切割</span>
+													<span class="desc-val">良好</span>
+												</span></li>
+												<li><span class="card">
+													<span class="desc-label">淨度</span>
+													<span class="desc-val">VS2</span>
+												</span></li>
+												<li><span class="card">
+													<span class="desc-label">拋光</span>
+													<span class="desc-val">良好</span>
+												</span></li>
+												<li><span class="card">
+													<span class="desc-label">對稱</span>
+													<span class="desc-val">良好</span>
+												</span></li>
+												<li><span class="card">
+													<span class="desc-label">顏色</span>
+													<span class="desc-val">J</span>
+												</span></li>
+												<li><span class="card">
+													<span class="desc-label">螢光</span>
+													<span class="desc-val">沒有</span>
+												</span></li>
+											</ul>
+										</div>
+								  <?php endif ?>							
+							          
+							    
+							</div>
+					 <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+							<?php echo $this->getChildHtml('addtocart') ?>
+							
+							<span class="delivery-date"><?php echo __("Estimate the Fastest Delivery Time")?>: <span class="date">2015-11-10</span></span>
+							<div class="share-links">
+								<ul class="social-links">
+									<li><a href="#"><img src="<?php echo $this->getskinurl("images/side-fb-link.png")?>" alt="" /></a></li>
+									<li><a href="#"><img src="<?php echo $this->getskinurl("images/side-tt-link.png")?>" alt="" /></a></li>
+									<li><a href="#"><img src="<?php echo $this->getskinurl("images/side-print-link.png")?>" alt="" /></a></li>
+									<li><a href="#"><img src="<?php echo $this->getskinurl("images/side-insta-link.png")?>" alt="" /></a></li>
+								</ul>
+								<div class="external-links">
+								<?php if ($this->canEmailToFriend()): ?>
+									<a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>" class="mail-to-frnd"><i class="icon-mail-link">&nbsp;</i><span><?php echo $this->__('Email To Friend') ?></span></a>
+								<?php endif ?>	
+								<?php if ($this->helper('wishlist')->isAllow()) : ?>
+								<?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
+									<a href="<?php echo $_wishlistSubmitUrl ?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;"class="mail-to-frnd"><i class="icon-wishlist-link">&nbsp;</i><span><?php echo $this->__('Add to Wishlist') ?></span></a>
+									<?php endif ?>	
+								</div>
+							</div>
+					</form>	
+	
+		<script type="text/javascript">
+         var sidebar = jQuery("#ad_sidebar").html();
+
+        jQuery(".mob-right-block").html(sidebar);
+		startpos= jQuery('#ad_sidebar').offset().top;
+		jQuery(document).ready(function(){
+		  startpos= jQuery('#ad_sidebar').offset().top;
+		});
+		window.onload = function(){
+		  startpos= jQuery('#ad_sidebar').offset().top;
+		};
+
+		jQuery(window).scroll(function() {
+		 var fixright = jQuery('#ad_sidebar').offset().left;	
+	     var stoppos = jQuery('.diamond-details').offset().top;
+	     stoppos= stoppos+jQuery('.diamond-details').height();
+	     stoppos= stoppos-jQuery('#ad_sidebar').height();
+	 	
+		
+					 var currentScroll = jQuery('html').scrollTop() || jQuery('body').scrollTop();
+					 var targetScroll = jQuery('#ad_sidebar').position().top;
+			if(jQuery(window).width()<767){
+					if (currentScroll>stoppos) {
+						var fixtop = stoppos-currentScroll;
+						jQuery('#ad_sidebar').css({position:"fixed ",bottom:fixtop+"px"});
+						 return;			
+					}
+
+				 if (currentScroll>startpos) {
+				  jQuery('#ad_sidebar').css({"height":"50%","position":"fixed ","bottom":"0px"});
+
+
+				} else if (currentScroll<startpos) {
+				   jQuery('#ad_sidebar').css({position:"relative ",top:" ","bottom":" "});
+			 
+				  }	
+				
+			
+			}
+			else{	 	 
+					if (currentScroll>stoppos) {
+						var fixtop = stoppos-currentScroll;
+						jQuery('#ad_sidebar').css({"max-width":"274px",position:"fixed ",top:fixtop+"px","left":fixright+"px"});
+						 return;			
+					}
+
+				 if (currentScroll>650) {
+				  jQuery('#ad_sidebar').css({"max-width":"274px",position:"fixed ",top:"10px","left":fixright+"px"});
+
+
+				} else if (currentScroll<650) {
+				   jQuery('#ad_sidebar').css({position:"relative ",top:"","left":""});
+			        
+				  }			
+			}
+		});
+	</script>	
+	
+
+	
+					
+<script type="text/javascript">
+
+    //<![CDATA[
+        var productAddToCartForm = new VarienForm('product_addtocart_form');
+        productAddToCartForm.submit = function(button, url) {
+            if (this.validator.validate()) {
+                var form = this.form;
+                var oldUrl = form.action;
+
+                if (url) {
+                   form.action = url;
+                }
+                var e = null;
+                try {
+                    this.form.submit();
+                } catch (e) {
+                }
+                this.form.action = oldUrl;
+                if (e) {
+                    throw e;
+                }
+
+                if (button && button != 'undefined') {
+                    button.disabled = true;
+                }
+            }
+        }.bind(productAddToCartForm);
+
+        productAddToCartForm.submitLight = function(button, url){
+            if(this.validator) {
+                var nv = Validation.methods;
+                delete Validation.methods['required-entry'];
+                delete Validation.methods['validate-one-required'];
+                delete Validation.methods['validate-one-required-by-name'];
+                // Remove custom datetime validators
+                for (var methodName in Validation.methods) {
+                    if (methodName.match(/^validate-datetime-.*/i)) {
+                        delete Validation.methods[methodName];
+                    }
+                }
+
+                if (this.validator.validate()) {
+                    if (url) {
+                        this.form.action = url;
+                    }
+                    this.form.submit();
+                }
+                Object.extend(Validation.methods, nv);
+            }
+        }.bind(productAddToCartForm);
+    //]]>
+    </script>					
+						</div>
+					</section>
+				</section>

@@ -1,0 +1,5 @@
+store,websites,attribute_set,type,categories,sku,name,image,small_image,thumbnail,gallery,img_label,meta_title,meta_description,price,special_price,weight,status,tax_class_id,visibility,description,short_description,qty,is_in_stock,ring_metal,ring_size,ring_mainstone_shape,ring_style,ring_color
+admin,base,Ring,simple,,D1001,戒座1,,,,,Label1|Label2|Label3,,,1200,,1,Enabled,None,"Catalog, Search",Test Product description for default store,Test Product 2,10,1,14K Yellow gold,4,Heart,Halo,Gold
+admin,base,Ring,simple,,D1002,戒座2,,,,,Label1|Label2|Label3,,,1230,,1,Enabled,None,"Catalog, Search",Test Product description for default store,Test Product 3,10,1,14K White gold,3,Cushion,Solitaire,White
+admin,base,Ring,simple,,D1003,戒座3,,,,,Label1|Label2|Label3,,,2200,,1,Enabled,None,"Catalog, Search",Test Product description for default store,Test Product 2,10,1,Platinum,4,Oval,Masterwork,White
+admin,base,Ring,simple,,D1004,戒座4,,,,,Label1|Label2|Label3,,,2300,,1,Enabled,None,"Catalog, Search",Test Product description for default store,Test Product 3,10,1,14K Rose gold,2,Round,Halo,Rose Gold

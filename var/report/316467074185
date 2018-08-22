@@ -1,0 +1,9 @@
+a:5:{i:0;s:233:"Error in file: "/home/mycarthk/public_html/magento/app/code/local/Mycart/Payease/sql/mycart_payease_setup/mysql4-install-1.0.0.php" - SQLSTATE[HY000]: General error: 1005 Can't create table 'mycarthk_mg19.mycart_payease' (errno: 121)";i:1;s:1028:"#0 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Model/Resource/Setup.php(644): Mage::exception('Mage_Core', 'Error in file: ...')
+#1 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Model/Resource/Setup.php(421): Mage_Core_Model_Resource_Setup->_modifyResourceDb('install', '', '1.0.0')
+#2 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Model/Resource/Setup.php(327): Mage_Core_Model_Resource_Setup->_installResourceDb('1.0.0')
+#3 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Model/Resource/Setup.php(235): Mage_Core_Model_Resource_Setup->applyUpdates()
+#4 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Model/App.php(428): Mage_Core_Model_Resource_Setup::applyAllUpdates()
+#5 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Model/App.php(354): Mage_Core_Model_App->_initModules()
+#6 /home/mycarthk/public_html/magento/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#7 /home/mycarthk/public_html/magento/index.php(83): Mage::run('', 'store')
+#8 {main}";s:3:"url";s:14:"/magento/admin";s:11:"script_name";s:18:"/magento/index.php";s:4:"skin";s:7:"default";}

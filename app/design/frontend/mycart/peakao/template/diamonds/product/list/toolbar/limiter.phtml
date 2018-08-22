@@ -1,0 +1,27 @@
+<?php /* @var $toolbar Mage_Catalog_Block_Product_List_Toolbar */?>
+<?php $toolbar = $this->getParentBlock();?>
+
+<label><?php echo $toolbar->__('Show') ?></label>
+			<select id="diamonds-limiter" class="diamonds-limiter">
+			<?php foreach ($toolbar->getAvailableLimit() as  $_key=>$_limit): ?>
+				<option value="<?php echo $_limit ?>"<?php if($toolbar->isLimitCurrent($_key)): ?> selected="selected"<?php endif ?>>
+					<?php echo $_limit ?>
+				</option>
+			<?php endforeach; ?>
+			</select><?php echo $toolbar->__('per page') ?>
+<script>
+
+jQuery(function(){
+
+	var getData = function(){
+		var value = jQuery("#diamonds-limiter").val();
+		return value;
+	};
+	diamondsFilter.registerMetadata("limit", getData);
+
+	jQuery(".diamonds-limiter").change(function(){
+		diamondsFilter.updateResults();
+	});
+});
+
+</script>

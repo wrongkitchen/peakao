@@ -1,0 +1,207 @@
+
+<?php echo $this->getChildHtml('search_result'); ?>
+<div class="diamonds-filter" id="ikantam-mage-filter">
+<div class="diamondSearch">
+    <div class="headerBlock">
+        <ul class="additional-menu">
+            <li><a href="<?php echo $this->helper("diamonds")->getChooseDiamondsUrl(); ?>"><?php echo $this->__("Choose a diamonds") ?></a></li>
+            <li><a class="active" href="<?php echo $this->helper("diamonds")->getChooseSettingsUrl(); ?>"><?php echo $this->__("Choose a settings") ?></a></li>
+        </ul>
+
+        <div class="btn-group drop-list span2">
+            <?php echo $this->getChildHtml("diamonds_filter_design"); ?>
+        </div>
+    </div>
+    <div class="page-title"><?php echo $this->__("Ring search") ?></div>
+    <div class="showcase">
+        <?php echo $this->getChildHtml("ring_filter_model"); ?>
+    </div>
+    <!-- /showcase-->
+    <div class="clear"></div>
+    <!-- preloader begin -->
+    <div class="overlayBlock"><div id="loaderImage"></div></div>
+    <!-- preloader end -->
+    <div id="ring_filter_results">	
+        <?php echo $this->getChildHtml("ring_filter_results"); ?>
+    </div>
+</div>
+</div>
+
+<!--  Controls initilize -->
+<script type="text/javascript">
+    var updateUrl = "<?php echo $this->getBaseUrl() . 'diamonds/filter/ring'; ?>";
+    var ringsFilter = new IkD.Filter(updateUrl, null);
+    jQuery(function(){
+	
+        ringsFilter.setResultContainer(jQuery("#ring_filter_results"));
+		
+    });
+</script>
+
+<!-- end init -->
+
+<style>
+	#ikantam-mage-filter { 
+		font: normal 14px/1.5 "Lucida Bright", Georgia, serif;
+		background-color: #fff; 
+		}
+	#ikantam-mage-filter .diamondSearch .headerBlock {
+		box-shadow: 0 1px 1px #f4f4f4;
+	}
+	#ikantam-mage-filter .diamondSearch .headerBlock .additional-menu li a	{
+		background-color: #fff;
+		border: 0;	
+		color: #445560;
+		font: normal 15px/45px "Lucida Bright", Georgia, serif;
+		 -webkit-transition: all 600ms ease-in-out;
+			-moz-transition: all 600ms ease-in-out;
+			  -o-transition: all 600ms ease-in-out;
+				 transition: all 600ms ease-in-out;
+	}
+	#ikantam-mage-filter .diamondSearch .headerBlock .additional-menu li a:hover	{
+		background-color: #ecf0f1;
+	}
+	#ikantam-mage-filter .diamondSearch .headerBlock .additional-menu li a.active {
+		background-color: #1abc9c;
+		color: #fff;
+	}
+	#ikantam-mage-filter .diamondSearch .headerBlock .additional-menu li a.active:hover	{
+		background-color: #189E84;
+		color: #fff;
+	}
+	#ikantam-mage-filter .btn-group.drop-list.span2 { position: relative; }
+	#ikantam-mage-filter ul.dropdown-menu { 
+		display: none;
+		position: absolute;
+		right: 10px;
+		top: 37px;
+		padding: 0;
+		z-index: 10;
+		width: 190px;
+		background-color: #f3f4f5;
+	}
+	#ikantam-mage-filter ul.dropdown-menu li {  border: 0; padding: 0; }
+	#ikantam-mage-filter ul.dropdown-menu li a { 
+		padding: 6px 4px;
+		color: #9299a0;
+		display: block;
+		font-size: 13.5px;
+		 -webkit-transition: all 100ms ease-in-out;
+			-moz-transition: all 100ms ease-in-out;
+			  -o-transition: all 100ms ease-in-out;
+				 transition: all 100ms ease-in-out;
+	}
+	#ikantam-mage-filter ul.dropdown-menu li:hover a {
+		background-color: #1abc9c;
+		color: #fff;
+	}
+	#ikantam-mage-filter .drop-list .btn  {
+		background-color: #1abc9c;
+		border: 0;
+		border-bottom: 4px solid #19AC8F;
+		color: #fff;
+		cursor: pointer;
+		margin: -3px 10px 0 0;
+		padding: 8.5px 30px;
+		position: relative;
+		font: normal 14px/100% "Lucida Bright", Georgia, serif;
+	   -webkit-border-radius: 3px;
+	      -moz-border-radius: 3px;
+		       border-radius: 3px;
+		 -webkit-transition: all 100ms ease-in-out;
+			-moz-transition: all 100ms ease-in-out;
+			  -o-transition: all 100ms ease-in-out;
+				 transition: all 100ms ease-in-out;
+	}
+	#ikantam-mage-filter .drop-list .btn.ison {
+		border-bottom-color: #1abc9c;
+	}
+	#ikantam-mage-filter .drop-list .btn .caret  {
+		background: url('http://demo2.ikantam.com/jewelry/skin/frontend/default/default/images/ikantam-mage-filter-arr.png') no-repeat 0 12px;
+		position: absolute;
+		top: 0;
+		right: 10px;
+		height: 100%;
+		width: 22px;
+		margin: 0;
+		border: 0;
+	}
+</style>
+
+<script>
+	var $dropBtn = jQuery('#ikantam-mage-filter .drop-list .dropdown-toggle'),
+		$list    = jQuery('#ikantam-mage-filter ul.dropdown-menu');
+	$dropBtn.on('click', function(){
+		$dropBtn.toggleClass('ison');
+		$list.toggle();
+	});
+</script>
+	
+<script type="text/javascript">
+    var cSpeed=9;
+    var cWidth=100;
+    var cHeight=100;
+    var cTotalFrames=8;
+    var cFrameWidth=100;
+    var cImageSrc= '<?php echo $this->getSkinUrl('diamonds/images/sprites.png'); ?>';
+	
+    var cImageTimeout=false;
+    var cIndex=0;
+    var cXpos=0;
+    var SECONDS_BETWEEN_FRAMES=0;
+	
+    function startAnimation(){
+		
+        document.getElementById('loaderImage').style.backgroundImage='url('+cImageSrc+')';
+        document.getElementById('loaderImage').style.width=cWidth+'px';
+        document.getElementById('loaderImage').style.height=cHeight+'px';
+		
+        //FPS = Math.round(100/(maxSpeed+2-speed));
+        FPS = Math.round(100/cSpeed);
+        SECONDS_BETWEEN_FRAMES = 1 / FPS;
+		
+        setTimeout('continueAnimation()', SECONDS_BETWEEN_FRAMES/1000);
+		
+    }
+	
+    function continueAnimation(){
+		
+        cXpos += cFrameWidth;
+        //increase the index so we know which frame of our animation we are currently on
+        cIndex += 1;
+		 
+        //if our cIndex is higher than our total number of frames, we're at the end and should restart
+        if (cIndex >= cTotalFrames) {
+            cXpos =0;
+            cIndex=0;
+        }
+		
+        document.getElementById('loaderImage').style.backgroundPosition=(-cXpos)+'px 0';
+		
+        setTimeout('continueAnimation()', SECONDS_BETWEEN_FRAMES*1000);
+    }
+	
+    function imageLoader(s, fun)//Pre-loads the sprites image
+    {
+        clearTimeout(cImageTimeout);
+        cImageTimeout=0;
+        genImage = new Image();
+        genImage.onload=function (){cImageTimeout=setTimeout(fun, 0)};
+        genImage.onerror=new Function('alert(\'Could not load the image\')');
+        genImage.src=s;
+    }
+	
+    //The following code starts the animation
+    new imageLoader(cImageSrc, 'startAnimation()');
+</script>
+
+
+<script>
+    jQuery(function($){
+        IkD.Helper.finishPreloader();
+    });
+</script>
+<script type="text/javascript">
+    /*jQuery(".dropdown-toggle").dropdown();
+        jQuery(".collapse").collapse();*/
+</script>

@@ -1,0 +1,55 @@
+		<div class="fast-login">
+	<strong class="light-pink"><?php echo $this->__("Fast Login")?>
+	<i class="arrow-open-lp visible-xs"></i>
+	</strong>
+	<div class="login-new-content">
+	<ul class="clearfix">
+		<li>
+		<a href="javascript:void(0)" 
+		onclick="openSocial('<?php echo Mage::getBlockSingleton('sociallogin/channel_fblogin')->getLoginUrl() ?>',
+		'<?php echo $this->__('Login by Facebook') ?>')"
+		><img src="<?php echo $this->getskinurl("images/fb-new.png")?>" alt="#"></a></li>																									
+	<!--<li><a id="weixin" href="#"> <img src="<?php echo $this->getskinurl("images/owl-icon.jpg")?>"></a></li>	-->
+	<li><a href="javascript:void(0)" 
+	onclick="openSocial('<?php echo Mage::getBlockSingleton('twlogin/twlogin')->getLoginUrl() ?>',
+	'<?php echo $this->__('Login by Twitter') ?>')"
+	><img src="<?php echo $this->getskinurl("images/twt-new.png")?>"></a></li>
+	</ul>
+	<p><?php echo $this->__("Peakao will provide free Service to Delivery To Your Shipping Adress. All Checkout are based on the currency Rate in real Time.")?></p>			
+		</div>
+		</div>
+	<div class="absoluteDiv" style="display:none">
+  <div class="greyOut">
+  </div>
+<div class="GalleryQuickViewPop wechatwrap">
+   <div id="weixin_qrcode">
+   
+   </div>
+</div>	
+</div>	
+<script type="text/javascript">
+  jQuery("#weixin").click(function(){
+	  jQuery(".absoluteDiv").show();
+  });
+  jQuery(".greyOut").click(function(){
+	  jQuery(".absoluteDiv").hide();	
+	  
+  });
+   jQuery(".button-x").click(function(){
+	  jQuery(".absoluteDiv").hide();		  
+  });
+</script>		
+	<script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>	
+	
+	<script type="text/javascript">
+			var obj = new WxLogin({
+					  id:"weixin_qrcode", 
+					  appid: "wxff4d5eccb342f031", 
+					  scope: "snsapi_login", 
+					  redirect_uri: "<?php echo $this->geturl("sociallogin/weixin/callback")?>",
+					  state: "",
+					  style: "",
+					  href: ""
+					});
+	</script>
+	

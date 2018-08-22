@@ -1,0 +1,105 @@
+<?php
+$config = $this->helper('diamonds/config');
+$widthSlider = $config->getWidthSlider();
+?>
+
+<?php $attributeCutOptions = $this->getAttributeOptions("cut"); ?>
+<h2>Cut (Make)</h2>
+<?php if (!$config->getCutSliderType()): ?>
+    <div class="price-ranger" style="width: <?php echo $widthSlider ?>px">
+        <div id="cut_slider"></div>
+        <input type="hidden" id="minCut" name="attributes[cut_grade][min]" class="sliderCutValue svlft" data-index="0" value="1"/>
+        <input type="hidden" id="maxCut" name="attributes[cut_grade][max]" class="sliderCutValue slidRight" data-index="1" value="<?php echo $attributeCutOptions->getSize(); ?>" />
+    </div>
+    <div class="divisions">
+        <ul>
+            <?php $cuts = array(); ?>
+
+            <?php foreach ($attributeCutOptions as $option):
+                ?>
+                <li style="float:left;  text-align: left; "> <?php echo $option->getValue(); ?> </li>
+                <?php $cuts[] = $option->getId(); ?>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php else: ?>
+    <div id="cut">
+        <?php foreach ($attributeCutOptions as $option): ?>
+            <input type="checkbox" value="<?php echo $option->getId(); ?>" id="cut<?php echo $option->getId() ?>">
+            <label for="cut<?php echo $option->getId(); ?>"><?php echo $option->getValue(); ?></label>       
+        <?php endforeach; ?>
+        <script type="text/javascript" >
+            jQuery("#cut").buttonset();
+        </script>
+    </div> 
+<?php endif; ?>
+<script type="text/javascript">
+    jQuery(function(jQuery){  
+
+<?php if (!$config->getCutSliderType()): ?>
+            jQuery("#cut_slider").slider({
+                range: true,
+                min: 1,
+                max: <?php echo $attributeCutOptions->getSize(); ?>,
+                step: 1,
+                values: [1, <?php echo $attributeCutOptions->getSize(); ?>],
+                slide: function(event, ui) {
+                    for(var i = 0; i < ui.values.length; ++i) {
+                        /*if( sliderValue.indexOf(ui.value)===-1 ) return false;*/
+                        jQuery("input.sliderCutValue[data-index=" + i + "]").val(ui.values[i]);
+                    }
+                }
+            });
+
+            jQuery("input.sliderCutValue").change(function() {
+                var $this = jQuery(this);
+                jQuery("#cut_slider").slider("values", $this.data("index"), $this.val());
+            });
+            
+            
+            var getDataCut = function(){
+                
+                var minCut = jQuery( "#minCut" ).val();
+                var maxCut = jQuery( "#maxCut" ).val();
+                        
+                var cuts = <?php echo json_encode($cuts); ?>;
+                     
+                var mass = new Array();
+                for (var i = minCut-1; i < maxCut; i++){
+                    mass.push(cuts[i]);
+                }
+
+                return { mass : mass };
+            };
+        	
+                
+        
+<?php else: ?>   
+        jQuery("#cut input").click(function(){
+            var selected = jQuery(this).attr("data-selected");
+                		
+            if(selected == "true"){
+                jQuery(this).attr("data-selected","false");
+                			
+            } else {
+                jQuery(this).attr("data-selected", "true");
+                			
+            }
+                		
+        });
+                		
+        var getDataCut = function(){
+            var cuts = jQuery("#cut input");
+            var mass = new Array();
+            for(var i=0;i<cuts.length;i++){
+                var cut = jQuery(cuts[i]);
+                if(cut.attr("data-selected") == "true" ){
+                    mass.push(cut.attr("value"));
+                }		
+            }
+            return { mass : mass };
+        };
+<?php endif; ?>
+    diamondsFilter.registerFilter("cut", getDataCut);
+    });
+</script>

@@ -1,0 +1,159 @@
+<?php 
+		   $attrModel = Mage::getModel('catalog/product')
+                ->getResource()
+                ->getAttribute("cut");
+        $attributeOptions = Mage::getResourceModel('eav/entity_attribute_option_collection')
+                ->setAttributeFilter($attrModel->getId())
+                ->setStoreFilter(0)
+                ->load();
+		$cutn = $attributeOptions->getsize();
+		
+  $attrModel = Mage::getModel('catalog/product')
+                ->getResource()
+                ->getAttribute("clarity");
+        $attributeOptions = Mage::getResourceModel('eav/entity_attribute_option_collection')
+                ->setAttributeFilter($attrModel->getId())
+                ->setStoreFilter(0)
+                ->load();
+		$clarityn = $attributeOptions->getsize();
+		
+  $attrModel = Mage::getModel('catalog/product')
+                ->getResource()
+                ->getAttribute("color_loose");
+        $attributeOptions = Mage::getResourceModel('eav/entity_attribute_option_collection')
+                ->setAttributeFilter($attrModel->getId())
+                ->setStoreFilter(0)
+                ->load();
+		$colorn = $attributeOptions->getsize();		
+?>
+<div id="ringtab2" class="tab-section-two"><span class="selection-text"><?php echo $this->__("Adjust Your Ring Quality.")?></span>
+<div class="tab-content">
+<div class="content-1">
+<div class="content-head">
+<h2><span>1</span><?php echo $this->__("What's the most important thing in your Diamonds")?>？</h2>
+</div>
+<div class="diamond-quality clearfix"><span class="diamond-quality-text"><?php echo $this->__("To keep your budget, when you change quality of Diamond,the carat of Diamond Change.")?></span>
+<div class="diamond-quality-content">
+<h4><?php echo $this->__("Diamond Size")?></h4>
+<span class="diamond-quality-fig"> <img alt="" src="<?php echo $this->getskinurl("images/")?>ringadvisor-21.png" /> </span>
+<div class="your-choice"><span class="cards"><?php echo $this->__("Most is  <carat> 0.00 </carat> carat ")?></span> <span class="diamond-size"><?php echo $this->__("As your Choise, this is your diamond size(can't be scale)")?></span></div>
+</div>
+
+<div class="diamon-quality-range">
+
+<div class="desktop-size">
+<div class="brilliance clearfix"><span class="low-brilliance"><?php echo $this->__("Low Brilliance")?></span> <span class="high-brilliance"><?php echo $this->__("High Brilliance")?></span></div>
+    <div class="range-slider" style="width:100%">
+        <div  id="cut_slider" class="range-inner" ></div>
+    </div>
+
+<small><?php echo $this->__("The Brilliance is affect by the craft of Diamond Cut")?></small>
+
+</div>
+
+<div class="desktop-size">
+<div class="brilliance clearfix"><span class="low-brilliance"><?php echo $this->__("Clean(naked eye)")?></span> <span class="high-brilliance"><?php echo $this->__("Perfect(by magnifying)")?></span></div>
+  <div class="range-slider" style="width:100%">
+        <div id="clarity_slider" class="range-inner" ></div>
+    </div>
+	<small><?php echo $this->__("Only see flaw by microspur")?></small>
+</div>
+
+<div class="desktop-size">
+<div class="brilliance clearfix"><span class="low-brilliance"><?php echo $this->__("Little Color <em>(hard to catch)</em> ")?></span> <span class="high-brilliance"><?php echo $this->__("Colorless <em>(very rare)</em> ")?></span></div>
+  <div class="range-slider" style="width:100%">
+        <div id="color_slider" class="range-inner" ></div>
+    </div>
+	<small><?php echo $this->__("Hard to catch little color without magnifying")?></small></div>
+
+</div>
+</div>
+</div>
+</div>
+<div class="btn-grp">
+<a id="caratreset" class="reset popup-btn grey-btn"  href="javascript:void(0)" type="submit"><?php echo $this->__("Reset Options")?> </a>
+<a id="qualilast" class="popup-btn"  href="javascript:void(0)" type="submit"> <?php echo $this->__("Last Step")?> </a>
+<a id="recomstep" class="popup-btn"  href="javascript:void(0)" type="submit"> <?php echo $this->__("Next Step")?> </a>
+</div>
+</div>
+<script type="text/javascript">
+  jQuery("#caratreset").click(function(){
+	  caratFilter.resetall();
+	  jQuery(this).addClass("grey-btn");
+  }); 
+</script>  
+<script type="text/javascript">
+  jQuery("#qualilast").click(function(){
+	jQuery('#qualitytab').removeClass('active');
+	jQuery('#qualitytab').parent('li').removeClass('active-heading');
+ jQuery('#styletab').addClass('active');
+  jQuery('#styletab').parent('li').addClass('active-heading');
+ jQuery('.tab-article > div').hide(); 
+   jQuery(jQuery('#styletab').attr("href")).fadeIn(100).click();
+  
+  })
+  jQuery("#recomstep").click(function(){
+	  
+	  var completeurl = "<?php echo $this->geturl("ringadvisor/ajax/recommend")?> ";
+	  Advisor.Complete(completeurl);
+	 jQuery('#qualitytab').removeClass('active');
+	      jQuery('#qualitytab').parent('li').removeClass('active-heading');
+	 jQuery('#recommendtab').addClass('active')	 
+	  jQuery('#recommendtab').parent('li').addClass('active-heading');
+	 
+  })
+</script>
+<script type="text/javascript">
+caratFilter.addfilter("cut");
+caratFilter.addfilter("clarity");
+caratFilter.addfilter("color");
+    jQuery(function(jQuery){
+        /*Price-----*/
+		
+        jQuery("#cut_slider").slider({
+            range: true,
+            min: 1,
+            max: <?php echo $cutn?>,
+            step: 1,
+            values: [1, <?php echo $cutn?>],
+			slide: function( event, ui ) {
+				jQuery("#cut_slider").attr("min-price",ui.values[0]);
+           jQuery("#cut_slider").attr("max-price",ui.values[1]);
+            },
+			stop: function (){
+		
+			caratFilter.applyfilter();
+			}
+        });
+		jQuery("#clarity_slider").slider({
+            range: true,
+            min: 1,
+            max: <?php echo $clarityn?>,
+            step: 1,
+            values: [1, <?php echo $clarityn?>],
+			slide: function( event, ui ) {
+				jQuery("#clarity_slider").attr("min-price",ui.values[0]);
+           jQuery("#clarity_slider").attr("max-price",ui.values[1]);
+            },
+			stop: function (){
+		
+			caratFilter.applyfilter();
+			}
+        });
+	jQuery("#color_slider").slider({
+            range: true,
+            min: 1,
+            max: <?php echo $colorn?>,
+            step: 1,
+            values: [1, <?php echo $colorn?>],
+			slide: function( event, ui ) {
+				jQuery("#color_slider").attr("min-price",ui.values[0]);
+           jQuery("#color_slider").attr("max-price",ui.values[1]);
+            },
+			stop: function (){
+			caratFilter.applyfilter();
+			}
+        });
+
+    });
+</script>

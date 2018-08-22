@@ -1,0 +1,46 @@
+<div id="pagination" style="display:none">
+        <?php
+         $i=0;
+		 $p =  $this->getrequest()->getparam("p");
+		
+		 if (!$p) $p =1;
+	
+		foreach ($this->getFramePages() as $_page):
+		?>
+	
+            <?php if ($_page == $p): $i=1 ?>
+             <a  href="<?php echo $this->getPageUrl($_page) ?>"><?php echo $_page ?></a></li>
+            <?php elseif($i==1): $i=0 ?>
+               <a class="next" href="<?php echo $this->getPageUrl($_page) ?>"><?php echo $_page ?></a></li>
+              
+			<?php  break; endif;?>
+        <?php endforeach;?>
+
+</div>
+<script type="text/javascript">   
+  if (typeof(ias)!= "undefined"){
+	  
+	  jQuery.ias().destroy();
+	  delete ias;
+  }
+     </script> 
+<?php 
+if ($i==0) : ?>
+     <script type="text/javascript">  
+
+
+  
+  
+  
+     var ias = jQuery.ias({ 
+  container:  ".scrollcontent",
+  item:       ".scrollitem",
+  pagination: "#pagination",
+  next:       "#pagination a.next"	                                                                           
+        });  
+		ias.extension(new IASSpinnerExtension());
+
+   
+    </script>  
+
+<?php endif?>

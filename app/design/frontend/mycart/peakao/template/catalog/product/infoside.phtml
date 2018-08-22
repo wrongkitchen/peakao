@@ -1,0 +1,159 @@
+			
+			<?php $_product =  $this->getproduct();?>
+			<?php $_helper = $this->helper('catalog/output'); ?>
+							<form action="<?php echo $this->getSubmitUrl($_product, array('_secure' => $this->_isSecure())) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+								<?php echo $this->getBlockHtml('formkey') ?>
+								<div class="no-display">
+									<input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+									<input type="hidden" name="related_product" id="related-products-field" value="" />
+								</div>
+							<h3><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+								<small>18kt 白金 (0.75 克拉) ，圓形鑽石</small>
+								</h3>
+							<div class="product-info">
+		                            
+							   <?php echo $this->getChildHtml('extrahint') ?>
+							   
+							   <?php 
+							       $auction = Mage::getModel('auction/productauction')->loadAuctionByProductId($_product->getId());
+									if ($auction) {
+										$auction->setStoreId(Mage::app()->getStore()->getId())
+												->loadByStore();
+										if ($auction->getData('is_applied') == '2')
+											$auction = null;
+									}
+									if (!$auction): ?>
+								
+								
+								  <div class="product-info">
+					               <?php 
+								    $price= $_product->getprice();
+									$price = Mage::helper('core')->currency($price,true,false) ;
+									preg_match("/[^0-9]+(.+)[\.](.+)/i",$price, $matches);
+									$price  = Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol();
+									$price .= "<strong>".$matches[1]."<small>.".$matches[2]."</small></strong>";
+								   ?>
+											<h2><?php echo $price?></h2>
+											<ul class="product-info-d">
+												<li><span class="card">
+													<span class="desc-label">形狀</span>
+													<span class="desc-val">圓形</span>
+												</span></li>
+												<li><span class="card">
+													<span class="desc-label">克拉重量</span>
+													<span class="desc-val">圓形</span>
+												</span></li>
+												<li><span class="card">
+													<span class="desc-label">切割</span>
+													<span class="desc-val">良好</span>
+												</span></li>
+												<li><span class="card">
+													<span class="desc-label">淨度</span>
+													<span class="desc-val">VS2</span>
+												</span></li>
+												<li><span class="card">
+													<span class="desc-label">拋光</span>
+													<span class="desc-val">良好</span>
+												</span></li>
+												<li><span class="card">
+													<span class="desc-label">對稱</span>
+													<span class="desc-val">良好</span>
+												</span></li>
+												<li><span class="card">
+													<span class="desc-label">顏色</span>
+													<span class="desc-val">J</span>
+												</span></li>
+												<li><span class="card">
+													<span class="desc-label">螢光</span>
+													<span class="desc-val">沒有</span>
+												</span></li>
+											</ul>
+										</div>
+								  <?php endif ?>							
+							          
+							    
+							</div>
+					 <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+							<?php echo $this->getChildHtml('addtocart') ?>
+							
+							<span class="delivery-date">預計最快送貨日期: <span class="date">2015-11-10</span></span>
+							<div class="share-links">
+								<ul class="social-links">
+									<li><a href="#"><img src="<?php echo $this->getskinurl("images/side-fb-link.png")?>" alt="" /></a></li>
+									<li><a href="#"><img src="<?php echo $this->getskinurl("images/side-tt-link.png")?>" alt="" /></a></li>
+									<li><a href="#"><img src="<?php echo $this->getskinurl("images/side-print-link.png")?>" alt="" /></a></li>
+									<li><a href="#"><img src="<?php echo $this->getskinurl("images/side-insta-link.png")?>" alt="" /></a></li>
+								</ul>
+								<div class="external-links">
+								<?php if ($this->canEmailToFriend()): ?>
+									<a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>" class="mail-to-frnd"><i class="icon-mail-link">&nbsp;</i><span>電郵至朋友</span></a>
+								<?php endif ?>	
+								<?php if ($this->helper('wishlist')->isAllow()) : ?>
+								<?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
+									<a href="<?php echo $_wishlistSubmitUrl ?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;"class="mail-to-frnd"><i class="icon-wishlist-link">&nbsp;</i><span>加到願望清單</span></a>
+									<?php endif ?>	
+								</div>
+							</div>
+					</form>	
+	
+		<script type="text/javascript">
+
+
+		startpos= jQuery('#ad_sidebar').offset().top;
+		jQuery(document).ready(function(){
+		  startpos= jQuery('#ad_sidebar').offset().top;
+		});
+		window.onload = function(){
+		  startpos= jQuery('#ad_sidebar').offset().top;
+		};
+
+		jQuery(window).scroll(function() {
+		 var fixright = jQuery('#ad_sidebar').offset().left;	
+	     var stoppos = jQuery('.diamond-details').offset().top;
+	     stoppos= stoppos+jQuery('.diamond-details').height();
+	     stoppos= stoppos-jQuery('#ad_sidebar').height();
+	 	
+		
+					 var currentScroll = jQuery('html').scrollTop() || jQuery('body').scrollTop();
+					 var targetScroll = jQuery('#ad_sidebar').position().top;
+			if(jQuery(window).width()<767){
+					if (currentScroll>stoppos) {
+						var fixtop = stoppos-currentScroll;
+						jQuery('#ad_sidebar').css({position:"fixed ",bottom:fixtop+"px"});
+						 return;			
+					}
+
+				 if (currentScroll>startpos) {
+				  jQuery('#ad_sidebar').css({"height":"50%","position":"fixed ","bottom":"0px"});
+
+
+				} else if (currentScroll<startpos) {
+				   jQuery('#ad_sidebar').css({position:"relative ",top:" ","bottom":" "});
+			 
+				  }	
+				
+			
+			}
+			else{	 	 
+					if (currentScroll>stoppos) {
+						var fixtop = stoppos-currentScroll;
+						jQuery('#ad_sidebar').css({"max-width":"274px",position:"fixed ",top:fixtop+"px","left":fixright+"px"});
+						 return;			
+					}
+
+				 if (currentScroll>650) {
+				  jQuery('#ad_sidebar').css({"max-width":"274px",position:"fixed ",top:"10px","left":fixright+"px"});
+
+
+				} else if (currentScroll<650) {
+				   jQuery('#ad_sidebar').css({position:"relative ",top:"","left":""});
+			        
+				  }			
+			}
+		});
+	</script>	
+	
+
+				
+						
+			

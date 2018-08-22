@@ -1,0 +1,26 @@
+		<li>
+			    <div class="contact-info">
+							<h6>聯絡資料</h6>
+							<div class="contact-detail">
+								<span><?php echo $this->escapeHtml($this->getCustomer()->getName()) ?></span>
+								<span><?php echo $this->escapeHtml($this->getCustomer()->getEmail()) ?></span>
+							</div>
+							<a href="<?php echo $this->getChangePasswordUrl() ?>" class="change-password">更改密碼</a>
+							<a href="<?php echo $this->getUrl('customer/account/edit') ?>" class="edit">編輯</a>
+                     </div>
+		</li>
+		
+      <li>
+				<div class="communication">
+							<h6>比格奧通訊</h6>
+							<a href="#" class="subscribe">
+							<?php if( $this->getIsSubscribed() ): ?>
+							你已訂閱一般通訊
+							  <?php else: ?>
+							     <?php echo $this->__('You are currently not subscribed to any newsletter.') ?>
+                        <?php endif; ?>
+							</a>
+							<a href="<?php echo $this->getUrl('newsletter/manage') ?>" class="edit">編輯</a>
+						</div>
+		</li>		
+

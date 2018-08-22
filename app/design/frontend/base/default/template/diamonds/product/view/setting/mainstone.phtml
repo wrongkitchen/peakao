@@ -1,0 +1,37 @@
+<?php /* @var $this Ikantam_Diamonds_Block_Product_View_Setting_Mainstone */ ?>
+
+<?php if ($this->isActive()): ?>
+    <?php $diamond = $this->getDiamond(); ?>
+    <ul>
+        <li class="list-title">Main Stone:</li>
+        <li>Type: 100% Earth mined Diamonds</li>
+        <li>Carat Weight: <?php echo $diamond->getAttributeText('carat'); ?>
+            Carat
+        </li>
+        <?php if ($this->helper('diamonds/set')->isLooseDiamond($diamond)): ?>
+            <li>Color:<?php echo $diamond->getAttributeText('color_loose'); ?></li>
+        <?php else : ?>
+            <li>Color:<?php echo $diamond->getAttributeText('color_fancy'); ?></li>
+        <?php endif; ?>
+
+        <li>Clarity:<?php echo $diamond->getAttributeText('clarity'); ?>
+        </li>
+        <li>Cut: <?php echo $diamond->getAttributeText('cut'); ?>
+        </li>
+        <li>Shape: <?php echo $diamond->getAttributeText('diamond_shape'); ?>
+        </li>
+        <li>Measurements: <?php echo $diamond->getDepth1(); ?> x
+            <?php echo $diamond->getLength(); ?> x <?php echo $diamond->getWidth(); ?>mm
+        </li>
+        <li>Total Depth/Table: <?php echo $diamond->getDepth2(); ?>%/
+            <?php echo $diamond->getTable2(); ?>;%
+        </li>
+        <li>Certificate#:<?php echo $diamond->getCertificateNumber(); ?>
+            <?php echo $diamond->getAttributeText('laboratory'); ?> (online verification)
+        </li>
+        <li>Certificate Issue Date: <?php echo $diamond->getCertificationDate(); ?>
+        </li>
+        <li>Insurance Replacement Value <?php echo $diamond->getEstimatedRetailValue(); ?>$
+        </li>
+    </ul>
+<?php endif; ?>

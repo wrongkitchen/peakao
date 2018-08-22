@@ -1,0 +1,46 @@
+<?php
+$config = $this->helper('diamonds/config');
+$widthSlider = $config->getWidthSlider();
+?>
+<h2>Carat</h2>
+<div class="price-ranger" style="width: <?php echo $widthSlider ?>px;">
+    <div class="inline-ranger-slider">
+        <div id="carat_slider"></div>
+    </div>
+    <input type="text" id="minCarat" class="sliderCaratValue formField svlft inline-range" name="attributes[carat][min]" data-index="0" value="<?php echo $config->getMinCaratSlider() ?>"/>
+    <label class="inline-range">to</label>
+    <input type="text" id="maxCarat" class="sliderCaratValue formField slidRight inline-range" name="attributes[carat][min]" data-index="1" value="<?php echo $config->getMaxCaratSlider() ?>" />
+</div>
+<script type="text/javascript" >
+    jQuery(function(jQuery){
+        /*Carat-----*/    
+        jQuery("#carat_slider").slider({
+            range: true,
+            min: <?php echo $config->getMinCaratSlider() ?>,
+            max: <?php echo $config->getMaxCaratSlider() ?>,
+            step:  <?php echo $config->getStepCaratSlider() ?>,
+            values: [<?php echo $config->getMinCaratSlider() ?>, <?php echo $config->getMaxCaratSlider() ?>],
+            slide: function(event, ui) {
+                for(var i = 0; i < ui.values.length; ++i) {
+                    jQuery("input.sliderCaratValue[data-index=" + i + "]").val(ui.values[i]);
+                }
+            }
+        });
+
+        jQuery("input.sliderCaratValue").change(function() {
+            var $this = jQuery(this);
+            jQuery("#carat_slider").slider("values", $this.data("index"), $this.val());
+        });
+        
+        var getDataCarat = function(){
+        
+            var minCarat = jQuery( "#minCarat" ).val();
+            var maxCarat = jQuery( "#maxCarat" ).val();
+                
+            if(minCarat != 0 && maxCarat != 0){
+                return { min : minCarat, max : maxCarat};
+            }
+        };
+        diamondsFilter.registerFilter("carat", getDataCarat);
+    });
+</script>

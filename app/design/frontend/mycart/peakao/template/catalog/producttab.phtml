@@ -1,0 +1,109 @@
+<?php 
+ $totalPerPage = 10;
+ $storeId    = Mage::app()->getStore()->getId();
+ $productsviews = Mage::getResourceModel('reports/product_collection')       
+	->addAttributeToSelect('*')
+	->addAttributeToSelect(array('name', 'price', 'small_image'))
+	->setStoreId($storeId)
+	->addStoreFilter($storeId)
+	->addviewscount()
+	->setPageSize(5)
+    ->setCurPage(1);
+?>
+
+<?php 
+$recents = array();
+$orders = Mage::getModel('sales/order')->getCollection()
+                     ->setOrder('created_at','DESC')
+                     ->setPageSize(5)
+                     ->setCurPage(1);
+                      
+foreach($orders as $order):
+    $is = $order->getAllItems();
+	
+    foreach($is as $i):
+
+     $product = Mage::getmodel("catalog/product")->load($i->getproduct_id()); 
+	  if(!in_array($product,$recents) && $product->getsku()){
+      $recents[] = $product;
+	  }
+    endforeach;
+endforeach;
+
+ ?>
+
+
+<li>
+<h2>最近購買產品</h2>
+<div class="slider-small recentslider">
+<?php foreach($recents as $view):
+ ?>
+ <div class="item">
+<figure>
+<a href=<?php echo $view->getproducturl()?>>
+<img alt="ring" src="<?php echo  Mage::helper('catalog/image')->init($view,'image')->resize(168, 152);?>" />
+</a>
+</figure>
+<h3><?php echo $view->getname() ?></h3>
+<span class="label-value"><span class="normal">18kt</span> 白金 <span class="normal">(0.75 CTW)</span> ，圓形鑽石</span>
+<div class="star-label clearfix"><span class="rating">4.2</span>
+<div class="star-wrap"><span>(共有3個評慏）</span></div>
+</div> 
+<span class="norm"><?php echo  Mage::helper('core')->currency($view->getPrice(), true, false)?> </span> <span class="value-norm">+ 鑽石</span>
+</div>
+<?php endforeach ?>
+</div>
+</li>
+<script type="text/javascript">
+jQuery(".recentslider").owlCarousel({
+            items: 1,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplayHoverPause: true,
+            nav: true,
+			dots: false,
+            navRewind: true,   
+            loop: true,
+            navText: ["<img alt='' src='<?php echo $this->getskinurl('images/prev-icon.png')?>' />",
+			"<img alt='' src='<?php echo $this->getskinurl('images/next-icon.png')?>'  />"]
+        });
+</script>
+
+
+<li>
+<h2>瀏覽次數最多的產品</h2>
+<div class="slider-small reviewsslider"> 
+<?php 
+foreach($productsviews as $view):?>
+<div class="item">
+<figure>
+<a href="<?php echo $view->getproducturl() ?>">
+<img alt="ring" src="<?php echo  Mage::helper('catalog/image')->init($view,'image')->resize(168, 152);?>" />
+</a>
+</figure>
+<h3><?php echo $view->getname() ?></h3>
+<span class="label-value"><span class="normal">18kt</span> 白金 <span class="normal">(0.75 CTW)</span> ，圓形鑽石</span>
+<div class="star-label clearfix"><span class="rating">4.2</span>
+<div class="star-wrap"><span>(共有3個評慏）</span></div>
+</div> 
+<span class="norm"><?php echo  Mage::helper('core')->currency($view->getPrice(), true, false)?> </span> <span class="value-norm">+ 鑽石</span>
+</div>
+<?php
+endforeach;
+?>
+</div>
+</li>
+<script type="text/javascript">
+jQuery(".reviewsslider").owlCarousel({
+            items: 1,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplayHoverPause: true,
+            nav: true,
+			dots: false,
+            navRewind: true,   
+            loop: true,
+            navText: ["<img alt='' src='<?php echo $this->getskinurl('images/prev-icon.png')?>' />",
+			"<img alt='' src='<?php echo $this->getskinurl('images/next-icon.png')?>'  />"]
+        });
+</script>

@@ -1,0 +1,106 @@
+<?php
+ $auction = $this->getAuction();
+ if($auction)
+ {
+	$lastBid = $this->getLastbid();
+	$url_history = $this->getHistoryUrl();	
+	
+	$currentPrice = $lastBid->getPrice() ? $lastBid->getPrice() : $auction->getInitPrice();
+		//timeleft
+	$now_time = Mage::getModel('core/date')->timestamp(time());
+	$end_time = strtotime($auction->getEndTime() .' '. $auction->getEndDate());
+?>
+<?php	
+	if($auction->getStatus()==4)
+	{
+		$min_next_price = $auction->getMinNextPrice();
+		$max_next_price = $auction->getMaxNextPrice();
+	?>
+	
+	   <?php
+		$product =  Mage::registry("current_product"); 
+	   $price= $product->getprice();
+        $currentPrice = Mage::helper('core')->currency($currentPrice,true,false) ;
+		preg_match("/[^0-9]+(.+)[\.](.+)/i",$currentPrice, $matches);
+		$currentPrice = Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol();
+		$currentPrice .= "<strong>".$matches[1]."<small>.".$matches[2]."</small></strong>";
+		?>
+		<h2 id="current_price"><span class="float-text">現在價格</span><?php echo $currentPrice?></h2>
+		<ul class="price-time-side">
+			<li><strong>一般市價:</strong> <span><?php echo Mage::helper('core')->currency($price,true,false) ?></span></li>
+				<li><strong>投標数:</strong> <span id="total_bid"><a style ="color:#8882aa" href="<?php echo $url_history ?>" >
+				<?php echo $this->getTotalBid()?>次
+				</a></span></li>
+				<li><strong>投標人:</strong> <span id="bidder"><a style ="color:#8882aa" href="<?php echo $url_history ?>" >
+				<?php echo $lastBid->getBidderName() ? $lastBid->getBidderName() : $this->__('暫無') ?>
+				</a></span></li>
+				<li><strong>起始價格：</strong> <span>
+				<?php echo Mage::helper('core')->currency($auction->getInitPrice(),true,false) ?></span></li>
+						<li><strong>開始時間：</strong> <br /><span>
+							<?php 
+							$zenddate =new Zend_Date($auction->getStartDate().' '.$auction->getStartTime(),null, 'en_GB');
+						
+							echo $zenddate->get(Zend_Date::YEAR)."年 ".$zenddate->get(Zend_Date::MONTH)."月 "
+							.$zenddate->get(Zend_Date::DAY)."日 "."<br>".
+							$zenddate->get(Zend_Date::HOUR)."時 ".$zenddate->get(Zend_Date::MINUTE)."分 "
+							.$zenddate->get(Zend_Date::SECOND)."秒";
+		
+							?></span>
+						</li>
+				<li><strong>結束時間：</strong><br /> <span>
+			<?php 			$zenddate =new Zend_Date($auction->getEndDate().' '.$auction->getEndTime(),null, 'en_GB');
+					
+						echo $zenddate->get(Zend_Date::YEAR)."年 ".$zenddate->get(Zend_Date::MONTH)."月 "
+						.$zenddate->get(Zend_Date::DAY)."日 "."<br>".
+						$zenddate->get(Zend_Date::HOUR)."時 ".$zenddate->get(Zend_Date::MINUTE)."分 "
+						.$zenddate->get(Zend_Date::SECOND)."秒"; ?>
+				</span></li>
+
+		</ul>
+		
+
+	<?php 
+$min_next_price_nonce = str_replace('<span class="price">','',Mage::helper('core')->currency($min_next_price));
+$min_next_price_nonce = str_replace('</span>','',$min_next_price_nonce);
+$min_next_price_nonce = $this->__('Your bid must be greater than or equal to') .' '.$min_next_price_nonce ;
+$max_next_price_nonce = str_replace('<span class="price">','',Mage::helper('core')->currency($max_next_price));
+$max_next_price_nonce = str_replace('</span>','',$max_next_price_nonce);
+$max_next_price_nonce = $this->__('Your bid must be less than or equal to') .' '. $max_next_price_nonce;
+?>
+<input type="hidden" id="min_next_price" name="min_next_price" value="<?php echo $min_next_price ?>"/>
+<input type="hidden" id="min_next_price_nonce" name="min_next_price_nonce" value="<?php echo $min_next_price_nonce ?>"/>
+<input type="hidden" id="max_next_price" name="max_next_price" value="<?php echo $max_next_price ?>"/>
+<input type="hidden" id="max_next_price_nonce" name="max_next_price_nonce" value="<?php echo $max_next_price_nonce ?>"/>
+<input type="hidden" id="codecolor" name="codecolor" value="0"/>
+	<?php } elseif($auction->getStatus()==5){ //completed?> 
+		<table class="auction_info">
+			<tr class="row">
+				<td class="title"><?php echo $this->__('Bids')?>:</td>
+				<td class="value">
+					<a href="<?php echo $url_history ?>" >
+						<?php echo $this->getTotalBid() ?>
+					</a>
+				</td>
+			</tr>		
+			<tr class="row">
+				<td class="title"><?php echo $this->__('Closing Price')?>:</td>
+				<td class="value "><?php echo Mage::helper('core')->currency($currentPrice) ?></td>
+			</tr>
+			<tr class="row">
+				<td class="title"><?php echo $this->__('Winner')?>:</td>
+				<td class="value"><?php echo $this->getWinnerList($auction->getId())?></td>
+			</tr>		
+			<tr class="row">
+				<td class="title"><?php echo $this->__('Start Time')?>:</td>
+				<td class="value"><?php echo $this->formatDate(new Zend_Date($auction->getStartDate().' '.$auction->getStartTime(),null, 'en_GB'),'medium',true) ?></td>
+			</tr>			
+			<tr class="row">
+				<td class="title"><?php echo $this->__('Close Time')?>:</td>
+				<td class="value"><?php echo $this->formatDate(new Zend_Date($auction->getEndDate().' '.$auction->getEndTime(),null, 'en_GB'),'medium',true) ?></td>
+			</tr>
+		</table>		
+<?php	
+	}
+ }
+?> 
+	

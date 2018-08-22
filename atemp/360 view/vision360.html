@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="user-scalable=no" />
+    <title>V360 viewer </title>
+    <link href="css/vision360.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="javascripts/vision360.js"></script>
+	<script type="text/javascript" src="javascripts/w.js"></script>
+</head>
+<body>
+    <div class='main'>
+        <div class='big'>
+            <div class='frameContainer'>
+                <div>
+                    <a href='http://v360.in' target='_blank'>
+                        <img id='myCanvas' src='' style='position: absolute; z-index: 9; left: 0; display: none;'
+                            width='70px' />
+                    </a>
+                    <div id='zoomimg' style='display: none;'>
+                    </div>
+                    <a href='http://v360.in' target='_blank' id='watermark' class='position3' style='background-size: 100% 100%;
+                        display: none;'></a><a href='http://v360.in' target='_blank' id='FixedWaterMark'
+                            class='position1' style='display: none;'></a>
+                </div>
+            </div>
+            <div id='prelod' style='display: none;'>
+            </div>
+            <div class='buttons' style='display: none;'>
+                <div id='ty' style='text-align: center;' class='divbtnpos'>
+                    <div class='btnpos hidemodel'>
+                        <img src='' id='next' alt='next' class='button' title='Next Angle of image' />
+                    </div>
+                    <div class='btnpos hidemodel'>
+                        <img src='' id='previous' alt='' class='button' title='Previous Angle of image' />
+                    </div>
+                    <div class='btnpos hidemodel'>
+                        <img src='' id='pause' alt='Play/Pause' class='button' title='Click for Play / Pause' />
+                    </div>
+                    <div class='btnpos hidemodel'>
+                        <img src='' id='reverse' alt='Reverse' class='button' title='Click for Reverse' style='display: block !important;' />
+                    </div>
+                    <div class='btnpos hidemodel'>
+                        <img id='grey' alt='Grey' class='button' title='Grey Scale' src='' />
+                    </div>
+                    <div class='btnpos'>
+                        <a href='#' data-reveal-id='myModal1'>
+                            <img id='info' alt='info' title='info' src='' class='button' style='border: none' /></a>
+                    </div>
+                </div>
+                <div id='trfv' style='text-align: center;' class='divbtnpos'>
+                    <div class='btnpos hidemodel'>
+                        <img id='360view' data-fvid='0' alt='360 View' class='SideView' title='360 View'
+                            src='' />
+                    </div>
+                    <div class='btnpos hidemodel'>
+                        <img id='frontview' data-fvid='1' alt='Front View' class='SideView' title='Front View'
+                            src='' />
+                    </div>
+                    <div class='btnpos hidemodel'>
+                        <img id='rightview' data-fvid='4' alt='Left View' class='SideView' title='Left View'
+                            src='' />
+                    </div>
+                    <div class='btnpos hidemodel'>
+                        <img id='backview' data-fvid='3' alt='Back View' class='SideView' title='Back View'
+                            src='' />
+                    </div>
+                    <div class='btnpos hidemodel'>
+                        <img id='leftview' data-fvid='2' alt='Right View' class='SideView' title='Right View'
+                            src='' />
+                    </div>
+                    
+                    <div class='btnpos hidemodel'>
+                        <img id='zoomstart' alt='zoom' class='button' title='Zoom' src='' />
+                    </div>
+                </div>
+                <table>
+                    <tr>
+                        <td colspan='6' align='center'>
+                            <div id="slider">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan='6'>
+                        </td>
+                    </tr>
+                </table>
+                <table style="display: none;">
+                    <tr>
+                        <td colspan='6' style='text-align: center;'>
+                            <b style='color: #D06F0D;'>Move your cursor in the direction, in which you want to rotate
+                                Diamond.</b><br />
+                            <span class='quality'><b>Quality: </b><span id='1' class='tooltip' title='Normal Quality View'>
+                                N</span> | <span id='2' class='tooltip' title='High Quality View'>H</span> | <span
+                                    id='3' class='tooltip' title='Very High Quality View'>VH</span></span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class='skill_bar' style="display: none;">
+                <div class='skill_bar_progress skill_one'>
+                </div>
+            </div>
+        </div>
+        <div id='myModal1' class='reveal-modal' >
+            <div class='info' id='divinfo'>
+            </div>
+            <br />
+            <a class='close-reveal-modal'>x</a></div>
+    </div>
+    <div id="customLable" style="display: none; color: #D06F0D; font-weight: bold;">
+        Eye-scan View
+    </div>
+    <div id='divpretmp' style='display: none;'>
+    </div>
+   </body>
+</html>

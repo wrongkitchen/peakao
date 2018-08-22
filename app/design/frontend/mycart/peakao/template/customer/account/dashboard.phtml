@@ -1,0 +1,51 @@
+		<?php $customer =$this->getcustomer()?>
+
+							
+                        	<article class="article">
+                        		<h3>我的版面</h3>
+								<div class="divider">
+								<span><img src="<?php echo $this->getskinurl("images")?>/popup-diamond.png" alt="" /></span>
+							</div>
+                        		<div class="thank-you">
+                        			<span>
+                        				<img src="<?php echo $this->getskinurl("images")?>/okay.png" alt="" />
+                        				非常感謝您的註冊！
+                        			</span>
+                        		</div>
+                        		<div class="hello"><span>您好，</span> <strong><?php echo $customer->getname()?>!</strong></div>
+                        		<span class="browse">您可以在你的版面瀏覽最近的帳戶活動和更新您的帳戶資料，點選以下連結並編輯您的資料。</span>
+                        		<div class="discount">
+                        			<ul class="off clearfix">
+                        				<li>
+                        					<strong>6</strong>
+                        				</li>
+                        				<li>
+                        					<span class="bold">0</span>
+                        					<span class="light">%off</span>
+                        				</li>
+                        			</ul>
+                        			<div class="about-offer">
+                        				<div class="about-offer-head">
+                        					<strong><img src="<?php echo $this->getskinurl("images")?>/fold.png" alt="" /></strong>
+                        					<span>
+                        						<small>本周</small>
+                        						<small>限定</small>
+                        					</span>
+                        				</div>
+                        				<p>peakao精選一系列戒指特價發售，不要錯過向心愛的人表達心意的機會！</p>
+                        			</div>
+                        		</div>
+                        		<div class="account-info">
+                        			<ul>
+                        				<li>
+                        					<h5>帳戶資料</h5>
+                        				</li>
+                        			  <?php echo $this->getChildHtml('info') ?>
+                        	          <?php echo $this->getChildHtml('address') ?>
+                 
+                        			</ul>
+                        		</div>
+                        	</article>
+                
+
+				

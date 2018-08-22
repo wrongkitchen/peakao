@@ -1,0 +1,20 @@
+
+<?php $banners = $this->fetchbanner();
+$size = $banners->getsize();
+if($size>1){
+	$rand = mt_rand(0, $size-1);
+	$i = 0;
+	foreach($banners as $v){
+		if ($i== $rand) {$banner =$v ; break;}
+		$i++;
+	}
+
+}
+else{$banner = $banners ->getfirstItem(); }
+?>
+
+		<a href="<?php echo $banner->getlink()?>"><img src="<?php echo $banner->getimage()?>" alt="" /></a>
+		<?php if($banner->gettitle): ?><div class="top-text">
+			<span><?php echo $banner->gettitle()?></span>
+		</div>
+<?php endif ?>

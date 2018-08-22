@@ -1,0 +1,25 @@
+<section class="account-section ringadvisor-section ringadvisor-section-new">
+<div class="container"><ol class="breadcrumb">
+ <li><a href="<?php echo $this->getbaseurl()?>"><?php echo $this->__("Home")?></a></li>
+<script type="text/javascript">
+var styleurl = "<?php echo $this->geturl("ringadvisor/ajax/style")?>";
+var styleFilter = new Advisor.styleFilter(styleurl); 
+var caraturl = "<?php echo $this->geturl("ringadvisor/ajax/carat")?>";
+var caratFilter = new Advisor.caratFilter(caraturl);   
+</script>
+<li><a href="#"><?php echo $this->__("Ring Advisor")?></a></li>
+</ol>
+<h1 class="hidden-xs"><?php echo $this->__("Ring Advisor")?></h1>
+<div class="overlayBlock" style="display: none;"></div>
+<div class="account-content clearfix">
+<?php echo $this->getchildhtml("steps")?>
+<article class="article tab-article">
+<?php echo $this->getchildhtml("style")?>
+<?php echo $this->getchildhtml("quality")?>
+<div id="recommend_result">
+
+<div>
+</article>
+</div>
+</div>
+</section>

@@ -1,0 +1,141 @@
+<?php /* @var $this Ikantam_Diamonds_Block_Product_Compare_List */ ?>
+<?php $compare = new Ikantam_Diamonds_Model_Compare();
+$_items = $compare->getDiamondsCollection(); ?>
+<?php if ($_items->getSize() == 0): /*$this->getItems()*/?>
+    <p class="note-msg"><?php echo $this->__('There are no products for compare.') ?></p>
+<?php else: ?>
+    <?php $_helper = $this->helper('diamonds'); ?>
+    <?php //$_items = $this->getItems(); ?>
+
+    <div class="products-grid"> <!--class="products-grid row-fluid show-grid hidden-phone"-->
+        <table cellspacing="0" cellpadding="0" border="0" id="ikantam_product_comparison"
+               class="ikantam_jewelry_summary_table data-table"> <!--data-table compare-table-->
+            <!--<thead>-->
+            <tbody>
+                <tr>
+                    <td>&nbsp;</td>
+                    <?php /* products viewes */ ?>
+                    <?php foreach ($_items as $num => $_item): ?>
+                        <td>
+                            <div class="item <?php if ($num == 0) echo 'first'; ?>">
+                                <div class="item-inner">
+                                    <a
+                                        href="<?php echo $_helper->getDiamondUrl($_item); ?>"
+                                        title="<?php echo $_item->getName(); ?>"
+                                        class="product-image" id="product_<?php echo $_item->getId(); ?>">
+                                        <div class="pic">
+                                            <img
+                                                src="<?php echo $this->helper('catalog/image')->init($_item, 'small_image'); ?>" 
+                                                alt="<?php echo $_item->getName(); ?>">
+                                        </div>
+                                    </a>
+                                    <h2 class="product-name">
+                                        <a
+                                            href="<?php echo $_helper->getDiamondUrl($_item); ?>"
+                                            title="<?php echo $_item->getName(); ?>">
+                                                <?php echo $_item->getName(); ?>
+                                        </a>
+                                    </h2>
+                                    <?php echo $this->getPriceHtml($_item, true) ?>
+                                    <div>
+                                        <button type="button" class="button" onclick="location.href='<?php echo $_helper->getAddToRingUrl($_item); ?>'" >
+                                            <span><?php echo $this->__('Add to ring') ?></span>
+                                        </button>
+                                        <br>
+
+                                        <?php if ($_item->isSaleable()): ?>
+                                            <button type="button" class="button" onclick="location.href='<?php echo $this->helper('checkout/cart')->getAddUrl($_item) ?>'" >
+                                                <span><?php echo $this->__('Add to cart') ?></span>
+                                            </button>
+                                        <?php endif; ?>
+
+                                        <button type="button" title="Remove" class="button btn-Ring"
+                                                onclick="IkD.compareAjax.removeProduct('<?php echo $this->helper('diamonds')->getRemoveFromCompareUrl($_item); ?>',jQuery('#compare-list'));">
+                                            <span><span>Remove</span> </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    <?php endforeach; ?>
+                </tr>
+                <!--</thead>
+                <tbody>-->
+                <?php if ($this->getAttributes()):
+                    foreach ($this->getAttributes() as $_attribute):
+                        ?>
+                        <tr>
+                            <th><span class="nobr"><?php echo $_attribute->getStoreLabel(); ?></span></th>
+                            <?php foreach ($_items as $_item): /*$this->getItems()*/?>
+                                <td><div class="std"><?php echo $this->getProductAttributeValue($_item, $_attribute); ?></div></td>
+                        <?php endforeach; ?>					
+                        </tr>
+                    <?php endforeach;
+                endif;
+                ?>
+            </tbody>
+        </table>
+    </div>
+
+    <script type="text/javascript">
+        decorateTable('ikantam_product_comparison');
+    </script>
+    <!--<div class="products-grid row-fluid show-grid visible-phone">
+            <table width="100%" cellspacing="0" cellpadding="0" border="0"
+                    class="summary_table_phone table table-striped table-bordered ">
+    <?php //foreach ($_items as $num => $_item):  ?>
+                        <thead>
+                                <tr>
+                                        <td colspan="2"><div class="item first ">
+                                                        <div class="item-inner">
+                                                                <a
+                                                                        href="<?php //echo $_helper->getDiamondUrl($_item);  ?>"
+                                                                        title="<?php //echo $_item->getName();  ?>"
+                                                                        class="product-image" id="product_<?php //echo $_item->getId();  ?>">
+                                                                        <div class="pic">
+                                                                                <img
+                                                                                        src="<?php //echo $this->helper('catalog/image')->init($_item, 'small_image');  ?>" 
+                                                                                        alt="<?php //echo $_item->getName();  ?>"
+                                                                                        width="226">
+                                                                        </div>
+                                                                </a>
+                                                                <h2 class="product-name">
+                                                                        <a
+                                                                                href="<?php //echo $_helper->getDiamondUrl($_item);  ?>"
+                                                                                title="<?php //echo $_item->getName(); ?>"><?php //echo $_item->getName(); ?></a>
+                                                                </h2>
+    <?php //echo $this->getPriceHtml($_item, true)  ?>
+                                                                <div class="actions">
+                                                                        <button type="button" class="button" onclick="location.href='<?php //echo $_helper->getAddToRingUrl($_item);  ?>'" >
+                                                        <span><?php //echo $this->__('Add to ring')  ?></span>
+                                                </button>
+                                                                        <br>
+                                                                        
+    <?php //if ($_item->isSaleable()):  ?>
+                                                            <button type="button" class="button" onclick="location.href='<?php //echo $this->helper('checkout/cart')->getAddUrl($_item)  ?>'" >
+                                                                    <span><?php //echo $this->__('Add to cart') ?></span>
+                                                            </button>
+    <?php //endif;  ?>
+                                                                        
+                                                                        <button type="button" title="Remove" class="button btn-Ring"
+                                                                                onclick="IkD.compareAjax.removeProduct('<?php //echo $this->helper('diamonds')->getRemoveFromCompareUrl($_item);  ?>',jQuery('#compare-list'));">
+                                                                                <span><span>Remove</span> </span>
+                                                                        </button>
+                                                                </div>
+                                                        </div>
+                                                </div></td>
+                                </tr>
+                        </thead>
+                        <tbody>
+    <?php //foreach ($this->getAttributes() as $_attribute):  ?>
+                                            <tr>
+                                                    <td><?php //echo $_attribute->getStoreLabel();  ?></td>
+                                                    <td><?php //echo $this->getProductAttributeValue($_item, $_attribute); ?></td>
+                                            </tr>
+    <?php //endforeach; ?>
+                        </tbody>
+    <?php //endforeach;  ?>
+            </table>
+    </div>-->
+
+<?php endif; ?>

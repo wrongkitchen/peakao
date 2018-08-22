@@ -1,0 +1,40 @@
+<?php
+/* @var $config Ikantam_Diamonds_Helper_Config */
+$config = $this->helper('diamonds/config');
+$widthSlider = $config->getWidthSlider();
+?>
+
+<div class="set-option-wrap">
+<a id="clear-filter" class="know-more-btn reset-field" href="javascript:void(0);"><span><?php echo $this->__("Reset Filters")?></span></a>
+<div class="reset-contnet-wrap clearfix">
+<div class="content-option-left">
+<form method="post" id="constructor" >
+<div class="diamond-shapes">
+<h5><?php echo $this->__("Metal")?></h5>
+  <?php echo $this->getChildHtml('filter_metal'); ?>
+</div>
+
+		
+</div>
+<div class="content-option-right">
+
+<div class="desktop-size  price-slide">
+<h5><?php echo $this->__("Price")?></h5>
+  <?php echo $this->getChildHtml('filter_price'); ?>
+</div>
+
+
+
+</div>
+</div>
+</div>
+</form>
+
+<script type="text/javascript">	
+        /*Filter-----*/
+
+        jQuery("#clear-filter").click(function () {
+            diamondsFilter.resetFilters();
+        });
+
+</script> 

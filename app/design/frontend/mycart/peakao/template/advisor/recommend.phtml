@@ -1,0 +1,119 @@
+<?php 
+$setting = array_values($this->getsetting());
+$diamond = array_values($this->getdiamond());
+
+$col = $this->cartesian($diamond,$setting);
+
+?>
+<div id="ringtab3" class="tab-section-three">
+<span class="selection-text">我們有以下推介。</span>
+<div class="tab-content">
+<div class="content-1">
+<div id="recshow">
+<?php echo $this->getlayout()->createblock("core/template")
+		->settemplate("advisor/recshow.phtml")->sets($setting[0])->setd($diamond[0])->tohtml();
+?>
+		</div>
+</div>
+<?php 
+if(count($col)>0):
+?>
+<div class="content-2">
+<div class="content-head">
+<h2><span>2</span>其他推介</h2>
+<a class="popup-btn <?php echo count($col)<8 ? "disable grey-btn" : ""  ?> pos-a" href="#" type="submit"> 觀看更多款式 </a>
+</div>
+<ul class="rings-display clearfix">
+<?php foreach($col as $k=>$v):if ($k==8) break?>
+<li class="<?php echo $k==0 ? "active":""?>"
+data-d="<?php echo $v[0] ?>"
+data-s="<?php echo $v[1] ?>">
+<div class="rec_cusor"><div class="arrow"></div></div>
+<a
+href="javascript:void(0)">
+<img alt="" 
+src="<?php echo $this->helper('catalog/image')->init(Mage::getmodel('catalog/product')->load($v[1]) , 'small_image')->resize(110, 80) ?>" />
+</a></li>
+<?php if ($k==3 && $col[$k+1]):?>
+</ul>
+<ul class="rings-display clearfix">
+<?php endif ?>
+<?php endforeach ?>
+</ul>
+
+</div>
+<?php endif ?>
+
+<div class="btn-grp">
+<a id="recomlast" class="popup-btn" href="javascript:void(0)"
+ type="submit"> 上一步 </a>
+ </div>
+</div>
+</div>
+<script type="text/javascript">
+ var d	= "<?php echo implode(",",$diamond)?>";
+ var s	= "<?php echo implode(",",$setting)?>";
+ var alls = "<?php echo implode(",",$this->getalls())?>"
+ function adjust(type){
+	 jQuery.ajax({
+            url			: "<?php echo $this->geturl("*/ajax/adjust")?>",
+			type : "POST",
+            dataType	: "html",
+            data		: {
+                   "s" :   s,
+                   "type" : type,
+                   "d" : d	,
+				   "alls" : alls
+				   
+			},
+            beforeSend	: function(){
+               Advisor.Helper.startPreloader();
+            },
+            complete	: function(){
+
+                Advisor.Helper.finishPreloader();
+            },
+            success		: function(data) {
+				jQuery('#content').append(data);
+			 // jQuery("#adjustwrape").html(data);
+            }
+        });
+ }
+
+jQuery('ul.rings-display').on("click","li",function(){ 
+ if(jQuery(this).hasClass("active")){return;}
+ jQuery(this).siblings("li").removeClass("active");
+  jQuery(this).parent("ul").siblings("ul").children("li").removeClass("active");
+ jQuery(this).addClass("active");
+ jQuery.ajax({
+            url			: "<?php echo $this->geturl("*/ajax/recshow")?>",
+			type : "POST",
+            dataType	: "html",
+            data		: {
+                   "d" :   jQuery(this).attr("data-d"),
+				   "s" : jQuery(this).attr("data-s")
+			},
+            beforeSend	: function(){
+               Advisor.Helper.startPreloader();
+            },
+            complete	: function(){
+
+                Advisor.Helper.finishPreloader();
+            },
+            success		: function(data) {
+			   jQuery("#recshow").html(data);
+            }
+        });
+})
+</script>
+<script type="text/javascript">
+jQuery('#recomlast').bind("click",function(){ 
+ jQuery('#recommendtab').removeClass('active');
+     jQuery('#recommendtab').parent('li').removeClass('active-heading');
+ jQuery('#qualitytab').addClass('active');
+    jQuery('#qualitytab').parent('li').addClass('active-heading');
+ jQuery('.tab-article > div').hide(); 
+ jQuery('.tab-article > #qualitytab').show(); 
+jQuery(jQuery('#qualitytab').attr("href")).fadeIn(100).click();	
+})
+</script>

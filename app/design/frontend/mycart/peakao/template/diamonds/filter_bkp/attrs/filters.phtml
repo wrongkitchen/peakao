@@ -1,0 +1,766 @@
+<style>
+[class^="icons-"] {
+ background-image: url("<?php echo Mage::getBaseUrl('skin') ?>/frontend/base/default/diamonds/images/series_1.png");
+ background-position: 49px 37px;
+ background-repeat: no-repeat;
+ border-radius: 3px 3px 3px 3px;
+ display: block;
+ height: 35px;
+ line-height: 14px;
+ padding-right: 4px;
+ padding-top: 5px;
+ vertical-align: text-bottom;
+ width: 49px;
+}
+
+/*    .icons-heart {
+        background-position: 8px 3px;
+    }
+    .caption.icons-heart:hover {
+        background-position: 8px -40px;
+    }
+    .icons-triangle {
+        background-position: -51px 3px;
+    }
+    .caption.icons-triangle:hover {
+        background-position: -51px -40px;
+    }
+    .icons-asscher {
+        background-position: -118px 3px;
+    }
+    .caption.icons-asscher:hover {
+        background-position: -118px -40px;
+    }
+    .icons-radiant {
+        background-position: -183px 3px;
+    }
+    .caption.icons-radiant:hover {
+        background-position: -183px -40px;
+    }
+    .icons-emerald {
+        background-position: -250px 3px;
+    }
+    .caption.icons-emerald:hover {
+        background-position: -250px -40px;
+    }
+    .icons-marquise {
+        background-position: -316px 5px;
+    }
+    .caption.icons-marquise:hover {
+        background-position: -316px -38px;
+    }
+    .icons-pear {
+        background-position: 8px -80px;
+    }
+    .caption.icons-pear:hover {
+        background-position: 8px -122px;
+    }
+    .icons-oval {
+        background-position: -50px -79px;
+    }
+    .caption.icons-oval:hover {
+        background-position: -50px -121px;
+    }
+    .icons-cushion {
+        background-position: -117px -79px;
+    }
+    .caption.icons-cushion:hover {
+        background-position: -117px -121px;
+    }
+    .icons-princess {
+        background-position: -183px -79px;
+    }
+    .caption.icons-princess:hover {
+        background-position: -183px -121px;
+    }
+    .icons-round {
+        background-position: -258px -82px;
+        -250px -80px;
+    }
+    .caption.icons-round:hover {
+        background-position: -250px -121px;
+    }
+    .icons-Marquise1 {
+        background-position: -316px -79px;
+    }
+    .caption.icons-Marquise1:hover {
+        background-position: -316px -121px;
+    }*/
+</style>
+<?php 
+    /* @var $config Ikantam_Diamonds_Helper_Config */
+    $config = $this->helper('diamonds/config');
+    $widthSlider = $config->getWidthSlider();
+?>
+
+<form method="post" id="constructor" >
+  <?php $attributeShapeOptions = $this->getAttributeOptions('diamond_shape'); ?>
+  <!--<div><h2>Shape</h2></div>
+    <div  id="shape">
+    <?php //foreach($attributeShapeOptions as $option):?>
+                    
+            <div style="float:left;width:100px;">
+                    <input type="checkbox" data-selected="false" value="<?php //echo $option->getId();  ?>"> <span><?php //echo $option->getValue(); ?></span> 
+                    <i class="icons-<?php //echo strtolower($option->getValue());  ?>"></i>
+            </div>
+    <?php //endforeach;?>
+        <div style="clear:both;float:none;"></div>-->
+  </div>
+  
+  <!--SHAPE-->
+  <div class="filters-shape">
+    <h2>Shape</h2>
+	<ul>
+    <?php /* $postFilters = $this->getRequest()->getPost('shapes_filter'); */
+        foreach ($attributeShapeOptions as $option):
+            ?>
+    <!--style="float: left;"-->
+	<li>
+    <div class="shape "  <?php //if ($postFilters){if (in_array($option->getId(), $postFilters)) echo 'active';}  ?>
+
+                 id="shape<?php echo $option->getValue(); ?>" title="<?php echo $option->getValue(); ?>" >
+      <input class="shape-input" style="display: none;" type="checkbox"  data-selected="false" value="<?php echo $option->getId(); ?>" />
+
+      <i class="icons-<?php echo strtolower($option->getValue()); ?>"></i> 
+      <!--<?php /* if ($postFilters){if (in_array($option->getId(), $postFilters)){
+          ?> data-selected="true"
+          <?php }}else { ?>
+          data-selected="false"
+          <?php } */ ?>--> 
+    </div>
+	
+      <?php if ($config->isShowShapeName()):?>
+      <span><?php echo $option->getValue(); ?></span>
+      <?php endif;?>
+	</li>
+	
+    <?php endforeach; ?>
+	</ul>
+	
+  </div>
+  <br>
+  <!--<div><h2>Carat</h2></div>  
+ <div class="carat">
+        from:	<input type="text" id="carat1" name="attributes[carat][min]" maxlength="10">
+        To:	<input type="text" id="carat2" name="attributes[carat][max]" maxlength="10">
+</div>--> 
+  
+  <!--Carat-->
+  
+  <div class="filters-carat ikantam-mage-filter-col" style="width: <?php echo $widthSlider?>px;">
+  
+    <h2>Carat</h2>
+	<div class="price-ranger" style="width: <?php echo $widthSlider?>px;">
+      <div class="inline-ranger-slider">
+        <div id="carat_slider"></div>
+      </div>
+      <input type="text" id="minCarat" class="sliderCaratValue formField svlft inline-range" name="attributes[carat][min]" data-index="0" value="<?php echo $config->getMinCaratSlider()?>"/>
+      <label class="inline-range">to</label>
+      <input type="text" id="maxCarat" class="sliderCaratValue formField slidRight inline-range" name="attributes[carat][min]" data-index="1" value="<?php echo $config->getMaxCaratSlider()?>" />
+    </div>
+  </div>
+  
+  <!--<?php //$attributeColorOptions = $this->getAttributeOptions("color_loose"); ?>
+<div><h2>Color</h2></div>
+<div id="color" class="caption">
+<?php //foreach($attributeColorOptions as $option): ?>
+                <input type="checkbox" data-selected="false" value="<?php //echo $option->getId();  ?>">
+                
+                 <span><?php //echo $option->getValue(); ?></span> 
+                
+<?php //endforeach; ?>
+</div>--> 
+  
+  <!--Color-->
+  <!--
+  WIDTH CONTROL FROM ADMIN
+  <div class="filters-color ikantam-mage-filter-col" style="width: <?php // echo $widthSlider?>px">
+  -->
+  <div class="filters-color ikantam-mage-filter-col">
+    <?php $attributeColorOptions = $this->getAttributeOptions("color_loose"); ?>
+    <h2>Color</h2>
+	<div class="price-ranger" style="width: <?php echo $widthSlider?>px;">
+      <div id="color_slider"></div>
+      <input type="hidden" id="minColor" name="attributes[color][min]" class="sliderColorValue svlft" data-index="0" value="1"/>
+      <input type="hidden" id="maxColor" name="attributes[color][max]" class="sliderColorValue slidRight" data-index="1" value="<?php echo $attributeColorOptions->getSize(); ?>" />
+    </div>
+    <div class="divisions" style="width: <?php echo $widthSlider?>px;">
+      <ul>
+        <?php $colors = array();
+
+
+                foreach ($attributeColorOptions as $option):
+                    ?>
+        <li style="float:left;  text-align: left; "> <?php echo $option->getValue(); ?> </li>
+        <!--<li style="float:left; text-align: center; width:<?php // echo floor($widthSlider/$attributeColorOptions->getSize())-4; ?>px"> &nbsp </li>-->
+        <?php $colors[] = $option->getId(); ?>
+        <?php endforeach; ?>
+      </ul>
+    </div>
+  </div>
+  <div class="clear"></div>
+  <!--<?php //$attributeClarityOptions = $this->getAttributeOptions("clarity"); ?>
+    
+    <div><h2>Clarity</h2></div>
+    <div id="clarity" class="caption">
+<?php //foreach($attributeClarityOptions as $option): ?>
+                    <input type="checkbox" data-selected="false" value="<?php //echo $option->getId();  ?>">
+                    
+                     <span><?php //echo $option->getValue();?></span> 
+                    
+<?php //endforeach; ?>
+    </div>-->
+  
+  <div class="filters-clarity ikantam-mage-filter-col" style="width: <?php echo $widthSlider?>px">
+
+    <?php $attributeClarityOptions = $this->getAttributeOptions("clarity"); ?>
+    <h2>Clarity</h2>
+	<div class="price-ranger" style="width: <?php echo $widthSlider?>px">
+      <div id="clarity_slider"></div>
+      <input type="hidden" id="minClarity" name="attributes[clarity][min]" class="sliderClarityValue svlft" data-index="0" value="1"/>
+      <input type="hidden" id="maxClarity" name="attributes[clarity][max]" class="sliderClarityValue slidRight" data-index="1" value="<?php echo $attributeClarityOptions->getSize(); ?>" />
+    </div>
+    <div class="divisions">
+      <ul>
+        <?php
+                $clarities = array();
+
+                $clarity_count = 0;
+                /*foreach ($attributeClarityOptions as $option):
+                    $clarity_count++;
+                    ?>
+                    <li style="text-align: left;"><?php echo $option->getValue(); ?></li>
+                    <li class="c-s-<?php echo $clarity_count; ?>" style="width:<?php echo floor(340 / $attributeClarityOptions->getSize() - 15); ?>px"> &nbsp </li>
+    <?php $clarities[] = $option->getId(); ?>
+<?php endforeach; */?>
+        <?php foreach ($attributeClarityOptions as $option):
+                        $clarity_count++;
+                    ?>
+        <li style="float:left;  text-align: left; "> <?php echo $option->getValue(); ?> </li>
+		<!--
+        <li style="float:left; text-align: center; width:<?php // echo floor($widthSlider/$attributeClarityOptions->getSize())-18; ?>px"> &nbsp </li>
+		-->
+        <?php $clarities[] = $option->getId(); ?>
+        <?php endforeach; ?>
+      </ul>
+    </div>
+  </div>
+  <br>
+  <!--<?php //$attributeCutOptions = $this->getAttributeOptions("cut"); ?>
+<div><h2>Cut</h2></div>
+<div id="cut" class="caption">
+    <?php //foreach($attributeCutOptions as $option): ?>
+                <input type="checkbox" data-selected="false" value="<?php //echo $option->getId(); ?>">
+                
+                 <span><?php //echo $option->getValue(); ?></span> 
+                
+        <?php //endforeach; ?>
+</div>--> 
+  
+  <div class="filters-cut ikantam-mage-filter-col" style="width: <?php echo $widthSlider?>px">
+    <?php $attributeCutOptions = $this->getAttributeOptions("cut"); ?>
+    <h2>Cut (Make)</h2>
+	<div class="price-ranger" style="width: <?php echo $widthSlider?>px">
+      <div id="cut_slider"></div>
+      <input type="hidden" id="minCut" name="attributes[cut_grade][min]" class="sliderCutValue svlft" data-index="0" value="1"/>
+      <input type="hidden" id="maxCut" name="attributes[cut_grade][max]" class="sliderCutValue slidRight" data-index="1" value="<?php echo $attributeCutOptions->getSize(); ?>" />
+    </div>
+    <div class="divisions">
+      <ul>
+        <?php $cuts = array();
+                ?>
+        <?php /*foreach ($attributeCutOptions as $option): ?>
+                    <?php if ($option->getValue() != 'Excellent') { ?>
+        <?php if ($option->getValue() == 'N/A') { ?>
+                            <li style="text-align:left; "><?php echo 'None'; ?></li>
+                            <li style="width:<?php echo floor(340 / 7 - 28); ?>px"> &nbsp </li>
+                            <?php $cuts[] = $option->getId(); ?> 
+        <?php } else { ?>
+                            <li style="text-align:left; "><?php echo $option->getValue(); ?></li>
+                            <li style="width:<?php echo floor(340 / 7 - 28); ?>px"> &nbsp </li>
+                            <?php $cuts[] = $option->getId(); ?> 
+                        <?php } ?>
+                    <?php } ?>
+
+<?php endforeach; */?>
+        <?php foreach ($attributeCutOptions as $option):
+                    ?>
+        <li style="float:left;  text-align: left; "> <?php echo $option->getValue(); ?> </li>
+		<!--
+        <li style="float:left; text-align: center; width:<?php // echo floor($widthSlider/$attributeCutOptions->getSize())-30; ?>px"> &nbsp </li>
+		-->
+        <?php $colors[] = $option->getId(); ?>
+        <?php endforeach; ?>
+      </ul>
+    </div>
+  </div>
+  
+  <!--<div><h2>Price</h2></div>  
+ <div class="carat">
+        from:	<input type="text" id="price1" name="attributes[price][min]" maxlength="10">
+        To:	<input type="text" id="price2" name="attributes[price][max]" maxlength="10">
+</div>--> 
+  
+  <div class="filters-price ikantam-mage-filter-col" style="width: <?php echo $widthSlider?>px;">
+    <h2>Price</h2>
+	<div class="price-ranger" style="width: <?php echo $widthSlider?>px;">
+      <div class="inline-ranger-slider">
+        <div id="price_slider"></div>
+      </div>
+      <span class="dollor-sign outer-none">$</span>
+      <input type="text" id="minPrice" class="sliderPriceValue formField svlft inline-range" name="attributes[price][min]" data-index="0" value="<?php echo $config->getMinPriceSlider()?>"/>
+      <label class="inline-range">to</label>
+      <span class="dollor-sign">$</span>
+      <input type="text" id="maxPrice" class="sliderPriceValue formField slidRight inline-range" name="attributes[price][min]" data-index="1" value="<?php echo $config->getMaxPriceSlider()?>" />
+    </div>
+  </div>
+  <br>
+  <div style="float:right">
+    <button  type="button" id="filter" class="button btn-Ring" title="Filter">Filter</button>
+  </div>
+</form>
+<script>
+
+    jQuery(function(jQuery){
+
+        /*Shape -----*/
+
+        jQuery.fn.toggleCheckbox = function () {
+
+            if (this.attr('data-selected') == 'false'){
+                this.attr('data-selected',"true");
+
+            } else {
+                this.attr('data-selected',"false");
+            }
+            //this.attr('checked', !this.attr('checked'));
+
+        };
+
+        jQuery('.shape').click( function () {
+            jQuery(this).find(':checkbox').toggleCheckbox();
+            jQuery(this).toggleClass('active');
+        });
+
+        var getDataShape = function(){
+            var shapes = jQuery(".shape-input");
+            var mass = new Array();
+            for(var i=0;i<shapes.length;i++){
+                var shape = jQuery(shapes[i]);
+                if(shape.attr("data-selected") == "true" ){
+                    mass.push(shape.attr("value"));
+                }		
+            }
+            return { mass : mass };
+        };
+
+        diamondsFilter.registerFilter("diamond_shape", getDataShape);
+        
+        /* 
+        
+        jQuery(".certified").click(function(){
+            jQuery(this).toggleCheckbox();
+        });
+        
+        var getDataCertified = function(){		var mass = new Array();
+            jQuery(".certified").each(function(){			if(jQuery(this).attr("data-selected") == "true" ){                    mass.push(jQuery(this).attr("value"));			}                			});
+            return { mass : mass };
+        };
+        
+        diamondsFilter.registerFilter("laboratory", getDataCertified);
+         
+        
+        
+
+        var getDataStock = function(){
+        
+            var stock = jQuery( "#stock" ).val();
+            if(stock != ''){
+                return stock;
+            }
+        };
+        
+        diamondsFilter.registerFilter("stock_number", getDataStock);
+        
+*/
+
+
+        
+        
+        /*Color-----*/
+
+        jQuery("#color_slider").slider({
+            range: true,
+            min: 1,
+            max: <?php echo $attributeColorOptions->getSize(); ?>,
+            step: 1,
+            values: [1, <?php echo $attributeColorOptions->getSize(); ?>],
+            slide: function(event, ui) {
+                for(var i = 0; i < ui.values.length; ++i) {
+                    jQuery("input.sliderColorValue[data-index=" + i + "]").val(ui.values[i]);
+                }
+            }
+        });
+
+        jQuery("input.sliderColorValue").change(function() {
+            var $this = jQuery(this);
+            jQuery("#color_slider").slider("values", $this.data("index"), $this.val());
+            
+        });  
+        
+       
+        var getDataColor = function(){
+        
+            var minColor = jQuery( "#minColor" ).val();
+            var maxColor = jQuery( "#maxColor" ).val();
+            
+           
+	
+            
+            var colors = <?php echo json_encode($colors); ?>;
+             
+            var mass = new Array();
+            for (var i = minColor-1; i < maxColor; i++){
+                mass.push(colors[i]);
+            }
+            console.log(minColor);
+            console.log(maxColor);
+            console.log(<?php echo $attributeColorOptions->getSize(); ?>);
+            if (minColor != 1 || maxColor != <?php echo $attributeColorOptions->getSize(); ?>){ 
+                return { mass : mass };
+            } 
+             
+             
+        };
+
+        diamondsFilter.registerFilter("color_loose", getDataColor);
+        
+        /*Carat-----*/    
+        jQuery("#carat_slider").slider({
+            range: true,
+            min: <?php echo $config->getMinCaratSlider()?>,
+            max: <?php echo $config->getMaxCaratSlider()?>,
+            step:  <?php echo $config->getStepCaratSlider()?>,
+            values: [<?php echo $config->getMinCaratSlider()?>, <?php echo $config->getMaxCaratSlider()?>],
+            slide: function(event, ui) {
+                for(var i = 0; i < ui.values.length; ++i) {
+                    jQuery("input.sliderCaratValue[data-index=" + i + "]").val(ui.values[i]);
+                }
+            }
+        });
+
+        jQuery("input.sliderCaratValue").change(function() {
+            var $this = jQuery(this);
+            jQuery("#carat_slider").slider("values", $this.data("index"), $this.val());
+        });
+        
+        var getDataCarat = function(){
+        
+            var minCarat = jQuery( "#minCarat" ).val();
+            var maxCarat = jQuery( "#maxCarat" ).val();
+                
+            if(minCarat != 0 && maxCarat != 0){
+                return { min : minCarat, max : maxCarat};
+            }
+        };
+        diamondsFilter.registerFilter("carat", getDataCarat);
+
+        /*Clarity----*/     
+        
+        jQuery("#clarity_slider").slider({
+            range: true,
+            min: 1,
+            max: <?php echo $attributeClarityOptions->getSize(); ?>,
+            step: 1,
+            values: [1, <?php echo $attributeClarityOptions->getSize(); ?>],
+            slide: function(event, ui) {
+                for(var i = 0; i < ui.values.length; ++i) {
+                    jQuery("input.sliderClarityValue[data-index=" + i + "]").val(ui.values[i]);
+                }
+            }
+        });
+
+        jQuery("input.sliderClarityValue").change(function() {
+            var $this = $(this);
+            jQuery("#clarity_slider").slider("values", $this.data("index"), $this.val());
+        });
+    
+    
+        var getDataClarity = function(){
+        
+            var minClarity = jQuery( "#minClarity" ).val();
+            var maxClarity = jQuery( "#maxClarity" ).val();
+                
+            var clarities = <?php echo json_encode($clarities); ?>;
+             
+            var mass = new Array();
+            for (var i = minClarity-1; i < maxClarity; i++){
+                mass.push(clarities[i]);
+            }
+            
+            if (minClarity != 1 || maxClarity != <?php echo $attributeClarityOptions->getSize(); ?>){
+                return { mass : mass };
+            }
+        };
+		
+        diamondsFilter.registerFilter("clarity", getDataClarity);
+
+        /*Cut-----*/
+        /*var sliderValue = [1, 2, 3, 4, 5, 6, 8];*/
+
+        jQuery("#cut_slider").slider({
+            range: true,
+            min: 1,
+            max: <?php echo $attributeCutOptions->getSize(); ?>,
+            step: 1,
+            values: [1, <?php echo $attributeCutOptions->getSize(); ?>],
+            slide: function(event, ui) {
+                for(var i = 0; i < ui.values.length; ++i) {
+                    /*if( sliderValue.indexOf(ui.value)===-1 ) return false;*/
+                    jQuery("input.sliderCutValue[data-index=" + i + "]").val(ui.values[i]);
+                }
+            }
+        });
+
+        jQuery("input.sliderCutValue").change(function() {
+            var $this = jQuery(this);
+            jQuery("#cut_slider").slider("values", $this.data("index"), $this.val());
+        });
+    
+    
+        var getDataCut = function(){
+        
+            var minCut = jQuery( "#minCut" ).val();
+            var maxCut = jQuery( "#maxCut" ).val();
+                
+            var cuts = <?php echo json_encode($cuts); ?>;
+             
+            var mass = new Array();
+            for (var i = minCut-1; i < maxCut; i++){
+                mass.push(cuts[i]);
+            }
+            /*console.log(minCut);
+            console.log(maxCut);
+            console.log(<?php //echo $attributeCutOptions->getSize(); ?>);*/
+            return { mass : mass };
+        };
+	
+        diamondsFilter.registerFilter("cut", getDataCut);
+    
+    
+        /*Price-----*/
+        jQuery("#price_slider").slider({
+            range: true,
+            min: <?php echo $config->getMinPriceSlider()?>,
+            max: <?php echo $config->getMaxPriceSlider()?>,
+            step: <?php echo $config->getStepPriceSlider()?>,
+            values: [<?php echo $config->getMinPriceSlider()?>, <?php echo $config->getMaxPriceSlider()?>],
+            slide: function(event, ui) {
+                for(var i = 0; i < ui.values.length; ++i) {
+                    jQuery("input.sliderPriceValue[data-index=" + i + "]").val(ui.values[i]);
+                }
+            }
+        });
+
+        jQuery("input.sliderPriceValue").change(function() {
+            var $this = jQuery(this);
+            jQuery("#price_slider").slider("values", $this.data("index"), $this.val());
+        });
+    
+    
+        var getDataPrice = function(){
+        
+            var minPrice = jQuery( "#minPrice" ).val();
+            var maxPrice = jQuery( "#maxPrice" ).val();
+                
+            if(minPrice != 0 && maxPrice != 0){
+                return { min : minPrice, max : maxPrice};
+            }
+        };
+	
+        diamondsFilter.registerFilter("price", getDataPrice);
+
+        /*Filter-----*/
+        jQuery("#filter").click(function(){
+            diamondsFilter.updateResults();
+        });
+        
+  
+        
+        
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*jQuery(function($){
+    
+    
+          $("#shape input").click(function(){
+                var selected = $(this).attr("data-selected");
+		
+                if(selected == "true"){
+                        $(this).attr("data-selected","false");
+			
+                } else {
+                        $(this).attr("data-selected", "true");
+			
+                }
+		
+        });
+
+        var getDataShape = function(){
+                var shapes = $("#shape input");
+                var mass = new Array();
+                for(var i=0;i<shapes.length;i++){
+                        var shape = $(shapes[i]);
+                        if(shape.attr("data-selected") == "true" ){
+                                mass.push(shape.attr("value"));
+                        }		
+                }
+                return { mass : mass };
+        };
+
+	
+        diamondsFilter.registerFilter("diamond_shape", getDataShape);
+        
+        
+          $("#color input").click(function(){
+                var selected = $(this).attr("data-selected");
+		
+                if(selected == "true"){
+                        $(this).attr("data-selected","false");
+			
+                } else {
+                        $(this).attr("data-selected", "true");
+			
+                }
+		
+        });
+
+        var getDataColor = function(){
+                var colors = $("#color input");
+                var mass = new Array();
+                for(var i=0;i<colors.length;i++){
+                        var color = $(colors[i]);
+                        if(color.attr("data-selected") == "true" ){
+                                mass.push(color.attr("value"));
+                        }		
+                }
+                return { mass : mass };
+        };
+
+        diamondsFilter.registerFilter("color_loose", getDataColor);
+    
+    
+            
+        $("#clarity input").click(function(){
+                var selected = $(this).attr("data-selected");
+		
+                if(selected == "true"){
+                        $(this).attr("data-selected","false");
+			
+                } else {
+                        $(this).attr("data-selected", "true");
+			
+                }
+		
+        });
+
+        var getDataClarity = function(){
+                var clarities = $("#clarity input");
+                var mass = new Array();
+                for(var i=0;i<clarities.length;i++){
+                        var clarity = $(clarities[i]);
+                        if(clarity.attr("data-selected") == "true" ){
+                                mass.push(clarity.attr("value"));
+                        }		
+                }
+                return { mass : mass };
+        };
+
+        diamondsFilter.registerFilter("clarity", getDataClarity);
+        
+        
+        $("#cut input").click(function(){
+                var selected = $(this).attr("data-selected");
+		
+                if(selected == "true"){
+                        $(this).attr("data-selected","false");
+			
+                } else {
+                        $(this).attr("data-selected", "true");
+			
+                }
+        });
+
+        var getDataCut = function(){
+                var cuts = $("#cut input");
+                var mass = new Array();
+                for(var i=0;i<cuts.length;i++){
+                        var cut = $(cuts[i]);
+                        if(cut.attr("data-selected") == "true" ){
+                                mass.push(cut.attr("value"));
+                        }		
+                }
+                return { mass : mass };
+        };
+        
+      var _reset = function(){
+                var cuts = $("#cut input");
+                for(var i=0;i<cuts.length;i++){
+                        var cut = $(cuts[i]);
+                        cut.attr("data-selected","false");
+			
+			
+                }
+        };
+	
+        diamondsFilter.registerFilter("cut", getDataCut);
+    
+    
+
+   var getDataPrice = function(){
+                                
+     var minPrice = jQuery( "#price1" ).val();
+     var maxPrice = jQuery( "#price2" ).val();
+                
+        if(minPrice != 0 && maxPrice != 0){
+                return { min : minPrice, max :maxPrice};
+            }
+        }
+        diamondsFilter.registerFilter("price", getDataPrice);
+	
+    var getDataCarat = function(){
+        
+      var minCarat = jQuery( "#carat1" ).val();
+      var maxCarat = jQuery( "#carat2" ).val();
+                
+         if(minCarat != 0 && maxCarat != 0){
+                return { min : minCarat, max : maxCarat};
+                }
+        };
+        diamondsFilter.registerFilter("carat", getDataCarat);
+
+        jQuery("#filter").click(function(){
+                diamondsFilter.updateResults();
+        });
+        
+    
+        
+        
+});
+     */
+</script> 

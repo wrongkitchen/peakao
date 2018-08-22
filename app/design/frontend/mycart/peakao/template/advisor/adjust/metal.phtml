@@ -1,0 +1,53 @@
+       <?php 
+$metal = $this->getm();
+
+?> 
+<div class="compaire-diamond-overlay " style="display: block;">
+	<div class="outer-div">
+	<div class="compaire-diamond">
+
+	<a href="javascript:void(0);" class="close-popup close-compaire"><img src="http://mycarthk.com/magento/skin/frontend/mycart/peakao/images/popup-close.png" alt="close"></a>
+     	<ul class="inner-pop-list second-inner">
+	   <?php foreach ($metal as $k => $m): ?> 
+<li  class="pop-add-cart"><a data="<?php echo  $k ?>" class="changer" href="javascript:void(0)" ><?php echo $m ?></a></li>
+       <?php endforeach ?> 
+	   </ul>
+	</div>
+	</div>
+</div>
+<script type="text/javascript">
+jQuery(".close-popup").click(function(){
+   jQuery(".compaire-diamond-overlay").hide(); 
+});
+
+
+jQuery(".changer").click(function(){
+  var s =	jQuery(this).attr("data");
+  if (s == jQuery(".rings-display li.active").attr("data-s")){
+	  jQuery(".compaire-diamond-overlay").hide(); 
+  }
+  var d =  jQuery(".rings-display li.active").attr("data-d");
+  jQuery.ajax({
+            url			: "<?php echo $this->geturl("*/ajax/recshow")?>",
+			type : "POST",
+            dataType	: "json",
+            data		: {
+                   "d" :   d,
+				   "s" : s,
+				   "update" : true
+			},
+            beforeSend	: function(){
+               Advisor.Helper.startPreloader();
+            },
+            complete	: function(){
+
+                Advisor.Helper.finishPreloader();
+            },
+            success		: function(data) {
+			   jQuery("#recshow").html(data.show);
+			     jQuery(".rings-display li.active").replaceWith(data.update);
+				 jQuery(".compaire-diamond-overlay").hide();
+            }
+        });
+})
+</script>

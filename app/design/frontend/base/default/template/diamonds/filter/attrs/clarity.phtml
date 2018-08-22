@@ -1,0 +1,106 @@
+<?php
+$config = $this->helper('diamonds/config');
+$widthSlider = $config->getWidthSlider();
+?>
+<?php $attributeClarityOptions = $this->getAttributeOptions("clarity"); ?>
+<h2><?php echo $this->__('Clarity')?></h2>
+<?php if (!$config->getClaritySliderType()): ?>
+    <div class="price-ranger" style="width: <?php echo $widthSlider ?>px">
+        <div id="clarity_slider"></div>
+        <input type="hidden" id="minClarity" name="attributes[clarity][min]" class="sliderClarityValue svlft" data-index="0" value="1"/>
+        <input type="hidden" id="maxClarity" name="attributes[clarity][max]" class="sliderClarityValue slidRight" data-index="1" value="<?php echo $attributeClarityOptions->getSize(); ?>" />
+    </div>
+    <div class="divisions">
+        <ul>
+			<?php
+            $i = 0;
+            $clarities = array();
+            $len = count($attributeClarityOptions);
+            $width =  $widthSlider / ($len-1);
+            foreach ($attributeClarityOptions as $option):
+                $widthEl = $width; 
+                $textalign= 'center'; 
+                if ($i == 0){ $widthEl = $width / 2; $textalign='left'; }
+                elseif ($i == $len-1){ $widthEl = $width / 2-1; $textalign= 'right'; }
+                ?>
+                <li style=" width: <?php echo $widthEl ?>px; float:left;  text-align: <?php echo $textalign; ?>; "> <?php echo $option->getValue(); ?> </li>
+                <?php $clarities[] = $option->getId(); ?>
+            <?php $i++; endforeach; ?>
+        </ul>
+    </div>
+<?php else: ?>
+    <div id="clarity">
+        <?php foreach ($attributeClarityOptions as $option): ?>
+            <input type="checkbox" value="<?php echo $option->getId(); ?>" id="clarity<?php echo $option->getId() ?>">
+            <label for="clarity<?php echo $option->getId(); ?>"><?php echo $option->getValue(); ?></label>       
+        <?php endforeach; ?>
+        <script type="text/javascript" >
+            jQuery("#clarity").buttonset();
+        </script>
+    </div> 
+<?php endif; ?>
+<script type="text/javascript">
+
+    jQuery(function(jQuery){  
+<?php if (!$config->getColorSliderType()): ?>
+            jQuery("#clarity_slider").slider({
+                range: true,
+                min: 1,
+                max: <?php echo $attributeClarityOptions->getSize(); ?>,
+                step: 1,
+                values: [1, <?php echo $attributeClarityOptions->getSize(); ?>],
+                slide: function(event, ui) {
+                    for(var i = 0; i < ui.values.length; ++i) {
+                        jQuery("input.sliderClarityValue[data-index=" + i + "]").val(ui.values[i]);
+                    }
+                }
+            });
+
+            jQuery("input.sliderClarityValue").change(function() {
+                var $this = $(this);
+                jQuery("#clarity_slider").slider("values", $this.data("index"), $this.val());
+            });
+                
+                
+            var getDataClarity = function(){
+                    
+                var minClarity = jQuery( "#minClarity" ).val();
+                var maxClarity = jQuery( "#maxClarity" ).val();
+                            
+                var clarities = <?php echo json_encode($clarities); ?>;
+                         
+                var mass = new Array();
+                for (var i = minClarity-1; i < maxClarity; i++){
+                    mass.push(clarities[i]);
+                }
+                        
+                if (minClarity != 1 || maxClarity != <?php echo $attributeClarityOptions->getSize(); ?>){
+                    return { mass : mass };
+                }
+            };
+<?php else: ?>
+            jQuery("#clarity input").click(function(){
+                var selected = jQuery(this).attr("data-selected");
+                		
+                if(selected == "true"){
+                    jQuery(this).attr("data-selected","false");
+                } else {
+                    jQuery(this).attr("data-selected", "true");
+                }
+            });
+                		
+            var getDataClarity = function(){
+                var clarities = jQuery("#clarity input");
+                var mass = new Array();
+                for(var i=0;i<clarities.length;i++){
+                    var clarity = jQuery(clarities[i]);
+                    if(clarity.attr("data-selected") == "true" ){
+                        mass.push(clarity.attr("value"));
+                    }		
+                }
+                return { mass : mass };
+            };
+<?php endif; ?>
+        diamondsFilter.registerFilter("clarity", getDataClarity);
+    });
+</script>

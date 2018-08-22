@@ -1,0 +1,113 @@
+<?php
+$config = $this->helper('diamonds/config');
+$widthSlider = $config->getWidthSlider();
+?>
+<?php $attributePolishOptions = $this->getAttributeOptions("polish"); ?>
+<?php if (!$config->getPolishSliderType()&&0): ?>
+    <div class="price-ranger" style="width: <?php echo $widthSlider ?>px">
+        <div id="polish_slider"></div>
+        <input type="hidden" id="minPolish" name="attributes[polish][min]" class="sliderPolishValue svlft" data-index="0" value="1"/>
+        <input type="hidden" id="maxPolish" name="attributes[polish][max]" class="sliderPolishValue slidRight" data-index="1" value="<?php echo $attributePolishOptions->getSize(); ?>" />
+    </div>
+    <div class="divisions">
+        <ul>
+			<?php
+            $i = 0;
+            $polishes = array();
+            $len = count($attributePolishOptions);
+            $width =  $widthSlider / ($len-1);
+            foreach ($attributePolishOptions as $option):
+                $widthEl = $width; 
+                $textalign= 'center'; 
+                if ($i == 0){ $widthEl = $width / 2; $textalign='left'; }
+                elseif ($i == $len-1){ $widthEl = $width / 2-1; $textalign= 'right'; }
+                ?>
+                
+                <li style=" width: <?php echo $widthEl ?>px; float:left;  text-align: <?php echo $textalign; ?>; "> <?php echo $option->getValue(); ?> </li>
+                
+                <?php $polishes[] = $option->getId(); ?>
+                
+            <?php $i++; endforeach; ?>
+        </ul>
+    </div>
+<?php else: ?>
+    <div id="polish">
+	<ul class="shapes-design clearfix">
+        <?php foreach ($attributePolishOptions as $option): ?>
+		<li>
+            <input type="checkbox" value="<?php echo $option->getId(); ?>" id="polish<?php echo $option->getId() ?>">
+            <label for="polish<?php echo $option->getId(); ?>">
+		
+			<?php echo $option->getValue(); ?></label>       
+        </li>
+		<?php endforeach; ?>
+      
+		</ul>
+    </div> 
+<?php endif; ?>
+<script type="text/javascript">
+
+    jQuery(function(jQuery){  
+<?php if (!$config->getColorSliderType()&&0): ?>
+            jQuery("#polish_slider").slider({
+                range: true,
+                min: 1,
+                max: <?php echo $attributePolishOptions->getSize(); ?>,
+                step: 1,
+                values: [1, <?php echo $attributePolishOptions->getSize(); ?>],
+                slide: function(event, ui) {
+                    for(var i = 0; i < ui.values.length; ++i) {
+                        jQuery("input.sliderPolishValue[data-index=" + i + "]").val(ui.values[i]);
+                    }
+                }
+            });
+
+            jQuery("input.sliderPolishValue").change(function() {
+                var $this = $(this);
+                jQuery("#polish_slider").slider("values", $this.data("index"), $this.val());
+            });
+                
+                
+            var getDataPolish = function(){
+                    
+                var minPolish = jQuery( "#minPolish" ).val();
+                var maxPolish = jQuery( "#maxPolish" ).val();
+                            
+                var polishes = <?php echo json_encode($polishes); ?>;
+                         
+                var mass = new Array();
+                for (var i = minPolish-1; i < maxPolish; i++){
+                    mass.push(polishes[i]);
+                }
+                        
+                if (minPolish != 1 || maxPolish != <?php echo $attributePolishOptions->getSize(); ?>){
+                    return { mass : mass };
+                }
+            };
+<?php else: ?>
+            jQuery("#polish input").click(function(){
+                var selected = jQuery(this).attr("data-selected");
+                		
+                if(selected == "true"){
+                    jQuery(this).attr("data-selected","false");
+                } else {
+                    jQuery(this).attr("data-selected", "true");
+                }
+				 diamondsFilter.updateResults(); 
+            });
+                		
+            var getDataPolish = function(){
+                var polishes = jQuery("#polish input");
+                var mass = new Array();
+                for(var i=0;i<polishes.length;i++){
+                    var polish = jQuery(polishes[i]);
+                    if(polish.attr("data-selected") == "true" ){
+                        mass.push(polish.attr("value"));
+                    }		
+                }
+                return { mass : mass };
+            };
+<?php endif; ?>
+        diamondsFilter.registerFilter("polish", getDataPolish);
+    });
+</script>

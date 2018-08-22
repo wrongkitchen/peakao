@@ -1,0 +1,85 @@
+     <?php echo $this->getChildHtml('checkout.onepage.login.extra')?>               		
+							<div class="register-here">
+                        				<div class="guest">
+                        					<h4><?php echo $this->__("Fast Login")?> <?php echo $this->__("Or")?> <?php echo $this->__("Register Account")?></h4>
+                        					<form class="forum-wrapper checkout-type">
+											 <div class="fast-login" style="min-height:0;padding-bottom:10px">
+											 <ul style="padding: 8px 0px;">
+													<li>
+													<a href="javascript:void(0)" 
+													onclick="openSocial('<?php echo Mage::getBlockSingleton('sociallogin/channel_fblogin')->getLoginUrl() ?>','<?php echo $this->__('Login by Facebook') ?>')"
+													><img src="<?php echo $this->getskinurl("images/fb-new.png")?>" alt="#"></a></li>																									
+															<li><a href="#"> <img src="<?php echo $this->getskinurl("images/owl-icon.jpg")?>"></a></li>
+												<li><a href="javascript:void(0)" 
+												onclick="openSocial('<?php echo Mage::getBlockSingleton('twlogin/twlogin')->getLoginUrl() ?>','<?php echo $this->__('Login by Twitter') ?>')"
+												><img src="<?php echo $this->getskinurl("images/twt-new.png")?>"></a></li>
+												</ul>
+											   </div>
+                        						<ul>
+                        					
+                        							<li>
+                        								<input type="radio"name="checkout_method" value="register" id="login:register" /> 
+                        								<label for="login:register">
+                        									<span></span><?php echo $this->__("Register")?>
+                        								</label>
+                        								
+                        							</li>
+                        						</ul>
+                        					</form>
+                        				</div>
+                        				<div class="register">
+                        					<h6><?php echo$this->__("Sign up to save Time")?>!</h6>
+                        					<span class="future"><?php echo $this->__("More Convenient For Sign up Customer") ?>!</span>
+                        					<ul>
+                        						<li>
+                        							<a href="#">- <?php echo $this->__("Quickly Pay") ?></a>
+                        						</li>
+                        						<li>
+                        							<a href="#">
+                        								- <?php echo $this->__("Look up your Order record and state easyly") ?>
+                        							</a>
+                        						</li>
+                        					</ul>
+                        					<a href="javascript:void(0)" onclick="checkout.setMethod();" class="carry-on"><?php echo $this->__("Continue") ?></a>
+                        				</div>
+                        			</div>
+                        			<div class="sign-in">
+                        				<h4 style="margin-bottom:15px"><?php echo $this->__("Log In") ?></h4>
+                        				<h6 style="margin-bottom:15px"><?php echo $this->__("Already Sign Up") ?>？</h6>
+                        				<span style="margin-bottom:15px"><?php echo $this->__("Please LogIn Below") ?></span>
+                        				<form id="login-form" action="<?php echo $this->getPostAction() ?>" method="post" class="registration-form">
+                        					 <?php echo $this->getBlockHtml('formkey'); ?>
+											<ul>
+                        						<li style="margin-bottom: 25px;">
+                        							<label><?php echo $this->__("Email Address") ?>*</label>
+                        							<input type="text" class="input-text required-entry validate-email"  id="login-email"  value="<?php echo $this->escapeHtml($this->getUsername()) ?>" name="login[username]" />
+                        						</li>
+                        						<li>
+                        							<label><?php echo $this->__("Password") ?>*</label>     
+                        							<input type="password" class="input-text required-entry" id="login-password" name="login[password]" />                   						
+                        						</li>
+                        					</ul>
+                        				</form>
+                        				<a href="<?php echo $this->getUrl('customer/account/forgotpassword') ?>" class="forgot-password"><?php echo $this->__("Forgot Your Password") ?>？</a>
+                        				<a class="carry-on" onclick="onepageLogin(this)" href="javascript:void(0)" ><?php echo $this->__("Log In") ?></a>
+                        			</div>
+									
+									<script type="text/javascript">
+										//<![CDATA[
+											var loginForm = new VarienForm('login-form', true);
+											$('login-email').observe('keypress', bindLoginPost);
+											$('login-password').observe('keypress', bindLoginPost);
+											function bindLoginPost(evt){
+												if (evt.keyCode == Event.KEY_RETURN) {
+													loginForm.submit();
+												}
+											}
+											function onepageLogin(button)
+											{
+												if(loginForm.validator && loginForm.validator.validate()){
+													button.disabled = true;
+													loginForm.submit();
+												}
+											}
+										//]]>
+										</script>

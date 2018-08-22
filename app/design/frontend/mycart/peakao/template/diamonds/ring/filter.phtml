@@ -1,0 +1,68 @@
+<?php 
+ $steps = array('diamonds'=>"指環",'engagement-rings'=>"指環",'earrings'=>"耳環",'pendants'=>"吊墜");
+$type = Mage::registry("design_type");
+?>
+<section class="diamond-custom">
+<div class="container"><ol class="breadcrumb">
+<li><a href="#">首頁 </a></li>
+<li><a href="#">鑽石</a></li>
+<li><a href="#">選擇<?php echo $steps[$type]?></a></li>
+</ol>
+<h1>設定<?php echo $steps[$type]?></h1>
+</div>
+<div class="container">
+<?php // echo $this->getChildHtml('search_result'); ?>
+	<?php echo $this->getChildHtml('diamonds_filter');?>      
+</div>
+</section>
+<section class="all-listing-wrap">
+<div class="container">
+
+		<div class="uptodate">
+		<ul class="clearfix">
+		<li><img alt="uptodate" src="<?php echo $this->getskinurl("images")?>/uptodate-bg.jpg" />
+		<div class="uptodate-caption"><strong>最新</strong></div>
+		</li>
+		<li><img alt="uptodate" src="<?php echo $this->getskinurl("images")?>/quality-bg.jpg" />
+		<div class="uptodate-caption quality-caption">優質<span>4C</span>鑽石</div>
+		</li>
+		</ul>
+		</div>
+        <?php echo $this->getChildHtml("steps")?>
+					
+<!-- preloader begin -->
+			<div class="overlayBlock"></div>
+			
+	 <div id="ring_filter_results">	
+        <?php echo $this->getChildHtml("ring_filter_results"); ?> 
+    </div>	
+<!-- preloader end -->
+</div>
+</section>
+<script>
+    jQuery(function($){
+        IkD.Helper.startPreloader();
+    });
+</script>	
+<!--  Controls initilize -->
+<script type="text/javascript">
+    var updateUrl = "<?php echo $this->getBaseUrl() . 'design/filter/ring/type/'.Mage::registry("design_type"); ?>";
+    var ringsFilter = new IkD.Filter(updateUrl, null);
+    jQuery(function(){
+	
+        ringsFilter.setResultContainer(jQuery("#ring_filter_results"));
+		
+    });
+</script>
+
+<!-- end init -->
+
+<script>
+    jQuery(function($){
+        IkD.Helper.finishPreloader();
+    });
+</script>
+<script type="text/javascript">
+    /*jQuery(".dropdown-toggle").dropdown();
+        jQuery(".collapse").collapse();*/
+</script>

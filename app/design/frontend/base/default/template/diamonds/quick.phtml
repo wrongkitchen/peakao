@@ -1,0 +1,25 @@
+<?php /* @var $this Ikantam_Diamonds_Block_Quick */ ?>
+<div class="home-diamond-search">
+    <form action="<?php echo $this->getUrl("diamonds") ?>" method="post">
+        <div class="fLeft">
+            <h2><?php echo $this->__('Search for loose diamonds')?></h2>
+        </div>
+        <div class="fLeft">
+        </div>
+        <div class="clear"></div>
+
+        <?php foreach ($this->getAttributeShapeOptions() as $option): ?>
+
+            <fieldset>
+                <i class="icon-home-filter-<?php echo strtolower($option->getValue()); ?>"></i>
+                <input data-custom="check-box" type="checkbox" name="shapes_filter[]" value="<?php echo $option->getId(); ?>" />
+            </fieldset>
+        <?php endforeach; ?>
+
+        <div class="clear"></div>
+        <button type="submit"><?php echo $this->__("Begin search") ?> <i class="arr"></i> </button>
+    </form>
+</div>
+
+
+

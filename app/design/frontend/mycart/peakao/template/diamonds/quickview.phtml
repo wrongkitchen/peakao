@@ -1,0 +1,193 @@
+<?php 
+$type= Mage::registry("design_type");
+$id =$this->getrequest()->getparam("id");
+$_product=Mage::getModel("catalog/product")->load($id);
+$steps = array('diamonds'=>$this->__("Rings"),'engagement-rings'=>$this->__("Rings"),'earrings'=>$this->__("Earrings"),'pendants'=>$this->__("Pendants"));
+?>
+<div  class="absoluteDiv" id="absoluteDiv<?php echo $id ?>">
+  <div class="greyOut">
+  </div>
+<div class="GalleryQuickViewPop">
+<a class="button-x" style="display: block;"><img src="<?php echo $this->getskinurl("images")?>/popup-close.png" alt="close"></a>
+
+<?php   
+if($this->getrequest()->getparam("part")=="diamond"):
+$shape = $_product->getResource()->getAttribute('diamond_shape')->getFrontend()->getValue($_product);
+$carat = sprintf("%.2f",$_product->getResource()->getAttribute('carat')->getFrontend()->getValue($_product));
+$cut = $_product->getResource()->getAttribute('cut')->getFrontend()->getValue($_product) ;
+$color = $_product->getResource()->getAttribute('color_loose')->getFrontend()->getValue($_product);
+$clarity = $_product->getResource()->getAttribute('clarity')->getFrontend()->getValue($_product);
+ $price= $_product->getprice();
+$price = Mage::helper('core')->currency($price,true,false) ;
+preg_match("/[^0-9]+(.+)[\.](.+)/i",$price, $matches);
+$price  = Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol();
+$price .= "<strong>".$matches[1]."<small>.".$matches[2]."</small></strong>";
+$_diamondsHelper = $this->helper('diamonds');
+?>
+<div class="PopLeft">
+  <?php echo Mage::helper("diamonds/media")->getmedia($_product,null,355)->tohtml()?>
+</div>
+  <div class="PopRight">
+    <h1 class="ItemTitle">
+		<span ><?php echo $_product->getname()?></span>
+		<span class="sku">SKU:<?php echo $_product->getsku()?></span>
+		</h1> 		
+		<ul class="product-info-d">
+		<h2><?php echo $price?></h2>
+				<li><span class="card">
+					<span class="desc-label"><?php echo $this->__("Shape")?></span>
+					<span class="desc-val"><?php echo $shape?></span>
+				</span></li>
+				<li><span class="card">
+					<span class="desc-label"><?php echo $this->__("Carat")?></span>
+					<span class="desc-val"><?php echo $carat?></span>
+				</span></li>
+				<li><span class="card">
+					<span class="desc-label"><?php echo $this->__("Cut")?></span>
+					<span class="desc-val"><?php echo $cut?></span>
+				</span></li>
+				<li><span class="card">
+					<span class="desc-label"><?php echo $this->__("Clarity")?></span>
+					<span class="desc-val"><?php echo $clarity?></span>
+				</span></li>
+
+				<li><span class="card">
+					<span class="desc-label"><?php echo $this->__("Color")?></span>
+					<span class="desc-val"><?php echo $color?></span>
+				</span></li>
+			</ul>
+		<div class="btn-block">
+		<a href="<?php echo $_diamondsHelper->getDiamondUrl($_product); ?>" class="btn btn-block"><?php echo $this->__("More Info")?></a>
+      <?php if ($type=="diamonds"):?>
+	  <a href="javascript:void(0)" class="addlistbtn btn btn-block"><?php echo $this->__("Add Diamond To")?></a>
+	  <div class="addtoggle" style="display:none">
+	  <a href="<?php echo Mage::getUrl("design/constructor/diamond/type/diamonds",array('diamond_id' => $_product->getId())) ?>" class="btn btn-block"><?php echo $this->__("Add To Ring")?></a>
+	  <a href="<?php echo Mage::getUrl("design/constructor/diamond/type/earrings",array('diamond_id' => $_product->getId())) ?>" class="btn btn-block"><?php echo $this->__("Add To Earring")?></a>
+	  <a href="<?php echo Mage::getUrl("design/constructor/diamond/type/pendants"),array('diamond_id' => $_product->getId()) ?>" class="btn btn-block"><?php echo $this->__("Add To Pendant")?></a>	  
+      </div>
+	  <script type="text/javascript">
+	  jQuery(".addlistbtn").click(function(){
+		  jQuery(".addtoggle").slideToggle(500);
+	  })
+	  </script>
+	<?php else :?>
+	<a href="<?php echo $_diamondsHelper->getAddToRingUrl($_product); ?>" class="btn btn-block"><?php echo $this->__("Add To Diamond")?><?php echo  $steps[$type]?></a>
+	<?php endif; ?>	
+		  <?php if ($_product->isSaleable()): ?>
+			<?php if (!($_product->getTypeInstance(true)->hasRequiredOptions($_product) || $_product->isGrouped())) { ?>
+				<a href="<?php echo Mage::helper('checkout/cart')->getAddUrl($_product) ?>" 
+				
+				class="btn btn-block"><?php echo $this->__("Add to Cart")?></a>
+
+			<?php } else { ?>
+				<a href="<?php echo Mage::helper('checkout/cart')->getAddUrl($_product) ?>" 
+				class="btn btn-block"><?php echo $this->__("Add to Cart")?></a>
+
+	
+				<a href='<?php echo $this->getUrl('mtgeroadmin/index/options', array('product_id' => $_product->getId())); ?>'
+					class='fancybox' id='fancybox<?php echo $_product->getId() ?>'
+					style='display: none'>Add</a>
+				<?php } ?>
+			<?php else: ?>
+			<p class="availability out-of-stock">
+				<span><?php echo $this->__('Out Of Inventory') ?> </span>
+			</p>
+		<?php endif; ?>
+	
+		</div>
+		
+</div>
+<?php else:
+$metal = $_product->getResource()->getAttribute('ring_metal')
+->getFrontend()->getValue($_product);
+$size = $_product->getResource()->getAttribute('ring_size')
+->getFrontend()->getValue($_product);
+
+ $price= $_product->getprice();
+$price = Mage::helper('core')->currency($price,true,false) ;
+preg_match("/[^0-9]+(.+)[\.](.+)/i",$price, $matches);
+$price  = Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol();
+$price .= "<strong>".$matches[1]."<small>.".$matches[2]."</small></strong>";
+$_diamondsHelper = $this->helper('diamonds');
+ ?>
+<div class="PopLeft">
+ <?php echo Mage::helper("diamonds/media")->getmedia(null,$_product,355)->tohtml()?>
+ </div>
+<div class="PopRight">
+    <h1 class="ItemTitle">
+		<span ><?php echo $_product->getname()?></span>
+		<span class="sku">SKU:<?php echo $_product->getsku()?></span>	          
+	</h1> 
+	<div class="product-info">
+		<div class="product-info">
+			<h2><?php echo $price?></h2>
+			<ul class="product-info-d">
+				<li><span class="card">
+					<span class="desc-label"><?php echo $this->__("Metal")?></span>
+					<span class="desc-val"><?php echo $metal?></span>
+				</span></li>
+			
+
+			</ul>
+		</div>	
+	</div>	
+	<div class="btn-block">	
+		<a href="<?php echo $_diamondsHelper->getSettingUrl($_product); ?>" class="btn btn-block"><?php echo $this->__("More Info")?></a>
+		 <?php if ($type=="earrings"):?>
+			 
+	  <a href="javascript:void(0)" class="addlistbtn btn btn-block"><?php echo $this->__("Add a Single/Pair Earring")?></a>
+	   <div class="addtoggle" style="display:none">
+	  <a href="<?php echo Mage::getUrl("design/constructor/setting/type/earrings", array( 'ring_id' => $_product->getId(), '_nosid' => true)); ?>" class="btn btn-block"><?php echo $this->__("Add Single Earring")?></a>
+	  <a href="<?php echo  Mage::getUrl("design/constructor/setting/type/earrings", array('qty' => 2 ,'ring_id' => $_product->getId(), '_nosid' => true)); ?>" class="btn btn-block"> <?php echo $this->__("Add a Pair of Earring")?></a>
+       <a href="<?php echo Mage::getUrl("design/constructor/setting/type/earrings", array( 'ring_id' => $_product->getId(), '_nosid' => true)); ?>" class="btn btn-block"><?php echo $this->__("Add a Pair of Earring With Different Diamond")?></a>
+	   </div>
+  <script type="text/javascript">
+	  jQuery(".addlistbtn").click(function(){
+		  jQuery(".addtoggle").slideToggle(500);
+	  })
+	  </script>	 
+	 <?php else :?>
+		<a href="<?php echo $_diamondsHelper->getSelectSettingUrl($_product); ?>size/<?php echo $size?>" class="btn btn-block"><?php echo $this->__("Add to Diamond")?><?php echo  $steps[$type]?></a>
+	<?php endif ?>
+	
+		  <?php if ($_product->isSaleable()): ?>
+			<?php if (!($_product->getTypeInstance(true)->hasRequiredOptions($_product) || $_product->isGrouped())) { ?>
+				<a href="<?php echo Mage::helper('checkout/cart')->getAddUrl($_product) ?>" class="btn btn-block"><?php echo $this->__("Add to Cart")?></a>
+
+			<?php } else { ?>
+				<a href="<?php echo Mage::helper('checkout/cart')->getAddUrl($_product) ?>" 
+				class="btn btn-block"><?php echo $this->__("Add to Cart")?></a>
+
+	
+				<a href='<?php echo $this->getUrl('mtgeroadmin/index/options', array('product_id' => $_product->getId())); ?>'
+					class='fancybox' id='fancybox<?php echo $_product->getId() ?>'
+					style='display: none'>Add</a>
+				<?php } ?>
+			<?php else: ?>
+			<p class="availability out-of-stock">
+				<span><?php echo $this->__('Out Of Stock') ?> </span>
+			</p>
+		<?php endif; ?>
+	
+		</div>
+	
+</div>
+
+
+<?php endif ?>
+</div>
+</div>
+
+
+
+
+<script type="text/javascript">
+  jQuery(".greyOut").click(function(){
+	  jQuery(".absoluteDiv").hide();	
+       jQuery(".overlayBlock").hide();		  
+  })
+   jQuery(".button-x").click(function(){
+	  jQuery(".absoluteDiv").hide();	
+     jQuery(".overlayBlock").hide();		  
+  })
+</script>

@@ -1,0 +1,11 @@
+a:5:{i:0;s:42:"Mage registry key "product" already exists";i:1;s:1432:"#0 /home/wwwpeakao/public_html/app/Mage.php(223): Mage::throwException('Mage registry k...')
+#1 /home/wwwpeakao/public_html/app/code/community/Ikantam/Diamonds/Model/Bundle.php(160): Mage::register('product', Object(Mage_Catalog_Model_Product))
+#2 /home/wwwpeakao/public_html/app/code/community/Ikantam/Diamonds/Model/Bundle.php(59): Ikantam_Diamonds_Model_Bundle->addItem('Diamond', Object(Mage_Catalog_Model_Product))
+#3 /home/wwwpeakao/public_html/app/code/community/Ikantam/Diamonds/controllers/ConstructorController.php(95): Ikantam_Diamonds_Model_Bundle->init(Object(Mage_Catalog_Model_Product), Object(Mage_Catalog_Model_Product), NULL, 'diamonds', NULL)
+#4 /home/wwwpeakao/public_html/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Ikantam_Diamonds_ConstructorController->addtocartAction()
+#5 /home/wwwpeakao/public_html/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('addtocart')
+#6 /home/wwwpeakao/public_html/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#7 /home/wwwpeakao/public_html/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#8 /home/wwwpeakao/public_html/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#9 /home/wwwpeakao/public_html/index.php(83): Mage::run('', 'store')
+#10 {main}";s:3:"url";s:43:"/design/constructor/addtocart/type/diamonds";s:11:"script_name";s:10:"/index.php";s:4:"skin";s:5:"ch_hk";}

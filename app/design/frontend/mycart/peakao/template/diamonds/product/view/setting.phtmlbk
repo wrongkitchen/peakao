@@ -1,0 +1,149 @@
+<?php /* @var $this Ikantam_Diamonds_Block_Product_View_Diamond */ ?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); 
+$type= Mage::registry("design_type");
+$_diamondsHelper = $this->helper('diamonds');
+ $steps = array('diamonds'=>"指環",'engagement-rings'=>"指環",'earrings'=>"耳環",'pendants'=>"吊墜");
+$metal = $_product->getResource()->getAttribute('ring_metal')
+->getFrontend()->getValue($_product);
+$size = $_product->getResource()->getAttribute('ring_size')
+->getFrontend()->getValue($_product);
+
+ $price= $_product->getprice();
+$price = Mage::helper('core')->currency($price,true,false) ;
+preg_match("/[^0-9]+(.+)[\.](.+)/i",$price, $matches);
+$price  = Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol();
+$price .= "<strong>".$matches[1]."<small>.".$matches[2]."</small></strong>";
+?>
+
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
+			<section class="diamond-detail-banner">
+					<div class="container">
+						<ol class="breadcrumb">
+                            <li><a href="#">首頁 </a></li>
+                            <li><a href="#">鑽石</a></li>
+                            <li><a href="#">選擇戒托</a></li>
+                        </ol>
+                        <h1>精心挑選品質</h1>
+                       </div>
+				</section>
+				<section class="diamond-details page-content container">
+		             <?php echo $this->getChildHtml("steps")?>
+					<section class="tab-content diamond-details">
+						<div class="left-block">
+						    <?php echo Mage::helper("diamonds/media")->getmedia(null,$_product)->tohtml()?>
+						<div class="right-block mob-right-block"></div>
+						</div>
+				       <div id="ad_sidebar" class="right-block ad_sidebar floating-sidebar">
+				
+							<h3><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+								<small>SKU : <?php echo $_product->getsku()?></small>
+								</h3>
+							<div class="product-info">
+										<div class="product-info">
+											<h2><?php echo $price?></h2>
+											<ul class="product-info-d">
+												<li><span class="card">
+													<span class="desc-label">材質</span>
+													<span class="desc-val"><?php echo $metal?></span>
+												</span></li>
+									
+							
+											</ul>
+										</div>
+													
+							          
+							    
+							</div>
+							<div class="star-label clearfix">
+										<span class="rating">4.2</span>
+										<div class="star-wrap">
+											<ul class="page-label clearfix">
+												<li class="color-g"></li>
+												<li class="color-g"></li>
+												<li class="color-g"></li>
+												<li class="color-g"></li>
+												<li></li>
+											</ul>
+											<span>(共有3個評慏）</span>
+										</div>
+									</div>
+									<div class="btn-block">
+	
+	 <?php if ($type=="earrings"):?>
+			 
+	  <a href="javascript:void(0)" class="addlistbtn btn btn-block">添加單/隻耳環</a>
+	   <div class="addtoggle" style="display:none">
+	  <a href="<?php echo Mage::getUrl("design/constructor/setting/type/earrings", array( 'ring_id' => $_product->getId(), '_nosid' => true)); ?>" class="btn btn-block">添加單只耳環</a>
+	  <a href="<?php echo  Mage::getUrl("design/constructor/setting/type/earrings", array('qty' => 2 ,'ring_id' => $_product->getId(), '_nosid' => true)); ?>" class="btn btn-block">添加一雙耳環</a>
+     </div>
+  <script type="text/javascript">
+	  jQuery(".addlistbtn").click(function(){
+		  jQuery(".addtoggle").slideToggle(500);
+	  })
+	  </script>	 
+	 <?php else :?>
+
+		<a href="<?php echo $_diamondsHelper->getSelectSettingUrl($_product); ?>size/<?php echo $size?>" class="btn btn-block">加到鑽石<?php echo  $steps[$type]?></a>
+
+	<?php endif ?>
+		  <?php if ($_product->isSaleable()): ?>
+		
+				<a href="<?php echo $this->getAddToCartUrl($_product) ?>" 
+				
+				class="btn btn-block">加到購物盤</a>
+
+			<?php else: ?>
+			<p class="availability out-of-stock">
+				<span><?php echo $this->__('缺貨') ?> </span>
+			</p>
+		<?php endif; ?>
+	
+		</div>
+							
+		<span class="delivery-date">預計最快送貨日期: <span class="date">2015-11-10</span></span>
+		<div class="share-links">
+			<ul class="social-links">
+				<li><a href="#"><img src="<?php echo $this->getskinurl("images/side-fb-link.png")?>" alt="" /></a></li>
+				<li><a href="#"><img src="<?php echo $this->getskinurl("images/side-tt-link.png")?>" alt="" /></a></li>
+				<li><a href="#"><img src="<?php echo $this->getskinurl("images/side-print-link.png")?>" alt="" /></a></li>
+				<li><a href="#"><img src="<?php echo $this->getskinurl("images/side-insta-link.png")?>" alt="" /></a></li>
+			</ul>
+			<div class="external-links">
+
+				<a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>" class="mail-to-frnd"><i class="icon-mail-link">&nbsp;</i><span>電郵至朋友</span></a>
+		
+			<?php if ($this->helper('wishlist')->isAllow()) : ?>
+			<?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
+				<a href="<?php echo $_wishlistSubmitUrl ?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;"class="mail-to-frnd"><i class="icon-wishlist-link">&nbsp;</i><span>加到願望清單</span></a>
+				<?php endif ?>	
+			</div>
+		</div>			
+						</div>
+			
+					</section>
+
+
+                 </section>
+				 
+       <script>
+	        var sidebar = jQuery("#ad_sidebar").html();
+
+        jQuery(".mob-right-block").html(sidebar);
+		function setRingSize()
+		{	
+			var newLocation = "<?php echo $this->helper('diamonds')->getSelectSettingUrl($_product); ?>";
+			location.href = newLocation;
+		}
+		
+		function addToCartRing()
+		{
+			var selectedSize = document.getElementById("selected_ring_size").value;
+			/*var diamondId = "<?php /*echo $_product->getId();*/ ?>";*/
+			var newLocation = "<?php echo $this->helper('diamonds')->getAddRingToCartUrl($_product); ?>";
+			/*'product/' + diamondId*/
+			location.href = newLocation +  'size/' + selectedSize;
+		}
+        </script>
+
+</div>

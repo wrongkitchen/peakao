@@ -1,0 +1,22 @@
+			<div id="accountwrap" class="dropdown-wrap account-form">
+							<span class="ui-selectmenu-button ui-widget"style="width: 75px;">
+							<span class="ui-icon ui-icon-triangle-1-s"></span>
+							<span class="ui-selectmenu-text"><?php echo $this->__("My Account")?></span>
+							</span>
+								<div class="divider_line"></div>
+							<div id="accountlist" class="clearfix dropdown-content">
+								<ul>                 
+									<?php if(!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+										
+										<li><a href="<?php echo $this->getUrl('customer/account/login') ?>"><?php echo $this->__("Log In")?> </a></li>
+										<li><a href="<?php echo $this->getUrl('customer/account/create') ?>"> <?php echo $this->__("Sign Up")?></a></li>
+									
+									<?php else : ?>
+								
+										<li><a href="<?php echo $this->getUrl('customer/account/logout') ?>"><?php echo $this->__("Log Out")?> </a></li>
+										<li><a href="<?php echo $this->getUrl('customer/account') ?>"><?php echo $this->__("Account Dashboard")?> </a></li>
+									
+										<?php endif ?>
+										</ul>				
+								 </div>				 
+							</div>

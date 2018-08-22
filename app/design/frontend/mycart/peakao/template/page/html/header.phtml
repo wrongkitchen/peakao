@@ -1,0 +1,64 @@
+
+				<div class="primary-header clearfix">
+					<div class="container clearfix">
+						<a href="<?php echo $this->getUrl('') ?>" class="logo">
+						<img src="<?php echo $this->getskinurl("images/logo.png")?>" alt="logo"/>
+						</a>
+
+					    <div class="right-head-info clearfix">
+					 
+							
+							<?php echo $this->getChildHtml("header_account")?>
+				
+
+
+							<a href="#" class="currency"> <?php echo $this->__("Currency")?> </a>
+							
+							<a href="#" class="delevery-option"><?php echo $this->__("Delivery")?></a>
+					
+							<div  class="<?php echo Mage::helper('checkout/cart')->getSummaryCount()?"":"disable" ?> dropdown-wrap cart-form">
+							<span class="ui-selectmenu-button dropdown-button ui-widget"
+							id="cart-button" 
+							style="width: 119px;"><span class="ui-icon ui-icon-triangle-1-s"></span>
+							<span class="ui-selectmenu-text"><?php echo $this->__("My Cart")?> (<?php echo Mage::helper('checkout/cart')->getSummaryCount() ?
+							Mage::helper('checkout/cart')->getSummaryCount() :0  ?>)</span>
+							</span>
+							<div class="divider_line"></div>
+							<div id="minicart" class="clearfix dropdown-content">
+                            <?php echo $this->getChildHtml("minicart") ?>									
+						  </div>
+	                      </div>
+			  <?php echo $this->getChildHtml("switch")?>
+							
+						
+			               <div class="dropdown-wrap area-form">
+							<span class="ui-selectmenu-button ui-widget" style="width: 70px">
+							<span class="ui-icon ui-icon-triangle-1-s"></span>
+							<span class="ui-selectmenu-text"><?php echo $this->__("Area")?></span>
+							</span>
+								<div class="divider_line"></div>
+							<div id="arealist" class="dropdown-content">
+                               <ul>                			 
+							    <li><a href="#">  <?php echo $this->__("HongKong")?> </a></li>
+							    <li><a href="#"> <?php echo $this->__("TaiWan")?></a></li>
+							    <li><a href="#">  <?php echo $this->__("China")?></a></li>
+							    </ul>                 
+						    </div>						   
+		                     </div>
+							 	
+					</div>
+			</div>
+        </div>
+		 <div class="main-header engage-nav">
+			    <div class="container clearfix">
+					<a href="#" class="menu-btn-new menu-btn"><span> </span> <span> </span> <span> </span></a>
+		
+				     <div class="menu-wrap menu-wrap-new clearfix ">
+							<?php echo $this->getChildHtml('topMenu'); ?>
+										
+							<div class="search-box">
+						   <?php echo $this->getChildHtml('topSearch'); ?>
+							</div>
+				    </div>
+				</div>
+	     </div>

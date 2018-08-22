@@ -1,0 +1,78 @@
+<?php
+/* @var $config Ikantam_Diamonds_Helper_Config */
+$config = $this->helper('diamonds/config');
+?>
+
+<?php
+    $attributeShapeOptions = $this->getAttributeOptions('diamond_shape');
+    $selectedShapes = array();
+
+    if ($_POST['shapes_filter']){
+        $selectedShapes = $_POST['shapes_filter'];
+    }
+?>
+
+<!--SHAPE-->
+<div class="filters-shape">
+    <h2><?php echo $this->__('Diamond shape')?></h2>
+    <ul>
+        <?php foreach ($attributeShapeOptions as $option): ?>
+            <li>
+                <div class="shape <?php echo (in_array($option->getId(), $selectedShapes)) ? "active": ""; ?>" id="shape<?php echo $option->getDefaultValue(); ?>" title="<?php echo $option->getValue(); ?>" >
+                    <input class="shape-input"
+                           style="display: none;"
+                           type="checkbox"
+                           <?php if (in_array($option->getId(), $selectedShapes)):  ?> data-selected="true" checked="checked" <?php else: ?> data-selected="false" <?php endif; ?>
+                           value="<?php echo $option->getId(); ?>" />
+
+                    <i class="icons-<?php echo strtolower($option->getDefaultValue()); ?>"></i> 
+
+                </div>
+
+                <?php if ($config->isShowShapeName()): ?>
+                    <span><?php echo $option->getValue(); ?></span>
+                <?php endif; ?>
+            </li>
+
+        <?php endforeach; ?>
+    </ul>
+
+</div>
+<script type="text/javascript" >  
+    jQuery(function(jQuery){
+
+        /*Shape -----*/
+
+        jQuery.fn.toggleCheckbox = function () {
+
+            if (this.attr('data-selected') == 'false'){
+                this.attr('data-selected',"true");
+
+            } else {
+                this.attr('data-selected',"false");
+            }
+            //this.attr('checked', !this.attr('checked'));
+
+        };
+
+        jQuery('.shape').click( function () {
+            jQuery(this).find(':checkbox').toggleCheckbox();
+            jQuery(this).toggleClass('active');
+        });
+
+        var getDataShape = function(){
+            var shapes = jQuery(".shape-input");
+            var mass = new Array();
+            for(var i=0;i<shapes.length;i++){
+                var shape = jQuery(shapes[i]);
+                if(shape.attr("data-selected") == "true" ){
+                    mass.push(shape.attr("value"));
+                }		
+            }
+            return { mass : mass };
+        };
+
+        diamondsFilter.registerFilter("diamond_shape", getDataShape);
+
+    });
+</script>

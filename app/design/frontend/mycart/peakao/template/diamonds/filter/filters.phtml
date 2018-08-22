@@ -1,0 +1,79 @@
+<?php
+/* @var $config Ikantam_Diamonds_Helper_Config */
+$config = $this->helper('diamonds/config');
+$widthSlider = $config->getWidthSlider();
+?>
+
+<div class="set-option-wrap">
+<a id="clear-filter" class="know-more-btn reset-field" href="javascript:void(0);"><span><?php echo $this->__("Reset Filters")?></span></a>
+<div class="reset-contnet-wrap clearfix">
+<div class="content-option-left">
+<form method="post" id="constructor" >
+<div class="diamond-shapes">
+<h5><?php echo $this->__("Shape")?></h5>
+  <?php echo $this->getChildHtml('filter_shape'); ?>
+</div>
+<div class="diamond-shapes  fineness">
+<h5><?php echo $this->__("Color")?></h5>
+  <?php echo $this->getChildHtml('filter_color'); ?>
+</div>
+<div class="diamond-shapes  fineness  clarity">
+<h5><?php echo $this->__("Clarity")?></h5>
+  <?php echo $this->getChildHtml('filter_clarity'); ?>
+</div>
+<div class="diamond-shapes  fineness polish hide-anime">
+<h5><?php echo $this->__("Polish")?></h5>
+  <?php echo $this->getChildHtml('filter_polish'); ?>
+</div>
+<div class="diamond-shapes  fineness polish fluorescence hide-anime">
+<h5><?php echo $this->__("Fluorescence")?></h5>
+ <?php echo $this->getChildHtml('filter_fluorescence'); ?>
+</div>
+<div class="desktop-size price-slide hide-anime">
+<h5><?php echo $this->__("Table Size")?></h5>
+ <?php echo $this->getChildHtml('filter_table'); ?>
+</div>			
+</div>
+<div class="content-option-right">
+
+<div class="diamond-shapes cutting">
+<h5><?php echo $this->__("Cut")?></h5>
+        <?php echo $this->getChildHtml('filter_cut'); ?>
+</div>
+
+<div class="desktop-size caret-weight">
+<h5><?php echo $this->__("Carat")?></h5>
+       <?php echo $this->getChildHtml('filter_carat'); ?>
+</div>
+<div class="desktop-size  price-slide">
+<h5><?php echo $this->__("Price")?></h5>
+  <?php echo $this->getChildHtml('filter_price'); ?>
+</div>
+<div class="diamond-shapes cutting symmetry hide-anime">
+<h5><?php echo $this->__("Symmetry")?></h5>
+ <?php echo $this->getChildHtml('filter_symmetry'); ?>
+</div>
+<div class="desktop-size  price-slide hide-anime">
+<h5><?php echo $this->__("Depth")?></h5>
+  <?php echo $this->getChildHtml('filter_depth'); ?>
+</div>
+
+<div class="diamond-shapes  fineness  clarity reports hide-anime">
+<h5><?php echo $this->__("Certificate")?></h5>
+        <?php echo $this->getChildHtml('filter_certificate'); ?>
+</div>
+</div>
+<a class="filter-more-btn" href="javascript:void(0);"><?php echo $this->__("Advance Options")?></a> 
+<a class="filter-hide-btn" style="display: none;" href="javascript:void(0);"><?php echo $this->__("Hide Options")?></a>
+</div>
+</div>
+</form>
+
+<script type="text/javascript">	
+        /*Filter-----*/
+
+        jQuery("#clear-filter").click(function () {
+            diamondsFilter.resetFilters();
+        });
+
+</script> 

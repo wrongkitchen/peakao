@@ -1,0 +1,107 @@
+<div class="signup page-login login-new">
+                 <!-- 	signup-page------->
+                 <section class="signup-page login">
+					<div class="banner">
+														
+								<div class="content-caption">
+									<div class="container">
+										<ol class="breadcrumb">
+                                           <li><a href="#">首頁 </a></li>
+                                                  <li><a href="#">登入版面</a></li>
+                                                   
+                                           </ol>
+                                           
+										<div class="inner-heading">
+											<h1>登入版面</h1>
+																
+										</div>	
+										  <?php echo $this->getMessagesBlock()->toHtml() ?>				
+										<div class="forum-wrapper clearfix">
+											<div class="circle1 hidden-xs">
+												<span>或</span>
+											</div>
+											<div class="circle2 hidden-xs">
+												<span>或</span>
+											</div>
+			                                <?php echo $this->getchildHtml("fast_login")?>
+							
+											<div class="fast-login user-info">
+
+												<strong class="light-yellow">登入資料 
+													<i class="arrow-open-lp visible-xs"></i>
+												</strong>
+												<div class="login-new-content">
+											<form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form">
+                                           <?php echo $this->getBlockHtml('formkey'); ?>
+												<fieldset>												
+												<div class="first-group">
+													<label for="user-name">電郵地址</label>
+													   <input type="text" name="login[username]" value="<?php echo $this->escapeHtml($this->getUsername()) ?>" 
+													   id="email" class="input-text required-entry validate-email" 
+													   title="<?php echo Mage::helper('core')->quoteEscape($this->__('Email Address')) ?>" />
+													</div>	
+													
+												<div class="first-group user-grp">
+													<label for="pass-name">密碼</label>
+													 <input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" 
+													 title="<?php echo Mage::helper('core')->quoteEscape($this->__('Password')) ?>" />	
+													</div>
+													
+										     <?php echo $this->getChildHtml('persistent.remember.me'); ?>	
+											     <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
+													<div class="first-group remmber-cls clearfix">
+                                                    <input id="check2" name="chk" value="" type="checkbox">
+                                                    <span class="rem">記住密碼</span>
+                                                    <a class="wrong-pwd" href="<?php echo $this->getForgotPasswordUrl() ?>"> 忘記密碼？</a>
+                                                    </div>
+                                                    <button class="sign" type="submit">登入</button>	
+												
+												
+												</fieldset>
+												</form>
+											
+												    <script type="text/javascript">
+															//<![CDATA[
+																var dataForm = new VarienForm('login-form', true);
+															//]]>
+															</script>
+																</div>
+											</div>
+											<div class="fast-login new-user last-cls">
+												<strong class="light-grey">成為新會員 
+													<i class="arrow-open-lp visible-xs"></i>
+													
+												</strong>
+												<div class="login-new-content">
+												<ul class="geao">
+													<li><a href="#">時刻緊貼比格奧，知道最新的產品資訊</a></li>
+													<li><a href="#">可得到各種精彩活動的參與邀請</a></li>
+													<li><a href="#">第一時間得知店面及網上購買的優惠</a></li>
+												</ul>
+												
+												<strong class="immediate">立刻行動加入我們！</strong>
+												<a href="<?php echo Mage::helper('persistent')->getCreateAccountUrl($this->getCreateAccountUrl()) ?>"><button class="join" type="submit">加入</button>	</a>
+											</div>
+											</div>
+											
+										</div>	
+										<div class="privacy-box">
+											<span class="privacy">請細閱我們的 條款及細則 及 私穩政策</span>	
+										</div>
+										
+																	
+									</div>
+								</div>		
+					</div>
+				</section> 			
+			     <!-- 	signup page end----->
+			            	
+                 	                 	 
+</div>
+				
+				
+				
+				
+				
+
+			

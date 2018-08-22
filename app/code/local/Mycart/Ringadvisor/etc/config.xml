@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Mycart_Ringadvisor>
+            <version>0.0.1</version>
+        </Mycart_Ringadvisor>
+    </modules>
+    <frontend>
+        <routers>
+            <ringadvisor>
+                <use>standard</use>
+                <args>
+                    <module>Mycart_Ringadvisor</module>
+                    <frontName>ringadvisor</frontName>
+                </args>
+            </ringadvisor>
+        </routers>
+        <layout>
+            <updates>
+                <ringadvisor>
+                    <file>ringadvisor.xml</file>
+                </ringadvisor>
+            </updates>
+        </layout>
+
+    </frontend>
+	<global>
+	      <blocks>
+            <ringadvisor>
+                <class>Mycart_Ringadvisor_Block</class>
+            </ringadvisor>
+        </blocks>
+   </global>
+</config>

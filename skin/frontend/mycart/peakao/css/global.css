@@ -1,0 +1,877 @@
+/*
+ Table Of Contents
+ 1.) Eric Meyer's Reset
+ 2.) Global Typography
+	 2.0.1) Font Face
+	 2.0.2) Global Headings
+	 2.0.3) Form Elements
+	 2.0.4) List styles
+	 2.0.5) General Text Formatting
+	 2.0.6) Link elements
+	 2.0.7) Table Elements
+	 2.0.8) Button Styles
+	 2.0.9) Sprite Icons
+	 
+ 3.) Site Wide Content
+ 4.) Header Style
+ 5.) Footer Style
+ ===============================================*/
+
+/*
+ 1.) Eric Meyer's Reset
+ ----------------------------------------*/
+/**
+ * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+ * http://cssreset.com
+ */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*
+ 1.) Global Typography
+ ----------------------------------------*/
+*, :before, :after{
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+html {
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	font-size: 100%;
+}
+body {
+	font-size: 62.5%;
+	 font-family: 'MHeiHKS-Medium-Roman';
+/*background: url(../images/auction-bg.png) center top  no-repeat ;*/
+}
+/*
+ 2.0.1) Font Face
+ -----------------------------*/
+/*Put Your font face Styles here*/
+@font-face {
+  font-family: 'MHeiHKS-Light-Roman';
+  src: url('../fonts/MHeiHKS-Light-Roman.eot') format('embedded-opentype'),
+   url('../fonts/MHeiHKS-Light-Roman.ttf')  format('truetype'), 
+  url('../fonts/MHeiHKS-Light-Roman.svg#MHeiHKS-Light-Roman') format('svg');
+
+}
+@font-face {
+  font-family: 'MHeiHKS-Medium-Roman';
+  src: url('../fonts/MHeiHKS-Medium-Roman.eot') format('embedded-opentype')
+  , url('../fonts/MHeiHKS-Medium-Roman.ttf')  format('truetype'), 
+  url('../fonts/MHeiHKS-Medium-Roman.svg#MHeiHKS-Medium-Roman') format('svg');
+
+}
+.visible-xs {
+    display: none;
+}
+@font-face {
+  font-family: 'MHeiHK-Xbold-Roman';
+  src: url('../fonts/MHeiHK-Xbold-Roman.eot') format('embedded-opentype'),
+   url('../fonts/MHeiHK-Xbold-Roman.ttf')  format('truetype'), 
+   url('../fonts/MHeiHK-Xbold-Roman.svg#MHeiHK-Xbold-Roman') format('svg');
+
+}
+@font-face {
+  font-family: 'Didot';
+  src: url('../fonts/Didot.eot') format('embedded-opentype')
+ , url('../fonts/Didot.ttf')  format('truetype'), url('../fonts/Didot.svg#Didot') format('svg');
+}
+
+/*
+ 2.0.2) Global Headings
+ -----------------------------*/
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	color: #161e21;
+}
+h1 {
+font-size: 59px;
+color: #000;
+font-family: 'MHeiHKS-Light-Roman';
+line-height: 1;
+
+	
+}
+h2 {
+font-size: 20px;
+color: #fff;
+ font-family: 'MHeiHKS-Medium-Roman';
+ line-height: 1.2;
+}
+h3 {
+	font-size: 16px;
+	color: #000;
+	font-family: 'MHeiHKS-Medium-Roman';
+ line-height: 1.2;
+	
+	
+}
+h4 {
+	
+}
+h5 {
+font-size: 14px;
+color: #000;
+font-family: 'MHeiHKS-Medium-Roman';
+}
+h6 {
+
+}
+/*
+ 2.0.3) Form Elements
+ -----------------------------*/
+button, input, optgroup, select, textarea {
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+	background: #fff;
+	border: 1px solid #ccc;
+	font-family: 'Open Sans', sans-serif;
+}
+input {
+	line-height: normal;
+}
+input:focus, select:focus, textarea:focus, button:focus {
+	
+	outline: 0;
+}
+input[type="checkbox"], input[type="radio"] {
+	padding: 0;
+	border: none;
+}
+button, input[type="button"], input[type="reset"], input[type="submit"], input[type="file"] {
+	-webkit-appearance: none;
+	cursor: pointer;
+	line-height: normal;
+	overflow: visible;
+}
+button[disabled], input[disabled] {
+	cursor: default;
+	color: #999;
+	border-color: #ccc;
+}
+button::-moz-focus-inner, input::-moz-focus-inner {
+	padding: 0;
+	border: 0;
+}
+
+/*
+ 2.0.4) List Styles
+ ---------------------------------*/
+ul, ol, dl {
+	font-size: 100%;
+	line-height: 1.5;
+}
+li, dt {
+	line-height: 1.5em;
+}
+dl {
+	margin: 0 0 1em 0;
+}
+dd {
+	margin: 0 0 1em 0.8em;
+}
+
+
+
+
+/*
+ 2.0.5) General Text Formatting
+ -----------------------------------*/
+p {
+	font-size: 18px;
+	line-height: 1.5;
+	color: #000;
+}
+blockquote, cite, q, var, dfn {
+	font-style: italic;
+}
+blockquote {
+	background: transparent;
+	color: #666666;
+}
+small {
+	/* font-size: 12px; */
+	font-size: 85.71429%;
+	line-height: 1.75;
+}
+pre, code, kbd, tt, samp, var {
+	font-size: 100%;
+}
+pre {
+	font-size: 100%;
+	line-height: 1.5;
+	margin: 0 0 1.5em 0;
+	white-space: pre;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+pre, code {
+	color: #880000;
+}
+kbd, samp, var {
+	color: #666666;
+	font-weight: bold;
+}
+acronym, abbr {
+	border-bottom: 1px #aaa dotted;
+	font-variant: small-caps;
+	cursor: help;
+}
+sub, sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+sup {
+	top: -0.5em;
+}
+sub {
+	bottom: -0.25em;
+}
+img{
+	max-width:100%;
+	height: auto;
+	
+}
+/*
+ 2.0.6) Link style
+ -------------------------*/
+a {
+	color: #ffffff;
+	text-decoration: none;
+	outline: none;
+}
+
+a:active {
+	outline: none;
+}
+
+/*
+ 2.0.7) Table Elements
+ --------------------------*/
+table {
+	width: 100%;
+	border-collapse: collapse;
+	color: #444444;
+	border-top: 1px #ccc solid;
+	border-bottom: 1px #ccc solid;
+	margin: 0 0 1.35714em 0;
+}
+caption {
+	font-variant: small-caps;
+}
+th, td {
+	line-height: 1.5em;
+	vertical-align: top;
+	padding: 0.71429em 0.5em;
+}
+th *:first-child, td *:first-child {
+	margin-top: 0;
+}
+thead th {
+	text-align: left;
+	color: #000;
+	border-bottom: 2px #000 solid;
+}
+tbody th {
+	text-align: left;
+	border-top: 1px solid #ccc;
+}
+tbody td {
+	text-align: left;
+	border-top: 1px solid #ccc;
+}
+
+/*
+ 2.0.8) Button Styles
+ -------------------------*/
+.btn, input.btn, button.btn {
+	display: inline-block;
+	font-size: 12px;
+	color: #000;
+	line-height: normal;
+	vertical-align: middle;
+	padding: 0 5px;
+	text-align: center;
+	white-space: nowrap;
+	cursor: pointer;
+	border: 1px solid #ccc;
+	background: #eee;
+}
+
+/*
+ 2.0.9) Sprite Icons
+ -------------------------*/
+[class^="icon-"], [class*="icon-"] {
+	background-image: url(../images/sprite.png);
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	display: inline-block;
+	height: 14px;
+	line-height: 14px;
+	margin-top: 1px;
+	vertical-align: text-top;
+	width: 14px;
+}
+
+
+/* Containers
+----------------------------------------------------------------------------------------------------*/
+.container {
+	width: 100%;
+	max-width:990px;
+	margin: 0 auto;
+	padding: 0px 15px;
+}
+
+
+
+
+/* Clear Floated Elements
+----------------------------------------------------------------------------------------------------*/
+
+/* http://sonspring.com/journal/clearing-floats */
+
+.clear {
+	clear: both;
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+/* http://perishablepress.com/press/2008/02/05/lessons-learned-concerning-the-clearfix-css-hack */
+
+.clearfix:after {
+	clear: both;
+	content: ' ';
+	display: block;
+	font-size: 0;
+	line-height: 0;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+.clearfix {
+	display: inline-block;
+}
+
+* html .clearfix {
+	height: 1%;
+}
+
+.clearfix {
+	display: block;
+}
+/*
+ 3.) Site Wide Content
+ ------------------------------*/
+#wrapper {width: 100%;
+position: relative;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default
+{
+	background: none;
+	border: none;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+.ui-selectmenu-button span.ui-selectmenu-text
+{
+	font-size: 14px;
+	color:#ffffff;
+	text-overflow: initial;
+	overflow: visible;
+	padding: 0px 20px 0px 4px ;
+}
+.ui-selectmenu-button span.ui-icon
+{
+	background:  url(../images/down-arrow.png) center center no-repeat;
+
+
+}
+
+.know-more-btn{
+	font-size: 14px;
+	color: #000;
+	  font-family: 'MHeiHK-Xbold-Roman';
+	  font-weight: 700;
+	  margin-top: 17px;
+    display: block;
+}
+.know-more-btn span ,.inner-caption .know-more-btn span
+{
+	position: relative;
+	width: auto;
+	height: auto;
+	display: inline-block;
+}
+.know-more-btn span:after
+{
+	content: "";
+	position: absolute;
+	width:100%;
+	height: 2px;
+	background: #8e877c;
+	left: 0;
+	bottom:-4px;
+}
+.popup-home ,.popup-login ,.login-sucess-pop ,.signup-sucess
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.7);
+	-webkit-transition: all .5s ease ;
+	-moz-transition: all .5s ease ;
+	-ms-transition: all .5s ease ;
+	-o-transition: all .5s ease ;
+	transition: all .5s ease ;
+}
+.popup-home .popup-globe  ,.forget-password
+{
+	max-width: 960px;
+	width: 100%;
+	min-height: 545px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+	-o-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+	background:  url(../images/popup-bg.png) 0 0 no-repeat;
+	padding: 32px;
+}
+.forget-password
+{
+	background: none;
+}
+.inner-content-wrap
+{
+	text-align: center;
+	padding-top: 25px;
+	position: relative;
+}
+.popup-wrap
+{
+	z-index: -99999999;
+	opacity: 0;
+}
+.popup-wrap.pop-home-open
+{
+	z-index: 99;
+	opacity: 1;
+}
+.popup-login ,.login-sucess-pop,.signup-sucess
+{
+	display: none;
+	z-index: 999999;
+}
+/*
+ 4.) Header Styles
+ ------------------------------*/
+#header
+{
+	width: 100%;
+}
+.primary-header
+{
+	background:  url(../images/top-header-pattern.png) center top no-repeat;
+	-webkit-background-size: cover;
+	background-size: cover;
+	
+}
+.logo
+{
+	    margin-top: 18px;
+    display: block;
+    float: left;
+    width: 221px;
+    padding-bottom: 12px;
+}
+.menu-btn 
+{
+	width: 50px;
+	height: 50px;
+	display: block;
+	position: relative;
+	padding: 10px;
+	float: left;
+	display: none;
+}
+.menu-btn  span
+{
+	width: 100%;
+	height: 4px;
+	background: #ffffff;
+	display: block;
+	margin-bottom: 4px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.menu-wrap
+{
+	/*position: relative;*/
+	margin-left: -6px;
+	margin-right: -9px;
+padding: 0px 5px 0px;
+}
+
+.right-head-info
+{
+	float: right;
+	width: 545px;
+	padding-top: 8px;
+}
+.account-form {
+    width: 82px;
+    float: left;
+}
+#account ,#cart ,#area
+{
+	width: 100%;
+}
+.currency ,.delevery-option
+{
+	font-size: 14px;
+	color:#ffffff;
+	display: block;
+	float: left;
+	padding-left: 14px;
+	padding-right:7px;
+	padding-top: 3px;
+}
+.cart-form
+{
+float: left;
+    width: 120px;
+    margin-left: 30px;
+    position: relative;
+    background:  url(../images/cart-img.png) left 4px no-repeat;
+}
+.cart-form .ui-selectmenu-button span.ui-selectmenu-text
+{
+	padding-left: 21px;
+}
+.traditional-zone {
+	font-size: 14px;
+    float: left;
+    width: 73px;
+    margin-left: 23px;
+    padding-top: 2px;
+}
+.traditional-zone a ,.traditional-zone a  span
+{
+	font-size: 14px;
+	color: #fff;
+	text-transform: uppercase;
+}
+.traditional-zone a span
+{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	padding-left: 9px;
+}
+.area-form 
+{
+	float: left;
+	width: 63px;
+	background:  url(../images/globe.png) left center no-repeat;
+}
+.area-form  .ui-selectmenu-button span.ui-selectmenu-text
+{
+	padding-left: 22px;
+}
+.main-header
+{
+	background: #3e3f4c;
+}
+.main-header nav
+{
+	width: 75%;
+	float: left;
+}
+.main-header nav > ul > li a{
+	font-size: 14px;
+	color: #fff;
+	padding: 6px 20px;
+	display: block;
+}
+.main-header nav > ul > li
+{
+	float:left;
+	padding: 0px 52px;
+	position: relative;
+}
+.main-header nav > ul > li:first-child a ,.main-header nav > ul > li:first-child  
+{
+	padding-left: 0;
+}
+.main-header nav > ul > li:before{
+    content: "";
+    width: 1px;
+    height: 14px;
+    background: #97989f;
+    position: absolute;
+    top: 7px;
+    left: 0;
+    
+}
+.main-header nav > ul > li:first-child:before
+{
+	display: none;
+}
+
+.search-btn
+{
+	background:  url(../images/sprite.png) 7px 5px no-repeat;
+	width: 30px;
+	height:100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	border: none;
+
+	
+}
+.search-box
+{
+	width: 18.8%;
+	float:right;
+	margin-top: 3px;
+	margin-bottom: 3px;
+	background: #ffffff;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	overflow: hidden;
+	position: relative;
+}
+#search-in
+{
+	width: 100%;
+	border: none;
+	display: block;
+	height: 21px;
+	line-height: 21px;
+	font-size: 13px;
+	color:#000000;
+	padding-left: 30px;
+}
+#header .ui-selectmenu-button span.ui-icon ,.price-compaire-form  .ui-selectmenu-button span.ui-icon
+{
+	    background: url(../images/down-arrow-bb.png) center center no-repeat;
+	    	right:-1px;
+	top: 11px;
+}
+#header  .area-form .ui-selectmenu-button span.ui-icon 
+{
+	right:5px;
+}
+
+/*
+ 5.) Footer Styles
+ ------------------------------*/
+#footer
+{padding-top: 35px;
+
+background: #8a869e;
+border-bottom: 5px solid #f5e3df;
+	
+}
+.footer-list
+{
+	padding-bottom: 50px;
+}
+.footer-list > li
+{
+	float: left;
+	width: 13%;
+	margin-left: 8.7%;
+}
+.footer-list > li:first-child
+{
+	margin-left: 0;
+}
+#footer .footer-list li strong
+{
+	font-size: 14px;
+	color: #fff;
+	  font-family: 'MHeiHK-Xbold-Roman';
+	  display: block;
+	  padding-bottom: 3px;
+	  border-bottom: 1px solid #ffffff;
+}
+#footer .footer-list li ul li a
+{
+	font-size: 13px;
+	color: #fff;
+	  font-family: 'MHeiHKS-Medium-Roman';
+	  padding-bottom: 3px;
+	  display: inline-block;
+}
+#footer .footer-list li ul 
+{
+	padding-top:10px;
+}
+.top-s
+{
+	margin-top: 9px;
+}
+.payment ul  li{
+	float: left;
+	margin-right:10px;
+}
+.payment ul.mode-country  li 
+{
+	margin-right: 2px;
+}
+.payment
+{
+	padding-top: 1px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ffffff;
+}
+.payment ul {
+	float:left;margin-right:16px;
+}
+
+.left-foot ul li
+{
+	float: left;
+}
+.left-foot ul li a{
+	padding-left: 5px;
+	border-right:1px solid #fff;
+	border-left: none;
+}
+
+.left-foot ul li:first-child a
+{
+	padding-left: 0;
+		border-right:1px solid #fff;
+}
+.bottom-foot
+{
+	padding-top: 11px;
+	margin-bottom: 98px;
+}
+.left-foot ul  
+{
+	float: left;
+	padding-top: 7px;
+}
+.left-foot  span{
+	font-size: 12px;
+	color: #fff;
+	font-family: 'MHeiHK-Xbold-Roman';
+	display: block;
+top: 12px;
+    left: 8px;
+	position: relative;
+
+}
+.left-foot
+{
+	width: 60%;
+	float: left;
+}
+.partner
+{
+	float:right;
+	width: 26%;
+	padding-top: 1px;
+}
+.partner  ul li
+{
+	float: left;
+	margin-right: 7px;
+}
+.partner  ul li:last-child
+{
+	margin-right: 0;
+}
+#county-form
+{
+	width: 148px;
+}
+.county-form
+{
+	float: right;
+	margin-right: 60px;
+	background: #f5e3df;
+}
+.county-form .ui-state-default, .county-form .ui-widget-content .ui-state-default,.county-form .ui-widget-header .ui-state-default
+{
+	background: #f5e3df;
+	min-height: 25px;
+}
+.county-form .ui-selectmenu-button span.ui-selectmenu-text
+{
+	line-height: 25px;
+	font-size: 14px;
+	color: #000;
+	text-align: center;
+	padding-left: 28px;
+}
+.county-form .ui-selectmenu-button span.ui-icon
+{
+	left: 28px;
+	right:auto;
+	-webkit-transform: rotate(-180deg);
+	-moz-transform: rotate(-180deg);
+	-ms-transform: rotate(-180deg);
+	-o-transform: rotate(-180deg);
+	transform: rotate(-180deg);
+	margin-top: -6px;
+}
+
+#county-form-menu
+{
+	position: absolute;
+	top: -138px;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+

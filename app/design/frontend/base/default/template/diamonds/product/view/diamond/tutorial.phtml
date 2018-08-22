@@ -1,0 +1,102 @@
+<?php $_product = $this->getParentBlock()->getProduct(); //->getParentBlock() ?>
+
+<div class="colorGrade">
+    <?php $colorGrade = $_product->getResource()->getAttribute('color_loose')->getFrontend()->getValue($_product) ?>
+    <h2><?php echo $this->__("Color Grade:") ?> <?php echo $colorGrade; ?></h2>
+    <p class="colorChart-<?php echo $colorGrade; ?>"></p>
+    <p>
+        <?php
+        switch ($colorGrade):
+            case 'D':
+                ?><strong><?php echo $this->__("Absolutely colorless.")?></strong> <?php echo $this->__("This is the highest color grade, which is extremely rare.")?>
+                <?php
+                break;
+            case 'E':
+                ?><strong><?php echo $this->__("Colorless.")?></strong> <?php echo $this->__("Only minimal traces of color are found in this color grade, which can only be detected by an expert gemologist.")?>
+                <?php
+                break;
+            case 'F':
+                ?><strong><?php echo $this->__("Colorless.")?></strong> <?php echo $this->__("Slight color is found in this color grade, which can only be detected by an expert gemologist.")?>
+                <?php
+                break;
+            case 'G':
+                ?><strong><?php echo $this->__("Near-colorless.")?></strong> <?php echo $this->__("Color is somewhat noticeable only when compared to diamonds of better grades, but these grades offer an excellent value.")?>
+                <?php
+                break;
+            case 'H':
+                ?><strong><?php echo $this->__("Near-colorless.")?></strong> <?php echo $this->__("Color is somewhat noticeable only when compared to diamonds of better grades, but these grades offer an excellent value.")?>
+                <?php
+                break;
+            case 'I':
+                ?><strong><?php echo $this->__("Near-colorless.")?></strong> <?php echo $this->__("Color is somewhat noticeable only when compared to diamonds of better grades, but these grades offer an excellent value.")?>
+                <?php
+                break;
+            case 'J':
+                ?><strong><?php echo $this->__("Near-colorless.")?></strong> <?php echo $this->__("Color is somewhat noticeable only when compared to diamonds of better grades, but these grades offer an excellent value. ")?>
+                <?php
+                break;
+            case 'K':
+                ?><strong><?php echo $this->__("Faint-yellow.")?></strong> <?php echo $this->__("Color is more readily detectable.")?>
+                <?php
+                break;
+            case 'L':
+                ?><strong><?php echo $this->__("Faint-yellow.")?></strong> <?php echo $this->__("Color is more readily detectable.")?>
+                <?php
+                break;
+            case 'M':
+                ?><strong><?php echo $this->__("Faint-yellow.")?></strong> <?php echo $this->__("Color is more readily detectable.")?>
+                <?php
+                break;
+        endswitch;
+        ?>
+    </p>
+</div>
+
+<div class="clarityGrade">
+    <?php $clarityGrade = $_product->getResource()->getAttribute('clarity')->getFrontend()->getValue($_product) ?>
+    <h2>Clarity Grade:<?php echo $clarityGrade; ?> </h2>
+    <p class="clarityChart-<?php echo $clarityGrade; ?>"></p>
+    <p>
+        <?php
+        switch ($clarityGrade):
+            case 'FL':
+                ?><strong><?php echo $this->__("Internally Flawless.") ?></strong><?php echo $this->__("Absolutely no inclusions are found when the diamond is observed by an experienced diamond grader under 10X magnification, although some minimal blemished may be found.") ?>
+                <?php
+                break;
+            case 'IF':
+                ?><strong><?php echo $this->__("Internally Flawless.") ?></strong><?php echo $this->__("Absolutely no inclusions are found when the diamond is observed by an experienced diamond grader under 10X magnification, although some minimal blemished may be found.") ?>
+                <?php
+                break;
+            case 'VVS1':
+                ?><strong><?php echo $this->__("Very Very Slightly Included.") ?></strong><?php echo $this->__("Very, very minute inclusions are found with extreme difficulty when the diamond is observed by an experienced diamond grader under 10X magnification.") ?>
+                <?php
+                break;
+            case 'VVS2':
+                ?><strong><?php echo $this->__("Very Very Slightly Included.") ?></strong><?php echo $this->__("Very, very minute inclusions are found with extreme difficulty when the diamond is observed by an experienced diamond grader under 10X magnification.") ?>
+                <?php
+                break;
+            case 'VS1':
+                ?><strong><?php echo $this->__("Very Slightly Included.") ?></strong><?php echo $this->__("Very minute inclusions are found with minor difficulty when the diamond is observed by an experienced diamond grader under 10X magnification.") ?>
+                <?php
+                break;
+            case 'VS2': ?>
+                <strong><?php echo $this->__("Very Slightly Included.") ?></strong><?php echo $this->__("Very minute inclusions are found with minor difficulty when the diamond is observed by an experienced diamond grader under 10X magnification.") ?>
+                <?php
+                break;
+            case 'SI1': ?>
+                <strong><?php echo $this->__("Slightly Included.") ?></strong>
+                <?php echo $this->__("Small inclusions are noticeable and found easily when the diamond is observed by an experienced diamond grader under 10X magnification and may even be visible to the naked eye.") ?>
+                <?php
+                break;
+            case 'SI2':?>
+                <strong><?php echo $this->__("Slightly Included.") ?></strong>
+                <?php echo $this->__("Small inclusions are noticeable and found easily when the diamond is observed by an experienced diamond grader under 10X magnification and may even be visible to the naked eye.") ?>
+                <?php
+                break;
+            case 'I1':?><strong><?php echo $this->__("Included.") ?></strong><?php echo $this->__("Inclusions are very obvious when the diamond is observed by an experienced diamond grader under 10X magnification and are also visible to the naked eye.") ?>
+                <?php
+                break;
+        endswitch;
+        ?>
+    </p>
+</div>

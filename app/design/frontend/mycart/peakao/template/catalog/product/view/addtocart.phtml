@@ -1,0 +1,37 @@
+
+<?php $_product = $this->getProduct(); ?>
+<?php $buttonTitle = $this->__('Add to Cart'); ?>
+<?php if($_product->isSaleable()): 
+		       $auction = Mage::getModel('auction/productauction')->loadAuctionByProductId($_product->getId());
+									if ($auction) {
+										$auction->setStoreId(Mage::app()->getStore()->getId())
+												->loadByStore();
+										if ($auction->getData('is_applied') == '2')
+											$auction = null;
+									}
+?>
+  <!--  <div class="add-to-cart">
+        <?php if(!$_product->isGrouped()): ?>
+        <label for="qty"><?php echo $this->__('Qty:') ?></label>
+        <input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Qty')) ?>" class="input-text qty" />
+        <?php endif; ?>
+        <button type="button" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
+        <?php echo $this->getChildHtml('', true, true) ?>
+    </div>-->
+	
+<div class="btn-block">
+<?php if($auction):?>
+	
+	 <button type="button" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="btn btn-block" onclick="productAddToCartForm.submit(this)">
+	 <span><span><?php echo $this->__('Purchase Now') ?>
+	 </span></span>
+	 </button>
+<?php else:?>
+	<a href="#" class="btn btn-block"> <?php  echo $auction?  $this->__('Purchase Now') :$this->__('Add To Cart')?></a>
+	 <button type="button" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="btn btn-block" onclick="productAddToCartForm.submit(this)">
+	 <span><span> <?php  echo $this->__('Add To Cart') ?>
+	 </span></span>
+	 </button>
+<?php endif; ?>	
+	</div>	
+<?php endif; ?>

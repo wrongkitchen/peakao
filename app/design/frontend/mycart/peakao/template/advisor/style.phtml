@@ -1,0 +1,45 @@
+
+<div id="ringtab1" class="tab-section-one"><span class="selection-text">開始選擇您的戒指款式。</span>
+<div class="tab-content">
+<div class="content-1">
+<?php echo $this->getchildhtml("metal")?>
+</div>
+<div class="content-2 clearfix">
+<?php echo $this->getchildhtml("ring_style")?>
+</div>
+<div class="content-3">
+<?php echo $this->getchildhtml("diamond_shape")?>
+</div>
+<div class="content-4">
+<?php echo $this->getchildhtml("budget")?>
+</div>
+<div class="btn-grp">
+<a  id="stylereset" class="reset popup-btn grey-btn" href="javascript:void(0)" type="submit"> 重設選項 </a>
+<a id="nextqltstep" class="grey-btn popup-btn" href="javascript:void(0)" type="submit"> 下一步 </a>
+ </div>
+</div>
+</div>
+<script type="text/javascript">
+  jQuery("#stylereset").click(function(){
+  jQuery(this).addClass("grey-btn");
+	  styleFilter.resetall();
+  }); 
+</script>  
+
+<script type="text/javascript">
+  jQuery("#nextqltstep").click(function(){
+	  if(jQuery(this).hasClass('grey-btn')){
+		  return;
+	  }
+	 jQuery('#styletab').removeClass('active');
+	    jQuery('#styletab').parent('li').removeClass('active-heading');
+	 jQuery('#qualitytab').addClass('active')
+	   jQuery('#qualitytab').parent('li').addClass('active-heading');
+
+	 jQuery('.tab-article > div').hide(); 
+	 jQuery(jQuery('#qualitytab').attr("href")).fadeIn(100).click();
+	 
+	 caratFilter.applyfilter();
+      
+  });
+</script>

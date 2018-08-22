@@ -1,0 +1,67 @@
+<section class="account-section checkout-section">
+					<div class="container">
+						<ol class="breadcrumb">
+                            <li><a href="#">首頁 </a></li>
+                            <li><a href="#">付款方法</a></li>
+                        </ol>
+                        <h1>付款方法</h1>
+                        <div class="account-content clearfix">
+					
+                    	<aside class="aside">
+							<?php echo $this->getchildhtml("checkout.progress")?>
+                        	    	
+                        		<div class="top">
+                        			<img src="<?php echo $this->getskinurl("images/")?>checkout-2.jpg" alt="">
+                        			<div class="top-text">
+                        				<span>熱門</span>
+                        			</div>
+                        		</div>
+                        	</aside> 
+                        	<article class="article">
+                        		<h3>我的版面</h3>
+                        	<div class="divider">
+			<span><img src="<?php echo $this->getskinurl("images/")?>popup-diamond.png" alt=""></span>
+		</div>
+                        		<div class="discount">
+                        			<div class="selected-quality">
+                        				<span>精心挑選品質</span>
+                        			</div>
+                        		</div>
+                        		<div class="account-info clearfix">
+<script type="text/javascript" src="<?php echo $this->getJsUrl('varien/accordion.js') ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/opcheckout.js') ?>"></script>
+<ol class="opc" id="checkoutSteps">
+<?php $i=0; foreach($this->getSteps() as $_stepId => $_stepInfo): ?>
+<?php if (!$this->getChild($_stepId) || !$this->getChild($_stepId)->isShow()): continue; endif; $i++ ?>
+    <li id="opc-<?php echo $_stepId ?>" class="section<?php echo !empty($_stepInfo['allow'])?' allow':'' ?><?php echo !empty($_stepInfo['complete'])?' saved':'' ?>">
+        <div class="step-title">
+            <span class="number"><?php echo $i ?></span>
+            <h2><?php echo $_stepInfo['label'] ?></h2>
+            <a href="#"><?php echo $this->__('Edit') ?></a>
+        </div>
+        <div id="checkout-step-<?php echo $_stepId ?>" class="step a-item" style="display:none;">
+            <?php echo $this->getChildHtml($_stepId) ?>
+        </div>
+    </li>
+<?php endforeach ?>
+</ol>
+<script type="text/javascript">
+//<![CDATA[
+    var accordion = new Accordion('checkoutSteps', '.step-title', true);
+    <?php if($this->getActiveStep()): ?>
+    accordion.openSection('opc-<?php echo $this->getActiveStep() ?>');
+    <?php endif ?>
+    var checkout = new Checkout(accordion,{
+        progress: '<?php echo $this->getUrl('checkout/onepage/progress') ?>',
+        review: '<?php echo $this->getUrl('checkout/onepage/review') ?>',
+        saveMethod: '<?php echo $this->getUrl('checkout/onepage/saveMethod') ?>',
+        failure: '<?php echo $this->getUrl('checkout/cart') ?>'}
+    );
+//]]>
+</script>
+                        			</div>
+                        		</div>
+                        	</article>
+                        </div>
+					</div>
+				</section>

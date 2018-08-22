@@ -1,0 +1,9 @@
+<div class="browse-mode clearfix">
+<div class="inner-browse-mode">
+        <?php //echo $this->getChildHtml('filter_toolbar_limiter') ?>	
+     <?php echo $this->getChildHtml("ring_filter_toolbar_metal"); ?>
+      <span>展示 <span><?php echo $this->getParentBlock()->getProductCollection()->count(); ?>
+	  </span> 件貨品</span>
+    </div>
+        <?php echo $this->getChildHtml("ring_filter_toolbar_sort"); ?>
+    </div>

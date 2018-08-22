@@ -1,0 +1,9 @@
+a:5:{i:0;s:312:"Error in file: "/home/mycarthk/public_html/magento/app/code/community/Ikantam/Diamonds/sql/diamonds_setup/mysql4-install-0.1.0.php" - SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'diamonds_setup' for key 'PRIMARY', query was: INSERT INTO `core_resource` (`code`, `version`) VALUES (?, ?)";i:1;s:1028:"#0 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Model/Resource/Setup.php(644): Mage::exception('Mage_Core', 'Error in file: ...')
+#1 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Model/Resource/Setup.php(421): Mage_Core_Model_Resource_Setup->_modifyResourceDb('install', '', '0.2.0')
+#2 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Model/Resource/Setup.php(327): Mage_Core_Model_Resource_Setup->_installResourceDb('0.2.0')
+#3 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Model/Resource/Setup.php(235): Mage_Core_Model_Resource_Setup->applyUpdates()
+#4 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Model/App.php(428): Mage_Core_Model_Resource_Setup::applyAllUpdates()
+#5 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Model/App.php(354): Mage_Core_Model_App->_initModules()
+#6 /home/mycarthk/public_html/magento/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#7 /home/mycarthk/public_html/magento/index.php(83): Mage::run('', 'store')
+#8 {main}";s:3:"url";s:77:"/magento/index.php/admin/cms_page/index/key/6c1363634eb1ef722910dffef22f1d89/";s:11:"script_name";s:18:"/magento/index.php";s:4:"skin";s:7:"default";}

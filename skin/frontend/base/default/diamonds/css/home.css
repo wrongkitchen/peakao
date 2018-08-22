@@ -1,0 +1,147 @@
+* {
+	margin: 0; 
+	padding: 0;
+}
+body {
+	background-color: white;
+	color: #000;
+	font: 12px/1.35 Arial,Helvetica,sans-serif;
+}
+.clear { visibility: hidden; display: block !important; font-size: 0; content: " "; clear: both; height: 0; }
+.home-diamond-search {
+	border: 1px solid #BABABA;
+	margin: 10px auto;
+	clear: both;
+	/*width: 884px;*/
+	min-height: 205px;
+	overflow: hidden;
+	padding: 27px;
+	
+}
+.home-diamond-search fieldset {
+	border: 0;
+	width: 88px;
+	float: left;
+	display: inline-block;
+	text-align: center;
+}
+.home-diamond-search h2 {
+	font: bold 16px/100% 'Trajan Pro', Verdana, Geneva, Arial, Helvetica, sans-serif;
+	text-transform: uppercase;
+	display: inline-block;
+	padding: 10px 40px 30px 0;
+}
+.fLeft {
+	float: left;
+	display: inline-block;
+}
+
+[class^="icon-"] {
+    background-image: url('../images/d-iamonds.png');
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    display: inline-block;
+    position: relative;
+    vertical-align: text-top;
+	width: 85px;
+	height: 94px;
+	margin-bottom: 12px;
+}
+
+.icon-home-filter-round 		{ background-position: -11px 0;  }
+.icon-home-filter-princess 	{ background-position: -108px 0; }
+.icon-home-filter-emerald  	{ background-position: -212px 0; }
+.icon-home-filter-radiant  	{ background-position: -312px 0; }
+.icon-home-filter-asscher  	{ background-position: -407px 0; }
+.icon-home-filter-oval     	{ background-position: -495px 0; }
+.icon-home-filter-marquise 	{ background-position: -585px 0; }
+.icon-home-filter-pear     	{ background-position: -676px 0; }
+.icon-home-filter-heart    	{ background-position: -763px 0; }
+.icon-home-filter-cushion  	{ background-position: -850px 0; }
+
+.check-box input[type="checkbox"] {
+    visibility: hidden;
+}
+/*Custom checkbox*/
+ .check-box {
+    background: url('../images/sprit-form.png') no-repeat 0 0;
+	width: 14px;
+	height: 14px;
+    cursor: pointer;
+    display: inline-block;
+}
+.checkedBox {
+    background-position: 0 -15px;
+}
+.arr {
+	background: url('../images/sprit-form.png') no-repeat -15px 0;
+	width: 5px;
+	height: 10px;
+	display: inline-block;
+	margin-left: 14px;
+	position: relative;
+	top: 1.5px;
+}
+.home-diamond-search button {
+	float: right;
+	border: 0;
+	padding: 5px 14px 7px 14px;
+	overflow: visible;
+	color: #fff;
+	cursor: pointer;
+	margin-top: 25px;
+	font-variant:small-caps;
+	font-weight: bold;
+	background: rgb(98,98,98);
+	background: -moz-linear-gradient(top,  rgba(98,98,98,1) 0%, rgba(0,0,0,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(98,98,98,1)), color-stop(100%,rgba(0,0,0,1)));
+	background: -webkit-linear-gradient(top,  rgba(98,98,98,1) 0%,rgba(0,0,0,1) 100%);
+	background: -o-linear-gradient(top,  rgba(98,98,98,1) 0%,rgba(0,0,0,1) 100%);
+	background: -ms-linear-gradient(top,  rgba(98,98,98,1) 0%,rgba(0,0,0,1) 100%);
+	background: linear-gradient(to bottom,  rgba(98,98,98,1) 0%,rgba(0,0,0,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#626262', endColorstr='#000000',GradientType=0 );
+}
+.home-diamond-search button:hover {
+	background: rgb(0,0,0);
+	background: -moz-linear-gradient(top,  rgba(0,0,0,1) 0%, rgba(98,98,98,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,1)), color-stop(100%,rgba(98,98,98,1)));
+	background: -webkit-linear-gradient(top,  rgba(0,0,0,1) 0%,rgba(98,98,98,1) 100%);
+	background: -o-linear-gradient(top,  rgba(0,0,0,1) 0%,rgba(98,98,98,1) 100%);
+	background: -ms-linear-gradient(top,  rgba(0,0,0,1) 0%,rgba(98,98,98,1) 100%);
+	background: linear-gradient(to bottom,  rgba(0,0,0,1) 0%,rgba(98,98,98,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#626262',GradientType=0 );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

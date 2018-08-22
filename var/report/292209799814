@@ -1,0 +1,9 @@
+a:5:{i:0;s:204:"Error in file: "/home/mycarthk/public_html/magento/app/code/local/Amasty/Rules/sql/amrules_setup/mysql4-install-1.2.4.php" - SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'promo_cats'";i:1;s:1028:"#0 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Model/Resource/Setup.php(644): Mage::exception('Mage_Core', 'Error in file: ...')
+#1 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Model/Resource/Setup.php(421): Mage_Core_Model_Resource_Setup->_modifyResourceDb('install', '', '1.8.4')
+#2 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Model/Resource/Setup.php(327): Mage_Core_Model_Resource_Setup->_installResourceDb('1.8.4')
+#3 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Model/Resource/Setup.php(235): Mage_Core_Model_Resource_Setup->applyUpdates()
+#4 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Model/App.php(428): Mage_Core_Model_Resource_Setup::applyAllUpdates()
+#5 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Model/App.php(354): Mage_Core_Model_App->_initModules()
+#6 /home/mycarthk/public_html/magento/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#7 /home/mycarthk/public_html/magento/index.php(83): Mage::run('', 'store')
+#8 {main}";s:3:"url";s:9:"/magento/";s:11:"script_name";s:18:"/magento/index.php";s:4:"skin";s:7:"default";}

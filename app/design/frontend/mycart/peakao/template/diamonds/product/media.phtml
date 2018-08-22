@@ -1,0 +1,198 @@
+      	<?php 
+ $_diamond = $this->getdiamond();
+
+ $_setting = $this->getsetting();
+ 
+ $sizew= $this->getsizew();
+ $sizeh= $this->getsizeh();
+
+?>
+     <style type="text/css">
+	.imgviewer img{margin:10px 0 60px 0}
+	 </style>
+
+		<div class="product-image-block">
+					<?php if ($_setting):?>
+	<?php
+
+						$i=0;
+							foreach ($_setting->getMediaGalleryImages() as $image):$i++;
+							if ($i == 4) break;
+							?>
+					<figure  class="imgviewer <?php echo $i==1?"first":""?> settingviewer" <?php echo $i==1?"":"style='display:none'"?> id="s<?php echo $_setting->getid() ?>_<?php echo $i ?>"  >
+		         
+				    <img id = "s<?php echo $_setting->getid() ?>zoom<?php echo $i ?>_<?php echo $i ?>" class="zoomwrape" 
+					src="<?php echo $this->helper('catalog/image')->init($_setting, 'image',$image->getfile())->resize($sizew?$sizew:648,$sizeh?$sizeh:$sizew?$sizew:469);?>" 
+					alt="product" 
+				 data-zoom-image="<?php echo $image->geturl()?>"
+					/>
+				<?php if ($_diamond):?>  
+					 <div class="complete-diamond-image">
+					 <a href="javascript:void(0)"
+					  class="canvasInfo diamondinfo">	
+					  <img src="<?php echo $this->helper('catalog/image')->init($_diamond,"small_image")->resize(473, 375)?>">
+					  </a>
+					  </div>
+					  <?php endif ?>
+					</figure>
+							<script type="text/javascript">
+					jQuery("#s<?php echo $_setting->getid() ?>zoom<?php echo $i ?>_<?php echo $i ?>").elevateZoom({ 
+					zoomType : "lens", 
+					lensShape : "round",
+					lensSize : 200 
+					}); 
+			
+					</script>
+			
+					<?php endforeach ?>
+					<?php 
+			
+					if(count($_setting->getMediaGalleryImages())==0):?>
+					<figure  class="imgviewer settingviewer"id="s<?php echo $_setting->getid() ?>"  >
+		         
+				    <img id = "s<?php echo $_setting->getid() ?>zoom" class="zoomwrape" 
+					src="<?php echo $this->helper('catalog/image')->init($_setting, 'small_image')->resize($sizew?$sizew:648,$sizeh?$sizeh:$sizew?$sizew:469);?>" 
+					alt="product" 
+				    
+					/>
+				<?php if ($_diamond):?>  
+					 <div class="complete-diamond-image">
+					 <a href="javascript:void(0)"
+					  class="canvasInfo diamondinfo">	
+					  <img src="<?php echo $this->helper('catalog/image')->init($_diamond,"small_image")->resize(473, 375)?>">
+					  </a>
+					  </div>
+					  <?php endif ?>
+					</figure>
+					<?php else: ?>
+				<div class="fig-option settingviewer">
+					
+						<?php
+						$i=0;
+							foreach ($_setting->getMediaGalleryImages() as $image):$i++;
+							if ($i == 4) break;
+							?>
+		<span class="opt imagecusor" data="s<?php echo $_setting->getid() ?>_<?php echo $i ?>">
+							<img src="<?php echo $this->helper('catalog/image')->init($_setting, 'image',$image->getfile())->resize(45,47);?>" alt="" />
+						</span>
+						<?php endforeach ?>
+					</div>
+           	<?php endif ?>
+					<?php endif?>
+					
+					
+					<?php if ($_diamond):?>
+     				<figure <?php echo $_setting?"style='visibility:hidden'":"" ?>
+					 class="clearfix diamondviewer 360viewer">
+					<iframe style="margin-top:20px" class="360iframe"
+			 width="80%" scrolling="no" frameborder="0"
+					src ="<?php echo $this->getbaseurl() ?>canvas/vision360.html?d=<?php echo $_diamond->getsku() ?>&btn=0&autoPlay=0&z=1">
+					</iframe>
+					<!--	height="<?php echo $sizeh?$sizeh-40:$sizew?$sizew-40:429 ?>" width="<?php echo $sizew?$sizew:"100%" ?>" scrolling="no" frameborder="0"  -->
+						<?php if ($_setting):?>  
+					 <div class="complete-diamond-image">
+					 <a href="javascript:void(0)"
+					  class="canvasInfo settinginfo">	
+					  <img src="<?php echo $this->helper('catalog/image')->init($_setting,"small_image")->resize(473, 375)?>">
+					  </a>
+					  </div>
+					  <?php endif ?>
+					</figure>
+					
+					
+						<?php
+						$i=0;
+							foreach ($_diamond->getMediaGalleryImages() as $image):$i++;
+							if ($i == 4) break;
+							?>
+					<figure style="display:none"  id="d<?php echo $_diamond->getid() ?>_<?php echo $i ?>"  class="imgviewer">
+		         
+				    <img id = "d<?php echo $_diamond->getid() ?>zoom<?php echo $i ?>_<?php echo $i ?>" class="zoomwrape" 
+					src="<?php echo $this->helper('catalog/image')->init($_diamond, 'image',$image->getfile())->resize($sizew?$sizew:648,$sizeh?$sizeh:$sizew?$sizew:469);?>" 
+					alt="product" 
+				 data-zoom-image="<?php echo $image->geturl()?>"
+					/>
+										
+					<?php if ($_setting):?>  
+					 <div class="complete-diamond-image">
+					 <a href="javascript:void(0)" 
+					  class="canvasInfo settinginfo">	
+					  <img src="<?php echo $this->helper('catalog/image')->init($_setting,"small_image")->resize(473, 375)?>">
+					  </a>
+					  </div>
+					  <?php endif ?>
+					</figure>
+							<script type="text/javascript">
+					jQuery("#d<?php echo $_diamond->getid() ?>zoom<?php echo $i ?>_<?php echo $i ?>").elevateZoom({ 
+					zoomType : "lens", 
+					lensShape : "round",
+					lensSize : 200 
+					}); 
+			
+					</script>
+	<?php endforeach ?>
+	
+	
+					<div class="fig-option diamondviewer" <?php echo $_setting?"style='display:none'":"" ?>>
+						<span class="opt 360cusor">
+							<img src="<?php echo $this->getskinurl("images/three60-big.png")?>" alt="" />
+						</span>
+					
+						
+						<?php
+						$i=0;
+							foreach ($_diamond->getMediaGalleryImages() as $image):$i++;
+							if ($i == 4) break;
+							?>
+		<span class="opt imagecusor" data="d<?php echo $_diamond->getid() ?>_<?php echo $i ?>">
+							<img src="<?php echo $this->helper('catalog/image')->init($_diamond, 'image',$image->getfile())->resize(45,47);?>" alt="" />
+						</span>
+						<?php endforeach ?>
+					</div>
+			
+	               <?php endif?>
+				</div>
+				
+					<script type="text/javascript"> 
+	
+					jQuery(".360iframe").attr('height',parseInt((jQuery(".360viewer").css('width')))*0.8);
+					jQuery(".360iframe").attr('width',parseInt((jQuery(".360viewer").css('width')))*0.8);
+					jQuery(window).resize(function() {
+
+					jQuery(".360iframe").attr('height',parseInt((jQuery(".360viewer").css('width')))*0.8);
+					jQuery(".360iframe").attr('width',parseInt((jQuery(".360viewer").css('width')))*0.8);
+					})
+						</script>
+					<script type="text/javascript"> 
+				
+								<?php if ($_setting):?>  
+					jQuery('iframe').on("load", function() {
+						jQuery(this).hide();
+					});
+					<?php endif ?>
+					jQuery(".diamondinfo.canvasInfo").click(function(){
+						jQuery(".settingviewer").hide();
+						
+						jQuery(".diamondviewer").css("visibility","visible")
+						jQuery(".diamondviewer").show();
+						jQuery(".diamondviewer iframe").show();
+					})
+		   jQuery(".settinginfo.canvasInfo").click(function(){
+						
+						jQuery(".settingviewer.fig-option").show();
+						jQuery(".diamondviewer,.imgviewer").hide();
+						jQuery(".settingviewer.first").show();
+					})						
+					jQuery(".360cusor").click(function(){
+						jQuery(".360viewer").show();
+						jQuery(".imgviewer").hide();
+					})
+					jQuery(".imagecusor").click(function(){
+						var id = jQuery(this).attr("data");
+						jQuery(".imgviewer").hide();
+					
+						jQuery("#"+id).show();
+						jQuery(".360viewer").hide();
+					})
+					</script>
+	 

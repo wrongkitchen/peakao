@@ -1,0 +1,23 @@
+<?php /* @var $this Ikantam_Diamonds_Block_Filter */ ?>
+
+
+            <?php echo $this->getChildHtml("filters"); ?>
+     
+
+<script type="text/javascript">
+
+
+	var $dropBtn = jQuery('#ikantam-mage-filter .drop-list .dropdown-toggle'),
+	$list    = jQuery('#ikantam-mage-filter ul.dropdown-menu');
+	$dropBtn.on('click', function(){
+		$dropBtn.toggleClass('ison');
+		$list.toggle();
+	});
+
+</script>
+
+
+<!-- end init -->
+
+
+

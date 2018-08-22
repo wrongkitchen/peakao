@@ -1,0 +1,104 @@
+			<div class="signup login-new">
+                 <!-- 	signup-page------->
+                 <section class="signup-page">
+					<div class="banner">
+														
+								<div class="content-caption">
+									<div class="container">
+										<ol class="breadcrumb">
+                                           <li><a href="#">首頁 </a></li>
+                                                  <li><a href="#">登入版面</a></li>
+                                                   
+                                           </ol>
+                                           
+										<div class="inner-heading">
+											<h1>登入版面</h1>
+																				
+										</div>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>										
+										<div class="forum-wrapper clearfix">
+											<div class="circle1 hidden-xs">
+												<span>或</span>
+											</div>
+										
+											
+											<div class="fast-login fast-login-new">
+												<strong>快速登入
+												<i class="arrow-open-lp visible-xs"></i>
+												</strong>
+													<div class="login-new-content">
+												<ul class=" clearfix">
+														<li>
+													<a href="javascript:void(0)" 
+													onclick="openSocial('<?php echo Mage::getBlockSingleton('sociallogin/channel_fblogin')->getLoginUrl() ?>','<?php echo $this->__('Login by Facebook') ?>')"
+													><img src="<?php echo $this->getskinurl("images/fb-new.png")?>" alt="#"></a></li>																									
+															<li><a href="#"> <img src="<?php echo $this->getskinurl("images/owl-icon.png")?>"></a></li>
+												<li><a href="javascript:void(0)" 
+												onclick="openSocial('<?php echo Mage::getBlockSingleton('twlogin/twlogin')->getLoginUrl() ?>','<?php echo $this->__('Login by Twitter') ?>')"
+												><img src="<?php echo $this->getskinurl("images/twt-new.png")?>"></a></li>
+												</ul>
+												<p>比格奧將會提供免費的送貨服務至你預設的地點，所有結算保證以交易時的匯率為準。</p>
+												</div>
+											</div>
+											<div class="new-member fast-login fast-login-new">
+												<strong>成為新會員
+												<i class="arrow-open-lp visible-xs"></i></strong>
+									<div class="login-new-content">
+									<form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="form-validate">
+										              <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
+														<input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
+														<input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+													<fieldset>
+													<div class="group-wrap clearfix">
+													<div class="first-group">
+													<label  for="first-name">名字*</label>
+													<input id="fn" type="text" name="firstname" value="<?php echo $this->escapeHtml($this->getFormData()->getFirstName()) ?>">	
+													</div>	
+													<div class="sec-group">
+													<label  for="last-name">姓氏*</label>
+													<input id="ls" type="text" name="lastname" value="<?php echo $this->escapeHtml($this->getFormData()->getLastName()) ?>">	
+													</div>
+													</div>
+													<div class="third-group">													
+                                                      <label  for="email">電郵*</label>
+                                                     <input type="text" name="email" id="email" value="<?php echo $this->escapeHtml($this->getFormData()->getEmail()) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Email Address')) ?>" class="input-text validate-email required-entry" />	
+                                                    </div>	
+                                                    <div class="group-wrap2 clearfix">
+                                                    <div class="first-group">
+													<label  for="pwd-name">密碼*</label>
+													  <input type="password" name="password" id="pwd" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Password')) ?>" class="input-text required-entry validate-password" />
+													</div>	
+													<div class="sec-group">
+													<label  for="com-name">確認密碼*</label>
+											        <input id ="cm" type="password" name="confirmation" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Confirm Password')) ?>"  class="input-text required-entry validate-cpassword" />
+													</div>
+													
+                                                    </div>
+                                                    <div class="fourth-group fourth-group-new clearfix">
+                                                    <input id="check" type="checkbox" name="is_subscribed" value="1"  title="<?php echo Mage::helper('core')->quoteEscape($this->__('Sign Up for Newsletter')) ?>" value="1" id="is_subscribed"<?php if($this->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> />
+                                                    <label  for="check">本人願意接收最新的優惠消息和資訊。</label>
+                                                    </div>
+                                                   <button class="sub signup-msg" type="submit">提交 </button>
+													</fieldset>
+												</form>
+												
+												    <script type="text/javascript">
+														//<![CDATA[
+															var dataForm = new VarienForm('form-validate', true);
+															<?php if($this->getShowAddressFields()): ?>
+															new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
+															<?php endif; ?>
+														//]]>
+														</script>
+										
+									</div>
+										</div>									
+									</div>
+								</div>		
+					</div>
+					</div>
+				</section> 			
+			     <!-- 	signup page end----->
+		
+
+			</div>

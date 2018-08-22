@@ -1,0 +1,103 @@
+<?php /* @var $this Ikantam_Diamonds_Block_Product_List_Diamonds */ ?>
+<?php
+$_productCollection = $this->getProductCollection();
+$_helper = $this->helper('catalog/output');
+$_diamondsHelper = $this->helper('diamonds');
+?>
+<div class="toolbar choose">	<?php echo $this->getChildHtml("toolbar_top"); ?>
+</div>
+<div class="clear"></div>
+<?php if (!$_productCollection->count()): ?>
+    <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+    <div style="font-size: 1.2em; font-weight: bold;"> Results: <?php echo $_productCollection->count(); ?></div>
+    <div class="category-products">
+
+        <?php // Grid Mode ?>
+        <?php $_collectionSize = $_productCollection->count() ?>
+        <?php $_columnCount = 4; ?>
+        <?php $i = 0;
+        foreach ($_productCollection as $_product): ?>
+                <?php if ($i++ % $_columnCount == 0): ?>
+                <div class="products row-fluid show-grid">
+        <?php endif ?>
+                <div style="float:left; width:224px;" class="item<?php if (($i - 1) % $_columnCount == 0): ?> first<?php elseif ($i % $_columnCount == 0): ?> last<?php endif; ?> span3">
+                    <div class="item-inner">
+                        <a href="<?php echo $_diamondsHelper->getSettingUrl($_product) ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image" id="product_<?php echo $_product->getId() ?>">
+                            <div id="<?php echo $_product->getId(); ?>">
+                                <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(224); ?>" width="226" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                            </div>
+                        </a>
+                        <h2 class="product-name"><a href="<?php echo $_diamondsHelper->getSettingUrl($_product) ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
+        <?php echo $this->getPriceHtml($_product, true) ?>
+
+                        <div class="actions">  
+                            <!--23.08.2013-->
+                            
+                            
+                    <?php if (Mage::helper('diamonds/config')->isShowSizeRingPage() || Mage::helper('diamonds/config')->isAllowAddRingToCart()) : ?>     
+                            <div class="sort-by span4">
+                    <label>Ring size:</label> 
+                    <select id="selected_ring_size_<?php echo $_product->getId(); ?>" onchange="">
+                        <?php $product = Mage::getModel('catalog/product')->load($_product->getId());
+                        $_sizes = explode(',', $product->getRingSize());
+                        foreach ($_sizes as $_size): ?>
+                            <option value="<?php echo $_size; ?>"><?php echo $_size; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                    <?php endif; ?>      
+                            <!--<button
+                        onclick="setRingSize()"
+                        class="button btn-cart" title="Select this setting"
+                        type="button">
+                        <span><span>Select this setting</span> </span>
+                    </button>-->
+                    <?php if (Mage::helper('diamonds/config')->isShowSizeRingPage()): ?>
+                            <button onclick="setRingSize(<?php echo $_product->getId(); ?>)" class="button btn-setting" title="Select this setting" type="button">
+                                <span><span>Select this setting</span></span>
+                            </button>
+                            
+                    <?php else: ?>
+                            <button onclick="location.href='<?php echo $_diamondsHelper->getSettingUrl($_product); ?>'" class="button btn-setting" title="Select this setting" type="button">
+                                <span><span>Select this setting</span></span>
+                            </button>
+                      <?php endif; ?>        
+                    <?php if (Mage::helper('diamonds/config')->isAllowAddRingToCart()): ?>
+                    
+                        <button onclick="addToCartRing(<?php echo $_product->getId(); ?>)" class="button btn-setting" title="Add to Cart" type="button">
+                            <span><span>Add to Cart</span></span>
+                        </button>
+                    
+                    <?php endif;?>
+                            
+                            <!--End 23.08.2013-->
+                        </div>
+                    </div>
+                </div>
+            <?php if ($i % $_columnCount == 0 || $i == $_collectionSize): ?>
+                </div>
+            <?php endif ?>
+    <?php endforeach ?>
+        
+        <script type="text/javascript">
+                function setRingSize(id)
+                {
+                    var selectedSize = document.getElementById("selected_ring_size_"+id).value;
+                    var newLocation = "<?php echo $this->helper('diamonds')->getSelectSettingUrl($_product); ?>";
+                    location.href = newLocation + 'size/' + selectedSize;
+                }
+                function addToCartRing(id)
+                {
+                    var selectedSize = document.getElementById("selected_ring_size_"+id).value;
+                    var newLocation = "<?php echo $this->helper('diamonds')->getAddRingToCartUrl($_product); ?>";
+                    location.href = newLocation +  'size/' + selectedSize;
+                }
+            </script>
+        
+        <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
+
+    </div>
+    <div class="clear"></div>
+    <div class="toolbar choose">	<?php echo $this->getToolbarHtml(); ?></div>
+<?php endif; ?>

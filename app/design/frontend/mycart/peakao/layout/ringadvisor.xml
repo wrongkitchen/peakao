@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<ringadvisor_index_index>
+	   <reference name="head">	
+         <action method="addItem">
+              <type>skin_js</type>
+				 <name>js/jquery.elevateZoom-3.0.8.min.js</name>
+            </action>
+				<action method="addJs">
+					<script>advisor/advisor.js</script>			
+				</action>
+        </reference> 
+	   <reference name="content">
+               <block type="core/template" name="advisor" template="advisor/index.phtml">
+		    	 <block type="core/template" name="steps" template="advisor/steps.phtml"/>
+				 <block type="core/template" name="style" template="advisor/style.phtml">
+					 <block type="core/template" name="metal" template="advisor/style/metal.phtml"/>
+					 <block type="core/template" name="ring_style" template="advisor/style/style.phtml"/>
+					 <block type="core/template" name="diamond_shape" template="advisor/style/diamond-shape.phtml"/>
+					  <block type="core/template" name="budget" template="advisor/style/budget.phtml"/>
+				 </block>
+				 <block type="core/template" name="quality" template="advisor/quality.phtml"/>
+				 <block type="ringadvisor/recommend" name="recommend" template="advisor/recommend.phtml"/>
+			   </block>
+			   
+        </reference>
+	</ringadvisor_index_index>
+	
+  
+    
+    
+</layout> 

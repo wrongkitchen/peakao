@@ -1,0 +1,86 @@
+<?php 
+    $auctionList = $this->getListAuction();
+	if(count($auctionList)==0){
+		
+		echo '<script type="text/javascript">
+		jQuery(".product-list li.block-first").addClass("nobid");
+		</script>
+		';
+	}
+	
+    if(count($auctionList)>0):
+    $_helper = $this->helper('catalog/output');
+    $model = Mage::getModel('catalog/product');
+    $modelAuction = Mage::getModel('auction/productauction');
+    $delay = Mage::getStoreConfig('auction/general/delay_time');
+    $now_time = Mage::getModel('core/date')->timestamp(time()); 
+?>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS),'magestore/auction.js'; ?>"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS),'magestore/auction210.js'; ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/magestore/auction/featuredauction.css'); ?>" media="all" />
+
+<style type="text/css" media="screen">
+    .ca-container{
+        height: 275px;
+    }    
+    .ca-container .auction-logo {
+        height: 125px;
+    }
+    .ca-item{
+        width:175px;
+    }
+</style>
+<div class="queen-offer">
+<div class="rounded-text"><?php echo $this->__("<span class='first-t'>Bid</span><span class='second-t'>On</span><span class='third-t'>Diamonds</span>")?>
+</div>
+    <?php foreach($auctionList as $item): ?>
+	 <?php $product = $model->load($item->getId()); 
+	       $price= $product->getprice();
+		    $store = Mage::app()->getStore(null);
+            $currency = $store->getCurrentCurrency();
+          
+	 ?>
+	<?php $auction = $modelAuction->loadAuctionByProductId($item->getId()) ?>
+	<?php $lastBid = $auction->getLastBid() ?>
+	<?php $currentPrice = $lastBid->getPrice() ? $lastBid->getPrice() : $auction->getInitPrice() ?>
+		 <?php $saveprice = $price-$currentPrice; ?>
+	<?php $end_time = strtotime($auction->getEndTime() . ' ' . $auction->getEndDate()) ?>
+	
+<span><?php echo $this->__("Bid Price") ?></span>
+ <span class="price-tag">  <?php echo $currency->formatPrecision($currentPrice, 0, array(), false, false) ?></span> 
+ <span class="price-w"><?php echo $this->__("Real Price") ?><span> <?php  echo $currency->formatPrecision($price,0,array(),false,false) ?></span></span> 
+ <span class="price-w"><?php echo $this->__("Save") ?> <span><?php echo $currency->formatPrecision($saveprice, 0, array(), false, false) ?></span></span>
+ </div>
+<div class="bid-wrap">
+<span class="bid-value">
+<span><? echo $auction->getTotalBid();?></span>
+<?php echo $this->__("Total Bid") ?></span> 
+<span class="timeleft remaining-time" id="timeleft"> </span> 
+
+
+ <a class="know-more-btn" href="<?php echo $item->getProductUrl() ?>"> 
+ <span><?php echo $this->__("Bid Now") ?></span></a>
+ </div>
+ 
+ <?php
+  break;
+ endforeach; ?>
+<script type="text/javascript">
+					//<![CDATA[
+					<?php
+					if (!is_numeric($delay)) {
+						$delay = 3;
+					}
+					?>
+					 var auctionTimeCounters;
+					auctionTimeCounters = new AuctionTimeCounter('<?php echo $now_time ?>', '<?php echo $end_time ?>', 
+					'<?php echo $auction->getId() ?>', '<?php echo $this->__(' day ') ?>', '<?php echo $this->__(' days ') ?>', 
+					'<?php echo $this->__(' month ') ?>', '<?php echo $this->__(' months ') ?>',
+					'<?php echo $this->__(' year ') ?>', '<?php echo $this->__(' years ') ?>');
+					auctionTimeCounters.setTimeleft('timeleft');
+					updateAuctionListInfo('auction_info', '<?php echo Mage::getBaseUrl('js') ?>magestore/auction.php?<?php echo http_build_query(array('tmpl' => 'auctionlistinfo')) ?>', 
+					'<?php echo $item->getId() ?>', 
+					'<?php echo $auction->getId() ?>',<?php echo ($delay * 1000) ?>);
+					 
+				</script>	
+<?php endif ?>

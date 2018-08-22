@@ -1,0 +1,106 @@
+<?php
+$config = $this->helper('diamonds/config');
+$widthSlider = $config->getWidthSlider();
+?>
+<?php $attributeCertificateOptions = $this->getAttributeOptions("laboratory"); ?>
+<h2><?php echo $this->__('Laboratory') ?></h2>
+<?php if (!$config->getCertificateSliderType()): ?>
+    <div class="price-ranger" style="width: <?php echo $widthSlider ?>px">
+        <div id="certificate_slider"></div>
+        <input type="hidden" id="minCertificate" name="attributes[certificate][min]" class="sliderCertificateValue svlft" data-index="0" value="1"/>
+        <input type="hidden" id="maxCertificate" name="attributes[certificate][max]" class="sliderCertificateValue slidRight" data-index="1" value="<?php echo $attributeCertificateOptions->getSize(); ?>" />
+    </div>
+    <div class="divisions">
+        <ul>
+			<?php
+            $i = 0;
+            $certificates = array();
+            $len = count($attributeCertificateOptions);
+            $width =  $widthSlider / ($len-1);
+            foreach ($attributeCertificateOptions as $option):
+                $widthEl = $width; 
+                $textalign= 'center'; 
+                if ($i == 0){ $widthEl = $width / 2; $textalign='left'; }
+                elseif ($i == $len-1){ $widthEl = $width / 2-1; $textalign= 'right'; }
+                ?>
+                <li style=" width: <?php echo $widthEl ?>px; float:left;  text-align: <?php echo $textalign; ?>; "> <?php echo $option->getValue(); ?> </li>
+                <?php $certificates[] = $option->getId(); ?>
+            <?php $i++; endforeach; ?>
+        </ul>
+    </div>
+<?php else: ?>
+    <div id="certificate">
+        <?php foreach ($attributeCertificateOptions as $option): ?>
+            <input type="checkbox" value="<?php echo $option->getId(); ?>" id="certificate<?php echo $option->getId() ?>">
+            <label for="certificate<?php echo $option->getId(); ?>"><?php echo $option->getValue(); ?></label>       
+        <?php endforeach; ?>
+        <script type="text/javascript" >
+            jQuery("#certificate").buttonset();
+        </script>
+    </div> 
+<?php endif; ?>
+<script type="text/javascript">
+
+    jQuery(function(jQuery){  
+<?php if (!$config->getColorSliderType()): ?>
+            jQuery("#certificate_slider").slider({
+                range: true,
+                min: 1,
+                max: <?php echo $attributeCertificateOptions->getSize(); ?>,
+                step: 1,
+                values: [1, <?php echo $attributeCertificateOptions->getSize(); ?>],
+                slide: function(event, ui) {
+                    for(var i = 0; i < ui.values.length; ++i) {
+                        jQuery("input.sliderCertificateValue[data-index=" + i + "]").val(ui.values[i]);
+                    }
+                }
+            });
+
+            jQuery("input.sliderCertificateValue").change(function() {
+                var $this = $(this);
+                jQuery("#certificate_slider").slider("values", $this.data("index"), $this.val());
+            });
+                
+                
+            var getDataCertificate = function(){
+                    
+                var minCertificate = jQuery( "#minCertificate" ).val();
+                var maxCertificate = jQuery( "#maxCertificate" ).val();
+                            
+                var certificates = <?php echo json_encode($certificates); ?>;
+                         
+                var mass = new Array();
+                for (var i = minCertificate-1; i < maxCertificate; i++){
+                    mass.push(certificates[i]);
+                }
+                        
+                if (minCertificate != 1 || maxCertificate != <?php echo $attributeCertificateOptions->getSize(); ?>){
+                    return { mass : mass };
+                }
+            };
+<?php else: ?>
+            jQuery("#certificate input").click(function(){
+                var selected = jQuery(this).attr("data-selected");
+                		
+                if(selected == "true"){
+                    jQuery(this).attr("data-selected","false");
+                } else {
+                    jQuery(this).attr("data-selected", "true");
+                }
+            });
+                		
+            var getDataCertificate = function(){
+                var certificates = jQuery("#certificate input");
+                var mass = new Array();
+                for(var i=0;i<certificates.length;i++){
+                    var certificate = jQuery(certificates[i]);
+                    if(certificate.attr("data-selected") == "true" ){
+                        mass.push(certificate.attr("value"));
+                    }		
+                }
+                return { mass : mass };
+            };
+<?php endif; ?>
+        diamondsFilter.registerFilter("laboratory", getDataCertificate);
+    });
+</script>

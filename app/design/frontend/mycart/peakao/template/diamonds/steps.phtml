@@ -1,0 +1,114 @@
+<?php
+    $design=Mage::getblocksingleton("diamonds/filter_design");
+	if($design->isSelectedDiamond()) $_diamond = $design->getSelectedDiamond();
+
+ 	if($design->isSelectedSettings()) $_setting = $design->getSelectedSettings();
+     $qty = Mage::getSingleton('core/session')->getEarringqty();
+	 $diff=Mage::getSingleton('core/session')->getEarringdiff();
+	if($diff){
+	$diamonddiff = Mage::getSingleton('core/session')->getDiamonddiff();
+	}
+  $flag="setting";
+  $request = $this->getRequest();
+  if($request->getModuleName()=="design"){
+    if($request->getControllerName()=="diamond") $flag="diamonds"; 
+    else if ($request->getControllerName()=="review") $flag="review";
+    else if ($request->getActionName()=="diamond") $flag="diamonds";
+  }
+  else return;
+	?> 
+<?php 
+ $steps = array('diamonds','engagement-rings','earrings','pendants');
+ $steps['diamonds'] = array("title"=>$this->__("Rings"),"1"=>$this->__("Diamonds"),"2"=>$this->__("Rings"),"3"=>$this->__("Complete"));
+ $steps['engagement-rings']=array("title"=>$this->__("Rings"),"1"=>$this->__("Rings"),"2"=>$this->__("Diamonds"),"3"=>$this->__("Complete"));
+  $steps['earrings']=array("title"=>$this->__("Earrings"),"1"=>$this->__("Earrings"),"2"=>$this->__("Diamonds"),"3"=>$this->__("Complete"));
+   $steps['pendants']=array("title"=>$this->__("Pendants"),"1"=>$this->__("Pendants"),"2"=>$this->__("Diamonds"),"3"=>$this->__("Earrings"));
+ $type = Mage::registry("design_type");
+$flag1 =($flag=="diamonds"&&$type=="diamonds")||($flag=="setting"&&$type!="diamonds");
+$flag2 =($flag=="setting"&&$type=="diamonds")||($flag=="diamonds"&&$type!="diamonds");
+$flagdiamond = ( $type=="diamonds" && $_diamond)||( $type!="diamonds" && $_setting);
+$flagsetting =  ($type=="diamonds" && $_setting)||($type!="diamonds"&&$_diamond);
+$qtystring =$qty?' X 2':"";
+$setqtystring = $qty||$diff?' X 2':"";
+if($_diamond):
+$price =  Mage::helper("core")->currency($_diamond->getfinalPrice(),true,false);
+if ($diamonddiff){
+$price =  Mage::helper("core")->currency($_diamond->getfinalPrice()+ $diamonddiff->getfinalPrice(),true,false);	
+$diffimage = '<img width="45px" height="45px" src="'.$this->helper("catalog/image")->init($diamonddiff,"small_image")->resize(45, 45).'">';
+}
+$designdiamond='
+<span class="stepprice">'.$price.
+$qtystring. 
+'</span>
+ <div class="stepdesign">
+ <span class="steplinks">
+   <a href="'.$_diamond->getProductUrl() .'">'.$this->__("View").'</a> | 
+ <a href="'.$this->helper("diamonds")->getChooseDiamondsUrl().'">'.$this->__("Change").'</a>
+ </span>
+   <img width="45px" height="45px" src="'.$this->helper("catalog/image")->init($_diamond,"small_image")->resize(45, 45).'">
+'.$diffimage.'
+   </div>
+';
+ endif;
+ if($_setting):
+ $designsetting='
+<span class="stepprice">'.Mage::helper("core")->currency($_setting->getfinalPrice(),true,false).
+$setqtystring. 
+'</span>
+ <div class="stepdesign">
+ <span class="steplinks">
+   <a href="'. $_setting->getProductUrl() .'">'.$this->__("View").'</a> | 
+ <a href="'. $this->helper("diamonds")->getChooseSettingsUrl().'">'.$this->__("Change").'</a>
+ </span>
+   <img width="45px" height="45px" src="'.$this->helper("catalog/image")->init($_setting,"small_image")->resize(45, 45).'">
+ </div>
+';
+  endif;
+?>
+<div class="tab-links-block tab-uptodate clearfix"><span class="tab-info"> <?php echo $this->__("Design") ?><br /> <?php echo $this->__("Your Own") ?><?php echo $steps[$type]["title"]?> </span>
+<ul class="tab-links clearfix">
+<li class="<?php echo $flag1?"active":""?>">
+<a class="<?php echo $flag1?"active":""?>" href="
+<?php echo $type=="diamonds"? $this->helper("diamonds")->getChooseDiamondsUrl():$this->helper("diamonds")->getChooseSettingsUrl($_setting) ;?>">
+<span class="tab-link"> <span class="count">1</span> <span class="<?php echo $flagdiamond?"pchide":""?> tab-desc"> <small><?php echo $this->__("step %s",1) ?></small>
+ <strong><?php echo $this->__("Choose") ?><?php echo $steps[$type][1]?></strong> <i class="icon-diamond-small">&nbsp;</i> </span> </span>
+ </a>
+ <?php echo $type=="diamonds"? $designdiamond: $designsetting ?>
+
+ </li>
+<li class="<?php echo $flag2?"active":""?>">
+<a class="<?php  echo $flag2?"active":""?>" href="
+<?php echo $type=="diamonds"? $this->helper("diamonds")->getChooseSettingsUrl():$this->helper("diamonds")->getChooseDiamondsUrl(); ?>">
+<span class="tab-link"> <span class="count">2</span> <span
+ class="<?php echo  $flagsetting?"pchide":""?> tab-desc"> <small><?php echo $this->__("step %s",2) ?></small> 
+<strong><?php echo $this->__("Setting") ?><?php echo $steps[$type][2]?></strong> <i class="icon-ring-small">&nbsp;</i> </span> 
+</span>
+</a>
+  <?php echo $type!="diamonds"? $designdiamond: $designsetting ?>
+
+</li>
+<li class="<?php echo $flag=="review"?"active":""?>">
+<a  class="<?php echo $flag=="review"?"active":""?>" href="<?php echo $this->geturl("design/review/design/type/".Mage::registry("design_type")); ?>">
+<span class="tab-link"> <span class="count">3</span> <span class="
+<?php echo $_diamond&&$_setting?"pchide ":""?>
+tab-desc"> 
+<small><?php echo $this->__("step %s",3) ?></small> <strong><?php echo $this->__("Complete") ?></strong> <i class="icon-ring2-small">&nbsp;</i> </span> </span>
+</a>
+ <?php if($_diamond&&$_setting):
+ $price = Mage::helper('core')->currency($_setting->getfinalPrice()+$_diamond->getfinalPrice(),true,false);
+ if($diamonddiff) $price =Mage::helper('core')->currency($_setting->getfinalPrice()+$_diamond->getfinalPrice()+$diamonddiff->getfinalPrice(),true,false);
+ ?>
+ 
+ <span class="stepprice completeprice">
+   <?php echo  $price.$qtystring?>
+
+ </span>
+ <div class="stepdesign completedesign">
+ <span class="steplinks">
+   <a href="<?php echo $this->getUrl('design/constructor/reset/type/'.Mage::registry("design_type")); ?>"><?php echo $this->__("Reset") ?></a> 
+ </span>
+ </div>
+ <?php endif?>
+</li>
+</ul>
+</div>

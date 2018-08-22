@@ -1,0 +1,24 @@
+<?php /** @var $this Ikantam_Diamonds_Block_Search_Result */ ?>
+
+<?php if($this->isActive()):?>
+
+<?php if($this->getDiamondsSize()):?>
+	<div class="alert alert-success">
+        <button data-dismiss="alert" class="close" type="button">×</button>
+    	<strong><?php echo $this->getDiamondsSize(); ?> diamonds found</strong>
+    </div>
+<?php endif; ?> 
+<?php if($this->getRingsSize()):?>
+    <div class="alert alert-success">
+        <button data-dismiss="alert" class="close" type="button">×</button>
+    	<strong><?php echo $this->getRingsSize(); ?> rings found</strong>
+    </div>
+<?php endif; ?>
+<?php if( !( $this->getDiamondsSize() || $this->getRingsSize())):?>
+	<div class="alert alert-block">
+    	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	    <strong>Search returned no results.</strong>
+    </div>
+<?php endif;?>
+
+<?php endif;?>

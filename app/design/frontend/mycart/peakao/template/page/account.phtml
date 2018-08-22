@@ -1,0 +1,43 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<head>
+<?php echo $this->getChildHtml('head') ?>
+</head>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<?php echo $this->getChildHtml('after_body_start') ?>
+<div id="wrapper">
+    <?php echo $this->getChildHtml('global_notices') ?>
+     <header id="header" class="header-new">
+
+        <?php echo $this->getChildHtml('header') ?>
+		
+		</header>	
+      <div id="content">
+	  		<section class="account-section account-section-new">
+					<div class="container">
+						<ol class="breadcrumb">
+                            <li><a href="#">首頁 </a></li>
+                            <li><a href="#">我的版面</a></li>
+                        </ol>
+						 <h1>我的主頁
+					
+						 </h1>
+                        <div class="account-content clearfix">
+                         <?php echo $this->getChildHtml('global_messages') ?>
+                       <?php echo $this->getChildHtml('content') ?>
+					        </div>
+					</div>
+				</section>
+      
+		 <?php echo $this->getChildHtml('newsletter') ?>
+	<footer id="footer" >
+        <?php echo $this->getChildHtml('footer') ?>
+	</footer>
+        <?php echo $this->getChildHtml('global_cookie_notice') ?>
+        <?php echo $this->getChildHtml('before_body_end') ?>
+
+</div>
+<?php echo $this->getAbsoluteFooter() ?>
+</body>
+</html>

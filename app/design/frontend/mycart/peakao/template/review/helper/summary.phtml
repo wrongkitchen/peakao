@@ -1,0 +1,81 @@
+
+<?php 
+$flag =0;
+$orderItems = Mage::getResourceModel('sales/order_item_collection')
+    ->addFieldToFilter('product_id', $this->getproduct()->getid())
+    ->toArray(array('order_id'));
+
+$orderIds = array_unique(array_map(
+    function($orderItem) {
+        return $orderItem['order_id'];
+    },
+    $orderItems['items']
+));
+$orderCollection = Mage::getResourceModel('sales/order_collection')
+    ->addFieldToFilter('entity_id',   array('in'  => $orderIds))
+    ->addFieldToFilter('customer_id', array('neq' => 'NULL'));
+$orderCollection->getSelect()->group('customer_id');
+$customer = Mage::getSingleton('customer/session')->getCustomer()->getid();
+if (in_array($customer,$orderCollection->getColumnValues('customer_id'))) $flag=1;
+?>
+
+<?php if ($this->getReviewsCount()): ?>
+<?php if( $this->getRatingSummary()):
+ $rates = number_format($this->getRatingSummary()/20,1);
+ $bar = explode(".",$rates);
+
+?>
+							<div class="star-label clearfix">
+										<span class="rating"><?php echo $rates?></span>
+										<div class="star-wrap">
+											<ul class="page-label clearfix">
+									<?php for($i=0 ; $i<5; $i++ ):?>
+									<?php if($i<$bar[0]):?>
+									<li class="color-g"></li>
+																
+							
+									<?php elseif($i==$bar[0]):?>
+									<li><div style="background: #959fc2;height:100%; width:<?php echo $bar[1]*10 ?>%"></div></li>
+								
+									<?php else: ?>
+									<li></li>
+									<?php endif ?>
+											<?php endfor ?>		
+											</ul>
+											<span class="reviewer">(共有<?php echo $this->getReviewsCount()?>個評慏）</span>
+										</div>
+					<script type="text/javascript">
+				jQuery(".reviewer").click(function(){
+					 jQuery.ajax( {  
+					url:'<?php echo $this->geturl("design/ajax/review")?>',  
+					data:{  
+							 flag : "<?php echo $flag?>",  
+							 id : "<?php echo $this->getproduct()->getid()?>",  
+						     
+					},  
+					type:'post', 					
+					dataType:'html',  
+					success:function(data) {  
+				
+					  jQuery('#content').append(data);
+					 },  
+					
+				});
+		
+				})
+				
+
+
+					</script>
+
+	</div>
+									    <?php endif;?>
+
+
+
+<?php elseif ($this->getDisplayIfEmpty()&&$flag==1): ?>
+
+	<div class="star-label clearfix">
+	<a href="<?php echo $this->getReviewsUrl() ?>#review-form"><?php echo $this->__('留下第一個評價') ?></a>
+	</div>
+<?php endif; ?>

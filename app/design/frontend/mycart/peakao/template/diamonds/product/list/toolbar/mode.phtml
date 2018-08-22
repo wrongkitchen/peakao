@@ -1,0 +1,51 @@
+<?php /* @var $toolbar Mage_Catalog_Block_Product_List_Toolbar */?>
+
+<?php $toolbar = $this->getParentBlock()->getParentBlock()->getChild("toolbar");?>
+
+			<?php $_modes = $toolbar->getModes(); ?>
+			<?php if($_modes && count($_modes)>1): ?>
+	<div class="gird-list-mode">
+			<?php foreach ($toolbar->getModes() as $_code=>$_label): ?>
+			  
+				<?php 
+				if ($_code=="list" ) continue;
+				if($toolbar->isModeActive($_code)): ?>
+			
+			    <img id="current_mode" data-value="<?php echo strtolower($_code); ?>" alt="" src="<?php echo $this->getskinurl("images")?>/<?php echo strtolower($_code); ?>-mode.png" />
+		
+
+				<?php else: ?>
+				<a class="view_mode" href="#tab-<?php echo strtolower($_code); ?>" onclick="return false;"   data-value="<?php echo strtolower($_code); ?>">
+                  <img alt="" src="<?php echo $this->getskinurl("images")?>/<?php echo strtolower($_code); ?>-mode.png" /></a> 
+			
+				<?php endif; ?>
+                        <!--<span class="view_mode" data-value="<?php //echo strtolower($_code); ?>">
+						<a href="#" onclick="return false;" title="<?php //echo $_label ?>" class="<?php //echo strtolower($_code); ?>"><?php //echo $_label ?></a>&nbsp;
+					</span>-->
+			<?php endforeach; ?>
+			</div>
+			<?php endif; ?>
+
+
+<script>
+
+jQuery(function(){
+
+	var getData = function(){
+		var value = jQuery("#current_mode").attr("data-value");
+		return value;
+	};
+	diamondsFilter.registerMetadata("mode", getData);
+
+	jQuery(".view_mode").click(function(){
+		var value = jQuery(this).attr("data-value");
+		diamondsFilter.registerMetadata("mode", function(){
+			return value;
+		});
+		diamondsFilter.updateResults();
+	});
+});
+
+</script>
+
+			

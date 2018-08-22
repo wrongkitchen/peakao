@@ -1,0 +1,24 @@
+<?php /* @var Ikantam_Diamonds_Block_Product_Compare_Addtocompare */ ?>
+<?php $isLoggedIn = $this->helper('customer')->isLoggedIn(); ?>
+
+<?php $id = md5($this->getAddUrl() . rand()); ?>
+<span class="compare-container" id="<?php echo $id; ?>">
+<input type="checkbox"
+	class="add-to-compare" 
+	data-add-url="<?php echo $this->getAddUrl();?>"
+	data-remove-url="<?php echo $this->getRemoveUrl();?>"	
+	<?php if( $isLoggedIn && $this->isInWishlist() ):?>
+	checked="checked"
+	<?php endif;?>
+	<?php if( !$isLoggedIn ):?>
+	disabled="disabled"
+	title="<?php echo $this->__("Please, login"); ?>"
+	<?php endif;?>
+/>
+<img style="display:none" alt="Loading..." src="<?php echo $this->getSkinUrl("diamonds/images/loading.gif");?>" />
+</span>
+<script>
+	jQuery(function(){
+		new IkD.compareAjax("#<?php echo $id; ?>");		
+	});
+</script>

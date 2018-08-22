@@ -1,0 +1,58 @@
+<?php
+$config = $this->helper('diamonds/config');
+$widthSlider = $config->getWidthSlider();
+$widthSliderWithFields = $config->getWidthSliderWithFields();
+?>
+<div class="range-slider"> 
+    <div class="inline-ranger-slider" style="width:100%">
+        <div id="carat_slider" class="range-inner"></div>
+    </div> 
+	
+	<div class="left-selector min-value">
+	<!--<span><?php //echo $this->__("min") ?></span>-->
+	<input type="text" id="minCarat" class="slider-value sliderCaratValue formField svlft inline-range" name="attributes[carat][min]" data-index="0" value="<?php echo $config->getMinCaratSlider() ?>"/>
+	</div>
+	<div class="right-selector max-value">
+		<!--<span><?php //echo $this->__("max") ?></span>-->
+		<input type="text" id="maxCarat" class="slider-value sliderCaratValue formField slidRight inline-range" name="attributes[carat][max]" data-index="1" value="<?php echo $config->getMaxCaratSlider() ?>" />
+	</div>
+</div>
+<script type="text/javascript" >
+    jQuery(function(jQuery){
+        /*Carat-----*/    
+        jQuery("#carat_slider").slider({
+            range: true,
+            min: <?php echo $config->getMinCaratSlider() ?>,
+            max: <?php echo $config->getMaxCaratSlider() ?>,
+            step:  <?php echo $config->getStepCaratSlider() ?>,
+            values: [<?php echo $config->getMinCaratSlider() ?>, <?php echo $config->getMaxCaratSlider() ?>],
+            slide: function(event, ui) {
+                for(var i = 0; i < ui.values.length; ++i) {
+                    jQuery("input.sliderCaratValue[data-index=" + i + "]").val(ui.values[i]);
+                }
+				 
+            },
+			stop: function (){
+				
+				diamondsFilter.updateResults(); 
+			}
+        });
+
+        jQuery("input.sliderCaratValue").change(function() {
+            var $this = jQuery(this);
+            jQuery("#carat_slider").slider("values", $this.data("index"), $this.val());
+         diamondsFilter.updateResults(); 
+		});
+        
+        var getDataCarat = function(){
+        
+            var minCarat = parseInt(jQuery( "#minCarat" ).val());
+            var maxCarat = parseInt(jQuery( "#maxCarat" ).val());
+                
+            if(minCarat >= 0 && maxCarat >= minCarat){
+                return { min : minCarat, max : maxCarat};
+            }
+        };
+        diamondsFilter.registerFilter("carat", getDataCarat);
+    });
+</script>

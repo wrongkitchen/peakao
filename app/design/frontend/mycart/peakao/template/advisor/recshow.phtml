@@ -1,0 +1,53 @@
+<?php
+$d = Mage::getmodel("catalog/product")->load($this->getd());
+
+$s = Mage::getmodel("catalog/product")->load($this->gets());
+
+$carat = 
+sprintf("%.2f",$d->getResource()->getAttribute('carat')
+->getFrontend()->getValue($d));
+$metal = $s->getResource()->getAttribute('ring_metal')
+->getFrontend()->getValue($s);
+$price= $s->getfinalprice()+$d->getfinalprice();
+$price = Mage::helper('core')->currency($price,true,false) ;
+preg_match("/[^0-9]+(.+)[\.](.+)/i",$price, $matches);
+$price  = Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol();
+$price .= "<span>".$matches[1]."<em>.".$matches[2]."</em></span>";
+
+?>
+
+<div class="content-head">
+<h2><span>1</span> 首選推介</h2>
+</div>
+<div class="preferred-content clearfix">
+<div class="preferred-fig">
+<?php echo Mage::helper("diamonds/media")->getmedia($d,$s,334)->tohtml()?>
+</div>
+<div class="preferred-text">
+<div class="diamond-type">
+<h3><?php echo $d ->getname()?></h3>
+<span class="karet"> <?php echo $carat?>克拉</span>
+ <a  class="popup-btn dadjust" href="javascript:void(0)"type="submit"> 調整這顆鑽石 </a></div>
+<div class="master-work">
+<span class="white-gold"><?php echo $s ->getname()?> <small><?php echo $metal?></small>
+</span> <a class="popup-btn metaladjust" href="javascript:void(0)" type="submit"> 調整介子質材 </a> 
+<!--<a class="popup-btn" href="javascript:void(0)" type="submit"> 選擇指環大小 </a></div><!-->
+<div class="diamond-price">
+<h2><?php echo $price?></h2>
+
+ <a class="popup-btn" href="<?php echo $this->geturl("diamonds/constructor/addtocart")?>?d=<?php echo $d->getid()?>&s=<?php echo $s->getid()?>" type="submit"> 加到購物盤 </a></div>
+</div>
+</div>
+<div id="adjustwrape" style="position:absolute;z-index:999">
+
+</div>
+<script type="text/javascript">
+ jQuery('.dadjust').bind("click",function(){
+  adjust("diamond");
+
+})
+jQuery('.metaladjust').click(function(){
+adjust("metal");
+
+})
+</script>

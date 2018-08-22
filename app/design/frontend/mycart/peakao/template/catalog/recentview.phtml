@@ -1,0 +1,22 @@
+<?php 
+$collection =
+ Mage::getSingleton('Mage_Reports_Block_Product_Viewed')
+ ->getItemsCollection();
+?>
+<h3><span class="dot">最近瀏覽</span></h3>
+
+<ul class="recently-step">
+<?php foreach($collection as $product): 
+$product=Mage::getModel('catalog/product')->load($product->getId());
+?>
+<li>
+<a href="<?php echo $product->getproducturl() ?>"> 
+<img src="<?php echo Mage::helper('catalog/image')->init($product,'image')->resize(184)  ?>" ></img>
+ </a>
+<div class='product-name'>
+<span><?php echo $product->getname() ?></span>
+</div>
+</li>
+<?php endforeach ?>
+
+</ul>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2016 Amasty (https://www.amasty.com)
+ * @package Amasty_Rules
+ */
+-->
+<layout version="0.1.0">
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action ifconfig="amrules/customer_account/enabled" method="addLink" translate="label" module="amrules" ><name>amrules</name><path>amrules/index</path><label>Loyalty Program</label></action>
+        </reference>
+    </customer_account>
+    <amrules_index_index>
+        <update handle="customer_account"/>
+        <reference name="content">
+            <block type="amrules/index" name="amrules.index" template="amrules/index.phtml"/>
+        </reference>
+    </amrules_index_index>
+</layout>

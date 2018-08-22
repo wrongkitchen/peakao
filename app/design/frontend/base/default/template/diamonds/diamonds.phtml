@@ -1,0 +1,116 @@
+<?php /* @var $this Ikantam_Diamonds_Block_Diamonds */?>
+
+<?php echo $this->getChildHtml('search_result'); ?>
+
+<div class="diamonds-filter" id="ikantam-mage-filter">
+	<?php echo $this->getChildHtml('diamonds_filter');?>      
+</div>
+<!-- preloader begin -->
+			<div class="overlayBlock"><div id="loaderImage"></div></div>
+<!-- preloader end -->
+
+ <script>
+jQuery(function() {
+jQuery( "#tabs" ).tabs();
+});
+</script>
+
+<div class="tabBlock" id="tabs">
+	<ul class="nav nav-tabs" id="myTab">
+		<li class="active"><a data-toggle="tab" href="#searchResults"><?php echo $this->__("Search Results") ?></a></li>
+		<li><a data-toggle="tab" href="#Comparison"><?php echo $this->__("Comparison") ?></a></li>
+		<li><a data-toggle="tab" href="#recentlyViewed"><?php echo $this->__("Recently Viewed") ?></a></li>
+	</ul>
+	<!-- /nav-tabs-->
+
+	<div class="tab-content" id="myTabContent">
+		<div id="searchResults" class="tab-pane fade in active">
+			<div id="diamonds-filter-results" class="category-products">
+				<?php echo $this->getChildHtml('diamonds_filter_results');?>
+					
+			</div>
+		</div>
+		<!-- /category-products-->
+			
+		<div id="recentlyViewed" class="tab-pane fade">
+			<?php echo $this->getChildHtml("diamonds_recently_viewed");?>
+		</div>
+		<div id="Comparison" class="tab-pane fade">
+			<?php echo $this->getChildHtml("diamonds_comparasion");?>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	var cSpeed=9;
+	var cWidth=100;
+	var cHeight=100;
+	var cTotalFrames=8;
+	var cFrameWidth=100;
+	var cImageSrc= '<?php echo $this->getSkinUrl('diamonds/images/sprites.png');?>';
+	
+	var cImageTimeout=false;
+	var cIndex=0;
+	var cXpos=0;
+	var SECONDS_BETWEEN_FRAMES=0;
+	
+	function startAnimation(){
+		
+		document.getElementById('loaderImage').style.backgroundImage='url('+cImageSrc+')';
+		document.getElementById('loaderImage').style.width=cWidth+'px';
+		document.getElementById('loaderImage').style.height=cHeight+'px';
+		
+		//FPS = Math.round(100/(maxSpeed+2-speed));
+		FPS = Math.round(100/cSpeed);
+		SECONDS_BETWEEN_FRAMES = 1 / FPS;
+		
+		setTimeout('continueAnimation()', SECONDS_BETWEEN_FRAMES/1000);
+		
+	}
+	
+	function continueAnimation(){
+		
+		cXpos += cFrameWidth;
+		//increase the index so we know which frame of our animation we are currently on
+		cIndex += 1;
+		 
+		//if our cIndex is higher than our total number of frames, we're at the end and should restart
+		if (cIndex >= cTotalFrames) {
+			cXpos =0;
+			cIndex=0;
+		}
+		
+		document.getElementById('loaderImage').style.backgroundPosition=(-cXpos)+'px 0';
+		
+		setTimeout('continueAnimation()', SECONDS_BETWEEN_FRAMES*1000);
+	}
+	
+	function imageLoader(s, fun)//Pre-loads the sprites image
+	{
+		clearTimeout(cImageTimeout);
+		cImageTimeout=0;
+		genImage = new Image();
+		genImage.onload=function (){cImageTimeout=setTimeout(fun, 0)};
+		genImage.onerror=new Function('alert(\'Could not load the image\')');
+		genImage.src=s;
+	}
+	
+	//The following code starts the animation
+	new imageLoader(cImageSrc, 'startAnimation()');
+</script>
+
+
+<script>
+	jQuery(function($){
+		IkD.Helper.finishPreloader();
+		diamondsFilter.updateResults();
+	});
+</script>
+
+
+
+
+
+
+
+

@@ -1,0 +1,64 @@
+<?php
+$config = $this->helper('diamonds/config');
+$widthSlider = $config->getWidthSlider();
+$code = Mage::app()->getStore()->getCurrentCurrencyCode();
+$symbol = Mage::app()->getLocale()->currency($code)->getSymbol(); 
+$widthSliderWithFields = $config->getWidthSliderWithFields();
+?>
+
+<h2><?php echo $this->__('Price')?></h2>
+<div class="price-ranger" style="width: <?php echo $widthSlider ?>px;">
+	<!--<span class="dollor-sign outer-none"> <?php //echo $symbol; ?></span>-->
+	<div class="min-value">
+		<!--<span><?php //echo $this->__("min") ?></span>-->
+		<input type="text" id="minPrice" class="sliderPriceValue formField svlft inline-range" name="attributes[price][min]" data-index="0" value="<?php echo $config->getMinPriceSlider() ?>"/>
+	</div>
+	
+    <div class="inline-ranger-slider" style="width: <?php echo $widthSliderWithFields; ?>px">
+        <div id="price_slider"></div>
+    </div>
+    
+    <!--<label class="inline-range">to</label>-->
+   <!-- <span class="dollor-sign"><?php //echo $symbol; ?></span>-->
+	<div class="max-value">
+		<!--<span><?php //echo $this->__("max") ?></span>-->
+		<input type="text" id="maxPrice" class="sliderPriceValue formField slidRight inline-range" name="attributes[price][max]" data-index="1" value="<?php echo $config->getMaxPriceSlider() ?>" />
+	</div>
+</div>
+<script type="text/javascript">
+    jQuery(function(jQuery){
+        /*Price-----*/
+        jQuery("#price_slider").slider({
+            range: true,
+            min: <?php echo $config->getMinPriceSlider() ?>,
+            max: <?php echo $config->getMaxPriceSlider() ?>,
+            step: <?php echo $config->getStepPriceSlider() ?>,
+            values: [<?php echo $config->getMinPriceSlider() ?>, <?php echo $config->getMaxPriceSlider() ?>],
+            slide: function(event, ui) {
+                for(var i = 0; i < ui.values.length; ++i) {
+                    jQuery("input.sliderPriceValue[data-index=" + i + "]").val(ui.values[i]);
+                }
+            }
+        });
+
+        jQuery("input.sliderPriceValue").change(function() {
+            var $this = jQuery(this);
+            jQuery("#price_slider").slider("values", $this.data("index"), $this.val());
+        });
+    
+    
+        var getDataPrice = function(){
+        
+            var minPrice = jQuery( "#minPrice" ).val();
+            var maxPrice = jQuery( "#maxPrice" ).val();
+                
+            if(minPrice >= 0 && maxPrice >= minPrice){
+				console.log(minPrice);
+				console.log(maxPrice);
+                return { min : minPrice, max : maxPrice};
+            }
+        };
+		
+        diamondsFilter.registerFilter("price", getDataPrice);
+    });
+</script>

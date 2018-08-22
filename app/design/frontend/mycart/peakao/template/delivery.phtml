@@ -1,0 +1,159 @@
+		<div id="delivery" class="popup-home popup-wrap">
+			<div class="popup-globe">
+	<div class="inner-content-wrap">
+		<a href="#" class="popup-logo"><img src="<?php echo $this->getskinurl("images")?>/pop-up-logo.png" alt="popup-logo" /></a>
+		<div class="delevery-process">
+			<h2><?php echo $this->__("Delivery Option")?></h2>
+			<p><?php echo $this->__("Peakao will provide free Service to Delivery To Your Shipping Adress. All Checkout are based on the currency Rate in real Time.")?></p>
+		</div>
+		
+		<div class="divider">
+			<span><img src="<?php echo $this->getskinurl("images")?>/popup-diamond.png" alt="" /></span>
+		</div>
+		
+		
+		<div class="delevery-select">
+				<form action="#" method="get" class="delevery-select-form clearfix">
+							<div class="clearfix">
+										<fieldset >
+										<label for="delvery-popup"><?php echo $this->__("Your Language")?>：</label>
+										<select name="delvery-popup" id="delvery-popup">
+										<?php foreach (Mage::app()->getWebsite()->getStores() as $_lang): ?>	
+											 <?php $_selected = ($_lang->getId() == Mage::app()->getStore()->getId()) ?' selected="selected"' : '' ?>
+        <option value="<?php echo $_lang->getCurrentUrl() ?>"<?php echo $_selected ?>><?php echo $this->escapeHtml($_lang->getName()) ?></option>
+											  <?php endforeach; ?>
+										</select>
+									</fieldset>
+										<fieldset >
+										<label for="delvery-popup1"><?php echo $this->__("Your Delivery Area")?>：</label>
+										<select name="delvery-popup1" id="delvery-popup1">
+											<option selected="selected"><?php echo $this->__("HongKong")?></option>
+											<option><?php echo $this->__("China")?></option>
+											<option><?php echo $this->__("TaiWan")?></option>
+											<option><?php echo $this->__("Japan")?> </option>
+											<option><?php echo $this->__("Singapore")?> </option>
+										<option >	<?php echo $this->__("Thailand")?></option>
+											<option><?php echo $this->__("Malaysia")?></option>
+											<option><?php echo $this->__("Korea")?> </option>
+											
+										</select>
+									</fieldset>
+								</div>
+								<button type="submit" onclick="return false;" class="popup-btn">
+									<?php echo $this->__("Save And Shop")?>
+									</button>
+								
+								
+							</form>
+		</div>
+		
+		<a href="#" class="close-popup"><img src="<?php echo $this->getskinurl("images")?>/popup-close.png" alt="close" /></a>
+		
+	</div>			
+				
+			</div>
+			
+		</div>
+		
+<?php
+$routeName = Mage::app()->getRequest()->getRouteName();
+$identifier = Mage::getSingleton('cms/page')->getIdentifier();
+?>
+<script type="text/javascript">
+function getCookie(cookiename) {
+var result;
+var mycookie = document.cookie;
+var start2 = mycookie.indexOf(cookiename + "=");
+if (start2 > -1) {
+start = mycookie.indexOf("=", start2) + 1;
+var end = mycookie.indexOf(";", start);
+if (end == -1) {
+end = mycookie.length;
+}
+result = unescape(mycookie.substring(start, end));
+}
+return result;
+}
+function setCookie(cookiename, cookievalue, hours) {
+var date = new Date();
+date.setTime(date.getTime() + Number(hours) * 3600 * 1000);
+document.cookie = cookiename + "=" + cookievalue + "; path=/;expires = " + date.toGMTString();
+}
+jQuery(".popup-btn").click(function(){
+	var lang = jQuery("#delvery-popup").val();
+	var deliv = jQuery("#delvery-popup1").val();
+	if(typeof(lang)!="undefined" && typeof(deliv)!="undefined"){
+    setCookie("delivery",deliv,3);
+	setCookie("language",lang,3);
+	jQuery(".popup-home").removeClass('pop-home-open');
+	}
+	
+});
+		</script>
+<?php if ($routeName == 'cms' && $identifier == 'home') : ?>
+   <script type="text/javascript">
+    if(typeof(getCookie("delivery")) == "undefined"){
+
+	jQuery(".popup-home").addClass('pop-home-open');
+	} 
+	else{
+	
+jQuery("#delvery-popup").val(getCookie('language'));
+jQuery("#delvery-popup1").val(getCookie('delivery'));
+}
+  </script>
+
+<?php endif ; ?>	
+
+
+
+		<div id ="currency" class="popup-home popup-wrap">
+			<div class="popup-globe">
+	<div class="inner-content-wrap">
+		<a href="#" class="popup-logo"><img src="<?php echo $this->getskinurl("images")?>/pop-up-logo.png" alt="popup-logo" /></a>
+		<div class="delevery-process">
+		<h2><?php echo $this->__("Currency Rate")?></h2>
+			<p><?php echo $this->__("Peakao will provide free Service to Delivery To Your Shipping Adress. All Checkout are based on the currency Rate in real Time.")?></p>
+		</div>
+		
+		<div class="divider">
+			<span><img src="<?php echo $this->getskinurl("images")?>/popup-diamond.png" alt="" /></span>
+		</div>
+		
+		
+		<div class="delevery-select">
+				<form action="#" method="get" class="delevery-select-form clearfix">
+							<div class="clearfix">
+							
+		
+<div class="form-language">
+    <label for="custom-currency-selector"><?php echo $this->__('Your Currency:') ?></label>
+    <select onchange="window.location.href=this.value" name="custom-currency-selector" id="custom-currency-selector">
+        <?php foreach ($this->getCurrencies() as $_code => $_name): ?>
+        <option value="<?php echo $this->getSwitchCurrencyUrl($_code)?>"
+            <?php if($_code == $this->getCurrentCurrencyCode()): ?>
+                selected="SELECTED"
+            <?php endif; ?>>
+            <?php echo $_code ?>
+        </option>
+        <?php endforeach; ?>
+    </select>
+</div>
+
+								
+								</div>
+								<button type="submit" onclick="return false;" class="popup-btn">
+									<?php echo $this->__("Save And Shop")?>
+									</button>
+								
+								
+							</form>
+		</div>
+		
+		<a href="#" class="close-popup"><img src="<?php echo $this->getskinurl("images")?>/popup-close.png" alt="close" /></a>
+		
+	</div>			
+				
+			</div>
+			
+		</div>

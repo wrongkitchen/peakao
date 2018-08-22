@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Mycart_Randombanner>
+            <version>0.0.1</version>
+        </Mycart_Randombanner>
+    </modules>
+	   <admin>
+        <routers>
+			<randombanner>
+				<use>admin</use>
+				<args>
+					<module>Mycart_Randombanner</module>
+					<frontName>banner</frontName>
+				</args>
+			</randombanner>
+        </routers>
+    </admin>
+	 <adminhtml>
+		<menu>
+			<randombanner module="randombanner">
+				<title>Random Banner</title>
+				<sort_order>71</sort_order>               
+				<children>
+					<items module="core">
+						<title>Manage Items</title>
+						<sort_order>0</sort_order>
+						<action>banner/adminhtml_banner</action>
+					</items>
+							
+				</children>
+			</randombanner>
+		</menu>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+	<children>
+					<randombanner module="randombanner">
+						<title>Random banner</title>
+						<sort_order>70</sort_order>               
+						<children>
+							<items module="randombanner">
+								<title>Manage Items</title>
+								<sort_order>0</sort_order>
+								<action>banner/adminhtml_banner</action>
+							</items>					
+						
+						</children>
+					</randombanner>					
+				</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<randombanner>
+					<file>randombanner.xml</file>
+				</randombanner>
+			</updates>
+		</layout>
+    </adminhtml>  
+
+     <global>
+       <models>
+	       <randombanner>
+                <class>Mycart_Randombanner_Model</class>
+                <resourceModel>randombanner_mysql4</resourceModel>
+            </randombanner>
+            <randombanner_mysql4>
+                <class>Mycart_Randombanner_Model_Mysql4</class>
+                <entities>
+                    <banner>
+                        <table>randombanner</table>
+                    </banner>
+                </entities>
+            </randombanner_mysql4>
+        </models>
+        <resources>	
+            <randombanner_setup>
+                <setup>
+                    <module>Mycart_Randombanner</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </randombanner_setup>
+            <randombanner_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </randombanner_write>
+            <randombanner_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </randombanner_read>
+        </resources>
+        <blocks>
+            <randombanner>
+                <class>Mycart_Randombanner_Block</class>
+            </randombanner>
+        </blocks>
+        <helpers>
+            <randombanner>
+                <class>Mycart_Randombanner_Helper</class>
+            </randombanner>
+        </helpers>
+    </global>
+	
+</config>

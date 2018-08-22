@@ -1,0 +1,62 @@
+<?php
+/* @var $config Ikantam_Diamonds_Helper_Config */
+$config = $this->helper('diamonds/config');
+?>
+
+<?php $attributeMetalOptions = $this->getAttributeOptions('metal'); ?>
+<!--SHAPE-->
+<div class="filters-metal">
+    <h2><?php echo $this->__('Metal')?></h2>
+    <ul>
+        <?php foreach ($attributeMetalOptions as $option): ?>
+            <li>
+                <div class="metal " id="metal<?php echo $option->getDefaultValue(); ?>" title="<?php echo $option->getValue(); ?>" >
+                    <input class="metal-input"
+                           style="display: none;"
+                           type="checkbox"
+                           data-selected="false"
+                           value="<?php echo $option->getId(); ?>" />
+                    <i class="icons-<?php echo strtolower($option->getDefaultValue()); ?>"></i> 
+                </div>
+
+                <?php if ($config->isShowMetalName()): ?>
+                    <span><?php echo $option->getValue(); ?></span>
+                <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
+<script type="text/javascript" >  
+    jQuery(function(jQuery){
+
+        /*Metal -----*/
+
+        jQuery.fn.toggleCheckbox = function () {
+            if (this.attr('data-selected') == 'false'){
+                this.attr('data-selected',"true");
+            } else {
+                this.attr('data-selected',"false");
+            }
+        };
+
+        jQuery('.metal').click( function () {
+            jQuery(this).find(':checkbox').toggleCheckbox();
+            jQuery(this).toggleClass('active');
+        });
+
+        var getDataMetal = function(){
+            var metals = jQuery(".metal-input");
+            var mass = new Array();
+            for(var i=0;i<metals.length;i++){
+                var metal = jQuery(metals[i]);
+                if(metal.attr("data-selected") == "true" ){
+                    mass.push(metal.attr("value"));
+                }		
+            }
+            return { mass : mass };
+        };
+
+        ringsFilter.registerFilter("ring_metal", getDataMetal);
+
+    });
+</script>

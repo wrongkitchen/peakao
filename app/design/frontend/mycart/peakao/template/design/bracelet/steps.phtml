@@ -1,0 +1,77 @@
+<?php
+    $design=Mage::getblocksingleton("diamonds/filter_design");
+	if($design->isSelectedDiamond()) $_diamond = $design->getSelectedDiamond();
+
+ 	if($design->isSelectedSettings()) $_setting = $design->getSelectedSettings();
+
+  $flag="setting";
+  $request = $this->getRequest();
+  if($request->getModuleName()=="design"){
+    if($request->getControllerName()=="bracelets_index") $flag="diamonds"; 
+    else if ($request->getControllerName()=="bracelets_review") $flag="review";
+    else if ($request->getActionName()=="diamond") $flag="diamonds";
+  } 
+  else return;
+	?>
+
+<div class="tab-links-block tab-uptodate clearfix"><span class="tab-info"> 設計 <br /> 您的專屬手鍊 </span>
+<ul class="tab-links clearfix">
+<li class="<?php echo $flag=="setting"?"active":""?>">
+<a class="<?php echo $flag=="setting"?"active":""?>" href="<?php echo $this->helper("diamonds/bracelet")->getChooseSettingsUrl(); ?>">
+<span class="tab-link"> <span class="count">1</span> <span
+ class="<?php echo $_setting?"pchide":""?> tab-desc"> <small>第1步</small> 
+<strong>設定手鍊</strong> <i class="icon-ring-small">&nbsp;</i> </span> 
+</span>
+</a>
+ <?php if($_setting):?>
+ <span class="stepprice">
+   <?php echo  Mage::helper('core')->currency($_setting->getfinalPrice(),true,false)?>
+
+ </span>
+ <div class="stepdesign">
+ <span class="steplinks">
+   <a href="<?php echo $this->helper("diamonds/bracelet")->getSettingUrl($_setting); ?>">瀏覽</a> | 
+ <a href="<?php echo $this->helper("diamonds/bracelet")->getChooseSettingsUrl(); ?>">改變</a>
+ </span>
+   <img width="45px" height="45px" src="<?php echo $this->helper('catalog/image')->init($_setting,"small_image")->resize(45, 45)?>">
+ <?php endif?>
+</li>
+<li class="<?php echo $flag=="diamonds"?"active":""?>">
+<a class="<?php echo $flag=="diamonds"?"active":""?>" href="<?php echo $this->helper("diamonds/bracelet")->getChooseDiamondsUrl(); ?>">
+<span class="tab-link"> <span class="count">2</span> <span class="<?php echo $_diamond?"pchide":""?> tab-desc"> <small>第2步</small>
+ <strong>選擇鑽石</strong> <i class="icon-diamond-small">&nbsp;</i> </span> </span>
+ </a>
+ <?php if($_diamond):?>
+ <span class="stepprice">
+   <?php echo  Mage::helper('core')->currency($_diamond->getfinalPrice(),true,false)?>
+
+ </span>
+ <div class="stepdesign">
+ <span class="steplinks">
+   <a href="<?php echo $_diamond->getProductUrl() ?>">瀏覽</a> | 
+ <a href="<?php echo $this->helper("diamonds/bracelet")->getChooseDiamondsUrl(); ?>">改變</a>
+ </span>
+   <img width="45px" height="45px" src="<?php echo $this->helper('catalog/image')->init($_diamond,"small_image")->resize(45, 45)?>">
+ <?php endif?>
+ </li>
+
+<li class="<?php echo $flag=="review"?"active":""?>">
+<a  class="<?php echo $flag=="review"?"active":""?>" href="<?php echo $this->geturl("diamonds/bracelets_review/design"); ?>">
+<span class="tab-link"> <span class="count">3</span> <span class="
+<?php echo $_diamond&&$_setting?"pchide ":""?>
+tab-desc"> 
+<small>第3步</small> <strong>完成</strong> <i class="icon-ring2-small">&nbsp;</i> </span> </span>
+</a>
+ <?php if($_diamond&&$_setting):?>
+ <span class="stepprice completeprice">
+   <?php echo  Mage::helper('core')->currency($_setting->getfinalPrice()+$_diamond->getfinalPrice(),true,false)?>
+
+ </span>
+ <div class="stepdesign completedesign">
+ <span class="steplinks">
+   <a href="<?php echo $this->getUrl('diamonds/earring_constructor/reset'); ?>">重選</a> 
+ </span>
+ <?php endif?>
+</li>
+</ul>
+</div>

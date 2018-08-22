@@ -1,0 +1,72 @@
+<?php /* @var $this Ikantam_Diamonds_Block_Diamonds */?>
+<section class="diamond-custom">
+<div class="container"><ol class="breadcrumb">
+<li><a href="<?php echo $this->getbaseurl()?>"><?php echo $this->__("Home")?></a></li>
+<li><a href="#"><?php echo $this->__("Diamonds")?></a></li>
+<li><a href="#"><?php echo $this->__("Design Diamonds")?></a></li>
+</ol>
+<h1><?php echo $this->__("Design Diamonds")?></h1>
+</div>
+<!-- preloader begin -->
+			<div class="overlayBlock"></div>
+<!-- preloader end -->
+<div class="container">
+<?php // echo $this->getChildHtml('search_result'); ?>
+	<?php echo $this->getChildHtml('diamonds_filter');?>      
+</div>
+</section>
+
+<section class="all-listing-wrap">
+<div class="container">
+<div class="uptodate">
+<ul class="clearfix">
+<li><img alt="uptodate" src="<?php echo $this->getskinurl("images")?>/uptodate-bg.jpg" />
+<div class="uptodate-caption"><strong><?php echo $this->__("Newest")?></strong></div>
+</li>
+<li><img alt="uptodate" src="<?php echo $this->getskinurl("images")?>/quality-bg.jpg" />
+<div class="uptodate-caption quality-caption"><?php echo $this->__("Quality")?><span>4C</span><?php echo $this->__("Diamonds")?></div>
+</li>
+</ul>
+</div>
+<?php echo $this->getChildHtml('steps'); ?>
+ <script>
+jQuery(function() {
+jQuery( "#tabs" ).tabs();
+});
+</script>
+
+
+
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>										
+	<div id="diamonds-filter-results">
+		<?php echo $this->getChildHtml('diamonds_filter_results');?>	
+	</div>
+		<!-- /category-products-->
+</div>
+<script>
+	jQuery(function($){
+		IkD.Helper.finishPreloader();
+		diamondsFilter.updateResults();
+	});
+</script>
+
+</section>
+			<div class="compaire-diamond-overlay "  style="display: none;">
+			<div class="outer-div">
+			   <div class="compaire-diamond">
+			<a href="javascript:void(0);" class="close-popup close-compaire"><img src="<?php echo $this->getskinurl("images")?>/popup-close.png" alt="close"></a>
+				<?php echo $this->getChildHtml("diamonds_comparasion");?>
+				</div>
+
+			</div>
+		</div>
+	
+<script type="text/javascript">
+    var updateUrl = "<?php echo $this->getBaseUrl() . 'design/filter/diamond/type/'.Mage::registry("design_type"); ?>";
+    var diamondsFilter = new IkD.Filter(updateUrl, null);
+    jQuery(function(){
+        diamondsFilter.setResultContainer(jQuery("#diamonds-filter-results"));
+    });
+	</script>
+
+

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <acl>
+        <resources>
+            <allow>
+                <title>Allow Everything</title>
+            </allow>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <mycart_payease translate="title" module="mycart_payease">
+                                        <title>Magedelight Payease License Configuration</title>
+                                    </mycart_payease>
+                                    <payment>
+                                        <mycart_payease translate="title" module="mycart_payease">
+                                            <title>Magedelight Payease Configuration</title>
+                                        </mycart_payease>
+                                    </payment>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

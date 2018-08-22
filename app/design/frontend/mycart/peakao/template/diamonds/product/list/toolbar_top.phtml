@@ -1,0 +1,42 @@
+<div class="browse-mode clearfix">
+<div class="inner-browse-mode"><span><?php echo $this->__("View Mode")?></span>
+        <?php //echo $this->getChildHtml('filter_toolbar_limiter') ?>	
+        <?php echo $this->getChildHtml('filter_toolbar_mode') ?>
+		<?php $count = $this->getParentBlock()->getProductCollection()->count() ?>
+  <span><?php echo $this->__("Show  <span>%s</span> Items",$count )?></span>
+    </div>
+        <?php echo $this->getChildHtml('filter_toolbar_sort') ?>
+   </div>
+<div class="clearfix">
+<?php $compare = new Ikantam_Diamonds_Model_Compare();
+$size = $compare->getDiamondsCollection()->getSize(); ?>
+<div class="select-dimaond"><span><?php echo $this->__("Selected <span>%s</span> Diamonds",$size)?></span>
+ <a class="compaire" href="javascript:void(0);"><?php echo $this->__("Compare")?></a></div>
+</div>
+ 
+<script type="text/javascript">
+   	jQuery('.compaire').bind("click",function(){ 
+   	jQuery('.compaire-diamond-overlay').show();
+   	      });
+</script>
+
+<!--<div class="pager css3 row-fluid show-grid">
+    <div class="limiter span5">		
+        <?php //echo $this->getChildHtml('filter_toolbar_limiter') ?>	
+    </div>	
+    <div class="sorter span5">		
+        <?php //echo $this->getChildHtml('filter_toolbar_sort') ?>	
+    </div>	
+</div>
+<div class="pager css3 row-fluid show-grid">
+    <div class="mode span3">		
+        <?php //echo $this->getChildHtml('filter_toolbar_mode') ?>	
+    </div>	
+    <div class="span3 pageBlock">		
+        <?php //echo $this->getPagerHtml(); ?>	
+    </div>
+</div>-->
+<div class="limiter span5">		
+        <?php echo $this->getChildHtml('filter_toolbar_limiter') ?>	
+    </div>	
+ <?php echo $this->getPagerHtml(); ?>	

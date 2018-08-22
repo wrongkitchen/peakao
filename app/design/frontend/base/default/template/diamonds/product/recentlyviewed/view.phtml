@@ -1,0 +1,18 @@
+<?php /* Recently viewed products template */ ?>
+
+<!--  Controls initilize -->
+<script type="text/javascript">
+	var updateUrl = "<?php echo $this->getBaseUrl() . 'diamonds/filter/recently';?>";
+	var recentlyFilter = new IkD.Filter(updateUrl, null);
+	jQuery(function(){
+	
+		recentlyFilter.setResultContainer(jQuery("#recently_viewed_product_list"));
+		
+	});
+</script>
+
+<!-- end init -->
+
+<div id="recently_viewed_product_list">
+<?php echo $this->getChildHtml("rv_product_list");?>
+</div>

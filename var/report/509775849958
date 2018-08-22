@@ -1,0 +1,8 @@
+a:5:{i:0;s:34:"Bundle product options not founded";i:1;s:1048:"#0 /home/mycarthk/public_html/magento/app/code/community/Ikantam/Diamonds/controllers/ConstructorController.php(76): Ikantam_Diamonds_Model_Bundle->init(Object(Mage_Catalog_Model_Product), Object(Mage_Catalog_Model_Product), NULL, NULL)
+#1 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Ikantam_Diamonds_ConstructorController->addtocartAction()
+#2 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('addtocart')
+#3 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#4 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#5 /home/mycarthk/public_html/magento/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#6 /home/mycarthk/public_html/magento/index.php(83): Mage::run('', 'store')
+#7 {main}";s:3:"url";s:47:"/magento/design/constructor/addtocart/?d=5&s=15";s:11:"script_name";s:18:"/magento/index.php";s:4:"skin";s:7:"default";}

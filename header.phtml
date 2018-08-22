@@ -1,0 +1,81 @@
+
+				<div class="primary-header ">
+					<div class="container clearfix">
+						<a href="<?php echo $this->getUrl('') ?>" class="logo"><img src="<?php echo $this->getskinurl("images/logo.png")?>" alt="logo"/></a>
+
+						<div class="right-head-info clearfix">
+							<?php if(!Mage::getSingleton('customer/session')->isLoggedIn()):?>
+						   <a href="<?php echo $this->getUrl('customer/account/login') ?>" class="currency"> 登入 </a>
+					    <a href="<?php echo $this->getUrl('customer/account/create') ?>" class="currency">  加入我們 </a>
+					
+					<?php else :?>
+					  <a href="<?php echo $this->getUrl('customer/account/logout') ?>" class="currency"> 登出</a>
+					       <a href="<?php echo $this->getUrl('customer/account') ?>" class="currency">我的帳戶</a>
+						<?php endif?>
+						<!--	<form action="#" method="get"  class="account-form">
+								<fieldset>
+									<select name="account" id="account">
+										<option> <a href="login">登入</a> </option>
+										<option> 我的帳戶 </option>
+										<option selected="selected"> 我的帳戶 </option>
+										<option> 我的帳戶 </option>
+										<option> 我的帳戶 </option>
+									</select>
+								</fieldset>
+							</form>-->
+
+							<a href="#" class="currency"> 貨幣匯率 </a>
+							<a href="#" class="delevery-option">送貨選項</a>
+							<a href="<?php echo $this->geturl("checkout/cart")?>" class="delevery-option">購物清單 (2)</a>
+							<!--<form action="#" method="get" class="cart-form">
+								<fieldset>
+									<select name="cart" id="cart">
+										<option>購物清單 (0)</option>
+										<option>購物清單 (1)</option>
+										<option selected="selected">購物清單 (2)</option>
+										<option>購物清單 (3)</option>
+										<option>購物清單 (4)</option>
+									</select>
+								</fieldset>
+							</form>-->
+
+							<div class="traditional-zone">
+								<a href="#">繁  簡<span>en</span></a>
+							</div>
+							<form action="#" method="get" class="area-form">
+								<fieldset>
+									<select name="area" id="area">
+										<option> 地區 </option>
+										<option> 地區 </option>
+										<option selected="selected"> 地區 </option>
+										<option> 地區 </option>
+										<option> 地區 </option>
+									</select>
+								</fieldset>
+							</form>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="main-header">
+					<div class="container clearfix">
+						
+					<div class="menu-wrap clearfix ">
+								<a href="#" class="menu-btn"><span> </span> <span> </span> <span> </span></a>
+							
+							<nav>
+								<ul class="clearfix">
+									<li>
+										<a href="<?php echo $this->geturl("")?>diamond.html">鑽石</a>
+									</li>
+									<li>
+										<a href="#">訂婚戒指</a>
+									</li>
+									<li>
+										<a href="#">結婚戒指</a>
+									</li>
+									<li>
+	

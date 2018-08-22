@@ -1,0 +1,102 @@
+<style>
+    [class^="icons-"] {
+        background-image: url("<?php echo Mage::getBaseUrl('skin') ?>/frontend/base/default/diamonds/images/series_1.png");
+        background-position: 49px 37px;
+        background-repeat: no-repeat;
+        border-radius: 3px 3px 3px 3px;
+        display: block;
+        height: 35px;
+        line-height: 14px;
+        padding-right: 4px;
+        padding-top: 5px;
+        vertical-align: text-bottom;
+        width: 49px;
+    }
+</style>
+<?php
+/* @var $config Ikantam_Diamonds_Helper_Config */
+$config = $this->helper('diamonds/config');
+$widthSlider = $config->getWidthSlider();
+?>
+
+<form method="post" id="constructor" >
+    <?php echo $this->getChildHtml('filter_shape'); ?>
+
+    <div class="filters-price ikantam-mage-filter-col" >
+        <?php echo $this->getChildHtml('filter_price'); ?>
+    </div>
+
+    <div class="filters-carat ikantam-mage-filter-col">
+        <?php echo $this->getChildHtml('filter_carat'); ?>
+
+    </div>
+    <div class="clear"></div>
+
+    <div class="filters-color ikantam-mage-filter-col">
+        <?php echo $this->getChildHtml('filter_color'); ?>
+    </div>
+
+    <div class="filters-clarity ikantam-mage-filter-col">
+        <?php echo $this->getChildHtml('filter_clarity'); ?>
+    </div>
+
+    <div class="filters-cut ikantam-mage-filter-col">
+        <?php echo $this->getChildHtml('filter_cut'); ?>
+    </div>
+    <div class="clear"></div>
+
+    <div class="filters-certificate ikantam-mage-filter-col" >
+        <?php echo $this->getChildHtml('filter_certificate'); ?>
+    </div>
+
+
+
+
+    <div class="clear"></div>
+    <div class="more-filters" id="more-filters">
+        <div class="filters-fluorescence ikantam-mage-filter-col" >
+            <?php echo $this->getChildHtml('filter_fluorescence'); ?>
+        </div>
+        <div class="filters-polish ikantam-mage-filter-col" >
+            <?php echo $this->getChildHtml('filter_polish'); ?>
+        </div>
+        <div class="filters-symmetry ikantam-mage-filter-col" >
+            <?php echo $this->getChildHtml('filter_symmetry'); ?>
+        </div>
+        <div class="clear"></div>
+        <div class="filters-table ikantam-mage-filter-col" >
+            <?php echo $this->getChildHtml('filter_table'); ?>
+        </div>
+        <div class="filters-depth ikantam-mage-filter-col" >
+            <?php echo $this->getChildHtml('filter_depth'); ?>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="btns-filter">
+        <h2><?php echo $this->__('Filter functions') ?></h2>
+        <button type="button" id="filter-button" class="button" title="Filter"><span><span><?php echo $this->__('Filter') ?></span></span></button>
+        <button type="button" id="show-more-filtrs" class="button"><span><span><?php echo $this->__('Advanced Filter') ?></span></span></button>
+        <button type="button" id="clear-filter" class="button" title="Clear"><span><span><?php echo $this->__('Clear') ?></span></span></button>
+    </div>
+    <div class="clear"></div>
+</form>
+<script type="text/javascript">
+    jQuery(function (jQuery) {
+        /*Filter-----*/
+        jQuery("#filter-button").click(function () {
+            diamondsFilter.updateResults();
+        });
+
+        jQuery("#clear-filter").click(function () {
+            diamondsFilter.resetFilters();
+        });
+    });
+
+    jQuery(function (jQuery) {
+        jQuery("#show-more-filtrs").on("click", function (event) {
+            jQuery("#more-filters").slideToggle(300);
+            jQuery(this).toggleClass("active-more-filters");
+            event.preventDefault();
+        });
+    });
+</script> 

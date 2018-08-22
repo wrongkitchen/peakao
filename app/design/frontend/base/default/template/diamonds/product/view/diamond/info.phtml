@@ -1,0 +1,43 @@
+<?php $_product = $this->getParentBlock()->getProduct(); //->getParentBlock() ?> 
+
+<div class="diamondSpecs">
+
+    <h2>Diamond Information</h2>
+
+    <ul>
+        <li>
+            <a href="<?php echo $this->getUrl('shapes_tutorial') ?>"><?php echo $this->__("Shape:") ?></a> <?php echo $_product->getResource()->getAttribute('diamond_shape')->getFrontend()->getValue($_product) ?>
+        </li>
+        <li>
+            <a href="<?php echo $this->getUrl('carat_weight_tutorial') ?>"><?php echo $this->__("Carat Weight:") ?></a><?php echo number_format($_product->getResource()->getAttribute('weight')->getFrontend()->getValue($_product), 2, '.', ''); /* carat */ ?>
+        </li>
+        <li>
+            <a href="<?php echo $this->getUrl('cut_tutorial') ?>"><?php echo $this->__("Cut:") ?></a> <?php echo $_product->getResource()->getAttribute('cut')->getFrontend()->getValue($_product); ?>
+        </li>
+        <li>
+            <a href="<?php echo $this->getUrl('color_tutorial') ?>"><?php echo $this->__("Color:") ?></a> <?php echo $_product->getResource()->getAttribute('color_loose')->getFrontend()->getValue($_product) ?>
+        </li>
+        <li>
+            <a href="<?php echo $this->getUrl('clarity_tutorial') ?>"><?php echo $this->__("Clarity:") ?></a><?php echo $_product->getResource()->getAttribute('clarity')->getFrontend()->getValue($_product) ?>
+        </li>
+        <li>
+            <span><?php echo $this->__("Depth %:") ?></span><?php echo number_format($_product->getDepthPercent(), 1); ?>%
+        </li>
+        <li>
+            <span><?php echo $this->__("Table %:") ?></span><?php echo number_format($_product->getTablePercent(), 1); ?>%
+        </li>
+        <li>
+            <span><?php echo $this->__("Symmetry:") ?></span><?php echo $_product->getResource()->getAttribute('symmetry')->getFrontend()->getValue($_product) ?>
+        </li>
+        <li>
+            <span><?php echo $this->__("Polish:") ?></span><?php echo $_product->getResource()->getAttribute('polish')->getFrontend()->getValue($_product) ?>
+        </li>
+        <li>
+            <span><?php echo $this->__("Fluorescence:") ?></span><?php echo $_product->getResource()->getAttribute('fluorescence')->getFrontend()->getValue($_product) ?>
+        </li>
+        <li>
+            <a href="<?php echo $this->getUrl('certificates_tutorial') ?>"><?php echo $this->__("Diamond Grading Report:") ?></a><?php echo $_product->getResource()->getAttribute('laboratory')->getFrontend()->getValue($_product) ?>
+        </li>
+    </ul>
+
+</div>

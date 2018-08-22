@@ -1,0 +1,20 @@
+<li>
+		<div class="contact-us">
+			<h6>通訊錄</h6>
+			<address class="address">
+				<span class="default-address">預設帳單地址</span>
+				<span class="no-address"> <?php echo $this->getPrimaryBillingAddressHtml() ?></span>
+			</address>
+			<a  href="<?php echo $this->getPrimaryBillingAddressEditUrl() ?>" class="change-password">編輯地址</a>
+			<a href="<?php echo $this->getAddressBookUrl() ?>" class="edit">管理地址</a>
+		</div>
+		<div class="shipping">
+			<address class="address">
+				<span class="default-shipping">預設送貨地址</span>
+				<span class="no-address"><?php echo $this->getPrimaryShippingAddressHtml() ?></span>
+			</address>
+			<a  href="<?php echo $this->getPrimaryShippingAddressEditUrl() ?>" class="change-password">
+			編輯地址</a>
+		</div>
+	</li>
+

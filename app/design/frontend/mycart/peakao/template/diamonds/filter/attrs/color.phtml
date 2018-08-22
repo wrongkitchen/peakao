@@ -1,0 +1,122 @@
+<?php
+/* @var $config Ikantam_Diamonds_Helper_Config */
+$config = $this->helper('diamonds/config');
+$widthSlider = $config->getWidthSlider();
+?>
+<?php $attributeColorOptions = $this->getAttributeOptions("color_loose"); ?>
+<?php if (!$config->getColorSliderType()&&0): ?>
+    <div class="price-ranger" style="width: <?php echo $widthSlider ?>px;">
+        <div id="color_slider"></div>
+        <input type="hidden" id="minColor" name="attributes[color][min]" class="sliderColorValue svlft" data-index="0" value="1"/>
+        <input type="hidden" id="maxColor" name="attributes[color][max]" class="sliderColorValue slidRight" data-index="1" value="<?php echo $attributeColorOptions->getSize(); ?>" />
+    </div>
+    <div class="divisions" style="width: <?php echo $widthSlider ?>px;">
+        <ul>
+			<?php
+            $i = 0;
+            $colors = array();
+            $len = count($attributeColorOptions);
+            $width =  $widthSlider / ($len-1);
+            foreach ($attributeColorOptions as $option):
+                $widthEl = $width; 
+                $textalign= 'center'; 
+                if ($i == 0){ $widthEl = $width / 2; $textalign='left'; }
+                elseif ($i == $len-1){ $widthEl = $width / 2-1; $textalign= 'right'; }
+                ?>
+                <li style=" width: <?php echo $widthEl ?>px; float:left;  text-align: <?php echo $textalign; ?>; "> <?php echo $option->getValue(); ?> </li>
+                <?php $colors[] = $option->getId(); ?>
+            <?php $i++; endforeach; ?>
+        </ul>
+
+    </div>
+<?php else: ?>
+    <div id="color"><ul class="shapes-design clearfix">
+        <?php foreach ($attributeColorOptions as $option): ?>
+		          <li>  
+            <input type="checkbox" value="<?php echo $option->getId(); ?>" id="color<?php echo $option->getId() ?>">
+            <label for="color<?php echo $option->getId(); ?>">
+		
+			<?php echo $option->getValue(); ?></label>       
+         </li>
+	   <?php endforeach; ?>
+       </ul>
+    </div> 
+<?php endif; ?> 
+
+<script type="text/javascript">
+    jQuery(function(jQuery){
+        /*Color-----*/
+<?php if (!$config->getColorSliderType()&&0): ?>
+            jQuery("#color_slider").slider({
+                range: true,
+                min: 1,
+                max: <?php echo $attributeColorOptions->getSize(); ?>,
+                step: 1,
+                values: [1, <?php echo $attributeColorOptions->getSize(); ?>],
+                slide: function(event, ui) {
+                    for(var i = 0; i < ui.values.length; ++i) {
+                        jQuery("input.sliderColorValue[data-index=" + i + "]").val(ui.values[i]);
+                    }
+                }
+            });
+
+            jQuery("input.sliderColorValue").change(function() {
+                var $this = jQuery(this);
+                jQuery("#color_slider").slider("values", $this.data("index"), $this.val());
+                    
+            });  
+                
+               
+            var getDataColor = function(){
+                
+                var minColor = jQuery( "#minColor" ).val();
+                var maxColor = jQuery( "#maxColor" ).val();
+                    
+                   
+        	
+                    
+                var colors = <?php echo json_encode($colors); ?>;
+                     
+                var mass = new Array();
+                for (var i = minColor-1; i < maxColor; i++){
+                    mass.push(colors[i]);
+                }
+                if (minColor != 1 || maxColor != <?php echo $attributeColorOptions->getSize(); ?>){ 
+                    return { mass : mass };
+                } 
+                     
+                     
+            };
+
+                
+<?php else: ?>
+            jQuery("#color input").click(function(){
+                var selected = jQuery(this).attr("data-selected");
+        		
+                if(selected == "true"){
+                    jQuery(this).attr("data-selected","false");
+        			
+                } else {
+                    jQuery(this).attr("data-selected", "true");
+        			
+                }
+				 diamondsFilter.updateResults(); 
+        		
+            });
+        		
+            var getDataColor = function(){
+                var colors = jQuery("#color input");
+                var mass = new Array();
+                for(var i=0;i<colors.length;i++){
+                    var color = jQuery(colors[i]);
+                    if(color.attr("data-selected") == "true" ){
+                        mass.push(color.attr("value"));
+                    }		
+                }
+                return { mass : mass };
+            };
+<?php endif; ?>
+    
+        diamondsFilter.registerFilter("color_loose", getDataColor);
+    });
+</script>

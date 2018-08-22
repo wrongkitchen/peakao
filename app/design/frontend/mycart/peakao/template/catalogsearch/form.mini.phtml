@@ -1,0 +1,21 @@
+<?php
+
+$catalogSearchHelper =  $this->helper('catalogsearch');
+?>
+
+
+
+<form id="search_mini_form" action="<?php echo $catalogSearchHelper->getResultUrl() ?>" method="get">
+	<input type="text" name="<?php echo $catalogSearchHelper->getQueryParamName() ?>" value="<?php echo $catalogSearchHelper->getEscapedQueryText() ?>"  maxlength="<?php echo $catalogSearchHelper->getMaxQueryLength();?>" id="search-in"/>
+	<button type="submit" class="search-btn">
+
+	</button>
+       <div id="search_autocomplete" class="search-autocomplete"></div>
+  
+      <script type="text/javascript">
+        //<![CDATA[
+            var searchForm = new Varien.searchForm('search_mini_form', 'search-in', '');
+            searchForm.initAutocomplete('<?php echo $catalogSearchHelper->getSuggestUrl() ?>', 'search_autocomplete');
+        //]]>
+    </script>
+</form>

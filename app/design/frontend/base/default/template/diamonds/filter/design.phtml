@@ -1,0 +1,31 @@
+<?php /* @var $this Ikantam_Diamonds_Block_Filter_Design */?>
+<button data-toggle="dropdown" class="button btn-cart dropdown-toggle">
+    <span><span><?php echo $this->__('Your design'); ?></span><span class="arrow"></span></span>
+</button>
+<ul class="dropdown-menu">
+	<?php $_totalPrice = 0;?>
+	<?php if($this->isSelectedDiamond()):?>
+		<?php $_diamond = $this->getSelectedDiamond();?>
+		<?php $_totalPrice += $_diamond->getFinalPrice();?>
+		<li><a href="<?php echo $_diamond->getProductUrl();?>">My diamond: <?php echo (int)$_diamond->getFinalPrice();?>$</a></li>
+	<?php else:?>
+		<?php $url = $this->helper("diamonds")->getChooseDiamondsUrl();?>
+		<li><a href="<?php echo $url; ?>">My diamond: not selected</a></li>
+	<?php endif;?>
+	
+	<?php if($this->isSelectedSettings()):?>
+		<?php $_ring = $this->getSelectedSettings();?>
+		<?php $_totalPrice += $_ring->getFinalPrice();?>
+		<li><a href="<?php echo $_ring->getProductUrl();?>">My settings: <?php echo (int)$_ring->getFinalPrice();?>$</a></li>
+	<?php else:?>
+		<?php $url = $this->helper("diamonds")->getChooseSettingsUrl();?>
+		<li><a href="<?php echo $url; ?>">My settings: not selected</a></li>
+	<?php endif;?>
+		<li><a href="#">Total Price: <?php echo (int)$_totalPrice;?>$</a></li>
+	<?php if($_totalPrice > 0 ):?>
+		<li><a href="<?php echo $this->getUrl('diamonds/constructor/reset'); ?>">Reset my design</a></li>
+	<?php endif; ?>
+	<?php if($this->isSelectedDiamond() && $this->isSelectedSettings()):?>
+		<li><a href="<?php echo $this->getUrl('checkout/cart'); ?>">Cart</a></li>
+	<?php endif; ?>
+</ul>

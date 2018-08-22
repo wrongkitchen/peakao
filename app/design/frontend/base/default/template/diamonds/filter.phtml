@@ -1,0 +1,40 @@
+<?php /* @var $this Ikantam_Diamonds_Block_Filter */ ?>
+<div class="diamondSearch">
+    <div class="headerBlock">
+        <ul class="additional-menu">
+            <li><a class="active" href="<?php echo $this->helper("diamonds")->getChooseDiamondsUrl(); ?>"><?php echo $this->__("Choose a diamonds") ?></a></li>
+            <li><a href="<?php echo $this->helper("diamonds")->getChooseSettingsUrl(); ?>"><?php echo $this->__("Choose a settings") ?></a></li>
+        </ul>
+
+        <div class="btn-group drop-list span2">
+            <?php echo $this->getChildHtml("diamonds_filter_design"); ?>
+        </div>
+    </div>
+    <div class="ikantam-mage-ui">
+        <div class="section" style="margin-top:20px;">
+            <?php echo $this->getChildHtml("filters"); ?>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var updateUrl = "<?php echo $this->getBaseUrl() . 'diamonds/filter/diamond'; ?>";
+    var diamondsFilter = new IkD.Filter(updateUrl, null);
+    jQuery(function(){
+        diamondsFilter.setResultContainer(jQuery("#diamonds-filter-results"));
+    });
+	
+
+	var $dropBtn = jQuery('#ikantam-mage-filter .drop-list .dropdown-toggle'),
+	$list    = jQuery('#ikantam-mage-filter ul.dropdown-menu');
+	$dropBtn.on('click', function(){
+		$dropBtn.toggleClass('ison');
+		$list.toggle();
+	});
+
+</script>
+
+
+<!-- end init -->
+
+
+

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Mycart_Ringadvisor>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Mycart_Ringadvisor>
+    </modules>
+</config> 
+

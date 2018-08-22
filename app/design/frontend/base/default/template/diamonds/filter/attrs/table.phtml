@@ -1,0 +1,57 @@
+<?php
+$config = $this->helper('diamonds/config');
+$widthSlider = $config->getWidthSlider();
+$widthSliderWithFields = $config->getWidthSliderWithFields();
+?>
+<h2><?php echo $this->__('Table') ?></h2>
+<div class="price-ranger" style="width: <?php echo $widthSlider ?>px;">
+	
+	<div class="min-value">
+		<!--<span>min</span>-->
+		<input type="text" id="minTable" class="sliderTableValue formField svlft inline-range" name="attributes[table][min]" data-index="0" value="<?php echo $config->getMinTableSlider() ?>"/>
+	</div>
+	
+    <div class="inline-ranger-slider" style="width: <?php echo $widthSliderWithFields; ?>px">
+        <div id="table_slider"></div>
+    </div>
+	
+    <!--<label class="inline-range">to</label>-->
+	
+	<div class="max-value">
+		<!--<span>max</span>-->
+		<input type="text" id="maxTable" class="sliderTableValue formField slidRight inline-range" name="attributes[table][min]" data-index="1" value="<?php echo $config->getMaxTableSlider() ?>" />
+	</div>
+</div>
+<script type="text/javascript" >
+    jQuery(function(jQuery){
+        /*Table-----*/    
+        jQuery("#table_slider").slider({
+            range: true,
+            min: <?php echo $config->getMinTableSlider() ?>,
+            max: <?php echo $config->getMaxTableSlider() ?>,
+            step:  <?php echo $config->getStepTableSlider() ?>,
+            values: [<?php echo $config->getMinTableSlider() ?>, <?php echo $config->getMaxTableSlider() ?>],
+            slide: function(event, ui) {
+                for(var i = 0; i < ui.values.length; ++i) {
+                    jQuery("input.sliderTableValue[data-index=" + i + "]").val(ui.values[i]);
+                }
+            }
+        });
+
+        jQuery("input.sliderTableValue").change(function() {
+            var $this = jQuery(this);
+            jQuery("#table_slider").slider("values", $this.data("index"), $this.val());
+        });
+        
+        var getDataTable = function(){
+        
+            var minTable = jQuery( "#minTable" ).val();
+            var maxTable = jQuery( "#maxTable" ).val();
+                
+            if(minTable >= 0 && maxTable >= minTable){
+                return { min : minTable, max : maxTable};
+            }
+        };
+        diamondsFilter.registerFilter("table", getDataTable);
+    });
+</script>

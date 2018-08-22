@@ -1,0 +1,53 @@
+<?php /* @var $this Ikantam_Diamonds_Block_Ring_Filter_Model */?>
+<?php $models = $this->getModels();?>
+
+<form action="/">
+	<div class="slider_features">
+		<div class="arrow_left" id="leftControl1"></div>
+		<div class="overflow">
+			<div class="pic_slider">
+				<?php foreach($models as $model):?>
+				<div class="one_pic ring_model">
+					<label for="model<?php echo $model->getId(); ?>">
+						<a class="section_slid"> 
+                                                    <img src="<?php echo $this->helper('catalog/image')->init($model, 'small_image')->resize(80);?>">
+						</a>
+						<div><?php echo $model->getRingModel(); ?></div>
+					</label>
+					 <input type="radio" name="diamond_choose" id="model<?php echo $model->getId(); ?>"
+						value="<?php echo $model->getRingModel(); ?>">
+				</div>
+				<?php endforeach;?>
+			</div>
+		</div>
+		<div class="arrow_right" id="rightControl1"></div>
+	</div>
+</form>
+
+<script>
+
+jQuery(function($){
+
+	var getData = function(){
+		var value = $("input:radio[@name=diamond_choose]:checked").val();
+		if(!value){
+			return {mass : [ ] };
+		}
+		return value;
+	};
+	ringsFilter.registerFilter("ring_model", getData);
+
+/*jQuery(".one_pic ring_model").click(function(){
+  alert(this.val());
+  ringsFilter.updateResults();
+    
+});*/
+
+
+	jQuery("input:radio[@name=diamond_choose]").change(function(){
+		ringsFilter.updateResults();
+	});
+});
+
+</script>
+

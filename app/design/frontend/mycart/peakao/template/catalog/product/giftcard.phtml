@@ -1,0 +1,135 @@
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+<div class="coupon-page">
+<section class="knowledge-section about-4c-content">
+					<div class="container">
+						<ol class="breadcrumb">
+							<li>
+								<a href="#">首頁 </a>
+							</li>
+							<li>
+								<a href="#">了解更多</a>
+							</li>
+							<li>
+								<a href="#">了解更多關於訂婚戒指</a>
+							</li>
+							<li>
+								<a href="#">購買禮物券</a>
+							</li>
+						</ol>
+						<div class="knowledge-content-wrapper knowledge-content-contain">
+							<h3>購買禮物券</h3>
+						</div>
+					</div>
+				</section>
+	
+	<div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
+	
+				<section class="cert-full-width">
+					<div class="container clearfix">
+						<div class="coupon-section diamond-details clearfix">
+							<h5>立刻為您最親愛的人送上最真摰的祝福！</h5>
+							<div class="left-block">
+								<div class="coupon-product">
+									<figure>
+										<img src="<?php  echo $this->getskinurl("images/coupon-1.jpg") ?>" alt="" />
+									</figure>
+									<div class="text-top">
+										<span> <img src="<?php  echo $this->getskinurl("images/coupon-logo.png") ?>" alt="" /> </span>
+										<strong>禮券</strong>
+									</div>
+								</div>
+							</div>
+							<div class="right-block" style="background:#fff">
+							    <form class="cp-form" action="<?php echo $this->getSubmitUrl($_product, array('_secure' => $this->_isSecure())) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+        <?php echo $this->getBlockHtml('formkey') ?>
+        <div class="no-display">
+            <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+            <input type="hidden" name="related_product" id="related-products-field" value="" />
+        </div>
+        
+							<?php echo $this->getchildhtml("product_type_data");?>
+							
+								
+									<a href="javascript:void(0)"  onclick="productAddToCartForm.submit(this)" class="more-info-secondry-btn">確認</a>
+								</form>	  
+								
+						</div>
+					</div>
+				</section>
+				<section class="about-buy-diamond-section">
+					<div class="container">
+						<div class="clearfix">
+							<div class="primary buy-diamond-wrapper">
+								<img src="<?php  echo $this->getskinurl("images/buy-diamond-img-1.jpg") ?>" alt=" " title=" " />
+								<h4>選購鑽石</h4>
+								<a href="#" class="more-info-secondry-btn">了解更多</a>
+							</div>
+							<div class="buy-diamond-wrapper">
+								<img src="<?php  echo $this->getskinurl("images/buy-diamond-img-3.jpg") ?>" alt=" " title=" " />
+								<h4>選購訂婚戒指</h4>
+								<a href="#" class="more-info-secondry-btn">了解更多</a>
+							</div>
+							<div class="buy-diamond-wrapper">
+								<img src="<?php  echo $this->getskinurl("images/buy-diamond-img-2.jpg") ?>" alt=" " title=" " />
+								<h4>選購結婚戒指</h4>
+								<a href="#" class="more-info-secondry-btn">了解更多</a>
+							</div>
+						</div>
+					</div>
+				</section>
+</div>
+   <script type="text/javascript">
+    //<![CDATA[
+        var productAddToCartForm = new VarienForm('product_addtocart_form');
+        productAddToCartForm.submit = function(button, url) {
+            if (this.validator.validate()) {
+                var form = this.form;
+                var oldUrl = form.action;
+
+                if (url) {
+                   form.action = url;
+                }
+                var e = null;
+                try {
+                    this.form.submit();
+                } catch (e) {
+                }
+                this.form.action = oldUrl;
+                if (e) {
+                    throw e;
+                }
+
+                if (button && button != 'undefined') {
+                    button.disabled = true;
+                }
+            }
+        }.bind(productAddToCartForm);
+
+        productAddToCartForm.submitLight = function(button, url){
+            if(this.validator) {
+                var nv = Validation.methods;
+                delete Validation.methods['required-entry'];
+                delete Validation.methods['validate-one-required'];
+                delete Validation.methods['validate-one-required-by-name'];
+                // Remove custom datetime validators
+                for (var methodName in Validation.methods) {
+                    if (methodName.match(/^validate-datetime-.*/i)) {
+                        delete Validation.methods[methodName];
+                    }
+                }
+
+                if (this.validator.validate()) {
+                    if (url) {
+                        this.form.action = url;
+                    }
+                    this.form.submit();
+                }
+                Object.extend(Validation.methods, nv);
+            }
+        }.bind(productAddToCartForm);
+    //]]>
+    </script>

@@ -1,0 +1,83 @@
+
+<?php
+    $_helper    = $this->helper('catalog/output');
+    $_category  = $this->getCurrentCategory();
+    $_imgHtml   = '';
+    if ($_imgUrl = $_category->getImageUrl()) {
+        $_imgHtml = '<p class="category-image"><img src="'.$_imgUrl.'" alt="'.$this->escapeHtml($_category->getName()).'" title="'.$this->escapeHtml($_category->getName()).'" /></p>';
+        $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
+    }
+?>
+
+<section class="diamond-custom">
+<div class="container"><ol class="breadcrumb">
+<li><a href="<?php echo $this->getbaseurl()?>"><?php echo $this->__("Home")?></a></li>
+<li><a href="#"><?php echo $this->getCurrentCategory()->getname()?></a></li>
+<li><a href="#"><?php echo $this->__("Choose")?><?php echo $this->getCurrentCategory()->getname()?></a></li>
+</ol>
+<h1><?php echo $this->__("Setting")?><?php echo $this->getCurrentCategory()->getname()?></h1>
+</div>
+<div class="container">
+<?php // echo $this->getChildHtml('search_result'); ?>
+	<?php echo $this->getChildHtml('topfilter');?>      
+</div>
+</section>
+<section class="all-listing-wrap">
+<div class="container">
+<?php echo $this->getMessagesBlock()->toHtml() ?>
+
+		<div class="uptodate">
+		<ul class="clearfix">
+		<li><img alt="uptodate" src="<?php echo $this->getskinurl("images")?>/uptodate-bg.jpg" />
+		<div class="uptodate-caption"><strong><?php echo $this->__("Newest")?></strong></div>
+		</li>
+		<li><img alt="uptodate" src="<?php echo $this->getskinurl("images")?>/quality-bg.jpg" />
+		<div class="uptodate-caption quality-caption"><?php echo $this->__("Quality")?><span>4C</span><?php echo $this->__("Diamonds")?></div>
+		</li>
+		</ul>
+		</div>
+    		
+<!-- preloader begin -->
+			<div style="display: none;" class="overlayBlock"></div>
+	
+<?php if($_imgUrl): ?>
+    <?php echo $_imgHtml ?>
+<?php endif; ?>
+
+<?php if($_description=$this->getCurrentCategory()->getDescription()): ?>
+    <div class="category-description std">
+        <?php echo $_helper->categoryAttribute($_category, $_description, 'description') ?>
+    </div>
+    <?php endif; ?>
+
+<?php if($this->isContentMode()): ?>
+    <?php echo $this->getCmsBlockHtml() ?>
+
+<?php elseif($this->isMixedMode()): ?>
+    <?php echo $this->getCmsBlockHtml() ?>
+    	 <div id="ring_filter_results">	
+        <?php echo $this->getProductListHtml(); ?> 
+    </div>	
+
+<?php else: ?>
+    	 <div id="ring_filter_results">	
+        <?php echo $this->getProductListHtml(); ?> 
+    </div>	
+<?php endif; ?>		
+
+<!-- preloader end -->
+</div>
+</section>
+	
+<!--  Controls initilize -->
+
+
+<!-- end init -->
+
+
+<script type="text/javascript">
+    /*jQuery(".dropdown-toggle").dropdown();
+        jQuery(".collapse").collapse();*/
+</script>
+
+

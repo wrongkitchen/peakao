@@ -1,0 +1,559 @@
+a:5:{i:0;s:24730:"Invalid method Mage_Core_Block_Template::array_cartesian(Array
+(
+    [0] => Mage_Catalog_Model_Product Object
+        (
+            [_cacheTag:protected] => catalog_product
+            [_eventPrefix:protected] => catalog_product
+            [_eventObject:protected] => product
+            [_canAffectOptions:protected] => 
+            [_typeInstance:protected] => 
+            [_typeInstanceSingleton:protected] => 
+            [_linkInstance:protected] => 
+            [_customOptions:protected] => Array
+                (
+                )
+
+            [_urlModel:protected] => 
+            [_errors:protected] => Array
+                (
+                )
+
+            [_optionInstance:protected] => 
+            [_options:protected] => Array
+                (
+                )
+
+            [_reservedAttributes:protected] => 
+            [_isDuplicable:protected] => 1
+            [_calculatePrice:protected] => 1
+            [_defaultValues:protected] => Array
+                (
+                    [url_path] => .html
+                )
+
+            [_storeValuesFlags:protected] => Array
+                (
+                    [url_path] => 1
+                )
+
+            [_lockedAttributes:protected] => Array
+                (
+                )
+
+            [_isDeleteable:protected] => 1
+            [_isReadonly:protected] => 
+            [_resourceName:protected] => catalog/product
+            [_resource:protected] => 
+            [_resourceCollectionName:protected] => catalog/product_collection
+            [_dataSaveAllowed:protected] => 1
+            [_isObjectNew:protected] => 
+            [_data:protected] => Array
+                (
+                    [entity_id] => 2
+                    [entity_type_id] => 4
+                    [attribute_set_id] => 9
+                    [type_id] => simple
+                    [sku] => exellen-dimond
+                    [has_options] => 0
+                    [required_options] => 0
+                    [created_at] => 2016-03-21T08:43:15-04:00
+                    [updated_at] => 2016-04-04 18:12:56
+                    [status] => 1
+                    [is_recurring] => 0
+                    [visibility] => 4
+                    [tax_class_id] => 0
+                    [diamond_shape] => 13
+                    [clarity] => 18
+                    [cut] => 41
+                    [polish] => 69
+                    [symmetry] => 85
+                    [girdle] => 84
+                    [culet] => 93
+                    [fluorescence] => 108
+                    [laboratory] => 134
+                    [treatment] => 143
+                    [color_loose] => 153
+                    [name] => 無瑕極優無色鑽石
+                    [meta_title] => 
+                    [meta_description] => 
+                    [image] => /1/_/1.jpg
+                    [small_image] => /1/_/1.jpg
+                    [thumbnail] => no_selection
+                    [url_key] => 
+                    [url_path] => .html
+                    [custom_design] => 
+                    [page_layout] => 
+                    [options_container] => container1
+                    [image_label] => 
+                    [small_image_label] => 
+                    [country_of_manufacture] => 
+                    [msrp_enabled] => 2
+                    [msrp_display_actual_price_type] => 4
+                    [gift_message_available] => 
+                    [price] => 3250.0000
+                    [special_price] => 
+                    [weight] => 123.0000
+                    [msrp] => 
+                    [carat] => 0.7500
+                    [depth1] => 57.1000
+                    [depth2] => 57.1000
+                    [table] => 65.0000
+                    [table2] => 65.0000
+                    [estimated_retail_value] => 99999.0000
+                    [width] => 42.0000
+                    [length] => 52.0000
+                    [price_per_carat] => 999.0000
+                    [special_from_date] => 
+                    [special_to_date] => 
+                    [news_from_date] => 
+                    [news_to_date] => 
+                    [custom_design_from] => 
+                    [custom_design_to] => 
+                    [description] => 鑽石
+                    [short_description] => 鑽石
+                    [meta_keyword] => 
+                    [custom_layout_update] => 
+                    [dimension] => 4.53mm x 4.09mm x 2.95mm
+                    [certificate_image] => 42
+                    [group_price] => Array
+                        (
+                        )
+
+                    [group_price_changed] => 0
+                    [media_gallery] => Array
+                        (
+                            [images] => Array
+                                (
+                                    [0] => Array
+                                        (
+                                            [value_id] => 5
+                                            [file] => /1/_/1.jpg
+                                            [product_id] => 2
+                                            [label] => 
+                                            [position] => 1
+                                            [disabled] => 0
+                                            [label_default] => 
+                                            [position_default] => 1
+                                            [disabled_default] => 0
+                                        )
+
+                                )
+
+                            [values] => Array
+                                (
+                                )
+
+                        )
+
+                    [tier_price] => Array
+                        (
+                        )
+
+                    [tier_price_changed] => 0
+                    [stock_item] => Mage_CatalogInventory_Model_Stock_Item Object
+                        (
+                            [_minSaleQtyCache:Mage_CatalogInventory_Model_Stock_Item:private] => Array
+                                (
+                                )
+
+                            [_qtyIncrements:protected] => 
+                            [_eventPrefix:protected] => cataloginventory_stock_item
+                            [_eventObject:protected] => item
+                            [_productInstance:protected] => Mage_Catalog_Model_Product Object
+ *RECURSION*
+                            [_customerGroupId:protected] => 
+                            [_processIndexEvents:protected] => 1
+                            [_resourceName:protected] => cataloginventory/stock_item
+                            [_resource:protected] => 
+                            [_resourceCollectionName:protected] => cataloginventory/stock_item_collection
+                            [_cacheTag:protected] => 
+                            [_dataSaveAllowed:protected] => 1
+                            [_isObjectNew:protected] => 
+                            [_data:protected] => Array
+                                (
+                                    [item_id] => 2
+                                    [product_id] => 2
+                                    [stock_id] => 1
+                                    [qty] => 45.0000
+                                    [min_qty] => 0.0000
+                                    [use_config_min_qty] => 1
+                                    [is_qty_decimal] => 0
+                                    [backorders] => 0
+                                    [use_config_backorders] => 1
+                                    [min_sale_qty] => 1.0000
+                                    [use_config_min_sale_qty] => 1
+                                    [max_sale_qty] => 0.0000
+                                    [use_config_max_sale_qty] => 1
+                                    [is_in_stock] => 1
+                                    [low_stock_date] => 
+                                    [notify_stock_qty] => 
+                                    [use_config_notify_stock_qty] => 1
+                                    [manage_stock] => 0
+                                    [use_config_manage_stock] => 1
+                                    [stock_status_changed_auto] => 0
+                                    [use_config_qty_increments] => 1
+                                    [qty_increments] => 0.0000
+                                    [use_config_enable_qty_inc] => 1
+                                    [enable_qty_increments] => 0
+                                    [is_decimal_divided] => 0
+                                    [type_id] => simple
+                                    [stock_status_changed_automatically] => 0
+                                    [use_config_enable_qty_increments] => 1
+                                    [product_name] => 無瑕極優無色鑽石
+                                    [store_id] => 1
+                                    [product_type_id] => simple
+                                    [product_status_changed] => 1
+                                    [product_changed_websites] => 
+                                )
+
+                            [_hasDataChanges:protected] => 1
+                            [_origData:protected] => Array
+                                (
+                                    [item_id] => 2
+                                    [product_id] => 2
+                                    [stock_id] => 1
+                                    [qty] => 45.0000
+                                    [min_qty] => 0.0000
+                                    [use_config_min_qty] => 1
+                                    [is_qty_decimal] => 0
+                                    [backorders] => 0
+                                    [use_config_backorders] => 1
+                                    [min_sale_qty] => 1.0000
+                                    [use_config_min_sale_qty] => 1
+                                    [max_sale_qty] => 0.0000
+                                    [use_config_max_sale_qty] => 1
+                                    [is_in_stock] => 1
+                                    [low_stock_date] => 
+                                    [notify_stock_qty] => 
+                                    [use_config_notify_stock_qty] => 1
+                                    [manage_stock] => 0
+                                    [use_config_manage_stock] => 1
+                                    [stock_status_changed_auto] => 0
+                                    [use_config_qty_increments] => 1
+                                    [qty_increments] => 0.0000
+                                    [use_config_enable_qty_inc] => 1
+                                    [enable_qty_increments] => 0
+                                    [is_decimal_divided] => 0
+                                    [type_id] => simple
+                                    [stock_status_changed_automatically] => 0
+                                    [use_config_enable_qty_increments] => 1
+                                )
+
+                            [_idFieldName:protected] => item_id
+                            [_isDeleted:protected] => 
+                            [_oldFieldsMap:protected] => Array
+                                (
+                                    [stock_status_changed_automatically] => stock_status_changed_auto
+                                    [use_config_enable_qty_increments] => use_config_enable_qty_inc
+                                )
+
+                            [_syncFieldsMap:protected] => Array
+                                (
+                                    [stock_status_changed_automatically] => stock_status_changed_auto
+                                    [use_config_enable_qty_increments] => use_config_enable_qty_inc
+                                    [stock_status_changed_auto] => stock_status_changed_automatically
+                                    [use_config_enable_qty_inc] => use_config_enable_qty_increments
+                                )
+
+                        )
+
+                    [is_in_stock] => 1
+                    [is_salable] => 1
+                )
+
+            [_hasDataChanges:protected] => 
+            [_origData:protected] => 
+            [_idFieldName:protected] => entity_id
+            [_isDeleted:protected] => 
+            [_oldFieldsMap:protected] => Array
+                (
+                )
+
+            [_syncFieldsMap:protected] => Array
+                (
+                )
+
+        )
+
+    [1] => Mage_Catalog_Model_Product Object
+        (
+            [_cacheTag:protected] => catalog_product
+            [_eventPrefix:protected] => catalog_product
+            [_eventObject:protected] => product
+            [_canAffectOptions:protected] => 
+            [_typeInstance:protected] => 
+            [_typeInstanceSingleton:protected] => 
+            [_linkInstance:protected] => 
+            [_customOptions:protected] => Array
+                (
+                )
+
+            [_urlModel:protected] => 
+            [_errors:protected] => Array
+                (
+                )
+
+            [_optionInstance:protected] => 
+            [_options:protected] => Array
+                (
+                )
+
+            [_reservedAttributes:protected] => 
+            [_isDuplicable:protected] => 1
+            [_calculatePrice:protected] => 1
+            [_defaultValues:protected] => Array
+                (
+                    [url_path] => 1-heater.html
+                )
+
+            [_storeValuesFlags:protected] => Array
+                (
+                    [url_path] => 1
+                )
+
+            [_lockedAttributes:protected] => Array
+                (
+                )
+
+            [_isDeleteable:protected] => 1
+            [_isReadonly:protected] => 
+            [_resourceName:protected] => catalog/product
+            [_resource:protected] => 
+            [_resourceCollectionName:protected] => catalog/product_collection
+            [_dataSaveAllowed:protected] => 1
+            [_isObjectNew:protected] => 
+            [_data:protected] => Array
+                (
+                    [entity_id] => 7
+                    [entity_type_id] => 4
+                    [attribute_set_id] => 10
+                    [type_id] => simple
+                    [sku] => 123
+                    [has_options] => 0
+                    [required_options] => 0
+                    [created_at] => 2016-03-22T09:03:51-04:00
+                    [updated_at] => 2016-04-16 16:40:41
+                    [status] => 1
+                    [visibility] => 4
+                    [tax_class_id] => 0
+                    [ring_metal] => 176
+                    [ring_sidestone_shape] => 182
+                    [ring_sidestone_cut] => 194
+                    [ring_sidestone_color] => 197
+                    [ring_sidestone_clarity] => 216
+                    [ring_mainstone_shape] => 242
+                    [ring_style] => 281
+                    [ring_color] => 283
+                    [name] => 測試心型戒指
+                    [meta_title] => 
+                    [meta_description] => 
+                    [image] => /8/8/8809_r_rnd_stg_480x380.jpg
+                    [small_image] => /8/8/8809_r_rnd_stg_480x380.jpg
+                    [thumbnail] => /8/8/8809_r_rnd_stg_480x380.jpg
+                    [url_key] => 1-heater
+                    [url_path] => 1-heater.html
+                    [custom_design] => 
+                    [page_layout] => 
+                    [options_container] => container1
+                    [image_label] => 
+                    [small_image_label] => 
+                    [thumbnail_label] => 
+                    [country_of_manufacture] => 
+                    [msrp_enabled] => 2
+                    [msrp_display_actual_price_type] => 4
+                    [gift_message_available] => 
+                    [ring_model] => test1
+                    [ring_size] => 3.0
+                    [price] => 3000.0000
+                    [special_price] => 
+                    [weight] => 123.0000
+                    [msrp] => 
+                    [ring_sidestone_total_weight] => 23.0000
+                    [ring_sidestone_quantity] => 2.0000
+                    [special_from_date] => 
+                    [special_to_date] => 
+                    [news_from_date] => 
+                    [news_to_date] => 
+                    [custom_design_from] => 
+                    [custom_design_to] => 
+                    [description] => 测试
+                    [short_description] => 测试
+                    [meta_keyword] => 
+                    [recurring_profile] => 
+                    [custom_layout_update] => 
+                    [ring_comments] => 12
+                    [group_price] => Array
+                        (
+                        )
+
+                    [group_price_changed] => 0
+                    [media_gallery] => Array
+                        (
+                            [images] => Array
+                                (
+                                    [0] => Array
+                                        (
+                                            [value_id] => 2
+                                            [file] => /8/8/8809_r_rnd_stg_480x380.jpg
+                                            [product_id] => 7
+                                            [label] => 
+                                            [position] => 1
+                                            [disabled] => 0
+                                            [label_default] => 
+                                            [position_default] => 1
+                                            [disabled_default] => 0
+                                        )
+
+                                )
+
+                            [values] => Array
+                                (
+                                )
+
+                        )
+
+                    [tier_price] => Array
+                        (
+                        )
+
+                    [tier_price_changed] => 0
+                    [stock_item] => Mage_CatalogInventory_Model_Stock_Item Object
+                        (
+                            [_minSaleQtyCache:Mage_CatalogInventory_Model_Stock_Item:private] => Array
+                                (
+                                )
+
+                            [_qtyIncrements:protected] => 
+                            [_eventPrefix:protected] => cataloginventory_stock_item
+                            [_eventObject:protected] => item
+                            [_productInstance:protected] => Mage_Catalog_Model_Product Object
+ *RECURSION*
+                            [_customerGroupId:protected] => 
+                            [_processIndexEvents:protected] => 1
+                            [_resourceName:protected] => cataloginventory/stock_item
+                            [_resource:protected] => 
+                            [_resourceCollectionName:protected] => cataloginventory/stock_item_collection
+                            [_cacheTag:protected] => 
+                            [_dataSaveAllowed:protected] => 1
+                            [_isObjectNew:protected] => 
+                            [_data:protected] => Array
+                                (
+                                    [item_id] => 7
+                                    [product_id] => 7
+                                    [stock_id] => 1
+                                    [qty] => 22.0000
+                                    [min_qty] => 0.0000
+                                    [use_config_min_qty] => 1
+                                    [is_qty_decimal] => 0
+                                    [backorders] => 0
+                                    [use_config_backorders] => 1
+                                    [min_sale_qty] => 1.0000
+                                    [use_config_min_sale_qty] => 1
+                                    [max_sale_qty] => 0.0000
+                                    [use_config_max_sale_qty] => 1
+                                    [is_in_stock] => 1
+                                    [low_stock_date] => 
+                                    [notify_stock_qty] => 
+                                    [use_config_notify_stock_qty] => 1
+                                    [manage_stock] => 0
+                                    [use_config_manage_stock] => 1
+                                    [stock_status_changed_auto] => 0
+                                    [use_config_qty_increments] => 1
+                                    [qty_increments] => 0.0000
+                                    [use_config_enable_qty_inc] => 1
+                                    [enable_qty_increments] => 0
+                                    [is_decimal_divided] => 0
+                                    [type_id] => simple
+                                    [stock_status_changed_automatically] => 0
+                                    [use_config_enable_qty_increments] => 1
+                                    [product_name] => 測試心型戒指
+                                    [store_id] => 1
+                                    [product_type_id] => simple
+                                    [product_status_changed] => 1
+                                    [product_changed_websites] => 
+                                )
+
+                            [_hasDataChanges:protected] => 1
+                            [_origData:protected] => Array
+                                (
+                                    [item_id] => 7
+                                    [product_id] => 7
+                                    [stock_id] => 1
+                                    [qty] => 22.0000
+                                    [min_qty] => 0.0000
+                                    [use_config_min_qty] => 1
+                                    [is_qty_decimal] => 0
+                                    [backorders] => 0
+                                    [use_config_backorders] => 1
+                                    [min_sale_qty] => 1.0000
+                                    [use_config_min_sale_qty] => 1
+                                    [max_sale_qty] => 0.0000
+                                    [use_config_max_sale_qty] => 1
+                                    [is_in_stock] => 1
+                                    [low_stock_date] => 
+                                    [notify_stock_qty] => 
+                                    [use_config_notify_stock_qty] => 1
+                                    [manage_stock] => 0
+                                    [use_config_manage_stock] => 1
+                                    [stock_status_changed_auto] => 0
+                                    [use_config_qty_increments] => 1
+                                    [qty_increments] => 0.0000
+                                    [use_config_enable_qty_inc] => 1
+                                    [enable_qty_increments] => 0
+                                    [is_decimal_divided] => 0
+                                    [type_id] => simple
+                                    [stock_status_changed_automatically] => 0
+                                    [use_config_enable_qty_increments] => 1
+                                )
+
+                            [_idFieldName:protected] => item_id
+                            [_isDeleted:protected] => 
+                            [_oldFieldsMap:protected] => Array
+                                (
+                                    [stock_status_changed_automatically] => stock_status_changed_auto
+                                    [use_config_enable_qty_increments] => use_config_enable_qty_inc
+                                )
+
+                            [_syncFieldsMap:protected] => Array
+                                (
+                                    [stock_status_changed_automatically] => stock_status_changed_auto
+                                    [use_config_enable_qty_increments] => use_config_enable_qty_inc
+                                    [stock_status_changed_auto] => stock_status_changed_automatically
+                                    [use_config_enable_qty_inc] => use_config_enable_qty_increments
+                                )
+
+                        )
+
+                    [is_in_stock] => 1
+                    [is_salable] => 1
+                )
+
+            [_hasDataChanges:protected] => 
+            [_origData:protected] => 
+            [_idFieldName:protected] => entity_id
+            [_isDeleted:protected] => 
+            [_oldFieldsMap:protected] => Array
+                (
+                )
+
+            [_syncFieldsMap:protected] => Array
+                (
+                )
+
+        )
+
+)
+)";i:1;s:1845:"#0 /home/mycarthk/public_html/magento/app/design/frontend/mycart/peakao/template/advisor/recommend.phtml(6): Varien_Object->__call('array_cartesian', Array)
+#1 /home/mycarthk/public_html/magento/app/design/frontend/mycart/peakao/template/advisor/recommend.phtml(6): Mage_Core_Block_Template->array_cartesian(Object(Mage_Catalog_Model_Product), Object(Mage_Catalog_Model_Product))
+#2 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Block/Template.php(241): include('/home/mycarthk/...')
+#3 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Block/Template.php(272): Mage_Core_Block_Template->fetchView('frontend/mycart...')
+#4 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Block/Template.php(286): Mage_Core_Block_Template->renderView()
+#5 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Block/Abstract.php(919): Mage_Core_Block_Template->_toHtml()
+#6 /home/mycarthk/public_html/magento/app/code/local/Mycart/Ringadvisor/controllers/AjaxController.php(308): Mage_Core_Block_Abstract->toHtml()
+#7 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Mycart_Ringadvisor_AjaxController->recommendAction()
+#8 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('recommend')
+#9 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#10 /home/mycarthk/public_html/magento/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#11 /home/mycarthk/public_html/magento/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#12 /home/mycarthk/public_html/magento/index.php(83): Mage::run('', 'store')
+#13 {main}";s:3:"url";s:46:"/magento/index.php/ringadvisor/ajax/recommend/";s:11:"script_name";s:18:"/magento/index.php";s:4:"skin";s:7:"default";}

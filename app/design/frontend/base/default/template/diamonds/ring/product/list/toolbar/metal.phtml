@@ -1,0 +1,27 @@
+<?php /* @var $this Ikantam_Diamonds_Block_Filter_Atrribute */?>
+<?php $attributeOptions = $this->getAttributeOptions("ring_metal");?>
+<?php $selected = $this->getDefaultOption("ring_metal");?>
+<label>Metal:</label>
+<select id="ring_metal">
+	<option <?php if(!$selected):?>selected="selected"<?php endif;?> value="__all">All</option>
+	<?php foreach($attributeOptions as $option): ?>
+	<option <?php if($selected == $option->getId()):?>selected="selected"<?php endif; ?> value="<?php echo $option->getId();?>"><?php echo $option->getValue();?></option>
+	<?php endforeach;?>
+</select>
+
+<script>
+
+jQuery(function(){
+
+	var getData = function(){
+		var value = jQuery("#ring_metal").val();
+		return value;
+	};
+	ringsFilter.registerFilter("ring_metal", getData);
+
+	jQuery("#ring_metal").change(function(){
+		ringsFilter.updateResults();
+	});
+});
+
+</script>

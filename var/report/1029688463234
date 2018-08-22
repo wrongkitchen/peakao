@@ -1,0 +1,10 @@
+a:5:{i:0;s:42:"訂單狀態 "complete" 不能手動設定";i:1;s:1219:"#0 /home/wwwpeakao/public_html/app/code/core/Mage/Sales/Model/Order.php(1013): Mage::throwException('\xE8\xA8\x82\xE5\x96\xAE\xE7\x8B\x80\xE6\x85\x8B "c...')
+#1 /home/wwwpeakao/public_html/app/code/core/Mage/Sales/Model/Order.php(990): Mage_Sales_Model_Order->_setState('complete', true, '', NULL, true)
+#2 /home/wwwpeakao/public_html/app/code/local/Mycart/Payease/controllers/RedirectController.php(108): Mage_Sales_Model_Order->setState('complete', true)
+#3 /home/wwwpeakao/public_html/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Mycart_Payease_RedirectController->callbackAction()
+#4 /home/wwwpeakao/public_html/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('callback')
+#5 /home/wwwpeakao/public_html/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#6 /home/wwwpeakao/public_html/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#7 /home/wwwpeakao/public_html/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#8 /home/wwwpeakao/public_html/index.php(83): Mage::run('', 'store')
+#9 {main}";s:3:"url";s:536:"/payease/redirect/callback/?v_oid=20170605-10951-100000040&v_pmode=%D5%D0%C9%CC%D2%F8%D0%D0%D2%BB%CD%F8%CD%A8&v_pstatus=20&v_pstring=%D6%A7%B8%B6%CD%EA%B3%C9&v_md5info=acb4d5dae148b197c24e3ede63f7dc26&v_amount=1.04&v_moneytype=0&v_md5money=b18d447fa222bc74f55acf7aaef83f11&v_sign=615edc69f100bf729ce97d961fd57c7d27fcb0e4d4161b985ff4c276740ac6bc7339514a0997c870d4805d3ef00f33233ae525716788a796b5849b6be7459fd1cd1c344f8501b522039c887fad23ff9a625d4d019f3a45a64b935d9b23437fa49a57db863b0712934ebb2a9b514875c12493a0b21fc597a4a6d021e7f65a261b";s:11:"script_name";s:10:"/index.php";s:4:"skin";s:5:"ch_hk";}

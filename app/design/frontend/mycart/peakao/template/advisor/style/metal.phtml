@@ -1,0 +1,22 @@
+<div class="content-head">
+<h2><span>1</span> <?php echo __("Which Color do you Like")?>？</h2>
+</div>
+<ul id="metal" class="product-content clearfix">
+<li data-filter="White" class="filter"><a  href="javascript:void(0)"><img alt="" src="<?php echo $this->getskinurl("images/")?>ringadvisor-2.jpg" /></a></li>
+<li data-filter="Gold" class="filter"  ><a href="javascript:void(0)"><img alt="" src="<?php echo $this->getskinurl("images/")?>ringadvisor-3.jpg" /></a></li>
+<li data-filter="Rose Gold" class="filter" ><a href="javascript:void(0)"><img alt="" src="<?php echo $this->getskinurl("images/")?>ringadvisor-4.jpg" /></a></li>
+</ul>
+<script type="text/javascript">
+styleFilter.addfilter("metal");
+jQuery("#metal .filter").click(function(e){
+	if(jQuery(this).hasClass("disable")){
+		return false;
+	}
+	jQuery(this).siblings(".filter").removeClass("active");
+	jQuery(this).siblings(".filter").children("a").removeClass("active");
+	jQuery(this).toggleClass("active");
+	jQuery(this).children("a").toggleClass("active");
+	styleFilter.applyfilter();
+	e.preventDefault();
+})
+</script>

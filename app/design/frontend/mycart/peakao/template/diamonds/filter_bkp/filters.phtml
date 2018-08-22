@@ -1,0 +1,227 @@
+<style>
+[class^="icons-"] {
+ background-image: url("<?php echo Mage::getBaseUrl('skin') ?>/frontend/base/default/diamonds/images/series_1.png");
+ background-position: 49px 37px;
+ background-repeat: no-repeat;
+ border-radius: 3px 3px 3px 3px;
+ display: block;
+ height: 35px;
+ line-height: 14px;
+ padding-right: 4px;
+ padding-top: 5px;
+ vertical-align: text-bottom;
+ width: 49px;
+}
+</style>
+<?php 
+    /* @var $config Ikantam_Diamonds_Helper_Config */
+    $config = $this->helper('diamonds/config');
+    $widthSlider = $config->getWidthSlider();
+?>
+
+<form method="post" id="constructor" >
+  <?php echo $this->getChildHtml('filter_shape');?>
+  <br>
+  
+  <div class="filters-carat ikantam-mage-filter-col" style="width: <?php echo $widthSlider; ?>px;">
+    <?php echo $this->getChildHtml('filter_carat');?>
+    
+  </div>
+
+  <div class="filters-color ikantam-mage-filter-col" style="width: <?php echo $widthSlider; ?>px">
+      <?php echo $this->getChildHtml('filter_color');?>
+  </div>
+  <div class="clear"></div>
+  
+  <div class="filters-clarity ikantam-mage-filter-col" style="width: <?php echo $widthSlider?>px">
+    <?php echo $this->getChildHtml('filter_clarity');?>
+  </div>
+  <br>
+  
+  <div class="filters-cut ikantam-mage-filter-col" style="width: <?php echo $widthSlider?>px">
+      <?php echo $this->getChildHtml('filter_cut');?>
+  </div>
+
+  
+  <div class="filters-price ikantam-mage-filter-col" style="width: <?php echo $widthSlider?>px;">
+      <?php echo $this->getChildHtml('filter_price');?>
+  </div>
+  <br>
+  <div style="float:right">
+    <button  type="button" id="filter-button" class="button btn-Ring" title="Filter">Filter</button>
+  </div>
+  <div style="float:left">
+    <button  type="button" id="clear-filter" class="button btn-Ring" title="Clear">Clear</button>
+  </div>
+</form>
+<script type="text/javascript">
+    jQuery(function(jQuery){
+        /*Filter-----*/
+        jQuery("#filter-button").click(function(){
+            diamondsFilter.updateResults();
+        });
+        
+        jQuery("#clear-filter").click(function(){
+            diamondsFilter.resetFilters();
+        });
+    });
+    
+    /*jQuery(function($){
+    
+    
+          $("#shape input").click(function(){
+                var selected = $(this).attr("data-selected");
+		
+                if(selected == "true"){
+                        $(this).attr("data-selected","false");
+			
+                } else {
+                        $(this).attr("data-selected", "true");
+			
+                }
+		
+        });
+
+        var getDataShape = function(){
+                var shapes = $("#shape input");
+                var mass = new Array();
+                for(var i=0;i<shapes.length;i++){
+                        var shape = $(shapes[i]);
+                        if(shape.attr("data-selected") == "true" ){
+                                mass.push(shape.attr("value"));
+                        }		
+                }
+                return { mass : mass };
+        };
+
+	
+        diamondsFilter.registerFilter("diamond_shape", getDataShape);
+        
+        
+          $("#color input").click(function(){
+                var selected = $(this).attr("data-selected");
+		
+                if(selected == "true"){
+                        $(this).attr("data-selected","false");
+			
+                } else {
+                        $(this).attr("data-selected", "true");
+			
+                }
+		
+        });
+
+        var getDataColor = function(){
+                var colors = $("#color input");
+                var mass = new Array();
+                for(var i=0;i<colors.length;i++){
+                        var color = $(colors[i]);
+                        if(color.attr("data-selected") == "true" ){
+                                mass.push(color.attr("value"));
+                        }		
+                }
+                return { mass : mass };
+        };
+
+        diamondsFilter.registerFilter("color_loose", getDataColor);
+    
+    
+            
+        $("#clarity input").click(function(){
+                var selected = $(this).attr("data-selected");
+		
+                if(selected == "true"){
+                        $(this).attr("data-selected","false");
+			
+                } else {
+                        $(this).attr("data-selected", "true");
+			
+                }
+		
+        });
+
+        var getDataClarity = function(){
+                var clarities = $("#clarity input");
+                var mass = new Array();
+                for(var i=0;i<clarities.length;i++){
+                        var clarity = $(clarities[i]);
+                        if(clarity.attr("data-selected") == "true" ){
+                                mass.push(clarity.attr("value"));
+                        }		
+                }
+                return { mass : mass };
+        };
+
+        diamondsFilter.registerFilter("clarity", getDataClarity);
+        
+        
+        $("#cut input").click(function(){
+                var selected = $(this).attr("data-selected");
+		
+                if(selected == "true"){
+                        $(this).attr("data-selected","false");
+			
+                } else {
+                        $(this).attr("data-selected", "true");
+			
+                }
+        });
+
+        var getDataCut = function(){
+                var cuts = $("#cut input");
+                var mass = new Array();
+                for(var i=0;i<cuts.length;i++){
+                        var cut = $(cuts[i]);
+                        if(cut.attr("data-selected") == "true" ){
+                                mass.push(cut.attr("value"));
+                        }		
+                }
+                return { mass : mass };
+        };
+        
+      var _reset = function(){
+                var cuts = $("#cut input");
+                for(var i=0;i<cuts.length;i++){
+                        var cut = $(cuts[i]);
+                        cut.attr("data-selected","false");
+			
+			
+                }
+        };
+	
+        diamondsFilter.registerFilter("cut", getDataCut);
+    
+    
+
+   var getDataPrice = function(){
+                                
+     var minPrice = jQuery( "#price1" ).val();
+     var maxPrice = jQuery( "#price2" ).val();
+                
+        if(minPrice != 0 && maxPrice != 0){
+                return { min : minPrice, max :maxPrice};
+            }
+        }
+        diamondsFilter.registerFilter("price", getDataPrice);
+	
+    var getDataCarat = function(){
+        
+      var minCarat = jQuery( "#carat1" ).val();
+      var maxCarat = jQuery( "#carat2" ).val();
+                
+         if(minCarat != 0 && maxCarat != 0){
+                return { min : minCarat, max : maxCarat};
+                }
+        };
+        diamondsFilter.registerFilter("carat", getDataCarat);
+
+        jQuery("#filter").click(function(){
+                diamondsFilter.updateResults();
+        });
+        
+    
+        
+        
+});
+     */
+</script> 

@@ -1,0 +1,60 @@
+<?php
+$config = $this->helper('diamonds/config');
+$widthSlider = $config->getWidthSlider();
+$widthSliderWithFields = $config->getWidthSliderWithFields();
+?>
+<div class="range-slider"> 	
+      <div class="inline-ranger-slider" style="width:100%">
+        <div id="depth_slider" class="range-inner"></div>
+     </div>
+	
+    <!--<label class="inline-range">to</label>-->
+		<div class="left-selector min-value">
+		<!--<span>min</span>-->
+		<input type="text" id="minDepth" class="slider-value sliderDepthValue formField svlft inline-range" name="attributes[depth][min]" data-index="0" value="<?php echo $config->getMinDepthSlider() ?>%"/>
+	</div>
+		<div class="right-selector max-value">
+		<!--<span>max</span>-->
+		<input type="text" id="maxDepth" class="slider-value sliderDepthValue formField slidRight inline-range" name="attributes[depth][max]" data-index="1" value="<?php echo $config->getMaxDepthSlider() ?>%" />
+	</div>
+</div>
+<script type="text/javascript" >
+    jQuery(function(jQuery){
+        /*Depth-----*/    
+        jQuery("#depth_slider").slider({
+            range: true,
+            min: <?php echo $config->getMinDepthSlider() ?>,
+            max: <?php echo $config->getMaxDepthSlider() ?>,
+            step:  <?php echo $config->getStepDepthSlider() ?>,
+            values: [<?php echo $config->getMinDepthSlider() ?>, <?php echo $config->getMaxDepthSlider() ?>],
+            slide: function(event, ui) {
+                for(var i = 0; i < ui.values.length; ++i) {
+                    jQuery("input.sliderDepthValue[data-index=" + i + "]").val(ui.values[i]+"%");
+                }
+				
+            },
+			stop: function (){
+				
+				diamondsFilter.updateResults(); 
+			}
+        });
+
+        jQuery("input.sliderDepthValue").change(function() {
+            var $this = jQuery(this);
+            jQuery("#depth_slider").slider("values", $this.data("index"), $this.val().replace("%",""));
+         diamondsFilter.updateResults(); 
+		});
+        
+        var getDataDepth = function(){
+        
+            var minDepth = parseInt(jQuery( "#minDepth" ).val().replace("%",""));
+            var maxDepth = parseInt(jQuery( "#maxDepth" ).val().replace("%",""));
+                
+            if(minDepth >= 0 && maxDepth >= minDepth){
+                return { min : minDepth, max : maxDepth};
+            }
+			
+        };
+        diamondsFilter.registerFilter("depth1", getDataDepth);
+    });
+</script>

@@ -1,0 +1,57 @@
+<?php
+$config = $this->helper('diamonds/config');
+$widthSlider = $config->getWidthSlider();
+$widthSliderWithFields = $config->getWidthSliderWithFields();
+?>
+<h2><?php echo $this->__('Depth') ?></h2>
+<div class="price-ranger" style="width: <?php echo $widthSlider ?>px;">
+
+	<div class="min-value">
+		<!--<span>min</span>-->
+		<input type="text" id="minDepth" class="sliderDepthValue formField svlft inline-range" name="attributes[depth][min]" data-index="0" value="<?php echo $config->getMinDepthSlider() ?>"/>
+	</div>
+	
+    <div class="inline-ranger-slider" style="width: <?php echo $widthSliderWithFields; ?>px">
+        <div id="depth_slider"></div>
+    </div>
+	
+    <!--<label class="inline-range">to</label>-->
+	
+	<div class="max-value">
+		<!--<span>max</span>-->
+		<input type="text" id="maxDepth" class="sliderDepthValue formField slidRight inline-range" name="attributes[depth][max]" data-index="1" value="<?php echo $config->getMaxDepthSlider() ?>" />
+	</div>
+</div>
+<script type="text/javascript" >
+    jQuery(function(jQuery){
+        /*Depth-----*/    
+        jQuery("#depth_slider").slider({
+            range: true,
+            min: <?php echo $config->getMinDepthSlider() ?>,
+            max: <?php echo $config->getMaxDepthSlider() ?>,
+            step:  <?php echo $config->getStepDepthSlider() ?>,
+            values: [<?php echo $config->getMinDepthSlider() ?>, <?php echo $config->getMaxDepthSlider() ?>],
+            slide: function(event, ui) {
+                for(var i = 0; i < ui.values.length; ++i) {
+                    jQuery("input.sliderDepthValue[data-index=" + i + "]").val(ui.values[i]);
+                }
+            }
+        });
+
+        jQuery("input.sliderDepthValue").change(function() {
+            var $this = jQuery(this);
+            jQuery("#depth_slider").slider("values", $this.data("index"), $this.val());
+        });
+        
+        var getDataDepth = function(){
+        
+            var minDepth = jQuery( "#minDepth" ).val();
+            var maxDepth = jQuery( "#maxDepth" ).val();
+                
+            if(minDepth >= 0 && maxDepth >= minDepth){
+                return { min : minDepth, max : maxDepth};
+            }
+        };
+        diamondsFilter.registerFilter("depth1", getDataDepth);
+    });
+</script>

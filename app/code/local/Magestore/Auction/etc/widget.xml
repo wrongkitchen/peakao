@@ -1,0 +1,7 @@
+<?xml version="1.0"?>  
+<widgets>  
+    <auction type="auction/widget" translate="name description" module="auction">
+        <name>Feature Acution</name>  
+        <description>Adds a Auction to Show in Block</description>  
+    </auction>  
+</widgets>   

@@ -1,0 +1,19 @@
+<?php /* @var Ikantam_Diamonds_Block_Product_Compare_Addtocompare */ ?>
+<?php $id = md5($this->getAddUrl() . rand()); ?>
+<span class="compare-container" id="<?php echo $id; ?>">
+<input value ="" id="clarity-price_<?php echo $id; ?>" type="checkbox" name="check1"
+    data-add-url="<?php echo $this->getAddUrl();?>"
+	data-remove-url="<?php echo $this->getRemoveUrl();?>"	
+	<?php if($this->isComparing()):?>
+	checked="checked"
+	<?php endif;?>/> 
+<label for="clarity-price_<?php echo $id; ?>">
+<span></span>
+<?php echo $this->__("Add to Compare"); ?></label>
+<img style="display:none" alt="Loading..." src="<?php echo $this->getSkinUrl("diamonds/images/loading.gif");?>" />
+</span>
+<script>
+	jQuery(function(){
+		new IkD.compareAjax("#<?php echo $id; ?>");		
+	});
+</script>

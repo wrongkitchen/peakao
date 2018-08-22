@@ -1,0 +1,311 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <diamond_layout_update>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>diamonds/css/style.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>diamonds/css/jquery-ui.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>diamonds/js/jquery-ui.js</name>
+            </action>
+            <action method="addJs">
+                <script>diamonds/IkD.js</script>
+            </action>
+            <action method="addJs">
+                <script>diamonds/jquery.min.js</script>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>diamonds/css/styles-ie8.css</name>
+                <params/>
+                <if>IE 8</if>
+            </action>
+        </reference> 
+    	
+    	
+    	
+    </diamond_layout_update>
+    <diamonds_index_index>
+        <update handle="diamond_layout_update"/>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>    	
+        </reference>
+    	
+        <reference name="content">
+            <block type="diamonds/diamonds" name="diamonds" template="diamonds/diamonds.phtml">
+            	
+                <block type="diamonds/search_result" name="search_result" template="diamonds/search/results.phtml" />
+            	
+                <block type="core/template" name="diamonds_filter" template="diamonds/filter.phtml">
+                    <block type="diamonds/filter_design" name="diamonds_filter_design" template="diamonds/filter/design.phtml"/>
+                    <block type="diamonds/filter_attribute" name="filters" template="diamonds/filter/filters.phtml">
+                        <block type="diamonds/filter_attribute" name="filter_shape" template="diamonds/filter/attrs/shape.phtml" />
+                        <block type="diamonds/filter_attribute" name="filter_color" template="diamonds/filter/attrs/color.phtml" />
+                        <block type="diamonds/filter_attribute" name="filter_carat" template="diamonds/filter/attrs/carat.phtml" />
+                        <block type="diamonds/filter_attribute" name="filter_clarity" template="diamonds/filter/attrs/clarity.phtml" />
+                        <block type="diamonds/filter_attribute" name="filter_cut"   template="diamonds/filter/attrs/cut.phtml" />
+                        <block type="diamonds/filter_attribute" name="filter_price" template="diamonds/filter/attrs/price.phtml" />
+
+                        <block type="diamonds/filter_attribute" name="filter_fluorescence" template="diamonds/filter/attrs/fluorescence.phtml" />
+                        <block type="diamonds/filter_attribute" name="filter_polish" template="diamonds/filter/attrs/polish.phtml" />
+                        <block type="diamonds/filter_attribute" name="filter_symmetry" template="diamonds/filter/attrs/symmetry.phtml" />
+                        <block type="diamonds/filter_attribute" name="filter_table" template="diamonds/filter/attrs/table.phtml" />
+                        <block type="diamonds/filter_attribute" name="filter_depth" template="diamonds/filter/attrs/depth.phtml" />
+                        <block type="diamonds/filter_attribute" name="filter_certificate" template="diamonds/filter/attrs/certificate.phtml" />
+                    </block>
+            		
+                </block>
+                <!-- Filter results -->
+                <block type="core/template" name="diamonds_filter_results" template="diamonds/filter/results.phtml">
+                    <block type="diamonds/product_list_diamonds" name="diamonds_search_product_list" template="diamonds/product/mode/grid.phtml">		    	
+                        <block type="core/template" name="toolbar_top" template="diamonds/product/list/toolbar_top.phtml" >
+                            <block type="core/template" name="filter_toolbar_sort" template="diamonds/product/list/toolbar/sort.phtml" />					
+                            <block type="core/template" name="filter_toolbar_mode" template="diamonds/product/list/toolbar/mode.phtml" />		
+                        </block>						        
+                        <block type="diamonds/product_compare_addtocompare" name="addtocompare" />		        		       				
+                        <block type="diamonds/product_list_toolbar" name="toolbar" template="diamonds/product/list/toolbar.phtml" >
+                            <block type="core/template" name="filter_toolbar_limiter" template="diamonds/product/list/toolbar/limiter.phtml" />					
+                            <block type="diamonds/product_list_toolbar_pager" name="product_list_toolbar_pager" template="diamonds/product/list/toolbar/pager.phtml" />	
+                        </block>		        		        		   	
+                    </block>
+                </block>
+		        
+                <!-- Recently viewed -->
+		        
+                <block type="core/template" name="diamonds_recently_viewed" template="diamonds/product/recentlyviewed/view.phtml">
+                    <block type="diamonds/product_list_diamonds_recently" name="rv_product_list" template="diamonds/product/recentlyviewed/grid.phtml">
+                        <block type="diamonds/product_list_diamonds_recently_toolbar" name="rv_toolbar" template="diamonds/product/recentlyviewed/toolbar.phtml" >
+                            <block type="core/template" name="rv_filter_toolbar_sort" template="diamonds/product/recentlyviewed/toolbar/sort.phtml" />
+                            <block type="core/template" name="rv_filter_toolbar_mode" template="diamonds/product/recentlyviewed/toolbar/mode.phtml" />
+                            <block type="core/template" name="rv_filter_toolbar_limiter" template="diamonds/product/recentlyviewed/toolbar/limiter.phtml" />    
+                        </block>
+                        <block type="diamonds/product_compare_addtocompare" name="addtocompare" />
+                    </block>
+                </block>
+		        
+                <!-- Comparasion -->
+		        
+                <block type="core/template" name="diamonds_comparasion" template="diamonds/product/compare/view.phtml">
+                    <block type="diamonds/product_compare_list" name="diamonds_comparasion_list" template="diamonds/product/compare/list.phtml"/>
+                </block>
+            </block>
+        </reference>
+    </diamonds_index_index>
+
+    <diamonds_index_quick>
+         <reference name="head">
+                <action method="addItem">
+                <type>skin_js</type>
+                <name>diamonds/js/home.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>diamonds/css/home.css</name>
+            </action>
+        </reference>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+
+        <reference name="content">
+            <block type="diamonds/quick" name="diamonds.quick" />
+        </reference>
+    </diamonds_index_quick>
+
+    <diamonds_filter_diamond>
+        <update handle="diamond_layout_update"/>
+        <block type="core/template" name="diamonds_filter_results" template="diamonds/filter/results.phtml">
+            <block type="diamonds/product_list_diamonds" name="diamonds_search_product_list" template="diamonds/product/mode/grid.phtml">
+                <block type="core/template" name="toolbar_top" template="diamonds/product/list/toolbar_top.phtml" >		        	
+                    <block type="core/template" name="filter_toolbar_sort" template="diamonds/product/list/toolbar/sort.phtml" />					
+                    <block type="core/template" name="filter_toolbar_mode" template="diamonds/product/list/toolbar/mode.phtml" />		        
+                </block>				
+                <block type="diamonds/product_compare_addtocompare" name="addtocompare" />		        		       				
+                <block type="diamonds/product_list_toolbar" name="toolbar" template="diamonds/product/list/toolbar.phtml" >					
+                    <block type="core/template" name="filter_toolbar_limiter" template="diamonds/product/list/toolbar/limiter.phtml" />					
+                    <block type="diamonds/product_list_toolbar_pager" name="product_list_toolbar_pager" template="diamonds/product/list/toolbar/pager.phtml" />		       
+                </block>		        		        
+            </block>
+        </block>
+    </diamonds_filter_diamond>
+    
+    <diamonds_filter_recently>
+        <update handle="diamond_layout_update"/>
+        <!-- Recently viewed -->
+        <block type="core/template" name="diamonds_recently_viewed" template="diamonds/product/recentlyviewed/view.phtml">
+            <block type="diamonds/product_list_diamonds_recently" name="rv_product_list" template="diamonds/product/recentlyviewed/grid.phtml">
+                <block type="diamonds/product_list_diamonds_recently_toolbar" name="rv_toolbar" template="diamonds/product/recentlyviewed/toolbar.phtml" >
+                    <block type="core/template" name="rv_filter_toolbar_sort" template="diamonds/product/recentlyviewed/toolbar/sort.phtml" />
+                    <block type="core/template" name="rv_filter_toolbar_mode" template="diamonds/product/recentlyviewed/toolbar/mode.phtml" />
+                    <block type="core/template" name="rv_filter_toolbar_limiter" template="diamonds/product/recentlyviewed/toolbar/limiter.phtml" />    
+                </block>
+                <block type="diamonds/product_compare_addtocompare" name="addtocompare" />
+            </block>
+        </block>
+    </diamonds_filter_recently>
+
+    <diamonds_settings_index>
+        <update handle="diamond_layout_update"/>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>    	
+        </reference>
+    	
+        <reference name="content">
+            <block type="core/template" name="ring_settings" template="diamonds/ring/filter.phtml">
+                <block type="diamonds/search_result" name="search_result" template="diamonds/search/results.phtml" />
+                <block type="diamonds/filter_design" name="diamonds_filter_design" template="diamonds/filter/design.phtml" />
+
+                <block type="diamonds/filter_attribute" name="filter_metal"         template="diamonds/ring/filter/attrs/metal.phtml" />
+                <block type="diamonds/filter_attribute" name="filter_setting_shape" template="diamonds/ring/filter/attrs/setting_shape.phtml" />
+                <!--<block type="diamonds/ring_filter_model" name="ring_filter_model" template="diamonds/ring/filter/attrs/model.phtml"/>-->
+                <!-- Filter results -->
+                <block type="core/template" name="ring_filter_results" template="diamonds/ring/filter/results.phtml">
+                    <block type="diamonds/product_list_rings" name="ring_search_product_list" template="diamonds/ring/product/list.phtml">
+                        <block type="diamonds/ring_product_list_toolbar" name="toolbar" template="diamonds/ring/product/list/toolbar.phtml" >
+                            <block type="core/template" name="ring_filter_toolbar_limiter" template="diamonds/ring/product/list/toolbar/limiter.phtml" />
+                            <block type="diamonds/product_list_toolbar_pager" name="product_list_toolbar_pager" template="diamonds/ring/product/list/toolbar/pager.phtml" />
+                        </block>		                		               
+                        <block type="core/template" name="toolbar_top" template="diamonds/ring/product/list/toolbar_top.phtml" >							
+                            <block type="diamonds/filter_attribute" name="ring_filter_toolbar_metal" template="diamonds/ring/product/list/toolbar/metal.phtml" />							
+                            <block type="core/template" name="ring_filter_toolbar_sort" template="diamonds/ring/product/list/toolbar/sort.phtml" />		               
+                        </block>
+                    </block>
+                </block>
+                <!-- Resently viewed -->
+            </block>
+        </reference>   		
+    </diamonds_settings_index>
+   	
+   	
+    <diamonds_filter_ring>
+        <update handle="diamond_layout_update"/>
+        <block type="core/template" name="ring_filter_results" template="diamonds/ring/filter/results.phtml">
+            <block type="diamonds/product_list_rings" name="ring_search_product_list" template="diamonds/ring/product/list.phtml">
+                <block type="diamonds/ring_product_list_toolbar" name="toolbar" template="diamonds/ring/product/list/toolbar.phtml" >		            		
+                <block type="core/template" name="ring_filter_toolbar_limiter" template="diamonds/ring/product/list/toolbar/limiter.phtml" />
+                <block type="diamonds/product_list_toolbar_pager" name="product_list_toolbar_pager" template="diamonds/ring/product/list/toolbar/pager.phtml" />		                </block>
+                <block type="core/template" name="toolbar_top" template="diamonds/ring/product/list/toolbar_top.phtml" >							
+                    <block type="diamonds/filter_attribute" name="ring_filter_toolbar_metal" template="diamonds/ring/product/list/toolbar/metal.phtml" />							
+                    <block type="core/template" name="ring_filter_toolbar_sort" template="diamonds/ring/product/list/toolbar/sort.phtml" />
+                </block>
+            </block>
+        </block>
+    </diamonds_filter_ring>
+    
+    <!-- Product views -->
+    
+    <diamonds_product_diamond>
+        <update handle="diamond_layout_update"/>
+        <remove name="breadcrumbs" />
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>diamonds/css/product.css</name>
+            </action>
+        </reference>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="diamonds/product_view_diamond" name="diamonds_product_diamond_view" template="diamonds/product/view/diamond.phtml">
+                <block type="diamonds/filter_design" name="diamonds_filter_design" template="diamonds/filter/design.phtml"/>
+                <!--<block type="diamonds/product_view_media" name="product.info.media" as="media" template="diamonds/product/view/media.phtml" />-->
+                <block type="diamonds/product_compare_addtocompare" name="addtocompare" />
+                <block type="diamonds/product_wishlist_addtowishlist" name="addtowishlist" />
+                <!--<block type="core/text_list" name="diamond_additional_info" as="diamond_additional_info" translate="label">-->
+                    <block type="core/template" name="diamond_display_info" template="diamonds/product/view/diamond/info.phtml" ifconfig="ikantam_diamonds/diamond_view/display_info" />
+                    <block type="core/template" name="diamond_display_tutorial" template="diamonds/product/view/diamond/tutorial.phtml" ifconfig="ikantam_diamonds/diamond_view/display_tutorial" />
+                <!--</block>-->
+            </block>
+        </reference>
+    </diamonds_product_diamond>
+    
+    <diamonds_product_setting>
+        <update handle="diamond_layout_update"/>
+        <remove name="breadcrumbs" />
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="diamonds/product_view_setting" name="diamonds_product_ring_view" template="diamonds/product/view/setting.phtml" >
+                <block type="diamonds/filter_design" name="diamonds_filter_design" template="diamonds/filter/design.phtml" />
+                <block type="diamonds/product_view_media" name="product.info.media" as="media" template="diamonds/product/view/media.phtml" />
+                <block type="diamonds/product_view_setting_mainstone" name="mainstone" template="diamonds/product/view/setting/mainstone.phtml" />
+                <!--<block type="diamonds/product_similar_list_ring" name="similar_products" template="diamonds/ring/product/similar/list.phtml" />-->
+            </block>
+        </reference>
+    </diamonds_product_setting>
+    
+    <diamonds_product_settingajax>
+        <update handle="diamond_layout_update"/>
+        <block type="diamonds/product_view_setting" name="diamonds_product_ring_view" template="diamonds/product/view/setting/withoutheader.phtml">
+            <block type="diamonds/filter_design" name="diamonds_filter_design" template="diamonds/filter/design.phtml"/>
+            <block type="diamonds/product_view_media" name="product.info.media" as="media" template="diamonds/product/view/media.phtml"/>
+            <block type="diamonds/product_view_setting_mainstone" name="mainstone" template="diamonds/product/view/setting/mainstone.phtml"/>
+        </block>
+    </diamonds_product_settingajax>
+
+    <contacts_index_index>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/2columns-left.phtml</template>
+            </action>
+        </reference>
+    </contacts_index_index>
+    
+    <diamonds_ajax_removefromcompare>
+        <update handle="diamond_layout_update"/>
+        <block type="diamonds/product_compare_list" name="diamonds_comparasion_list" template="diamonds/product/compare/list.phtml"/>
+    </diamonds_ajax_removefromcompare>
+    
+    <diamonds_ajax_addtocompare>
+        <update handle="diamond_layout_update"/>
+        <block type="diamonds/product_compare_list" name="diamonds_comparasion_list" template="diamonds/product/compare/list.phtml"/>
+    </diamonds_ajax_addtocompare>
+
+    <checkout_cart_index>
+        <reference name="checkout.cart">
+            <action method="addItemRender">
+                <type>bundle</type>
+                <block>diamonds/checkout_cart_item_renderer</block>
+                <template>diamonds/cart/item/default.phtml</template>
+            </action>
+            <action method="addItemRender">
+                <type>simple</type>
+                <block>diamonds/checkout_cart_item_simple</block>
+                <template>diamonds/cart/item/simple.phtml</template>
+            </action>
+        </reference>
+    </checkout_cart_index>
+    
+    <default>
+        <remove name="catalog.compare.sidebar" />
+        <remove name="right.poll" />
+        <reference name="footer_links">
+            <action method="removeLinkByUrl">
+                <url helper="catalogsearch/getAdvancedSearchUrl" />
+            </action>
+        </reference>
+    </default>
+
+
+    
+    
+    
+</layout> 

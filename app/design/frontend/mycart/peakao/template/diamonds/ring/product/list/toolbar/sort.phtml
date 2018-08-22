@@ -1,0 +1,82 @@
+<?php /* @var $toolbar Mage_Catalog_Block_Product_List_Toolbar */?>
+<?php /* @var $toolbar Mage_Catalog_Block_Product_List_Toolbar */ ?>
+<?php $toolbar = $this->getParentBlock()->getParentBlock()->getChild("toolbar"); ?>
+
+<fieldset class="priority-form">
+<label for="sortby"><?php echo $this->__("Sort By")?>：</label>
+<select id="sortby">
+    <?php foreach ($toolbar->getAvailableOrders() as $_key => $_order): ?>
+        <option value="<?php echo $_key; ?>"
+                <?php if ($toolbar->isOrderCurrent($_key)): ?> selected="selected"
+                <?php endif; ?>>
+                    <?php echo $toolbar->__($_order) ?>
+        </option>
+    <?php endforeach; ?>
+</select></fieldset>
+<script style="text/javascript">
+      jQuery( "#sortby" ).selectmenu({
+		  
+		    change: function( event, ui ) {
+				           	ringsFilter.updateResults();
+			}
+	  }
+	  );
+</script>
+
+<?php if ($toolbar->getCurrentDirection() == 'desc'): ?>
+    <a 
+        id="sortby-dir" data-dir="desc"
+        href="#"
+        onclick="return false;"
+        title="<?php echo $toolbar->__('Set Ascending Direction') ?>"><img
+            src="<?php echo $toolbar->getSkinUrl('images/i_desc_arrow.gif') ?>"
+            alt="<?php echo $toolbar->__('Set Ascending Direction') ?>"
+            class="v-middle" /> </a>
+    <?php else: ?>
+    <a 
+        id="sortby-dir" data-dir="asc"
+        href="#"
+        onclick="return false;"
+        title="<?php echo $toolbar->__('Set Descending Direction') ?>"><img
+            src="<?php echo $toolbar->getSkinUrl('images/i_asc_arrow.gif') ?>"
+            alt="<?php echo $toolbar->__('Set Descending Direction') ?>"
+            class="v-middle" /> </a>
+    <?php endif; ?>
+
+<script>
+
+jQuery(function(){
+
+	var getDataDir	= function(){
+		var direction = jQuery("#sortby-dir").attr("data-dir");
+		return direction;
+	};
+
+	ringsFilter.registerMetadata("dir",getDataDir);
+	
+
+	jQuery("#sortby-dir").click(function(){
+		var getDataDir = function(){
+			var direction = jQuery("#sortby-dir").attr("data-dir");
+			if(direction == 'asc'){
+				return 'desc';
+			} else {
+				return 'asc';
+			}
+		};
+		ringsFilter.registerMetadata("dir",getDataDir);
+		ringsFilter.updateResults();
+	});
+
+	var getDataField = function(){
+		var field = jQuery("#sortby").val();
+		return field;
+	};
+	ringsFilter.registerMetadata("order", getDataField);
+
+
+
+});
+
+</script>
+

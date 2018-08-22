@@ -1,0 +1,1742 @@
+.previewDetails {
+    float: right;
+    height: 425px;
+    width: 215px;
+}
+.previewDetails h2 {
+    -moz-font-feature-settings: normal;
+    -moz-font-language-override: normal;
+    -x-system-font: none;
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/bgGridboxHeader.gif");
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: repeat-x;
+    background-size: auto auto;
+    color: #8a0f0f;
+    font-family: Arial;
+    font-size: 1.2em;
+    font-size-adjust: none;
+    font-stretch: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    height: 35px;
+    line-height: 35px;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 0;
+}
+.previewDetails ul {
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+.previewDetails li {
+    font-size: 0.9em;
+    font-weight: bold;
+}
+.previewDetails li span {
+    font-weight: normal;
+}
+.previewDetails p {
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 0;
+    padding-top: 0;
+}
+#searchResult {
+    padding-bottom: 36px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 36px;
+}
+.diamondMeasures {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-bottom-color: #eeeeee;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-image-outset: 0 0 0 0;
+    border-image-repeat: stretch stretch;
+    border-image-slice: 100% 100% 100% 100%;
+    border-image-source: none;
+    border-image-width: 1 1 1 1;
+    border-left-color-ltr-source: physical;
+    border-left-color-rtl-source: physical;
+    border-left-color-value: #eeeeee;
+    border-left-style-ltr-source: physical;
+    border-left-style-rtl-source: physical;
+    border-left-style-value: solid;
+    border-left-width-ltr-source: physical;
+    border-left-width-rtl-source: physical;
+    border-left-width-value: 1px;
+    border-right-color-ltr-source: physical;
+    border-right-color-rtl-source: physical;
+    border-right-color-value: #eeeeee;
+    border-right-style-ltr-source: physical;
+    border-right-style-rtl-source: physical;
+    border-right-style-value: solid;
+    border-right-width-ltr-source: physical;
+    border-right-width-rtl-source: physical;
+    border-right-width-value: 1px;
+    border-top-color: #eeeeee;
+    border-top-style: solid;
+    border-top-width: 1px;
+    float: left;
+    height: 227px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: 424px;
+}
+.diamondMeasures ul {
+    float: left;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+}
+.diamondMeasures li {
+    border-bottom-color: #eeeeee;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-right-color-ltr-source: physical;
+    border-right-color-rtl-source: physical;
+    border-right-color-value: #eeeeee;
+    border-right-style-ltr-source: physical;
+    border-right-style-rtl-source: physical;
+    border-right-style-value: solid;
+    border-right-width-ltr-source: physical;
+    border-right-width-rtl-source: physical;
+    border-right-width-value: 1px;
+    display: block;
+    height: 75px;
+    width: 75px;
+}
+.diamondMeasures li a {
+    display: block;
+    height: 75px;
+    outline-color: -moz-use-text-color;
+    outline-style: none;
+    outline-width: medium;
+    width: 75px;
+}
+.diamondDetails {
+    float: right;
+    width: 480px;
+}
+.diamondDetails h2 {
+    font-size: 1.7em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+}
+.diamondDetails form {
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 20px;
+}
+.diamondDetails form img {
+    margin-right: 10px;
+}
+.diamondPrice {
+    font-size: 1.3em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 1em;
+}
+.diamondSpecs {
+    float: left;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    padding-right: 20px;
+    padding-top: 10px;
+    width: 426px;
+}
+.diamondSpecs h2 {
+    color: #333333;
+    font-size: 1.7em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+}
+.diamondSpecs ul {
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+    padding-left: 10px;
+    padding-right: 0;
+    padding-top: 0;
+}
+.diamondSpecs a, .diamondSpecs span {
+    color: #8d0f0f;
+    float: left;
+    width: 160px;
+}
+.colorGrade, .clarityGrade {
+    padding-bottom: 10px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 20px;
+}
+.colorGrade h2, .clarityGrade h2 {
+    color: #333333;
+    font-size: 1.7em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+}
+.colorGrade p, .clarityGrade p {
+	margin-left: 420px;
+    margin-bottom: 0.5em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0.5em;
+}
+.colorChart-D {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/colorChart.gif");
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    height: 42px;
+    width: 300px;
+}
+.colorChart-E {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/colorChart.gif");
+    background-origin: padding-box;
+    background-position: 0 -42px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    height: 42px;
+    width: 300px;
+}
+.colorChart-F {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/colorChart.gif");
+    background-origin: padding-box;
+    background-position: 0 -84px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    height: 42px;
+    width: 300px;
+}
+.colorChart-G {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/colorChart.gif");
+    background-origin: padding-box;
+    background-position: 0 -126px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    height: 42px;
+    width: 300px;
+}
+.colorChart-H {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/colorChart.gif");
+    background-origin: padding-box;
+    background-position: 0 -168px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    height: 42px;
+    width: 300px;
+}
+.colorChart-I {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/colorChart.gif");
+    background-origin: padding-box;
+    background-position: 0 -210px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    height: 42px;
+    width: 300px;
+}
+.colorChart-J {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/colorChart.gif");
+    background-origin: padding-box;
+    background-position: 0 -252px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    height: 42px;
+    width: 300px;
+}
+.colorChart-K {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/colorChart.gif");
+    background-origin: padding-box;
+    background-position: 0 -294px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    height: 42px;
+    width: 300px;
+}
+.colorChart-L {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/colorChart.gif");
+    background-origin: padding-box;
+    background-position: 0 -336px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    height: 42px;
+    width: 300px;
+}
+.colorChart-M {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/colorChart.gif");
+    background-origin: padding-box;
+    background-position: 0 -378px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    height: 42px;
+    width: 300px;
+}
+.clarityChart-FL {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/clarityChart.gif");
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    height: 42px;
+    width: 300px;
+}
+.clarityChart-IF {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/clarityChart.gif");
+    background-origin: padding-box;
+    background-position: 0 -42px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    height: 42px;
+    width: 300px;
+}
+.clarityChart-VVS1 {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/clarityChart.gif");
+    background-origin: padding-box;
+    background-position: 0 -84px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    height: 42px;
+    width: 300px;
+}
+.clarityChart-VVS2 {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/clarityChart.gif");
+    background-origin: padding-box;
+    background-position: 0 -126px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    height: 42px;
+    width: 300px;
+}
+.clarityChart-VS1 {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/clarityChart.gif");
+    background-origin: padding-box;
+    background-position: 0 -168px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    height: 42px;
+    width: 300px;
+}
+.clarityChart-VS2 {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/clarityChart.gif");
+    background-origin: padding-box;
+    background-position: 0 -210px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    height: 42px;
+    width: 300px;
+}
+.clarityChart-SI1 {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/clarityChart.gif");
+    background-origin: padding-box;
+    background-position: 0 -252px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    height: 42px;
+    width: 300px;
+}
+.clarityChart-SI2 {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/clarityChart.gif");
+    background-origin: padding-box;
+    background-position: 0 -294px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    height: 42px;
+    width: 300px;
+}
+.clarityChart-I1 {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/clarityChart.gif");
+    background-origin: padding-box;
+    background-position: 0 -336px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    height: 42px;
+    width: 300px;
+}
+.iconTop-round {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconSide-round {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: -100px 0;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconSample-round {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: -200px 0;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconTop-princess {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: 0 -100px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconSide-princess {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: -100px -100px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconSample-princess {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: -200px -100px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconTop-emerald {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: 0 -200px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconSide-emerald {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: -100px -200px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconSample-emerald {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: -200px -200px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconTop-radiant {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: 0 -300px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconSide-radiant {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: -100px -300px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconSample-radiant {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: -200px -300px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconTop-asscher {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: 0 -400px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconSide-asscher {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: -100px -400px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconSample-asscher {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: -200px -400px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconTop-oval {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: 0 -500px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconSide-oval {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: -100px -500px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconSample-oval {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: -200px -500px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconTop-marquise {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: 0 -600px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconSide-marquise {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: -100px -600px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconSample-marquise {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: -200px -600px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconTop-heart {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: 0 -700px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconSide-heart {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: -100px -700px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconSample-heart {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: -200px -700px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconTop-pear {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: 0 -800px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconSide-pear {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: -100px -800px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconSample-pear {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: -200px -800px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconTop-cushion {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: 0 -900px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconSide-cushion {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: -100px -900px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.iconSample-cushion {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondMeasures.gif");
+    background-origin: padding-box;
+    background-position: -200px -900px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+#topView {
+    float: left;
+    font-size: 0.9em;
+    height: 227px;
+    line-height: 1.2em;
+    position: relative;
+    width: 348px;
+}
+.diamondWidth {
+    background-color: #ffffff;
+    position: absolute;
+}
+.diamondLength {
+    background-color: #ffffff;
+    position: absolute;
+    text-align: center;
+    width: 34px;
+}
+.topView-round {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondTech.gif");
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.topView-round .diamondWidth {
+    left: 140px;
+    top: 7px;
+}
+.topView-round .diamondLength {
+    left: 48px;
+    top: 96px;
+}
+.topView-princess {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondTech.gif");
+    background-origin: padding-box;
+    background-position: 0 -250px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.topView-princess .diamondWidth {
+    left: 150px;
+    top: 7px;
+}
+.topView-princess .diamondLength {
+    left: 52px;
+    top: 90px;
+}
+.topView-emerald {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondTech.gif");
+    background-origin: padding-box;
+    background-position: 0 -500px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.topView-emerald .diamondWidth {
+    left: 148px;
+    top: 8px;
+}
+.topView-emerald .diamondLength {
+    left: 57px;
+    top: 96px;
+}
+.topView-radiant {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondTech.gif");
+    background-origin: padding-box;
+    background-position: 0 -750px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.topView-radiant .diamondWidth {
+    left: 145px;
+    top: 5px;
+}
+.topView-radiant .diamondLength {
+    left: 57px;
+    top: 100px;
+}
+.topView-asscher {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondTech.gif");
+    background-origin: padding-box;
+    background-position: 0 -1000px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.topView-asscher .diamondWidth {
+    left: 145px;
+    top: 5px;
+}
+.topView-asscher .diamondLength {
+    left: 50px;
+    top: 100px;
+}
+.topView-oval {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondTech.gif");
+    background-origin: padding-box;
+    background-position: 0 -1250px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.topView-oval .diamondWidth {
+    left: 143px;
+    top: 6px;
+}
+.topView-oval .diamondLength {
+    left: 53px;
+    top: 100px;
+}
+.topView-marquise {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondTech.gif");
+    background-origin: padding-box;
+    background-position: 0 -1500px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.topView-marquise .diamondWidth {
+    left: 135px;
+    top: 8px;
+}
+.topView-marquise .diamondLength {
+    left: 65px;
+    top: 100px;
+}
+.topView-heart {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondTech.gif");
+    background-origin: padding-box;
+    background-position: 0 -1750px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.topView-heart .diamondWidth {
+    left: 135px;
+    top: 8px;
+}
+.topView-heart .diamondLength {
+    left: 45px;
+    top: 120px;
+}
+.topView-pear {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondTech.gif");
+    background-origin: padding-box;
+    background-position: 0 -2000px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.topView-pear .diamondWidth {
+    left: 128px;
+    top: 10px;
+}
+.topView-pear .diamondLength {
+    left: 56px;
+    top: 100px;
+}
+.topView-cushion {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondTech.gif");
+    background-origin: padding-box;
+    background-position: 0 -2250px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.topView-cushion .diamondWidth {
+    left: 134px;
+    top: 13px;
+}
+.topView-cushion .diamondLength {
+    left: 50px;
+    top: 100px;
+}
+#sideView {
+    float: left;
+    font-size: 0.9em;
+    height: 227px;
+    line-height: 1.2em;
+    position: relative;
+    width: 348px;
+}
+.diamondTable {
+    background-color: #ffffff;
+    position: absolute;
+}
+.diamondDepth {
+    background-color: #ffffff;
+    position: absolute;
+    text-align: center;
+    width: 50px;
+}
+.diamondParamDepth {
+    background-color: #ffffff;
+    position: absolute;
+    text-align: center;
+    width: 50px;
+}
+.sideView-round {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondTech.gif");
+    background-origin: padding-box;
+    background-position: -350px 0;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.sideView-round .diamondTable {
+    left: 140px;
+    top: 38px;
+}
+.sideView-round .diamondDepth {
+    left: 32px;
+    top: 130px;
+}
+.sideView-round .diamondParamDepth {
+    left: 267px;
+    top: 130px;
+}
+.sideView-princess {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondTech.gif");
+    background-origin: padding-box;
+    background-position: -350px -250px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.sideView-princess .diamondTable {
+    left: 145px;
+    top: 38px;
+}
+.sideView-princess .diamondDepth {
+    left: 25px;
+    top: 130px;
+}
+.sideView-princess .diamondParamDepth {
+    left: 275px;
+    top: 130px;
+}
+.sideView-emerald {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondTech.gif");
+    background-origin: padding-box;
+    background-position: -350px -500px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.sideView-emerald .diamondTable {
+    left: 142px;
+    top: 42px;
+}
+.sideView-emerald .diamondDepth {
+    left: 23px;
+    top: 130px;
+}
+.sideView-emerald .diamondParamDepth {
+    left: 275px;
+    top: 130px;
+}
+.sideView-radiant {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondTech.gif");
+    background-origin: padding-box;
+    background-position: -350px -750px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.sideView-radiant .diamondTable {
+    left: 145px;
+    top: 28px;
+}
+.sideView-radiant .diamondDepth {
+    left: 26px;
+    top: 130px;
+}
+.sideView-radiant .diamondParamDepth {
+    left: 270px;
+    top: 130px;
+}
+.sideView-asscher {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondTech.gif");
+    background-origin: padding-box;
+    background-position: -350px -1000px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.sideView-asscher .diamondTable {
+    left: 145px;
+    top: 34px;
+}
+.sideView-asscher .diamondDepth {
+    left: 29px;
+    top: 130px;
+}
+.sideView-asscher .diamondParamDepth {
+    left: 272px;
+    top: 130px;
+}
+.sideView-oval {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondTech.gif");
+    background-origin: padding-box;
+    background-position: -350px -1250px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.sideView-oval .diamondTable {
+    left: 143px;
+    top: 37px;
+}
+.sideView-oval .diamondDepth {
+    left: 25px;
+    top: 130px;
+}
+.sideView-oval .diamondParamDepth {
+    left: 272px;
+    top: 130px;
+}
+.sideView-marquise {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondTech.gif");
+    background-origin: padding-box;
+    background-position: -350px -1500px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.sideView-marquise .diamondTable {
+    left: 143px;
+    top: 42px;
+}
+.sideView-marquise .diamondDepth {
+    left: 25px;
+    top: 130px;
+}
+.sideView-marquise .diamondParamDepth {
+    left: 277px;
+    top: 130px;
+}
+.sideView-heart {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondTech.gif");
+    background-origin: padding-box;
+    background-position: -350px -1750px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.sideView-heart .diamondTable {
+    left: 152px;
+    top: 30px;
+}
+.sideView-heart .diamondDepth {
+    left: 32px;
+    top: 130px;
+}
+.sideView-heart .diamondParamDepth {
+    left: 277px;
+    top: 130px;
+}
+.sideView-pear {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondTech.gif");
+    background-origin: padding-box;
+    background-position: -350px -2000px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.sideView-pear .diamondTable {
+    left: 152px;
+    top: 33px;
+}
+.sideView-pear .diamondDepth {
+    left: 25px;
+    top: 130px;
+}
+.sideView-pear .diamondParamDepth {
+    left: 277px;
+    top: 130px;
+}
+.sideView-cushion {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteDiamondTech.gif");
+    background-origin: padding-box;
+    background-position: -350px -2250px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.sideView-cushion .diamondTable {
+    left: 147px;
+    top: 30px;
+}
+.sideView-cushion .diamondDepth {
+    left: 25px;
+    top: 130px;
+}
+.sideView-cushion .diamondParamDepth {
+    left: 277px;
+    top: 130px;
+}
+#topSample {
+    float: left;
+    height: 227px;
+    line-height: 227px;
+    text-align: center;
+    width: 348px;
+}
+#topSample img {
+    vertical-align: middle;
+}
+#searchResult .product-policies {
+    width: 918px;
+}
+.links {
+}
+#searchResultsHeader {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 215px;
+    padding-top: 5px;
+}
+.searchResultsHeader-message {
+    float: right;
+    font-size: 0.8em;
+    font-style: italic;
+    font-weight: normal;
+}
+.tick {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/tick.png");
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-size: auto auto;
+    height: 8px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    position: absolute;
+    top: 2px;
+    width: 1px;
+    z-index: 3;
+}
+.steps {
+    height: 44px;
+}
+.steps ul {
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+}
+.steps li {
+    -moz-font-feature-settings: normal;
+    -moz-font-language-override: normal;
+    -x-system-font: none;
+    color: #dfdfdf;
+    float: left;
+    font-family: Arial;
+    font-size: 1.14em;
+    font-size-adjust: none;
+    font-stretch: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    height: 44px;
+    line-height: 44px;
+    padding-bottom: 0;
+    padding-left: 56px;
+    padding-right: 0;
+    padding-top: 0;
+    width: 184px;
+}
+.steps li.active {
+    color: #333333;
+}
+.step1 {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteSteps.gif");
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.step2 {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteSteps.gif");
+    background-origin: padding-box;
+    background-position: 0 -44px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.step3 {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteSteps.gif");
+    background-origin: padding-box;
+    background-position: 0 -88px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.step4 {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/spriteSteps.gif");
+    background-origin: padding-box;
+    background-position: 0 -132px;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+}
+.clearAll {
+    clear: both;
+    font-size: 1px;
+    height: 1px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+[class^="icon-"], [class*="icon-"] {
+    background-image: url("../images/diamonds.png");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    display: inline-block;
+    position: relative;
+    vertical-align: text-top;
+}
+
+.icon-small-round-top {
+    background-position: -6px -6px;
+}
+.icon-small-round-side {
+    background-position: -60px -6px;
+}
+.icon-small-round-ex {
+    background-position: -115px -6px;
+}
+.icon-large-round-side {
+    background-position: -699px -6px;
+    height: 224px;
+    width: 290px;
+}
+.icon-large-round-top {
+    background-position: -404px -6px;
+    height: 224px;
+    width: 286px;
+}
+.icon-large-round-ex {
+    background-position: -6px -60px;
+    height: 180px;
+    width: 180px;
+}
+.icon-small-princess-top {
+    background-position: -198px -6px;
+}
+.icon-small-princess-side {
+    background-position: -252px -6px;
+}
+.icon-small-princess-ex {
+    background-position: -307px -6px;
+}
+.icon-large-princess-top {
+    background-position: -404px -240px;
+    height: 223px;
+    width: 284px;
+}
+.icon-large-princess-side {
+    background-position: -699px -239px;
+    height: 224px;
+    width: 290px;
+}
+.icon-large-princess-ex {
+    background-position: -198px -60px;
+    height: 180px;
+    width: 180px;
+}
+.icon-small-emerald-top {
+    background-position: -6px -255px;
+}
+.icon-small-emerald-side {
+    background-position: -60px -255px;
+}
+.icon-small-emerald-ex {
+    background-position: -115px -255px;
+}
+.icon-large-emerald-top {
+    background-position: -404px -500px;
+    height: 223px;
+    width: 285px;
+}
+.icon-large-emerald-side {
+    background-position: -699px -500px;
+    height: 223px;
+    width: 290px;
+}
+.icon-large-emerald-ex {
+    background-position: -6px -312px;
+    height: 180px;
+    width: 180px;
+}
+.icon-small-radiant-top {
+    background-position: -198px -255px;
+}
+.icon-small-radiant-side {
+    background-position: -252px -255px;
+}
+.icon-small-radiant-ex {
+    background-position: -307px -255px;
+}
+.icon-large-radiant-top {
+    background-position: -404px -735px;
+    height: 223px;
+    width: 285px;
+}
+.icon-large-radiant-side {
+    background-position: -697px -736px;
+    height: 222px;
+    width: 292px;
+}
+.icon-large-radiant-ex {
+    background-position: -198px -312px;
+    height: 180px;
+    width: 180px;
+}
+.icon-small-asscher-top {
+    background-position: -6px -500px;
+}
+.icon-small-asscher-side {
+    background-position: -60px -500px;
+}
+.icon-small-asscher-ex {
+    background-position: -115px -500px;
+}
+.icon-large-asscher-top {
+    background-position: -404px -984px;
+    height: 222px;
+    width: 285px;
+}
+.icon-large-asscher-side {
+    background-position: -699px -984px;
+    height: 223px;
+    width: 290px;
+}
+.icon-large-asscher-ex {
+    background-position: -6px -556px;
+    height: 180px;
+    width: 180px;
+}
+.icon-small-oval-top {
+    background-position: -198px -500px;
+}
+.icon-small-oval-side {
+    background-position: -252px -500px;
+}
+.icon-small-oval-ex {
+    background-position: -307px -500px;
+}
+.icon-large-oval-top {
+    background-position: -405px -1236px;
+    height: 223px;
+    width: 285px;
+}
+.icon-large-oval-side {
+    background-position: -699px -1236px;
+    height: 223px;
+    width: 290px;
+}
+.icon-large-oval-ex {
+    background-position: -198px -556px;
+    height: 180px;
+    width: 180px;
+}
+.icon-small-marquise-top {
+    background-position: -6px -750px;
+}
+.icon-small-marquise-side {
+    background-position: -60px -750px;
+}
+.icon-small-marquise-ex {
+    background-position: -115px -750px;
+}
+.icon-large-marquise-top {
+    background-position: -404px -1476px;
+    height: 223px;
+    width: 286px;
+}
+.icon-large-marquise-side {
+    background-position: -699px -1476px;
+    height: 223px;
+    width: 290px;
+}
+.icon-large-marquise-ex {
+    background-position: -6px -804px;
+    height: 180px;
+    width: 180px;
+}
+.icon-small-heart-top {
+    background-position: -198px -750px;
+}
+.icon-small-heart-side {
+    background-position: -252px -750px;
+}
+.icon-small-heart-ex {
+    background-position: -307px -750px;
+}
+.icon-large-heart-top {
+    background-position: -404px -1712px;
+    height: 223px;
+    width: 285px;
+}
+.icon-large-heart-side {
+    background-position: -699px -1712px;
+    height: 223px;
+    width: 290px;
+}
+.icon-large-heart-ex {
+    background-position: -198px -804px;
+    height: 180px;
+    width: 180px;
+}
+.icon-small-pear-top {
+    background-position: -6px -1002px;
+}
+.icon-small-pear-side {
+    background-position: -60px -1002px;
+}
+.icon-small-pear-ex {
+    background-position: -115px -1002px;
+}
+.icon-large-pear-top {
+    background-position: -404px -1946px;
+    height: 223px;
+    width: 286px;
+}
+.icon-large-pear-side {
+    background-position: -699px -1946px;
+    height: 223px;
+    width: 290px;
+}
+.icon-large-pear-ex {
+    background-position: -6px -1056px;
+    height: 180px;
+    width: 180px;
+}
+.icon-small-cushion-top {
+    background-position: -198px -1002px;
+}
+.icon-small-cushion-side {
+    background-position: -252px -1002px;
+}
+.icon-small-cushion-ex {
+    background-position: -307px -1002px;
+}
+.icon-large-cushion-top {
+    background-position: -404px -2180px;
+    height: 223px;
+    width: 285px;
+}
+.icon-large-cushion-side {
+    background-position: -699px -2180px;
+    height: 223px;
+    width: 290px;
+}
+.icon-large-cushion-ex {
+    background-position: -198px -1056px;
+    height: 180px;
+    width: 180px;
+}
+.index_block {
+    height: 0;
+}
+
+.diamondMeasures ul {
+    float: left;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+}
+.diamondMeasures li {
+    border-bottom-color: #eee;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-right-color-ltr-source: physical;
+    border-right-color-rtl-source: physical;
+    border-right-color-value: #eee;
+    border-right-style-ltr-source: physical;
+    border-right-style-rtl-source: physical;
+    border-right-style-value: solid;
+    border-right-width-ltr-source: physical;
+    border-right-width-rtl-source: physical;
+    border-right-width-value: 1px;
+    display: block;
+    height: 75px;
+    position: relative;
+    width: 75px;
+}
+.diamondMeasures li a {
+    display: block;
+    height: 47px;
+    left: 50%;
+    margin-bottom: 0;
+    margin-left: -23px;
+    margin-right: 0;
+    margin-top: -23px;
+    outline-color: -moz-use-text-color;
+    outline-style: none;
+    outline-width: medium;
+    position: absolute;
+    top: 50%;
+    width: 47px;
+}
+
+.sideView {
+    float: left;
+    font-size: 0.9em;
+    height: 227px;
+    line-height: 1.2em;
+    position: relative;
+    text-align: center;
+    width: 340px;
+}
+.sideView span {
+    background-color: #fff;
+    padding-bottom: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 0;
+    position: absolute;
+}
+.diamondLength {
+    left: 33px;
+    top: 95px;
+}
+.diamondWidth {
+    left: 120px;
+    top: 4px;
+}
+.diamondLength {
+    background-color: #fff;
+    position: absolute;
+    text-align: center;
+    width: 34px;
+}
+.diamondTable {
+    left: 134px;
+    top: 34px;
+}
+.diamondParamDepth {
+    left: 255px;
+    top: 130px;
+}
+.diamondDepth {
+    left: 20px;
+    top: 130px;
+}
+
+.diamondMeasures p {
+    display: none;
+}
+
+.diamondMeasures p {
+    display: none;
+}
+
+
+.cert-image-block {
+    margin-left:10px;
+}
+
+.cert-image-block h2 {
+    color: #333333;
+    font-size: 1.7em;
+}
+.cert-image-block img.thumb {
+    max-height: 100px;
+    max-width: 75px;
+    cursor: pointer;
+}
+#cert-image-popup .mfp-close {
+    color: #333333;
+    overflow: visible;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    -webkit-appearance: none;
+    display: block;
+    outline: none;
+    padding: 0;
+    z-index: 1046;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+    text-decoration: none;
+    text-align: center;
+    opacity: 0.65;
+    padding: 0 0 18px 10px;
+    font-style: normal;
+    font-size: 28px;
+    font-family: Arial, Baskerville, monospace;
+    float: right;
+}
+
+#cert-image-popup .mfp-close:hover, #cert-image-popup .mfp-close:focus {
+    opacity: 1;
+}
+
+#cert-image-popup {
+    position: absolute;
+    display: inline-block;
+    margin: 0 auto;
+    background-color: #ffffff;
+    z-index: 1000;
+    padding: 15px;
+    border: 10px solid grey;
+}

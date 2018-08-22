@@ -1,0 +1,1792 @@
+/*
+ Table Of Contents
+ 1.) Media Query for Handheld Devices
+ 2.) Media Query for Tablet
+ 3.) Media Query for mobile
+ ===============================================*/
+/*
+ 1.) Media Query for Handheld Devices
+ ===============================*/
+
+@media only screen and (min-width: 1800px) {
+
+	.account-section {
+		-webkit-background-size: 100% auto;
+		background-size: 100% auto;
+	}
+	.hero-banner .hero-slider.auction-heroslider ul li {
+
+		-webkit-background-size: 100% auto;
+		background-size: 100% auto;
+		background-position: center 70%;
+	}
+	.ringadvisor-section {
+		-webkit-background-size: cover;
+		background-size: cover;
+	}
+
+}
+
+@media only screen and (max-width: 989px) {
+
+	/*sub menu start here*/
+
+	.primary-sub-menu-list {
+		width: 25.2%;
+	}
+	.third-sub-menu-list div img {
+		margin: 0 0 20px 0;
+	}
+	.primary-sub-menu li > div > div {
+		min-height: 335px;
+	}
+
+	.jewelry-sub-list h2.sub-arr-icon::after {
+		left: 243%;
+	}
+
+	.wedding-ring-sub-list h2.sub-arr-icon::after {
+		left: 159%;
+	}
+
+	.engaged-ring-sub-list h2.sub-arr-icon::after {
+		left: 40%;
+	}
+
+	/*sub menu end here*/
+
+	/*knowledge 4c start here*/
+
+	.keiret.clear-about-diamond-section ul.knowledge-4c-range-list-item li {
+		width: 5.2%;
+	}
+
+	.clear-about-diamond-section ul.knowledge-4c-range-list-item li {
+		width: 6%;
+	}
+
+	/*knowledge 4c end here*/
+
+	/* Styles */
+	.container {
+		max-width: 768px;
+		padding: 0px 9px;
+	}
+	.logo {
+		width: 165px;
+	}
+	.main-header nav > ul > li {
+		padding: 0px 30px;
+	}
+	.search-box {
+		width: 25%;
+	}
+	.controls {
+		padding: 0px 1%;
+	}
+	.hero-banner ul li > img {
+		height: 300px;
+	}
+
+	.product-list li.block-first {
+		padding: 23px 15px 20px 15px;
+	}
+	.queen-offer {
+		padding-left: 35px;
+		padding-right: 35px;
+	}
+	.bid-wrap .remaining-time {
+		padding-right: 0;
+	}
+	.bid-wrap .remaining-time > span {
+		padding-right: 2px;
+	}
+	.product-list li.second-block {
+		padding: 42px 15px 15px;
+	}
+	.price-add-form .know-more-btn {
+		margin-top: 40px;
+	}
+	.product-list li.third-block {
+		-webkit-background-size: 100% 100%;
+		background-size: 100% 100%;
+	}
+	.product-list li.third-block .above-hover {
+		padding-left: 25px;
+		padding-right: 25px;
+	}
+
+	.process-step li {
+		width: 160px;
+		height: 160px;
+		-webkit-background-size: 100% 100% !important;
+		background-size: 100% 100% !important;
+		padding-top: 65px;
+		padding-left: 15px;
+		padding-right: 15px;
+		margin-left: 15%;
+	}
+
+	.process-step li:before {
+
+		left: -64%;
+		width: 64%;
+	}
+	.process-step li:after {
+		top: 39%;
+		left: -43%;
+	}
+	.slider-small {
+		padding: 21px 10px 13px 10px;
+	}
+	.recently-viwed h3 .dot {
+		width: 12%;
+	}
+
+	.recently-step li {
+		width: 18.9%;
+	}
+	.newsletter {
+		width: 67%;
+	}
+	.social-wrapper {
+		width: 33%;
+	}
+	.partner {
+		width: 37%;
+	}
+	.controls .prev, .controls .next {
+		width: 60px;
+		height: 60px;
+		padding: 13px;
+	}
+
+	.popup-home .popup-globe {
+		-webkit-background-size: 100% 100%;
+		background-size: 100% 100%;
+	}
+
+	.delevery-select-form #delvery-popup, .delevery-select-form #delvery-popup1 {
+		width: 60%;
+	}
+	.delevery-select-form fieldset {
+		width: 50%;
+	}
+	.divider:before, .divider:after {
+		width: 38%;
+	}
+	.delevery-select-form fieldset {
+		width: 100%;
+		float: none;
+		margin-bottom: 20px;
+	}
+	.delevery-select-form #delvery-popup, .delevery-select-form #delvery-popup1 {
+		width: 100%;
+		margin-top: 10px;
+	}
+	.delevery-select-form fieldset label {
+		margin-bottom: 10px;
+		display: block;
+	}
+
+	.popup-home .popup-globe {
+		min-height: 650px;
+	}
+	.close-popup {
+		top: 20px;
+		right: 4px;
+	}
+	.delevery-process h2 {
+		padding-top: 19px;
+	}
+	.divider {
+		margin: 15px auto;
+	}
+	.popup-btn {
+		margin-top: 5px;
+	}
+
+	.aside {
+		margin: 25px 9px 0 0;
+	}
+	.off {
+		width: 75%;
+	}
+	.about-offer {
+		width: 30%;
+	}
+	.search-banner {
+		background-position: center top;
+	}
+	.purchase-step li.third-offer figure {
+		height: 453px;
+	}
+	/*-------------------signup-page15-12-15--------------------*/
+	.forum-wrapper .fast-login {
+		width: 26%;
+		margin-right: 12px;
+	}
+	.forum-wrapper .fast-login ul li a {
+		display: inline-block;
+		width: 100%;
+	}
+	.page-login .signup-page .forum-wrapper .fast-login ul {
+		padding: 46px 20px;
+		width: 230px;
+		margin: 0 auto;
+	}
+	.signup-page .forum-wrapper .fast-login ul {
+		width: 200px;
+		padding: 25px 20px;
+	}
+	.forum-wrapper .fast-login ul li {
+		margin: 0 5px;
+		width: 27.3%;
+	}
+	.forum-wrapper .fast-login ul li:first-child {
+		margin-left: 0px;
+	}
+	.forum-wrapper p {
+		padding: 0 20px 29px;
+	}
+	.forum-wrapper .new-member {
+		width: 72%;
+	}
+	.forum-wrapper .circle1, .forum-wrapper .circle2 {
+		left: 176px;
+	}
+	.forum-wrapper .circle2 {
+		left: 64%;
+		top: 34%;
+	}
+	.forum-wrapper .fast-login {
+		padding-bottom: 120px;
+	}
+	/*---------------registration---------------------*/
+	.borderimg {
+		max-width: 675px;
+	}
+	.borderimg .popup-logo {
+		width: 32%;
+	}
+	.borderimg p {
+		font-size: 16px;
+	}
+	.click-para {
+		padding-bottom: 20px;
+	}
+	.inner-content-wrap a {
+		padding-bottom: 0px;
+	}
+	.popup-wrap  .inner-content-wrap a.popup-logo {
+		width: 120px;
+		margin: 0 auto;
+		display: block;
+	}
+	.popup-wrap  .inner-content-wrap a.popup-logo  img {
+		width: 100%;
+	}
+	/*----------------login-success--------------*/
+	.newsletter .sub {
+		width: 19%
+	}
+	.borderimg .popup-logo {
+		width: 32%;
+		padding-bottom: 25px;
+	}
+	.borderimg p {
+		font-size: 16px;
+	}
+
+	/*-------------forgetpass-word--------------------*/
+	.delevery-select-form fieldset label {
+		display: inline-block;
+	}
+	.forget-password .form-field {
+		width: 47%;
+	}
+	.forget-password .sub {
+		width: 23%;
+	}
+	.page-login .forum-wrapper .fast-login {
+		width: 31.3%;
+		margin-right: 22px;
+		padding-bottom: 86px;
+	}
+	.page-login .forum-wrapper .new-user ul.geao li {
+		width: 100%;
+	}
+
+	.page-login .forum-wrapper .last-cls {
+		margin-right: 0px;
+	}
+	.page-login .forum-wrapper .circle1 {
+		left: 227px;
+	}
+	.forum-wrapper .circle1 {
+		height: 34px;
+		width: 34px;
+		top: 37%;
+		left: 182px;
+	}
+	.circle1 > span, .circle2 > span {
+		left: 12px;
+		top: 10px;
+	}
+
+	.forum-wrapper .circle2 {
+		width: 34px;
+		height: 34px;
+		top: 37%;
+		left: 65%;
+	}
+
+	.page-login .forum-wrapper .sign, .page-login .forum-wrapper .join {
+		margin-left: 81px;
+	}
+	.page-login .forum-wrapper .new-user ul.geao {
+		padding: 49px 3px 12px 27px;
+	}
+	.page-login .forum-wrapper .new-user ul.geao li {
+		margin: 0;
+	}
+	.new-user ul li a {
+		font-size: 11px;
+	}
+	.page-login .new-user .immediate {
+		padding: 8px 25px 77px 19px;
+	}
+	.page-login .privacy-box {
+		width: 30%;
+	}
+	.borderimg h3 {
+		font-size: 22px;
+	}
+	.login-success {
+		max-width: 668px;
+	}
+	.signup-sucess .para-des {
+		width: 67%;
+	}
+	.login-sucess-pop .para-des {
+		width: 52%;
+	}
+	.page-login .forum-wrapper .new-user ul.geao {
+		padding: 51px 3px 12px 22px;
+	}
+
+	/*Styling For Ring Advisor Page*/
+	.ringadvisor-section .breadcrumb {
+		padding-bottom: 60px;
+	}
+	.preferred-fig .fig-option .opt {
+		width: 55px;
+		height: 55px;
+	}
+	.diamond-price > h2 {
+		font-size: 22px;
+	}
+	.diamond-price h2 span {
+		font-size: 45px;
+	}
+	.diamond-price h2 span em {
+		font-size: 24px;
+	}
+	.description-text {
+		padding: 7px 0px 23px;
+	}
+	.description-right {
+		padding: 7px 0px 23px 8px;
+	}
+
+	/*Seperate*/
+	.tab-links-block .tab-info {
+		padding: 14px 1%;
+	}
+	.tab-links-block .tab-info:after {
+		right: -15px;
+	}
+
+	/*diamond-paage*/
+	.list-header-diamond .list-one {
+		width: 90px;
+	}
+	.list-two {
+		width: 70px;
+	}
+	.list-three {
+		width: 55px;
+	}
+	.list-four {
+		width: 45px;
+	}
+	.list-five {
+		width: 60px;
+	}
+	.list-six {
+		width: 50px;
+	}
+	.list-seven {
+		width: 60px;
+	}
+	.list-eight {
+		width: 60px;
+	}
+	.list-header-diamond .list-nine {
+		width: 150px;
+	}
+
+	.uptodate ul li img {
+		display: block;
+		min-height: 125px;
+	}
+
+	/*dimaon-details popup*/
+	.compaire-diamond {
+		max-width: 745px;
+	}
+	.compaire-list li h2 {
+		margin-right: 30px;
+	}
+	.inner-pop-list.first-inner li {
+		padding-right: 30px;
+	}
+
+	.content-product-description-one h2 span {
+		font-size: 40px;
+	}
+	.content-product-description-one > h2 {
+		font-size: 85px;
+	}
+	.select-ring {
+		padding: 26px 18px 18px;
+	}
+	.select-ring label {
+		font-size: 12px;
+		margin-right: 4px;
+		display: inline-block;
+	}
+	.select-ring label span {
+		margin-right: 5px;
+	}
+	.fig-option {
+		max-width: 100%;
+	}
+	.content-fig-three .description-fig {
+		min-height: 190px;
+	}
+	.content-fig-four .description-fig {
+		min-height: 217px;
+	}
+	.inner-pop-list.second-inner li {
+		padding-left: 7px;
+		padding-right: 7px;
+	}
+	.diamond-details .right-block .product-info-d li {
+		min-height: 95px;
+	}
+
+	/*knowledge-diamond start here*/
+
+	.knowledge-content-wrapper {
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		width: 95%;
+	}
+
+	.buy-diamond-wrapper {
+		width: 32%;
+		margin: 0 1% 40px;
+	}
+
+	/*knowledge-diamond end here*/
+
+	/*knowledge-diamond-4c start here*/
+
+	.knowledge-4c-section .knowledge-content-wrapper > div.knowledge-content-contain {
+		width: 100%;
+	}
+
+	.knowledge-4c-section .knowledge-content-wrapper {
+		width: 100%;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		padding: 0 10px;
+	}
+	.knowledge-diamond-4c-carat .knowledge-content-contain {
+		width: auto;
+	}
+	.about-4c-carat-content {
+		padding: 19px 0;
+	}
+
+	.knowledge-4c-section .knowledge-content-wrapper.left {
+		width: 100%;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		padding: 0 10px;
+	}
+
+	/*knowledge-diamond-4c end here*/
+
+	.half-width-wrapper .half-width {
+		margin: 0 1% 10px;
+	}
+
+	/*landing page start here*/
+
+	.landing-page-wrapper .knowledge-content-wrapper {
+		width: 100%;
+		text-align: right;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		padding: 0 10px;
+	}
+
+	.landing-page-wrapper .knowledge-content-wrapper.left {
+		width: 100%;
+		text-align: left;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		padding: 0 10px;
+	}
+	/*landing page end here*/
+
+	.prime-count-no {
+		letter-spacing: -2px;
+	}
+
+	.type-ring-list {
+		text-align: center;
+	}
+
+	.type-ring-content {
+		width: 100%;
+	}
+
+	.type-ring-list img {
+		margin-right: 40px;
+	}
+
+	/*confirmation sec start here*/
+
+	.conferm-content-wrapper {
+		width: 100%;
+		background-size: 100% 100%;
+	}
+
+	.confermation-section .about-4c-content {
+		padding: 19px 0;
+	}
+	.conferm-content-wrapper h1 {
+		font-size: 21px;
+	}
+
+	/*confirmation sec end here*/
+
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1100px) {
+
+	.knowledge-4c-section .diamond-shape-section .knowledge-content-wrapper p span {
+		display: inline-block;
+	}
+
+	.diamond-clr-section .knowledge-content-wrapper p.kairet-text {
+		margin: 10px 0;
+	}
+
+	.knowledge-4c-section .knowledge-content-wrapper > div.knowledge-content-contain h4 {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+
+}
+
+/*
+ 2.) Media Query for Tablet
+ ===============================*/
+@media only screen and (max-width: 620px) {
+
+	/* Styles */
+
+	/*diamond 4c sec start here*/
+
+	.respons-4c-sec.knowledge-4c-section .diamond-shape-section.clear-about-diamond-section .knowledge-content-wrapper, .knowledge-4c-section .diamond-shape-section .knowledge-content-wrapper {
+		top: 42px;
+	}
+
+	.respons-4c-sec .clear-about-diamond-section .knowledge-content-wrapper  p {
+		line-height: 1.2;
+		font-size: 13px;
+		margin-bottom: 10px;
+	}
+
+	.respons-4c-sec .primary-knowledge-section .knowledge-content-wrapper h3 {
+		margin-bottom: 10px;
+	}
+
+	.respons-4c-sec .clear-about-diamond-section .knowledge-content-wrapper h3, .knowledge-content-wrapper h3 {
+		font-size: 35px;
+	}
+
+	.respons-4c-sec  p.kairet-text {
+		margin: 15px 0 !important;
+	}
+
+	.respons-4c-sec .diamond-clr-section ul.knowledge-4c-range-list-item {
+		padding: 10px 0;
+	}
+
+	.respons-4c-sec .clear-about-diamond-section.diamond-clr-section ul.knowledge-4c-range-list-item li {
+		margin: 0 2%;
+		width: 16%;
+	}
+
+	/*diamond 4c sec end here*/
+
+}
+
+/*
+ 3.) Media Query for mobile
+ ===============================*/
+@media only screen and (max-width: 767px) {
+	.tab-links .article {
+		display: block;
+	}
+	.tab-links .article {
+		float: none;
+		display: block;
+	}
+	.tab-links .article-hidden, .tab-article {
+		display: none;
+	}
+
+	.main-header nav > ul > li > a::before {
+		display: none;
+	}
+	/* Mobile Grids */
+
+	/*sub menu start here*/
+
+	.main-header nav > ul ul.primary-sub-menu {
+		position: relative;
+	}
+
+	.main-header nav > ul {
+		background: #3e3f4c;
+	}
+
+	.primary-sub-menu .container {
+		min-width: auto;
+	}
+
+	.main-header nav {
+		background: #3e3f4c;
+	}
+	.menu-wrap nav {
+		position: absolute;
+		left: 0;
+		top: 100%;
+		width: 100%;
+		z-index: 9999;
+		overflow: hidden;
+		height: 0;
+		-webkit-transition: all .5s ease;
+		-moz-transition: all .5s ease;
+		-ms-transition: all .5s ease;
+		-o-transition: all .5s ease;
+		transition: all .5s ease;
+		display: none;
+	}
+
+	.menu-btn {
+		height: 42px;
+		padding: 11px 10px 10px;
+	}
+
+	.main-header nav > ul > li {
+		float: none;
+		width: 100%;
+		padding: 0;
+		text-align: left;
+		border: none;
+		background: none
+	}
+
+	.main-header nav ul li a {
+		border: none;
+		padding: 10px 0px;
+	}
+
+	.main-header nav > ul > li > a, .main-header nav > ul > li:first-child > a {
+
+		padding: 10px;
+	}
+
+	.main-header nav ul li:before {
+		display: none;
+	}
+	.main-header nav > ul {
+		padding: 20px;
+	}
+	.menu-wrap nav.open {
+		height: auto;
+		display: block;
+	}
+
+	.primary-sub-menu li > div > div, .primary-sub-menu .third-sub-menu-list {
+		min-height: 0;
+		width: 100%;
+		border: none;
+		padding: 0 0 20px;
+	}
+	.main-header .diamond-sub-list-container .primary-sub-menu {
+		display: none;
+	}
+	.third-sub-menu-list div ul {
+		width: 100%;
+	}
+
+	.third-sub-menu-list div img {
+		display: inline-block;
+		float: none;
+	}
+
+	.secondry-sub-menu-list ul {
+		text-align: left;
+	}
+
+	.jewelry-sub-list h2.sub-arr-icon::after {
+		left: 0;
+	}
+
+	.wedding-ring-sub-list h2.sub-arr-icon:after {
+		left: 0;
+	}
+
+	.engaged-ring-sub-list h2.sub-arr-icon:after {
+		left: 0;
+	}
+
+	.diamond-sub-list-container h2.sub-arr-icon:after {
+		left: 0;
+	}
+
+	/*sub menu end here*/
+
+	.main-header .container {
+		position: relative;
+	}
+	.menu-wrap {
+		margin-left: 0;
+		margin-right: 0;
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.logo {
+		display: block;
+		text-align: center;
+		float: none;
+		width: 100%;
+		margin-top: 0;
+		padding-top: 15px;
+	}
+	.logo img {
+		width: 120px;
+	}
+	.primary-header {
+		-webkit-background-size: cover;
+		background-size: cover;
+		background-position: right top;
+		padding-bottom: 10px;
+	}
+	.right-head-info {
+		width: 100%;
+		float: none;
+		text-align: center;
+	}
+
+	.account-form, .currency, .delevery-option, .cart-form, .traditional-zone, .area-form {
+		float: none;
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	.account-form {
+		width: 100px;
+	}
+	.currency, .delevery-option {
+		padding-bottom: 10px;
+		padding-right: 15px;
+	}
+	.cart-form {
+		margin-left: 0;
+		min-height: 40px;
+	}
+	.search-box {
+		width: 50%;
+		margin-top: 7px;
+	}
+	#search-in {
+		line-height: 28px;
+	}
+	.search-btn {
+		background-position: 11px 4px;
+	}
+
+	.menu-btn {
+		display: block;
+	}
+
+	.hero-banner ul li > img {
+		height: 220px;
+	}
+	.controls .prev, .controls .next {
+		width: 40px;
+		height: 40px;
+		padding: 3px;
+	}
+	.inner-caption {
+		width: 90%;
+		text-align: center;
+		padding-top: 7px;
+		min-height: 150px;
+		margin: 0 auto;
+	}
+	.inner-caption h1 {
+		font-size: 45px;
+	}
+
+	.hero-banner ul li .know-more-btn {
+		margin-top: 2px;
+	}
+	.hero-banner ul li .content-caption {
+		top: 302px;
+	}
+	.offer-box {
+		width: 120px;
+		height: 120px;
+		right: 1%;
+		bottom: -78%;
+	}
+	.inner-caption p {
+		font-size: 14px;
+	}
+	.product-list li {
+		float: none;
+		width: 100%;
+		-webkit-background-size: cover !important;
+		background-size: cover !important;
+		margin-left: 0;
+		margin-bottom: 10px;
+	}
+	.queen-offer {
+		width: 255px;
+		margin: 0 auto;
+		padding-left: 55px;
+		padding-right: 40px;
+	}
+
+	.bid-wrap {
+		width: 255px;
+		margin: 0 auto;
+	}
+	.tab-main ul {
+		width: 100%;
+		padding-left: 5px;
+	}
+	.tab-main ul li {
+		padding-right: 16px;
+	}
+	.tab-content ul li {
+		float: none;
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	.tab-content ul li img {
+		width: 100%;
+	}
+	.process-step {
+		background: url(../images/prefrence-bg-mobile.jpg) 0 0 no-repeat;
+		-webkit-background-size: cover;
+		background-size: cover;
+	}
+
+	.process-step li {
+		margin: 0 auto;
+		float: none;
+		margin-top: 120px;
+	}
+	.process-step li:first-child {
+		margin-left: auto;
+		margin-top: 0;
+	}
+	.process-step li:after {
+		top: -45%;
+		left: 39%;
+	}
+
+	.process-step li:before {
+		left: 14%;
+		width: 71%;
+		-webkit-transform: rotate(-89deg);
+		-moz-transform: rotate(-89deg);
+		-ms-transform: rotate(-89deg);
+		-o-transform: rotate(-89deg);
+		transform: rotate(-89deg);
+		top: -60px;
+	}
+	.purchase-step > li {
+		width: 100%;
+		float: none;
+	}
+	.recently-viwed h3 .dot {
+		width: 78px;
+	}
+	.recently-step li {
+		width: 100%;
+		float: none;
+		text-align: center;
+	}
+	.product-name {
+		width: 180px;
+		margin: 0 auto;
+	}
+	.newsletter, .social-wrapper {
+		width: 100%;
+		margin-bottom: 15px;
+	}
+
+	.social-wrapper {
+		padding-top: 15px;
+	}
+
+	.social-wrapper ul {
+		padding-left: 0;
+	}
+
+	.newsletter .sub {
+		padding: 5px 10px;
+		width: 20%;
+	}
+	.footer-list > li {
+		width: 100%;
+		float: none;
+		margin-left: 0;
+		margin-bottom: 30px;
+	}
+
+	.payment ul li {
+		margin-bottom: 10px;
+	}
+	.left-foot span {
+		display: block;
+		margin-bottom: 10px;
+		position: static;
+	}
+	.left-foot, .partner, .left-foot ul {
+		width: 100%;
+		float: none;
+		margin-bottom: 15px;
+	}
+
+	.purchase-step li.third-offer figure img {
+		width: 100%;
+		height: auto;
+	}
+	.divider {
+
+		width: 85%;
+	}
+	.search-result {
+		text-align: center;
+	}
+	.search-result form {
+		float: none;
+	}
+	.search-result strong {
+		float: none;
+		width: 100%;
+		margin-bottom: 10px;
+		text-align: center;
+	}
+	.search-content ul.search-list-wrap > li {
+		width: 100%;
+		float: none;
+		margin-left: 0;
+	}
+	#subscribe_email {
+		width: 71%;
+	}
+	.search-banner {
+		background-position: center top;
+	}
+
+	.breadcrumb {
+		padding-bottom: 25px;
+	}
+	.account-content {
+		padding: 25px 0 0;
+	}
+	.aside {
+		width: 100%;
+		margin: 0;
+	}
+	.article {
+		padding: 10px 11px 0;
+		width: 100%;
+	}
+	.thank-you {
+		margin: 25px 0 0;
+	}
+	.browse {
+		line-height: 1.3;
+	}
+	.off {
+		bottom: auto;
+		left: 0;
+		width: 50%;
+	}
+	.off strong {
+		font-size: 110px;
+	}
+	.bold {
+		font-size: 70px;
+	}
+	.light {
+		font-size: 29px;
+	}
+	.off li:last-child {
+		margin: 0;
+	}
+	.discount {
+		-webkit-background-size: 100% 100%;
+		background-size: 100% 100%;
+	}
+	.about-offer {
+		width: 80%;
+		padding: 0 15px;
+	}
+	.diamond-icon::after, .diamond-icon::before {
+		width: 150%;
+	}
+	.account-section {
+		padding: 17px 0 25px;
+	}
+	.top > img {
+		width: 100%;
+	}
+	.register-here, .sign-in {
+		width: 100%;
+	}
+	.aside {
+		margin: 0 0 25px;
+	}
+	.checkout-section .article {
+		padding: 25px 11px;
+	}
+	/*---------------signup-page------------------------*/
+	.forum-wrapper .fast-login {
+		width: 100%;
+		float: none;
+		padding-bottom: 20px;
+	}
+	.forum-wrapper .new-member {
+		width: 100%;
+		float: none;
+		margin-top: 15px;
+	}
+	.forum-wrapper .circle1 {
+		left: 45%;
+		top: 34%;
+	}
+	.forum-wrapper .circle2 {
+		left: 41%;
+		top: 58.5%;
+	}
+	.first-group, .sec-group, .third-group {
+		width: 100%;
+		margin-bottom: 17px;
+	}
+	.group-wrap, .third-group {
+		padding-bottom: 0px;
+	}
+	.group-wrap2 {
+		padding-bottom: 6px;
+	}
+	.new-member label {
+		font-size: 13px;
+	}
+	.new-member .sub {
+		width: 100%;
+		font-size: 18px;
+	}
+
+	/*-----------------registration-----*/
+	.borderimg h3 {
+		font-size: 22px;
+	}
+	.borderimg .inner-content-wrap {
+		padding: 50px 0 37px 0;
+	}
+	.borderimg .popup-logo {
+		padding-bottom: 15px;
+	}
+	.para-des {
+		padding: 10px 15px;
+		width: 64%;
+	}
+	.click-para {
+		font-size: 12px;
+		line-height: 20px;
+		padding: 10px 26px;
+		margin-left: 0px;
+	}
+	.borderimg .inner-content-wrap {
+		padding: 50px 0px 63px;
+	}
+	/*login-success--------------*/
+	.newsletter .sub {
+		margin-left: 3px;
+		padding: 1px 10px;
+		width: 26%;
+		font-size: 14px;
+	}
+	.borderimg p {
+		font-size: 15px;
+		padding-bottom: 12px;
+	}
+	/*------------------forgetpassword-------------*/
+	.diamond-icon::after, .diamond-icon::before {
+		width: 300%;
+	}
+	.forget-password h2 {
+		font-size: 22px;
+	}
+	.borderimg .close-popup {
+		right: 17px;
+		top: 38px;
+		width: 20px;
+	}
+	.forget-password .form-field {
+		width: 90%;
+	}
+	.delevery-select-form {
+		padding: 15px 15px 40px;
+	}
+	.forget-password .sub {
+		width: 57%;
+		font-weight: 600;
+		font-size: 17px;
+		margin-left: 0px;
+	}
+	.delevery-select-form fieldset {
+		margin-bottom: 0px;
+	}
+	.social-wrapper h2 {
+		margin-left: 0px;
+	}
+
+	.page-login .forum-wrapper .fast-login {
+		width: 100%;
+		margin-bottom: 20px;
+	}
+	.page-login .forum-wrapper .circle1 {
+		left: 44%;
+		top: 28%;
+	}
+	.page-login .forum-wrapper .circle2 {
+		top: 64%;
+	}
+	.page-login .forum-wrapper .sign, .page-login .forum-wrapper .join {
+		margin-left: 101px;
+	}
+	.page-login .privacy-box {
+		width: 100%;
+	}
+	.page-login .forum-wrapper .new-user ul.geao {
+		padding: 49px 3px 12px 28px;
+	}
+	.new-user ul li a {
+		font-size: 14px;
+	}
+	.fourth-group {
+		padding-bottom: 33px;
+	}
+	.new-member .sub {
+		width: 33%;
+		font-size: 16px;
+	}
+	.borderimg .popup-logo {
+		width: 50%;
+		padding-bottom: 0px;
+	}
+	.login-sucess-pop .para-des {
+		width: 93%;
+	}
+	.click-para {
+		line-height: 19px;
+		padding: 10px;
+		width: 87%;
+	}
+	.borderimg {
+		max-height: 452px;
+		max-width: 295px;
+		margin: 0 auto;
+	}
+
+	.forum-wrapper .fast-login {
+		padding-bottom: 88px;
+	}
+	.forum-wrapper p {
+		padding: 0;
+		width: 250px;
+		margin: 0 auto;
+		text-align: center;
+	}
+	.login-success .borderimg h3 {
+		padding-top: 23px;
+	}
+	.signup-sucess .login-success .borderimg h3 {
+		padding-top: 15px;
+	}
+	.signup-sucess .para-des {
+		width: 90%;
+	}
+	/*Styling for Ring Advisor Page*/
+	.tab-content .diamond-shape li img {
+		width: auto;
+	}
+	.ringadvisor-section .account-content {
+		padding: 25px 0 0;
+	}
+	.ringadvisor-section .aside {
+		margin: 250px 0px 0px;
+		width: 100%;
+	}
+	.ringadvisor-section .article {
+		width: 100%;
+		padding: 25px 0 0;
+	}
+	.selection-text, .ringadvisor-section .tab-content ul li, .content-description, .content-fig {
+		width: 100%;
+	}
+	.ringadvisor-section .tab-content .select-ring ul li {
+		float: left;
+	}
+	.description-text {
+		padding: 7px 10px 23px;
+	}
+	.content-2 {
+		margin: 0 0 25px;
+	}
+	.ringadvisor-section .tab-content .diamond-shape li {
+		width: 24%;
+		min-height: 162px;
+	}
+	.shape-name {
+		padding: 10px 0;
+	}
+	.ringadvisor-section .popup-btn {
+		min-width: 100%;
+	}
+	.diamond-quality {
+		padding: 25px 11px 10px;
+	}
+	.ringadvisor-section .tab-section-two .popup-btn {
+		margin-bottom: 10px;
+	}
+	.diamond-quality-content, .diamon-quality-range, .preferred-fig {
+		width: 100%;
+	}
+	.preferred-text {
+		padding: 25px 0 0;
+		width: 100%;
+	}
+	.ringadvisor-section .preferred-text .diamond-price .popup-btn {
+		width: 100%;
+		margin-bottom: 0;
+	}
+	.ringadvisor-section .tab-content ul.rings-display li {
+		width: 50%;
+	}
+	.ringadvisor-section .tab-content ul.rings-display li img {
+		width: auto;
+	}
+	.pos-a {
+		top: 0;
+	}
+	.ringadvisor-section .aside li > a.active::after {
+		display: none;
+	}
+	.ringadvisor-section .aside li > a.active {
+		-webkit-background-size: cover;
+		background-size: cover;
+	}
+	.content-product-description-one > h2 {
+		font-size: 100px;
+	}
+	.content-product-description-one {
+		padding: 15px 17px 25px;
+	}
+	.content-product-description-two {
+		padding: 15px 17px 0;
+	}
+	.content-fig-one .description-fig-content {
+		height: 225px;
+	}
+	.description-fig-content {
+		height: 135px;
+	}
+	/*Separate*/
+	.diamond-details .left-block, .diamond-details .right-block {
+		float: none;
+		width: 100%;
+		margin-bottom: 20px;
+	}
+	.tab-content .desc-list li {
+		overflow: hidden;
+	}
+	.label-val {
+		float: left;
+		width: 63%;
+	}
+	.two-block-content .half-block {
+		float: none !important;
+		width: 100%;
+		margin: 0 auto;
+	}
+	.crousel .slides li {
+		display: none;
+		float: none;
+	}
+	.crousel .slides {
+		text-align: center;
+	}
+	.tab-content ul li:first-child {
+		display: inline-block;
+	}
+	.diamond-details .right-block .star-label, .diamond-details .right-block .btn-block .btn {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.diamond-details .star-wrap .page-label li {
+		float: left;
+	}
+	.diamond-details .right-block .btn-block .btn {
+		display: block;
+	}
+	.right-block .delivery-date {
+		text-align: center;
+	}
+	.right-block .social-links li {
+		float: none;
+		display: inline-block;
+	}
+	.right-block .social-links li img {
+		max-width: 100%;
+	}
+	.share-links {
+		text-align: center;
+	}
+	.tab-content.diamond-details {
+		padding-bottom: 20px;
+	}
+	.tab-links-block .tab-info, .tab-links-block .tab-links, .tab-links-block .tab-links li {
+		width: 100%;
+	}
+	.tab-links-block .tab-info {
+		border-radius: 4px 4px 0 0;
+	}
+	.tab-links-block .tab-links {
+		border-radius: 0 0 4px 4px;
+	}
+	.tab-links-block .tab-info:after, .tab-links-block .tab-links li.active:after {
+		display: none;
+	}
+	.tab-links-block .tab-links li.active {
+		background: #fff;
+	}
+	.tab-links-block .tab-links li {
+		background-image: none;
+	}
+	.product-description .banner-2 {
+		text-align: center;
+	}
+	.diamond-details .right-block .product-info-d li {
+		width: 32.6%;
+	}
+	/*diamond-deatils page*/
+	.content-option-left, .content-option-right {
+		float: none;
+		width: 100%;
+	}
+	.uptodate ul li {
+		width: 100%;
+		float: none;
+		margin-bottom: 10px;
+		margin-left: 0;
+	}
+	.inner-browse-mode {
+		float: none;
+		width: 100%;
+	}
+	.inner-browse-mode span {
+		padding-right: 10px;
+	}
+	.priority-form {
+		padding-top: 15px;
+	}
+	.diamond-search-list {
+		width: 768px;
+	}
+	.tab-list-content-wrap {
+		overflow-x: scroll;
+	}
+	.uptodate ul li img {
+		width: 100%;
+	}
+
+	.outer-div {
+		width: 100%;
+		overflow: scroll;
+		position: absolute;
+		left: 50%;
+		height: 450px;
+		-webkit-transform: translateX(-50%);
+		-moz-transform: translateX(-50%);
+		-ms-transform: translateX(-50%);
+		-o-transform: translateX(-50%);
+		transform: translateX(-50%);
+		top: 1%;
+	}
+
+	.compaire-diamond {
+		max-width: 745px;
+		width: 745px;
+		position: static;
+		-webkit-transform: none;
+		-moz-transform: none;
+		-ms-transform: none;
+		-o-transform: none;
+		transform: none;
+		position: relative;
+		left: 0;
+		top: 0
+	}
+	.account-section .aside {
+		margin: 199px 0 25px;
+	}
+	.best-way-section .account-section .aside {
+		margin-top: 20px;
+	}
+	.checkout-section  .aside {
+		margin: 199px 0 25px;
+	}
+	.forget-password {
+		padding: 0;
+		top: 60%
+	}
+	.diamond-shapes.cutting {
+		padding-top: 10px;
+	}
+
+	.delevery-select-form fieldset label {
+		display: block;
+		padding-top: 5px;
+		margin-bottom: 5px;
+	}
+	.popup-home .popup-globe {
+		min-height: 440px;
+		padding: 18px;
+	}
+	.delevery-process p {
+		font-size: 13px;
+	}
+	.inner-content-wrap {
+		padding-top: 12px;
+	}
+	.delevery-process h2 {
+		padding-top: 5px;
+	}
+
+	/*landing page start here*/
+
+	.about-4c-content {
+		padding: 12px 0;
+	}
+
+	/*landing page end here*/
+
+	/*header start*/
+
+	.best-way-header-section .right-head-info {
+		width: 100%;
+		text-align: center;
+	}
+
+	.best-way-header-section .account-form, .best-way-header-section .currency, .best-way-header-section .delevery-option, .best-way-header-section .cart-form, .best-way-header-section .traditional-zone {
+		float: none;
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	/*header end*/
+
+	/*footer start*/
+
+	.best-way-footer-section .footer-list > li {
+		padding-left: 0;
+	}
+
+	/*footer end*/
+
+	/*diamond size sec start here*/
+
+	.diamond-shape-list-content-wrapper ul li {
+		float: none;
+		margin: 0 1% 32px;
+		min-height: 496px;
+		width: 48%;
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	/*diamond size sec end here*/
+	.diamond-size-list li  span {
+		font-size: 13px;
+	}
+
+	/*28-march-16 home-menu page*/
+	.price-add-form {
+		text-align: center;
+	}
+
+	.tab-main ul {
+		text-align: center;
+	}
+
+	.tab-main ul li {
+		display: inline-block;
+		float: none;
+	}
+
+	/*28-march-16 home-menu page*/
+
+	/*----------------- 4-july-16 about us --------*/
+	.about-content .container {
+		min-width: 0;
+	}
+	.about-banner-content {
+		padding: 19px 0 25px;
+	}
+	.about-banner {
+		padding: 0 10px;
+	}
+	.banner-left, .banner-right {
+		float: none;
+		width: 100%;
+	}
+	.diamonds-type li {
+		float: none;
+		margin-right: 0;
+		width: 100%;
+		margin-bottom: 25px;
+		min-height: 0;
+		padding: 27px 30px 34px;
+	}
+	.vision-head {
+		width: 70%;
+	}
+	.vision-head h1 {
+		font-size: 35px;
+	}
+	.brand-concept-box {
+		float: none;
+		width: 100%;
+		padding: 60px 30px 25px;
+		margin-right: 0;
+		min-height: 0;
+	}
+	.brand-icon {
+		display: none;
+	}
+	.clarity-dimaond-list li {
+		min-height: 220px;
+	}
+	.cert-full-width .half-width .clarity-dimaond-list li img {
+		display: inline-block;
+	}
+	.diamond-color li {
+		padding: 0px 5px;
+		vertical-align: top;
+	}
+	.diamond-color li span {
+		font-size: 13px;
+	}
+}
+
+@media only screen and (max-width: 480px) {
+
+	/*mens-ring start here*/
+
+	.engage-men-rings .diamond-shape-list-content-wrapper ul li {
+		text-align: center;
+	}
+
+	/*mens-ring end here*/
+
+	/*4c start here*/
+
+	.keiret.clear-about-diamond-section ul.knowledge-4c-range-list-item li {
+		/*position: relative;
+		 transform: rotate(92deg);*/
+		width: 5%;
+	}
+
+	.keiret ul.knowledge-4c-range-list-item {
+		/*padding-bottom: 15px;*/
+	}
+
+	.clear-about-diamond-section ul.knowledge-4c-range-list-item li {
+		/*position: relative;
+		 transform: rotate(92deg);*/
+
+	}
+
+	/*4c end here*/
+
+	.ui-selectmenu-button span.ui-selectmenu-text {
+		line-height: 1;
+	}
+
+	#header .ui-selectmenu-button span.ui-icon, .price-compaire-form .ui-selectmenu-button span.ui-icon {
+		top: 9px;
+	}
+
+	.area-form {
+		background: rgba(0, 0, 0, 0) url("../images/globe.png") no-repeat scroll left 0;
+	}
+	/* registration*/
+
+	.cert-full-width .half-width {
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	.type-ring-list img {
+		margin-right: 20px;
+	}
+
+	.buy-diamond-wrapper {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.container {
+		min-width: 320px;
+	}
+
+	.para-des {
+		width: 96%;
+	}
+	.delevery-select-form {
+		padding: 15px 42px 40px;
+	}
+	.popup-wrap .delevery-select-form {
+		padding: 0px 0px 15px;
+	}
+	.delevery-select {
+		width: 90%;
+	}
+	.cart-form {
+		margin-left: 0;
+		min-height: 30px
+	}
+	.forum-wrapper .circle1 {
+		left: 45%;
+		top: 33%;
+	}
+
+	/*knowledge-diamond start here*/
+
+	.buy-diamond-wrapper {
+		width: 100%;
+	}
+
+	/*knowledge-diamond end here*/
+
+	.knowledge-diamond-cert .cert-full-width .half-width, .knowledge-diamond-cert .cert-full-width .half-width h3 {
+		width: 100%;
+		text-align: center;
+	}
+
+	.knowledge-diamond-cert .cert-full-width .half-width img {
+		display: inline-block;
+	}
+
+	/*diamond size sec start here*/
+
+	.diamond-shape-list-content-wrapper ul li {
+		margin: 0 0 32px;
+		min-height: initial;
+		width: 100%;
+	}
+
+	/*diamond size sec end here*/
+
+	.half-width-wrapper .half-width {
+		margin: 0 0 10px;
+		width: 100%;
+	}
+	.clarity-dimaond-list li {
+		padding: 0px 20px;
+	}
+
+}
+
+@media only screen and (max-width: 426px) {
+	.engage-size-table-wrapper {
+		margin-bottom: 20px;
+		overflow: auto;
+	}
+
+	.engage-size-table-wrapper table {
+		width: 408px;
+	}
+
+	.engage-size-table thead th, .engage-size-table tbody tr td {
+		padding: 9px 5px 5px;
+	}
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	.diamonds-type li {
+		margin-right: 9px;
+		padding: 57px 35px 15px;
+	}
+	.brand-concept-box {
+		margin-right: 15px;
+		padding: 64px 37px 20px 38px;
+	}
+}
+@media only screen and (min-width: 992px) and (max-width: 1024px) {
+	.brand-concept-box {
+		min-height: 379px;
+	}
+}
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+	.about-4c-carat-content {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.knowledge-diamond-4c-carat .cert-full-width .half-width, .knowledge-diamond-4c-carat .half-width right {
+		float: none;
+		width: auto;
+	}
+}

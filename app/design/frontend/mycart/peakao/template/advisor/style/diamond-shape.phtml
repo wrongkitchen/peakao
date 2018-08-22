@@ -1,0 +1,52 @@
+<div class="content-head">
+<h2><span>3</span> <?php echo $this->__("Which Diamond Shape do you Like")?>？</h2>
+</div>
+<ul id="shape" class="diamond-shape clearfix">
+<li data-filter="Round" class="filter">
+<div class="diamond-shape-fig"><img alt="" src="<?php echo $this->getskinurl("images/")?>ringadvisor-9.png" /></div>
+<span class="shape-name"><?php echo __("Round Cut")?></span></li>
+<li data-filter="Princess" class="filter">
+<div class="diamond-shape-fig"><img alt="" src="<?php echo $this->getskinurl("images/")?>ringadvisor-10.png" /></div>
+<span class="shape-name"><?php echo __("Princess Cut")?></span></li>
+<li data-filter="Asscher" class="filter">
+<div class="diamond-shape-fig"><img alt="" src="<?php echo $this->getskinurl("images/")?>ringadvisor-11.png" /></div>
+<span class="shape-name"><?php echo __("Asscher Cut")?></span></li>
+<li data-filter="Emerald" class="filter">
+<div class="diamond-shape-fig"><img alt="" src="<?php echo $this->getskinurl("images/")?>ringadvisor-12.png" /></div>
+<span class="shape-name"><?php echo __("Emerald Cut")?></span></li>
+<li data-filter="Radiant" class="filter">
+<div class="diamond-shape-fig"><img alt="" src="<?php echo $this->getskinurl("images/")?>ringadvisor-13.png" /></div>
+<span class="shape-name"><?php echo __("Radian Cut")?></span></li>
+<li  data-filter="Radiant" class="filter">
+<div class="diamond-shape-fig"><img alt="" src="<?php echo $this->getskinurl("images/")?>ringadvisor-14.png" /></div>
+<span class="shape-name"><?php echo __("Triangle Cut")?></span></li>
+<li data-filter="Oval" class="filter">
+<div class="diamond-shape-fig"><img alt="" src="<?php echo $this->getskinurl("images/")?>ringadvisor-15.png" /></div>
+<span class="shape-name"><?php echo __("Oval Cut")?></span></li>
+<li data-filter="Pear"  class="filter">
+<div class="diamond-shape-fig"><img alt="" src="<?php echo $this->getskinurl("images/")?>ringadvisor-16.png" /></div>
+<span class="shape-name"><?php echo __("Pear Cut")?></span></li>
+<li data-filter="Marquise"  class="filter">
+<div class="diamond-shape-fig"><img alt="" src="<?php echo $this->getskinurl("images/")?>ringadvisor-17.png" /></div>
+<span class="shape-name"><?php echo __("Cushion Cut")?></span></li>
+<li data-filter="Heart"  class="filter">
+<div class="diamond-shape-fig"><img alt="" src="<?php echo $this->getskinurl("images/")?>ringadvisor-18.png" /></div>
+<span class="shape-name"><?php echo __("Heart Cut")?></span></li>
+<li data-filter="Cushion" class="filter">
+<div class="diamond-shape-fig">
+<img alt="" src="<?php echo $this->getskinurl("images/")?>ringadvisor-19.png" /></div>
+<span class="shape-name">墊形</span></li>
+</ul>
+<script type="text/javascript">
+styleFilter.addfilter("shape");
+jQuery("#shape .filter").click(function(e){
+	
+	if(jQuery(this).hasClass("disable")){
+		return false;
+	}	
+	jQuery(this).siblings(".filter").removeClass("active");
+	jQuery(this).toggleClass("active");
+	styleFilter.applyfilter();
+	e.preventDefault();
+})
+</script>

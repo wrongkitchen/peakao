@@ -1,0 +1,260 @@
+<?php /* @var $this Ikantam_Diamonds_Block_Product_List_Diamonds */ ?>
+<?php
+    $_productCollection=$this->getProductCollection();
+    $_helper = $this->helper('catalog/output');
+    $_diamondsHelper = $this->helper('diamonds');
+?>
+<?php $mode = $this->getMode();?>
+
+<?php if(!$_productCollection->count()): ?>
+<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+
+<div class="toolbar css3">
+<?php echo $this->getToolbarHtml();?>
+</div>
+
+<?php if($mode == 'grid'):?>
+<?php //Grid mode ?>
+
+<div>
+<div id="diamonds-filter-results">
+
+<div class="category-products">
+    
+    <?php // Grid Mode ?>
+    <?php $_collectionSize = $_productCollection->count() ?>
+    <?php $_columnCount = 4; //$this->getColumnCount(); ?>
+    <?php $i=0; foreach ($_productCollection as $_product): ?>
+        <?php if ($i++%$_columnCount==0): ?>
+        <div >
+        <?php endif ?>
+            <div class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?> span3">
+                <div class="item-inner">
+                    <a href="<?php echo $_diamondsHelper->getDiamondUrl($_product); ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image" id="product_<?php echo $_product->getId() ?>">
+                    	<div id="<?php echo $_product->getId();?>">
+                    	<img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(226); ?>" width="226" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                    	</div>
+                    </a>
+                    <h2 class="product-name"><a href="<?php echo $_diamondsHelper->getDiamondUrl($_product); ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
+                    <?php if($_product->getRatingSummary()): ?>
+                    <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                    <?php endif; ?>
+                    <?php echo $this->getPriceHtml($_product, true) ?>
+                    <div class="actions">  
+                    	
+                    	<!-- IkD -->
+                    	<button type="button" class="button" onclick="location.href='<?php echo $_diamondsHelper->getAddToRingUrl($_product);?>'" >
+                    		<span><?php echo $this->__('Add to ring') ?></span>
+                    	</button>
+                    	<!-- IkD -->
+                        
+                        <?php if($_product->isSaleable()): ?>
+                        	<?php if ( !($_product->getTypeInstance(true)->hasRequiredOptions($_product) || $_product->isGrouped()) ) { ?>
+                            <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="ajaxaddcart('<?php echo $this->getAddToCartUrl($_product) ?>',<?php echo $_product->getId() ?>)"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                            <?php } else { ?>
+                        	<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="showOptions('<?php echo $_product->getId()?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                        	<a href='<?php echo $this->getUrl('mtgeroadmin/index/options',array('product_id'=>$_product->getId()));?>' class='fancybox' id='fancybox<?php echo $_product->getId()?>' style='display:none'>Add</a>
+                        	<?php }?> 
+                        <?php else: ?>
+                            <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                        <?php endif; ?>
+                        <!--<ul class="add-to-links">
+                            <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                            <?php endif; ?>
+                            <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                                <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+                            <?php endif; ?>
+                        </ul>-->
+                    </div>
+                </div>
+            </div>
+        <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+        </div>
+        <?php endif ?>
+        <?php endforeach ?>
+        <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
+</div>
+</div>
+</div>
+
+<?php elseif( $mode == "list"):?>
+<?php //List mode ?>
+<div class="category-products">
+<ol id="products-list" class="products-list special">
+	<?php foreach ($_productCollection as $_product):?>
+		<li class="item">
+			<div class="item-inner">
+				<a id="product_<?php echo $_product->getId();?>" class="product-image" title="/" href="<?php echo $_diamondsHelper->getDiamondUrl($_product);?>">
+					<div>
+						<img width="226" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(226); ?>"/>
+					</div> 
+				</a>
+				<div class="product-shop">
+					<div class="textBlock">
+						<h2 class="product-name">
+							<a title="<?php echo $_product->getName();?>"
+								href="<?php echo $_diamondsHelper->getDiamondUrl($_product);?>">
+									<?php echo $_product->getName();?>
+							</a>
+						</h2>
+						<?php echo $this->getPriceHtml($_product); ?>
+						<!-- 
+						<div class="price-box">
+							<span class="retail" id="retail-price-1"> Retail: <span
+								class="price">$<?php echo $_product->getEstimatedRetailValue();?></span> </span>
+						</div>
+						
+						<div class="price-box">
+							<span class="savings" id="retail-price-1"> <strong>You save</strong>:
+								<span class="price">74%</span> </span>
+						</div>
+						 -->
+						<br/>
+						<div class="actions special">
+							<button type="button" title="Add to Ring" class="button btn-Ring"
+								onClick="location.href='<?php echo $_diamondsHelper->getAddToRingUrl($_product);?>'">
+								<span><span>Add to Ring</span> </span>
+							</button>
+							<br/>
+							<button type="button" title="Add to Cart" class="button btn-cart"
+								onClick="location.href='<?php echo $this->getAddToCartUrl($_product) ?>'">
+								<span><span>Add to Cart</span> </span>
+							</button>
+							<br/>
+							<label>Compare:</label>
+							<?php echo $this->getChild("addtocompare")->setProduct($_product)->toHtml();?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</li>
+		<?php endforeach;?>
+</ol>
+</div>
+
+<?php else :?>
+<?php //Comparation mode ?>
+<div class="category-products">
+	<table width="70%" border="0" cellspacing="0" cellpadding="0" id="recently-compare-table"
+		class="comparison table table-striped table-bordered">
+		<thead>
+			<tr>
+				<td>Shape</td>
+				<td>Carat</td>
+				<td>Cut</td>
+				<td>Color</td>
+				<td>Clarity</td>
+				<td>Price</td>
+				<td>Compare</td>
+			</tr>
+		</thead>
+		<tbody>
+		<?php foreach ($_productCollection as $_product):?>
+			<?php
+			$attributeSetModel = Mage::getModel("eav/entity_attribute_set");
+			$attributeSetModel->load($_product->getAttributeSetId());
+			$attributeSetName = $attributeSetModel->getAttributeSetName();
+
+			$_product = Mage::getModel("catalog/product")->load($_product->getId());
+			?>
+			<tr data-product-id="<?php echo $_product->getId();?>"
+				data-href="<?php echo $_diamondsHelper->getDiamondUrl($_product); ?>">
+				<td><?php echo $_product->getResource()->getAttribute('diamond_shape')->getFrontend()->getValue($_product)?>
+				</td>
+				<td><?php echo $_product->getCarat();?></td>
+				<td><?php echo $_product->getResource()->getAttribute('cut')->getFrontend()->getValue($_product)?>
+				</td>
+				<?php if($attributeSetName == "Loose Color"):?>
+				<td><?php echo $_product->getResource()->getAttribute('loose_color')->getFrontend()->getValue($_product)?>
+				</td>
+				<?php else:?>
+				<td><?php echo $_product->getResource()->getAttribute('color_fancy')->getFrontend()->getValue($_product)?>
+				</td>
+				<?php endif;?>
+				<td><?php echo $_product->getResource()->getAttribute('clarity')->getFrontend()->getValue($_product)?>
+				</td>
+				<td><?php echo $_product->getPrice(); ?>$</td>
+				<td><?php echo $this->getChild("addtocompare")->setProduct($_product)->toHtml();?>
+					<div class="bl">
+						<div class="all_info"
+							data-product-id="<?php echo $_product->getId();?>">
+							<div class="clear"></div>
+							<div class="title">Diamond info:</div>
+							<ul>
+								<li>Item:<?php echo substr($_product->getName(),0,60); ?>
+								</li>
+								<li>Depth:<?php echo $_product->getDepth1();?>
+								</li>
+								<li>Table:<?php echo $_product->getTable();?>
+								</li>
+								<li>Polish:<?php echo $_product->getResource()->getAttribute('polish')->getFrontend()->getValue($_product)?>
+								</li>
+								<li>Summetry:<?php echo $_product->getResource()->getAttribute('symmetry')->getFrontend()->getValue($_product)?>
+								</li>
+								<li>Miassyrement:<br /> <?php echo $_product->getDepth1();?>x<?php echo $_product->getLength();?>x<?php echo $_product->getWidth();?>
+								</li>
+								<li>Girdle:<?php echo $_product->getResource()->getAttribute('girdle')->getFrontend()->getValue($_product)?>
+								</li>
+								<li>Culet:<?php echo $_product->getResource()->getAttribute('culet')->getFrontend()->getValue($_product)?>
+								</li>
+								<li>Fluorescence:<?php echo $_product->getResource()->getAttribute('fluorescence')->getFrontend()->getValue($_product)?>
+								</li>
+								<li>Price per Carat:<?php echo $_product->getPricePerCarat();?>
+								</li>
+								<li>&nbsp;</li>
+								<li>Certification:( <a class="fancybox"
+									href="<?php echo Mage::helper('catalog/image')->init($_product, 'small_image'); ?>"
+									title="<?php echo $_product->getLaboratory();?>"> <?php echo $_product->getLaboratory();?>
+								</a> report)
+								</li>
+								<li>Certificate number:<?php echo $_product->getCertificateNumber();?>
+								</li>
+							</ul>
+							<div class="butt">
+								<button type="button" title="View details"
+									class="button btn-Ring"
+									onclick="location.href='<?php echo $_diamondsHelper->getDiamondUrl($_product);?>'">
+									<span><span>View details</span> </span>
+								</button>
+								<br>
+								<button type="button" title="Add to Cart"
+									class="button btn-Ring"
+									onclick="location.href='<?php echo $_diamondsHelper->getAddToRingUrl($_product);?>'">
+									<span><span>Add to Ring</span> </span>
+								</button>
+								<br>
+								<button type="button" title="Add to Cart"
+									class="button btn-cart"
+									onclick="location.href='<?php echo $this->getAddToCartUrl($_product);?>'">
+									<span><span>Add to Cart</span> </span>
+								</button>
+							</div>
+						</div>
+					</div></td>
+			</tr>
+			<?php endforeach;?>	
+		</tbody>
+	</table>
+</div>
+
+<!-- scripts begin -->
+<script>
+jQuery(function($) {
+	$('table tr').hover(
+			function(){
+				$(this).find('.bl').show();
+			},
+			function(){
+				$(this).find('.bl').hide();
+			});
+});
+</script>
+<!-- scripts end  -->
+
+
+
+<?php endif;?>
+
+<?php endif; ?>

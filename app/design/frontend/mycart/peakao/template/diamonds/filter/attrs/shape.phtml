@@ -1,0 +1,110 @@
+<?php
+/* @var $config Ikantam_Diamonds_Helper_Config */
+$config = $this->helper('diamonds/config');
+?>
+
+<?php
+    $attributeShapeOptions = $this->getAttributeOptions('diamond_shape');
+    $selectedShapes = array();
+
+    if ($_POST['shapes_filter']){
+        $selectedShapes = $_POST['shapes_filter'];
+    }
+?>
+<?php
+/* @var $config Ikantam_Diamonds_Helper_Config */
+$config = $this->helper('diamonds/config');
+?>
+
+<?php
+    $attributeShapeOptions = $this->getAttributeOptions('diamond_shape');
+    $selectedShapes = array();
+
+    if ($_POST['shapes_filter']){
+        $selectedShapes = $_POST['shapes_filter'];
+    }
+?>
+<!--SHAPE-->
+
+    <ul class="shapes-design clearfix">
+        <?php foreach ($attributeShapeOptions as $option): ?>
+            <li>
+              <div  style ="float:left" class="shape <?php echo (in_array($option->getId(), $selectedShapes)) ? "active": ""; ?>"  title="<?php echo $option->getValue(); ?>" >
+                    <input 
+					id="shape<?php echo $option->getDefaultValue(); ?>"
+					class="shape-input"
+                           style="display: none;"
+                           type="checkbox"
+                           <?php if (in_array($option->getId(), $selectedShapes)):  ?> data-selected="true" checked="checked" <?php else: ?> data-selected="false" <?php endif; ?>
+                           value="<?php echo $option->getId(); ?>" />
+                   <label for="shape<?php echo $option->getDefaultValue(); ?>"> 
+				   <img alt="diamond-<?php echo strtolower($option->getDefaultValue()); ?>" 
+					src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)?>diamondshape/<?php echo strtolower($option->getDefaultValue())?>.png" />            
+			       </label>
+
+              
+                </div>
+
+                <?php if ($config->isShowShapeName()): ?>
+                    <span><?php echo $option->getValue(); ?></span>
+                <?php endif; ?>
+            </li>
+
+        <?php endforeach; ?>
+    </ul>
+
+
+<script type="text/javascript" >  
+    jQuery(function(jQuery){
+
+        /*Shape -----*/
+
+        jQuery.fn.toggleCheckbox = function () {
+ 
+            if (this.attr('data-selected') == 'false'){
+                this.attr('data-selected',"true");
+
+            } else {
+                this.attr('data-selected',"false");
+            }
+            //this.attr('checked', !this.attr('checked'));
+
+        };
+ 
+        jQuery('.shape label').click( function () {
+            jQuery(this).siblings(':checkbox').toggleCheckbox();
+            jQuery(this).parent(".shape").toggleClass('active');
+			 diamondsFilter.updateResults(); 
+        });
+        var getDataShape = function(){
+            var shapes = jQuery(".shape-input");
+            var mass = new Array();
+            for(var i=0;i<shapes.length;i++){
+                var shape = jQuery(shapes[i]);
+                if(shape.attr("data-selected") == "true" ){
+                    mass.push(shape.attr("value"));
+                }		
+            }
+            return { mass : mass };
+        };
+
+        diamondsFilter.registerFilter("diamond_shape", getDataShape);
+
+    });
+</script>
+
+
+<?php 
+$shapecat = $this->getrequest()->getparam("shape");
+
+if ($shapecat):
+$shapecat= "shape".$shapecat;
+?>
+<script type="text/javascript">
+   jQuery(function(jQuery){
+  jQuery("#<?php echo $shapecat?>").toggleCheckbox();
+ jQuery("#<?php echo $shapecat?>").parent(".shape").toggleClass('active');
+  diamondsFilter.updateResults(); 
+	})
+</script>
+<?php endif ?>

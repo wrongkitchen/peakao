@@ -1,0 +1,174 @@
+<?php /* @var $this Ikantam_Diamonds_Block_Product_List_Diamonds */ ?>
+<?php
+$_productCollection = $this->getProductCollection();
+$_helper = $this->helper('catalog/output');
+$_diamondsHelper = $this->helper('diamonds');
+
+/*echo $_productCollection->getSelect();*/
+?>
+<?php $mode = $this->getMode(); ?>
+
+<?php if (!$_productCollection->count()): ?>
+    <p class="note-msg">
+        <?php echo $this->__('There are no compatible product finded ') ?>.
+    </p>
+<?php else: ?>
+
+  <?php echo $this->getChildHtml("toolbar_top"); ?>
+ <div class="tab-list-content-wrap">
+    <?php if ($mode == 'grid'): ?>
+        <?php //Grid mode ?>
+           
+      <div id="tab-grid" class="scrollcontent diamond-grid-list">
+<div class="search-content scrollitem">
+<ul class="search-list-wrap clearfix">
+    <?php // Grid Mode  ?>
+                    <?php $_collectionSize = $_productCollection->count() ?>
+                    <?php $_columnCount = 4; //$this->getColumnCount(); ?>
+                    <?php $i = 0;
+                    foreach ($_productCollection as $_product):
+                        ?>
+		<li>
+			<div class="slider-small search-item">
+			<figure>
+			<div data-id="<?php echo $_product->getId() ?>" class="viewbutton quick_view_trigger"><?php echo $this->__("Quick View")?></div>
+			<a
+			href="<?php echo $_diamondsHelper->getdiamondUrl($_product); ?>"
+			title="<?php echo $this->stripTags($this->getImageLabel($_product, 'image'), null, true) ?>"
+			class="product-image" style="height: 100%; width: 100%;"
+			id="product_<?php echo $_product->getId() ?>">
+
+			<img alt="diamond" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(141); ?>" />
+				
+			</a>
+			</figure>
+			<h3><a href="<?php echo $_diamondsHelper->getSettingUrl($_product); ?>"
+			 title="<?php echo $this->stripTags($_product->getName(), null, true) ?>">
+			 <?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+			 </a>
+			 </h3>
+	<span class="diamond-properties"> 
+			<span><?php
+$carat = sprintf("%.2f",$_product->getResource()->getAttribute('carat')->getFrontend()->getValue($_product));
+			echo $carat?> <?php echo $this->__("Carat")?></span> 
+			<span> <?php echo $_product->getResource()->getAttribute('diamond_shape')->getFrontend()->getValue($_product)?><?php echo $this->__("Diamonds")?> <?php echo $this->__("Color")?>:<?php echo $_product->getResource()->getAttribute('color_loose')->getFrontend()->getValue($_product)?></span> 
+			<span><?php echo $this->__("Clarity")?>: <?php echo $_product->getResource()->getAttribute('clarity')->getFrontend()->getValue($_product)?> </span> 
+			<span><?php echo $this->__("Cut")?>: <?php echo $_product->getResource()->getAttribute('cut')->getFrontend()->getValue($_product)?></span></span>
+			<div class="star-label clearfix"><span class="rating">4.2</span>
+			<div class="star-wrap"><span>(共有3個評慏）</span></div>
+			</div>
+			<span class="norm"><?php echo Mage::helper("core")->currency($_product->getFinalPrice()) ?>
+			</span>
+
+               </div>
+			</li>
+			<?php endforeach ?>
+			</ul>
+	
+			
+
+
+    <?php elseif ($mode == "comparison"): ?>
+        <?php //List mode  ?>
+<div id="tab-list" class="scrollcontent diamond-search-list">
+<div class="scrollitem">
+<ul class="list-header-diamond head-l clearfix">
+<li class="list-one"><?php echo $this->__("Shape")?></li>
+<li class="list-two"><?php echo $this->__("Carat")?></li>
+<li class="list-three"><?php echo $this->__("Cut")?></li>
+<li class="list-four"><?php echo $this->__("Color")?></li>
+<li class="list-five"><?php echo $this->__("Clarity")?></li>
+<li class="list-six"><?php echo $this->__("Polish")?></li>
+<li class="list-seven"><?php echo $this->__("Symmetry")?></li>
+<li class="list-eight"><?php echo $this->__("Fluorescence")?></li>
+<li class="list-nine"><?php echo $this->__("Price")?></li>
+<li class="list-ten"><?php echo $this->__("Compare")?></li>
+</ul>
+  <?php foreach ($_productCollection as $_product): 
+  $_product=Mage::getModel("catalog/product")->load($_product->getId());
+  ?>
+<ul data-id="<?php echo $_product->getId() ?>" class="viewbutton list-header-diamond  listing-content-list clearfix">
+<li class="list-one">
+<img alt="" src="<?php echo $this->getskinurl("images")?>/diamond-small.png" />
+<img class="big-deg" alt="" src="<?php echo $this->getskinurl("images")?>/360-deg-big.png" />
+</li>
+<li class="list-two">
+<?php
+$carat = sprintf("%.2f",$_product->getResource()->getAttribute('carat')->getFrontend()->getValue($_product));
+ echo $carat?><?php echo $this->__("Carat")?></li>
+<li class="list-three"><?php echo $_product->getResource()->getAttribute('cut')->getFrontend()->getValue($_product) ?></li>
+<li class="list-four"><?php echo $_product->getResource()->getAttribute('color_loose')->getFrontend()->getValue($_product) ?></li>
+<li class="list-five"><?php echo $_product->getResource()->getAttribute('clarity')->getFrontend()->getValue($_product) ?></li>
+<li class="list-six"><?php echo $_product->getResource()->getAttribute('polish')->getFrontend()->getValue($_product) ?></li>
+<li class="list-seven"><?php echo $_product->getResource()->getAttribute('symmetry')->getFrontend()->getValue($_product) ?></li>
+<li class="list-eight"><?php echo $_product->getResource()->getAttribute('fluorescence')->getFrontend()->getValue($_product) ?></li>
+<li class="list-nine"><?php echo Mage::helper("core")->currency($_product->getFinalPrice(),true,false) ?></li>
+<li class="list-ten compare">
+  <?php echo $this->getChild("addtocompare")->setProduct($_product)->toHtml(); ?>
+</li>
+<script type="text/javascript">
+  jQuery(".list-ten.compare").click(function(e){e.stopPropagation();});
+</script>
+</ul>
+     <?php endforeach; ?>
+<div class="banner-bottom">
+<figure><img alt="" src="<?php echo $this->getskinurl("images")?>/search-banner-bottom.jpg" /></figure>
+</div>
+
+
+    <?php endif; ?>  <!--  <div class="toolbar css3"><?php //echo $this->getToolbarHtml(); ?></div>-->
+	
+	  <?php echo $this->getChildHtml("toolbar"); ?>  
+	   
+    <script type="text/javascript">
+
+            jQuery(function($) {
+				$(".viewbutton").click(function(){
+			     var id =$(this).attr("data-id");
+					if($("#absoluteDiv"+id).length=="0"){
+						         jQuery(".overlayBlock").show();	
+						$.ajax({
+								 type: 'GET',
+								 url: '<?php echo $this->geturl("diamonds/quickview/view/part/diamond/design/".Mage::registry("design_type"))?>' ,
+								 data: "id="+id, 
+								 success: function(data){
+								$("body").append(data); 
+								  
+								 } ,
+								dataType: "json"
+							});	
+							
+					}
+					else {
+						$("#absoluteDiv"+id).show();
+					}
+					
+				});
+            });
+
+            jQuery( function($) {
+                $('tbody tr[data-href]').addClass('clickable');
+
+                $('.clickable').children('td').click( function() {
+                    var elem = $(this);
+                    if(elem.find('.add-to-compare').length > 0){
+                        return;
+                    }
+                    window.location = elem.parent().attr('data-href');
+                }).find('a').hover( function() {
+                    $(this).parents('td').unbind('click');
+                }, function() {
+                    $(this).parents('td').click( function() {
+                        var elem = $(this);
+                        if(elem.find('.add-to-compare').length > 0){
+                            return;
+                        }
+                        window.location = elem.parent().attr('data-href');
+                    });
+                });
+            });
+        </script>
+<?php endif; ?>
+</div>
+</div>
+  </div>

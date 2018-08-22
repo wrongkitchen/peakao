@@ -1,0 +1,66 @@
+
+<?php
+/**
+ * Product list toolbar
+ *
+ * @see Mage_Catalog_Block_Product_List_Toolbar
+ */
+?>
+<?php if($this->getCollection()->getSize()): ?>
+<div style="padding: 10px 0" class="browse-mode clearfix">
+<div class="inner-browse-mode">
+  <?php if ($this->helper('catalogsearch')->getEscapedQueryText()):?>  <span>關鍵字「<?php echo $this->helper('catalogsearch')->getEscapedQueryText()?>」</span>
+  <?php endif ?>
+  <span><?php echo $this->__("Show  <span>%s</span> Items", $this->getTotalNum() )?></span>  
+ 
+    </div>
+
+    <?php if( $this->isExpanded() ): ?>
+<fieldset class="priority-form">
+<label for="sortby"><?php echo $this->__("Sort By")?>：</label>
+
+            <select id="sortby" onchange="setLocation(this.value)">
+            <?php foreach($this->getAvailableOrders() as $_key=>$_order): ?>
+                <option value="<?php echo $this->getOrderUrl($_key, 'asc') ?>"<?php if($this->isOrderCurrent($_key)): ?> selected="selected"<?php endif; ?>>
+                    <?php echo $this->__($_order) ?>
+                </option>
+            <?php endforeach; ?>
+            </select>
+			 </fieldset>
+            <?php if($this->getCurrentDirection() == 'desc'): ?>
+         <a 
+        id="sortby-dir" 
+       href="<?php echo $this->getOrderUrl(null, 'asc') ?>"
+     
+        title="<?php echo $this->__('Set Ascending Direction') ?>"><img
+            src="<?php echo $this->getSkinUrl('images/i_desc_arrow.gif') ?>"
+            alt="<?php echo $this->__('Set Ascending Direction') ?>"
+            class="v-middle" /> </a>               
+			 
+            <?php else: ?>
+       <a 
+        id="sortby-dir" 
+        href="<?php echo $this->getOrderUrl(null, 'desc') ?>"
+      
+        title="<?php echo $this->__('Set Descending Direction') ?>"><img
+            src="<?php echo $this->getSkinUrl('images/i_asc_arrow.gif') ?>"
+            alt="<?php echo $this->__('Set Descending Direction') ?>"
+            class="v-middle" /> </a>               
+		
+            <?php endif; ?>
+ 
+
+    <?php endif; ?>
+</div>
+
+
+        <?php echo $this->getPagerHtml() ?>
+<?php endif ?>
+<script style="text/javascript">
+      jQuery( "#sortby" ).selectmenu({
+		  change: function(){
+			  setLocation(this.value)
+		  }
+	  }
+	  );
+</script>

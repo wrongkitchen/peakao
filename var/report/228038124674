@@ -1,0 +1,13 @@
+a:4:{i:0;s:168:"SQLSTATE[70100]: : 1317 Query execution was interrupted, query was: SELECT `core_website`.`website_id`, `core_website`.`code`, `core_website`.`name` FROM `core_website`";i:1;s:1433:"#0 /home/wwwpeakao/public_html/lib/Varien/Db/Statement/Pdo/Mysql.php(110): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /home/wwwpeakao/public_html/app/code/core/Zend/Db/Statement.php(291): Varien_Db_Statement_Pdo_Mysql->_execute(Array)
+#2 /home/wwwpeakao/public_html/lib/Zend/Db/Adapter/Abstract.php(480): Zend_Db_Statement->execute(Array)
+#3 /home/wwwpeakao/public_html/lib/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('SELECT `core_we...', Array)
+#4 /home/wwwpeakao/public_html/lib/Varien/Db/Adapter/Pdo/Mysql.php(504): Zend_Db_Adapter_Pdo_Abstract->query('SELECT `core_we...', Array)
+#5 /home/wwwpeakao/public_html/lib/Zend/Db/Adapter/Abstract.php(776): Varien_Db_Adapter_Pdo_Mysql->query(Object(Varien_Db_Select), Array)
+#6 /home/wwwpeakao/public_html/app/code/core/Mage/Core/Model/Resource/Config.php(63): Zend_Db_Adapter_Abstract->fetchAssoc(Object(Varien_Db_Select))
+#7 /home/wwwpeakao/public_html/app/code/core/Mage/Core/Model/Config.php(354): Mage_Core_Model_Resource_Config->loadToXml(Object(Mage_Core_Model_Config))
+#8 /home/wwwpeakao/public_html/app/code/core/Mage/Core/Model/App.php(431): Mage_Core_Model_Config->loadDb()
+#9 /home/wwwpeakao/public_html/app/code/core/Mage/Core/Model/App.php(354): Mage_Core_Model_App->_initModules()
+#10 /home/wwwpeakao/public_html/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#11 /home/wwwpeakao/public_html/index.php(83): Mage::run('', 'store')
+#12 {main}";s:3:"url";s:17:"/index.php/admin/";s:11:"script_name";s:10:"/index.php";}

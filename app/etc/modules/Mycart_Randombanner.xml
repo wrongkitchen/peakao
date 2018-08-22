@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Mycart_Randombanner>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Mycart_Randombanner>
+    </modules>
+</config> 

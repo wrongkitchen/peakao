@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+    <name>Mp_Zopim_live_Chat</name>
+    <version>0.1.0</version>
+    <stability>stable</stability>
+    <license uri="http://www.opensource.org/licenses/osl-3.0.php">OSL v3.0</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Zopim Live Chat is an extension for the chat widget provided by &lt;a href="https://www.zopim.com/" target="_blank" title="Zopim Live Chat"&gt;Zopim&lt;/a&gt;</summary>
+    <description>Zopim Live Chat is an extension for the chat widget provided by &lt;a href="https://www.zopim.com/" target="_blank" title="Zopim Live Chat"&gt;Zopim&lt;/a&gt;</description>
+    <notes>Zopim Live Chat is an extension for the chat widget provided by &lt;a href="https://www.zopim.com/" target="_blank" title="Zopim Live Chat"&gt;Zopim&lt;/a&gt;</notes>
+    <authors><author><name>MagePsycho</name><user>auto-converted</user><email>rajen_k_bhtt@hotmail.com</email></author></authors>
+    <date>2011-11-28</date>
+    <time>12:22:33</time>
+    <contents><target name="magelocal"><dir name="MagePsycho"><dir name="Zopimlivechat"><dir name="Block"><dir name="System"><dir name="Config"><dir name="Zopimlivechat"><file name="Info.php" hash="a02eaaebf3ee61ead26ca00023c66bce"/></dir><file name="Info.php" hash="3f20a94f0a67de3b12be1f241f78255f"/></dir></dir><file name="Zopimlivechat.php" hash="57bb64dcd94a94f9fdd5ad032504af60"/></dir><dir name="Helper"><file name="Data.php" hash="d62040f4d78e3185b71a60e722855569"/></dir><dir name="Model"><file name="Zopimlivechat.php" hash="e8f1ac4f2a89d6947b18e734b9ce7ca8"/></dir><dir name="controllers"><file name="IndexController.php" hash="a81ead1f00d0c46f3452fcb6b2c9b010"/></dir><dir name="etc"><file name="adminhtml.xml" hash="ad7aa49b046078a5c59e3949ee8ca314"/><file name="config.xml" hash="316edc69e8bcfea523b2e0c98db68863"/><file name="system.xml" hash="16241f8736117ad76e75c6941ff00c11"/></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="MagePsycho_Zopimlivechat.xml" hash="c1eae56e8862591a5ea208964ab06dd8"/></dir></target><target name="magedesign"><dir name="frontend"><dir name="default"><dir name="default"><dir name="layout"><file name="zopimlivechat.xml" hash="82d07a79dfc7b8281ce2a7a7bb60f8cd"/></dir></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies/>
+</package>

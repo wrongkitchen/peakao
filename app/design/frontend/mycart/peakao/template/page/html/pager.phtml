@@ -1,0 +1,27 @@
+<div id="pagination" style="display:none">
+        <?php
+         $i=0;
+		 
+		foreach ($this->getFramePages() as $_page): ?>
+            <?php if ($this->isPageCurrent($_page)): $i=1 ?>
+             <a  href="<?php echo $this->getPageUrl($_page) ?>"><?php echo $_page ?></a></li>
+            <?php elseif($i==1): $i==0 ?>
+               <a class="next" href="<?php echo $this->getPageUrl($_page) ?>"><?php echo $_page ?></a></li>
+            
+			<?php endif;?>
+        <?php endforeach;?>
+
+</div>
+     <script>  
+ jQuery(document).ready(function (){              
+     var ias = jQuery.ias({ 
+  container:  "#scrollcontent",
+  item:       ".search-content",
+  pagination: "#pagination",
+  next:       "#pagination a.next"	  
+                                                                          
+        });  
+		ias.extension(new IASSpinnerExtension());
+ });   
+    </script>  
+

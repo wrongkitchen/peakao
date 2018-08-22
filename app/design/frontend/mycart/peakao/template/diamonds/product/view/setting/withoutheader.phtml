@@ -1,0 +1,168 @@
+<?php /* @var $this Ikantam_Diamonds_Block_Product_View_Setting */?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+
+<div class="diamondSearch">
+	<button id="back-to-results" type="button" title="Back to results" class="button">
+		<span><span>Back to results</span></span>
+	</button>
+	<div class="product-view">
+		<div class="product-essential">
+			<div class="product-img-box span4">
+				<?php echo $this->getChildHtml('media') ?>
+			</div>
+
+			<div class="product-shop item">
+				<div class="product-name">
+					<h1>
+						<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+					</h1>
+				</div>
+				<p>
+					<?php echo $_helper->productAttribute($_product, $_product->getDescription(), 'description') ?>
+				</p>
+
+				<?php echo $this->getPriceHtml($_product); ?>
+
+				<div class="sort-by span4">
+					<label>Ring size:</label> <select
+						onChange="setLocation(this.value)">
+						<option selected="selected" value="#">1</option>
+						<option value="#">3</option>
+						<option value="#">4</option>
+					</select>
+				</div>
+
+				<div class="clear"></div>
+				<?php 
+					$settingModel = new Ikantam_Diamonds_Model_Setting($_product);
+					$relatedProducts = $settingModel
+						->getRelatedProducts('ring_mainstone_shape',$_product->getRingMainstoneShape(),'ring_metal');
+				?>
+				<div class="sort-by span4">
+						<label>Change Metal:</label> 
+						<select onchange="setLocation(this.value)">
+							<?php foreach($relatedProducts as $product):?>
+							<option 
+								<?php if($product['product']->getId == $_product->getId()):?>
+								selected="selected"
+								<?php endif;?>
+								value="<?php echo $product['url']; ?>">
+								<?php echo $product['value']; ?>
+							</option>
+							<?php endforeach;?>
+						</select>
+				</div>
+				<div class="clear"></div>
+				<div class="actions">
+					<button
+						onclick="location.href='<?php echo $this->helper('diamonds')->getSelectSettingUrl($_product); ?>'"
+						class="button btn-setting" title="Select this setting"
+						type="button">
+						<span><span>Select this setting</span> </span>
+					</button>
+				</div>
+				<div class="social">
+					<img src="images/fb_like.png" />
+				</div>
+				<a href="#" class="mail">E-mail</a> <a href="#" class="print">Print</a>
+				<div class="clear"></div>
+				<div class="chekBox item">
+					<label>Wishlist:</label> <input type="checkbox" /><br /> <label>Compare:</label>
+					<input type="checkbox" />
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="baner">BrilliantRocks</div>
+<div class="tabBlock">
+	<ul class="nav nav-tabs" id="myTab">
+		<li class="active"><a data-toggle="tab" href="#settingsDetails">Settings
+				details</a></li>
+		<li><a data-toggle="tab" href="#similarRings">Similar rings</a></li>
+		<li><a data-toggle="tab" href="#question">Ask a question</a></li>
+	</ul>
+	<!-- /nav-tabs-->
+
+	<div class="tab-content" id="myTabContent">
+		<div id="settingsDetails" class="tab-pane fade in active">
+			<div class="details-col-left">
+				<div class="caption">Setting details</div>
+				<ul>
+					<li class="list-title">Ring:</li>
+					<li>SKU:<?php echo $_product->getSku(); ?></li>
+					<li>Metal Type: <?php echo $_product->getAttributeText('ring_metal');?></li>
+					<li>Weight:<?php echo $_product->getRingWeight(); ?>g</li>
+					<li>Size: <?php echo $_product->getRingSize(); ?> US(adjusteble)</li>
+					<li>Comments: <?php echo $_product->getRingComments(); ?></li>
+				</ul>
+
+				<ul>
+					<li class="list-title">Side Stones:</li>
+					<li>Quantity: <?php echo $_product->getRingSidestoneQuantity();?> Diamonds</li>
+					<li>Total Carat Weight: <?php echo $_product->getRingSidestoneTotalWeight(); ?> Carat</li>
+					<li>Quality: 
+						<?php echo $_product->getAttributeText('ring_sidestone_color'); ?> -
+						<?php echo $_product->getAttributeText('ring_sidestone_clarity'); ?>
+					</li>
+					<li>Shape: <?php echo $_product->getAttributeText('ring_sidestone_shape');?></li>
+					<li>Cut: <?php echo $_product->getAttributeText('ring_sidestone_cut');?></li>
+				</ul>
+				
+				<?php echo $this->getChildHtml("mainstone"); ?>
+				
+			</div>
+			<div class="allDetails">
+				<div class="full-face ring">
+					<img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(226);?>" />
+					<?php 
+						$settingModel = new Ikantam_Diamonds_Model_Setting($_product);
+						$relatedProducts = $settingModel
+							->getRelatedProducts('ring_mainstone_shape',$_product->getRingMainstoneShape(),'ring_metal');
+					?>
+					
+					<div class="sort-by span4">
+						<label>Change Metal:</label> 
+						<select onchange="setLocation(this.value)">
+							<?php foreach($relatedProducts as $product):?>
+							<option 
+								<?php if($product['product']->getId == $_product->getId()):?>
+								selected="selected"
+								<?php endif;?>
+								value="<?php echo $product['url']; ?>">
+								<?php echo $product['value']; ?>
+							</option>
+							<?php endforeach;?>
+						</select>
+					</div>
+				</div>
+				<div class="profile ring">
+					<img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(226);?>" />
+					<?php 
+						$relatedProducts = $settingModel
+							->getRelatedProducts('ring_metal',$_product->getRingMetal(),'ring_mainstone_shape');
+					?>
+					<div class="sort-by span4">
+						<label>Change Shape:</label> 
+						<select onchange="setLocation(this.value)">
+							<?php foreach($relatedProducts as $product):?>
+							<option 
+								<?php if($product['product']->getId == $_product->getId()):?>
+								selected="selected"
+								<?php endif;?>
+								value="<?php echo $product['url']; ?>">
+								<?php echo $product['value']; ?>
+							</option>
+							<?php endforeach;?>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="similarRings" class="tab-pane fade"></div>
+		<div id="question" class="tab-pane fade"></div>
+	</div>
+</div>
+<!-- /tabBlock-->

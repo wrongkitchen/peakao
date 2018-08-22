@@ -1,0 +1,60 @@
+<div class="content-head">
+<h2><span>4</span><?php echo $this->__("How much Your Budget")?>?</h2>
+</div>
+<div class="desktop-size price-slide">
+<h5><?php echo $this->__("Price")?></h5>
+<?php
+
+$code = Mage::app()->getStore()->getCurrentCurrencyCode();
+$symbol = Mage::app()->getLocale()->currency($code)->getSymbol(); 
+?>
+
+<div id ="budget" class="range-slider"> 
+	<!--<span class="dollor-sign outer-none"> <?php //echo $symbol; ?></span>-->
+
+	
+    <div class="inline-ranger-slider" style="width:100%">
+        <div id="price_slider" class="range-inner" ></div>
+    </div>
+    
+		<div class="left-selector min-value">
+
+		<input symbol="<?php echo $symbol?>" type="text" id="minPrice"  class="slider-value sliderPriceValue formField svlft inline-range" name="attributes[price][min]" data-index="0" value="<?php echo $symbol."1" ?>"/>
+	</div>
+
+	<div class="right-selector max-value">
+
+		<input type="text" id="maxPrice" class="slider-value sliderPriceValue formField slidRight inline-range" name="attributes[price][max]" data-index="1" value="<?php echo $symbol."90001" ?>" />
+	</div>
+</div>
+<script type="text/javascript">
+    jQuery(function(jQuery){
+        /*Price-----*/
+		styleFilter.addfilter("budget");
+        jQuery("#price_slider").slider({
+            range: true,
+            min: 1,
+            max: 90001,
+            step: 50,
+            values: [1, 90001],
+            slide: function(event, ui) {
+                for(var i = 0; i < ui.values.length; ++i) {
+                    jQuery("input.sliderPriceValue[data-index=" + i + "]").val("<?php echo $symbol?>"+ui.values[i]);
+                }
+				  
+            },
+			stop: function (){
+		
+			styleFilter.applyfilter();
+			}
+        });
+
+        jQuery("input.sliderPriceValue").change(function() {
+            var $this = jQuery(this);
+            jQuery("#price_slider").slider("values", $this.data("index"), $this.val().replace("<?php echo $symbol?>","") );
+            styleFilter.applyfilter();
+		});
+    
+   
+    });
+</script></div>

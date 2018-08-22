@@ -1,0 +1,136 @@
+<?php /* @var $this Ikantam_Diamonds_Block_Product_Compare_List */ ?>
+<?php $compare = new Ikantam_Diamonds_Model_Compare();
+$_items = $compare->getDiamondsCollection(); ?>
+<?php if ($_items->getSize() == 0): /*$this->getItems()*/?>
+    <p class="note-msg"><?php echo $this->__('There are no products for compare.') ?></p>
+<?php else: ?>
+    <?php $_helper = $this->helper('diamonds'); ?>
+    <?php //$_items = $this->getItems(); ?>
+						<ul class="compaire-list">
+							<li class="first-list-pop">
+								<div class="top-pop-head">
+									<h2>戒指比較</h2>
+								</div>
+					
+								<ul class="inner-pop-list first-inner">
+									<li>
+										名稱
+									</li>
+									<li>
+										價錢
+									<li>
+										形狀
+									</li>
+									<li>
+										克拉重量
+									</li>
+									<li>
+										切割
+									</li>
+									<li>
+										成色
+									</li>
+									<li>
+										淨度
+									</li>
+									<li>
+										拋光
+									</li>
+									<li>
+										對稱性
+									</li>
+									<li>
+										螢光反應
+									</li>
+									<li>
+										桌面大小
+									</li>
+									<li>
+										深度
+									</li>
+									<li>
+										底鑽
+									</li>
+									<li>
+										規格大小
+									</li>
+									<li>
+										證書
+									</li>
+									<li></li>
+					
+								</ul>
+							</li>
+		    <?php foreach ($_items as $num => $_item): ?>					
+							<li class="second-list-pop">
+								<div class="top-pop-head">
+									<img src="<?php echo $this->getskinurl("images")?>/popup-diamond-over.png" alt="" />
+									<div class="rotate-show">
+										<span class="rotate-360-pop"><img src="<?php echo $this->getskinurl("images")?>/360-deg.png" alt="" /></span>
+										<span class="next-position"><img src="<?php echo $this->getskinurl("images")?>/small-diamond.png" alt="" /></span>
+									</div>
+								</div>
+					
+								<ul class="inner-pop-list second-inner">
+									<li>
+										<?php echo $_item->getName(); ?>
+									</li>
+					
+									<li>
+										
+                                <?php echo  Mage::helper('core')->currency( $_item->getprice(),true,false) ;?>
+									</li>
+									<li>
+							<?php echo 	$_item->getResource()->getAttribute('diamond_shape')->getFrontend()->getValue($_item);?>
+									</li>
+									<li>
+								<?php echo 	$_item->getResource()->getAttribute('carat')->getFrontend()->getValue($_item);?>
+									</li>
+									<li>
+									<?php echo 	$_item->getResource()->getAttribute('cut')->getFrontend()->getValue($_item);?>
+									</li>
+									<li>
+									<?php echo 	$_item->getResource()->getAttribute('color_loose')->getFrontend()->getValue($_item);?>
+									</li>
+									<li>
+									<?php echo 	$_item->getResource()->getAttribute('clarity')->getFrontend()->getValue($_item);?>
+									</li>
+									<li>
+								<?php echo 	$_item->getResource()->getAttribute('polish')->getFrontend()->getValue($_item);?>
+									</li>
+									<li>
+									<?php echo 	$_item->getResource()->getAttribute('symmetry')->getFrontend()->getValue($_item);?>
+									</li>
+									<li>
+										<?php echo 	$_item->getResource()->getAttribute('fluorescence')->getFrontend()->getValue($_item);?>
+									</li>
+									<li>
+										<?php echo number_format($_item->getDepth1(), 1) . '%'?>
+									</li>
+									<li>
+										<?php echo number_format($_item->getTable(), 1) . '%'?>
+									</li>
+									<li>
+						<?php echo 	$_item->getResource()->getAttribute('culet')->getFrontend()->getValue($_item);?>
+										
+									</li>
+									<li class="mm-info"><?php echo $_item->getDimension() ?></li>
+					
+									<li>
+										<?php echo $_item->getResource()->getAttribute('laboratory')->getFrontend()->getValue($_item) ;?>
+									</li>
+									<li  class="pop-add-cart"><a onclick="location.href='<?php echo $this->helper('checkout/cart')->getAddUrl($_item) ?>'" href="javascript:void(0)" >添加到購物車</a></li>
+					
+								</ul>
+								<a href="javascript:void(0)" data-url="<?php echo $this->helper('diamonds')->getRemoveFromCompareUrl($_item); ?>"  class="remove-list"> 移除 X</a>
+								
+							</li>
+							<?php endforeach?>
+					</ul>
+<?php endif; ?>
+<script type="text/javascript">
+jQuery(".remove-list").click(function(){
+	 var url = jQuery(this).attr("data-url");
+      jQuery("input[data-remove-url='"+url+"']").click();	 
+})
+</script>

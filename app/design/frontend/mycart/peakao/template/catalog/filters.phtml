@@ -1,0 +1,48 @@
+<?php
+/* @var $config Ikantam_Diamonds_Helper_Config */
+$config = $this->helper('diamonds/config');
+$widthSlider = $config->getWidthSlider();
+?>
+
+<div class="set-option-wrap">
+<a id="clear-filter" class="know-more-btn reset-field" href="javascript:void(0);"><span>重置所有選項</span></a>
+<div class="reset-contnet-wrap clearfix">
+<div class="content-option-left">
+<form method="post" id="constructor" >
+<div class="diamond-shapes">
+<h5>材質</h5>
+  <?php echo $this->getChildHtml('filter_metal'); ?>
+</div>
+
+		
+</div>
+<div class="content-option-right">
+
+<div class="desktop-size  price-slide">
+<h5>價格</h5>
+  <?php echo $this->getChildHtml('filter_price'); ?>
+</div>
+
+
+
+</div>
+</div>
+</div>
+</form>
+
+<script type="text/javascript">	
+        /*Filter-----*/
+var updateUrl = "<?php echo $this->geturl("design/engagementrings_filter/cat") ?>";
+    var catFilter = new IkD.Filter(updateUrl, null);
+	var catgetData = function(){
+		return <?php echo  Mage::registry("current_category")?Mage::registry("current_category")->getid() : "" ?>;
+	};
+	jQuery(function(){
+        catFilter.setResultContainer(jQuery("#ring_filter_results"));
+    });
+	catFilter.registerMetadata("cat",catgetData);
+        jQuery("#clear-filter").click(function () {
+           catFilter.resetFilters();
+        });
+
+</script> 

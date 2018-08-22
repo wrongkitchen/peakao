@@ -1,0 +1,10 @@
+<div class="browse-mode clearfix">
+<div class="inner-browse-mode">
+        <?php //echo $this->getChildHtml('filter_toolbar_limiter') ?>	
+     <?php echo $this->getChildHtml("ring_filter_toolbar_metal"); ?>
+    		<?php $count = $this->getParentBlock()->getProductCollection()->count() ?>
+  <span><?php echo $this->__("Show  <span>%s</span> Items",$count )?></span>
+	
+    </div>
+        <?php echo $this->getChildHtml("ring_filter_toolbar_sort"); ?>
+    </div>

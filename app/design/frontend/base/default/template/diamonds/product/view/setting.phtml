@@ -1,0 +1,175 @@
+<?php /* @var $this Ikantam_Diamonds_Block_Product_View_Diamond */ ?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+
+<div  id="ikantam-mage-filter" class="diamondSearch">
+    <div class="headerBlock">
+        <ul class="additional-menu">
+            <li><a
+                    href="<?php echo $this->helper("diamonds")->getChooseDiamondsUrl(); ?>">
+					Choose a diamonds</a></li>
+            <li><a
+                    href="<?php echo $this->helper("diamonds")->getChooseSettingsUrl(); ?>" class="active">
+					Choose a settings</a></li>
+        </ul>
+        <div class="btn-group drop-list span2">
+            <?php echo $this->getChildHtml("diamonds_filter_design"); ?>
+        </div>
+
+    </div>
+    <div class="product-view">
+        <div class="product-essential">
+            <div class="product-img-box span4">
+                <?php echo $this->getChildHtml('media') ?>
+            </div>
+
+            <div style="margin-left: 380px;">
+                <div class="product-name">
+                    <h1>
+                        <?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+                    </h1>
+                </div>
+                <p>
+                    <?php echo $_helper->productAttribute($_product, $_product->getDescription(), 'description') ?>
+                </p>
+
+                <?php echo $this->getPriceHtml($_product); ?>
+                <br>
+                <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+
+                <!--23.08.2013-->
+                <?php //echo $_helper->productAttribute($_product, $_product->getDescription(), 'ring_comments') ?>
+				<?php //var_dump($_product->getRingSize()); ?>
+                <?php $_sizes = explode(',', $_product->getRingSize()); ?>
+                <?php
+                /* $_sizes = array();
+                  for ($_i = 3; $_i <= 12; $_i+=0.25) {
+                  $_sizes[] = $_i;
+                  } */
+                ?>
+
+                <div class="sort-by span4">
+                    <label>Ring size:</label> 
+                    <select id="selected_ring_size" onchange="">
+                        <?php foreach ($_sizes as $_size): ?>
+                            <option value="<?php echo $_size; ?>"><?php echo $_size; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="clear"></div>
+                <!--End 23.08.2013-->
+                <?php
+                $settingModel = new Ikantam_Diamonds_Model_Setting($_product);
+                $relatedProducts = $settingModel
+                        ->getRelatedProducts('ring_mainstone_shape', $_product->getRingMainstoneShape(), 'ring_metal');
+                ?>
+                <?php if (count($relatedProducts)>1): ?>
+                <div>
+                    <label>Change Metal:</label> 
+                    <select onchange="setLocation(this.value)">
+                        <?php foreach ($relatedProducts as $product): ?>
+                            <option 
+                            <?php if ($product['product']->getId() == $_product->getId()): ?>
+                                    selected="selected"
+                                <?php endif; ?>
+                                value="<?php echo $product['url']; ?>">
+                                    <?php echo $product['value']; ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <?php endif;?>
+                <br>
+                <div class="actions">
+                    <button
+                        onclick="setRingSize()"
+                        class="button btn-cart" title="Select this setting"
+                        type="button">
+                        <span><span>Select this setting</span> </span>
+                    </button>
+                    <?php if (Mage::helper('diamonds/config')->isAllowAddRingToCart()): ?>
+                    <button
+                        onclick="addToCartRing()"
+                        class="button btn-cart" title="Add to Cart"
+                        type="button">
+                        <span><span>Add to cart</span></span>
+                    </button>
+                    <?php endif;?>
+                    
+                </div>
+                
+                <!--23.08.2013-->
+                <script>
+                    function setRingSize()
+                    {
+                        var selectedSize = document.getElementById("selected_ring_size").value;
+                        var newLocation = "<?php echo $this->helper('diamonds')->getSelectSettingUrl($_product); ?>";
+                        location.href = newLocation + 'size/' + selectedSize;
+                    }
+                    
+                    function addToCartRing()
+                    {
+                        var selectedSize = document.getElementById("selected_ring_size").value;
+                        /*var diamondId = "<?php /*echo $_product->getId();*/ ?>";*/
+                        var newLocation = "<?php echo $this->helper('diamonds')->getAddRingToCartUrl($_product); ?>";
+                        /*'product/' + diamondId*/
+                        location.href = newLocation +  'size/' + selectedSize;
+                    }
+                </script>
+                <!--End 23.08.2013-->
+            </div>
+            <!-- /product-shop-->
+
+        </div>
+        <!-- /product-essential-->
+    </div>
+</div>
+<!-- /diamondSearch-->
+<div class="clear"></div>
+
+<div class="tabBlock">
+
+
+    <div class="tab-content" id="myTabContent">
+        <div id="settingsDetails" class="tab-pane fade in active">
+            <div class="details-col-left">
+                <div class="caption">Setting details</div>
+                <ul>
+                    <li class="list-title">Ring:</li>
+                    <li>SKU:<?php echo $_product->getSku(); ?></li>
+                    <li>Metal Type: <?php echo $_product->getAttributeText('ring_metal'); ?></li>
+                    <li>Weight:<?php echo number_format($_product->getRingWeight(), 2); ?>g</li>
+                    <li>Sizes: <?php echo str_replace(',',' ',$_product->getRingSize()); ?></li>
+                    <li>Comments: <?php echo $_product->getRingComments(); ?></li>
+                </ul>
+
+                <ul>
+                    <li class="list-title">Side Stones:</li>
+                    <li>Quantity: <?php echo (int) $_product->getRingSidestoneQuantity(); ?> Diamonds</li>
+                    <li>Total Carat Weight: <?php echo number_format($_product->getRingSidestoneTotalWeight(), 2); ?> Carat</li>
+                    <li>Quality: 
+                        <?php echo $_product->getAttributeText('ring_sidestone_color'); ?> -
+                        <?php echo $_product->getAttributeText('ring_sidestone_clarity'); ?>
+                    </li>
+                    <li>Shape: <?php echo $_product->getAttributeText('ring_sidestone_shape'); ?></li>
+                    <li>Cut: <?php echo $_product->getAttributeText('ring_sidestone_cut'); ?></li>
+                </ul>
+
+                <?php echo $this->getChildHtml("mainstone"); ?>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!-- /tabBlock-->
+
+<script type="text/javascript">
+	var $dropBtn = jQuery('#ikantam-mage-filter .drop-list .dropdown-toggle'),
+	$list    = jQuery('#ikantam-mage-filter ul.dropdown-menu');
+	$dropBtn.on('click', function(){
+		$dropBtn.toggleClass('ison');
+		$list.toggle();
+	});
+</script>
